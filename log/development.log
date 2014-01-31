@@ -2629,3 +2629,2133 @@ Processing by Devise::SessionsController#new as HTML
   Rendered layouts/_navigation.html.erb (2.1ms)
   Rendered layouts/_messages.html.erb (0.4ms)
 Completed 200 OK in 66ms (Views: 52.3ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2014-01-29 09:40:37 -0500
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (1.6ms)
+  Rendered /Users/philgarber/.rvm/gems/ruby-2.0.0-p247@rails3-mongoid-devise/gems/devise-3.0.3/app/views/devise/sessions/new.html.erb within layouts/application (22.6ms)
+  Rendered layouts/_navigation_links.html.erb (0.3ms)
+  Rendered layouts/_navigation.html.erb (2.0ms)
+  Rendered layouts/_messages.html.erb (0.5ms)
+Completed 200 OK in 113ms (Views: 111.2ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2014-01-29 10:16:38 -0500
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"cV8c6RH17WcIP8sjGoBcBRXBzVMFnP21CCPN8dC/hc8=", "user"=>{"email"=>"2@3.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign in"}
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (9.1741ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={"$query"=>{"email"=>"2@3.com"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (19.4428ms)
+  MOPED: 127.0.0.1:27017 UPDATE       database=rails3_mongoid_devise_development collection=users selector={"_id"=>"52e83fda946cf15136000001"} update={"$set"=>{"current_sign_in_at"=>2014-01-29 15:16:38 UTC, "sign_in_count"=>2, "updated_at"=>2014-01-29 15:16:38 UTC}} flags=[] (0.2539ms)
+Redirected to http://localhost:3000/users/52cb1bd9946cf1f3ce000001
+Completed 302 Found in 134ms
+
+
+Started GET "/users/52cb1bd9946cf1f3ce000001" for 127.0.0.1 at 2014-01-29 10:16:38 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"52cb1bd9946cf1f3ce000001"}
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={"$query"=>{"_id"=>"52e83fda946cf15136000001"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.5083ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={"_id"=>"52cb1bd9946cf1f3ce000001"} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.3541ms)
+  Rendered users/show.html.erb within layouts/application (1.3ms)
+  Rendered layouts/_navigation_links.html.erb (0.0ms)
+  Rendered layouts/_navigation.html.erb (1.1ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 21ms (Views: 18.5ms)
+
+
+Started GET "/users/52cb1bd9946cf1f3ce000001" for 127.0.0.1 at 2014-01-29 11:29:52 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"52cb1bd9946cf1f3ce000001"}
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (6.7079ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={"$query"=>{"_id"=>"52e83fda946cf15136000001"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (8.8420ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={"_id"=>"52cb1bd9946cf1f3ce000001"} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.4349ms)
+  Rendered users/show.html.erb within layouts/application (0.4ms)
+  Rendered layouts/_navigation_links.html.erb (0.0ms)
+  Rendered layouts/_navigation.html.erb (1.4ms)
+  Rendered layouts/_messages.html.erb (0.0ms)
+Completed 200 OK in 158ms (Views: 125.8ms)
+
+
+Started GET "/users/52cb1bd9946cf1f3ce000001" for 127.0.0.1 at 2014-01-29 11:31:25 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"52cb1bd9946cf1f3ce000001"}
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={"$query"=>{"_id"=>"52e83fda946cf15136000001"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.5231ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={"_id"=>"52cb1bd9946cf1f3ce000001"} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.3221ms)
+  Rendered users/show.html.erb within layouts/application (0.1ms)
+  Rendered layouts/_navigation_links.html.erb (0.0ms)
+  Rendered layouts/_navigation.html.erb (1.1ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 14ms (Views: 12.0ms)
+
+
+Started GET "/users/52cb1bd9946cf1f3ce000001" for 127.0.0.1 at 2014-01-30 14:00:11 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"52cb1bd9946cf1f3ce000001"}
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (6.2530ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={"$query"=>{"_id"=>"52e83fda946cf15136000001"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (6.9289ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={"_id"=>"52cb1bd9946cf1f3ce000001"} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.5848ms)
+  Rendered users/show.html.erb within layouts/application (0.5ms)
+  Rendered layouts/_navigation_links.html.erb (0.0ms)
+  Rendered layouts/_navigation.html.erb (2.3ms)
+  Rendered layouts/_messages.html.erb (0.3ms)
+Completed 200 OK in 64ms (Views: 30.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 14:00:25 -0500
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={"$query"=>{"_id"=>"52e83fda946cf15136000001"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.5608ms)
+Processing by HomeController#index as HTML
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (1.4558ms)
+  Rendered home/index.html.erb within layouts/application (6.9ms)
+  Rendered layouts/_navigation_links.html.erb (0.0ms)
+  Rendered layouts/_navigation.html.erb (0.8ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 113ms (Views: 112.2ms)
+
+
+Started GET "/users/52cb1bda946cf1f3ce000002" for 127.0.0.1 at 2014-01-30 14:00:55 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"52cb1bda946cf1f3ce000002"}
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={"$query"=>{"_id"=>"52e83fda946cf15136000001"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.6361ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={"_id"=>"52cb1bda946cf1f3ce000002"} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.4129ms)
+  Rendered users/show.html.erb within layouts/application (0.1ms)
+  Rendered layouts/_navigation_links.html.erb (0.0ms)
+  Rendered layouts/_navigation.html.erb (1.2ms)
+  Rendered layouts/_messages.html.erb (0.0ms)
+Completed 200 OK in 16ms (Views: 12.6ms)
+
+
+Started GET "/users/52cb1bd9946cf1f3ce000001" for 127.0.0.1 at 2014-01-30 14:00:58 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"52cb1bd9946cf1f3ce000001"}
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={"$query"=>{"_id"=>"52e83fda946cf15136000001"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.4880ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={"_id"=>"52cb1bd9946cf1f3ce000001"} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.4539ms)
+  Rendered users/show.html.erb within layouts/application (0.1ms)
+  Rendered layouts/_navigation_links.html.erb (0.0ms)
+  Rendered layouts/_navigation.html.erb (0.9ms)
+  Rendered layouts/_messages.html.erb (0.0ms)
+Completed 200 OK in 12ms (Views: 9.6ms)
+
+
+Started GET "/users/52cb1bd9946cf1f3ce000001" for 127.0.0.1 at 2014-01-30 14:01:04 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"52cb1bd9946cf1f3ce000001"}
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={"$query"=>{"_id"=>"52e83fda946cf15136000001"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.4749ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={"_id"=>"52cb1bd9946cf1f3ce000001"} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.3319ms)
+  Rendered users/show.html.erb within layouts/application (0.1ms)
+  Rendered layouts/_navigation_links.html.erb (0.0ms)
+  Rendered layouts/_navigation.html.erb (1.0ms)
+  Rendered layouts/_messages.html.erb (0.0ms)
+Completed 200 OK in 14ms (Views: 12.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 14:01:50 -0500
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={"$query"=>{"_id"=>"52e83fda946cf15136000001"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.4532ms)
+Processing by HomeController#index as HTML
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.6399ms)
+  Rendered home/index.html.erb within layouts/application (2.9ms)
+  Rendered layouts/_navigation_links.html.erb (0.0ms)
+  Rendered layouts/_navigation.html.erb (1.2ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 17ms (Views: 16.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 14:03:40 -0500
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={"$query"=>{"_id"=>"52e83fda946cf15136000001"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.6320ms)
+Processing by HomeController#index as HTML
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.4680ms)
+  Rendered home/index.html.erb within layouts/application (2.2ms)
+  Rendered layouts/_navigation_links.html.erb (0.0ms)
+  Rendered layouts/_navigation.html.erb (1.3ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 16ms (Views: 15.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 14:03:54 -0500
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={"$query"=>{"_id"=>"52e83fda946cf15136000001"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.5357ms)
+Processing by HomeController#index as HTML
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.5710ms)
+  Rendered home/index.html.erb within layouts/application (3.0ms)
+  Rendered layouts/_navigation_links.html.erb (0.1ms)
+  Rendered layouts/_navigation.html.erb (1.0ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 16ms (Views: 16.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 14:16:37 -0500
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (0.3870ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={"$query"=>{"_id"=>"52e83fda946cf15136000001"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.3960ms)
+Processing by HomeController#index as HTML
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.5591ms)
+  Rendered home/index.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 6ms (Views: 5.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 14:17:20 -0500
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={"$query"=>{"_id"=>"52e83fda946cf15136000001"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.5419ms)
+Processing by HomeController#index as HTML
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.4458ms)
+  Rendered home/index.html.erb within layouts/application (2.2ms)
+  Rendered layouts/_navigation_links.html.erb (0.0ms)
+  Rendered layouts/_navigation.html.erb (1.2ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 19ms (Views: 18.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 14:18:16 -0500
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={"$query"=>{"_id"=>"52e83fda946cf15136000001"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.5629ms)
+Processing by HomeController#index as HTML
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.4759ms)
+  Rendered home/index.html.erb within layouts/application (3.3ms)
+  Rendered layouts/_navigation_links.html.erb (0.1ms)
+  Rendered layouts/_navigation.html.erb (1.5ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 19ms (Views: 18.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 14:19:28 -0500
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={"$query"=>{"_id"=>"52e83fda946cf15136000001"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.6330ms)
+Processing by HomeController#index as HTML
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.5012ms)
+  Rendered home/index.html.erb within layouts/application (2.2ms)
+  Rendered layouts/_navigation_links.html.erb (0.0ms)
+  Rendered layouts/_navigation.html.erb (0.9ms)
+  Rendered layouts/_messages.html.erb (0.0ms)
+Completed 200 OK in 14ms (Views: 13.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 14:19:51 -0500
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={"$query"=>{"_id"=>"52e83fda946cf15136000001"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.5012ms)
+Processing by HomeController#index as HTML
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.5591ms)
+  Rendered home/index.html.erb within layouts/application (2.3ms)
+  Rendered layouts/_navigation_links.html.erb (0.0ms)
+  Rendered layouts/_navigation.html.erb (0.9ms)
+  Rendered layouts/_messages.html.erb (0.0ms)
+Completed 200 OK in 16ms (Views: 16.2ms)
+
+
+Started GET "/users/52cb1bda946cf1f3ce000002" for 127.0.0.1 at 2014-01-30 14:20:07 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"52cb1bda946cf1f3ce000002"}
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={"$query"=>{"_id"=>"52e83fda946cf15136000001"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.6089ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={"_id"=>"52cb1bda946cf1f3ce000002"} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.4020ms)
+  Rendered users/show.html.erb within layouts/application (0.1ms)
+  Rendered layouts/_navigation_links.html.erb (0.0ms)
+  Rendered layouts/_navigation.html.erb (0.8ms)
+  Rendered layouts/_messages.html.erb (0.0ms)
+Completed 200 OK in 13ms (Views: 10.1ms)
+
+
+Started GET "/users/52cb1bd9946cf1f3ce000001" for 127.0.0.1 at 2014-01-30 14:20:11 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"52cb1bd9946cf1f3ce000001"}
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={"$query"=>{"_id"=>"52e83fda946cf15136000001"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.3991ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={"_id"=>"52cb1bd9946cf1f3ce000001"} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.2961ms)
+  Rendered users/show.html.erb within layouts/application (0.1ms)
+  Rendered layouts/_navigation_links.html.erb (0.0ms)
+  Rendered layouts/_navigation.html.erb (0.7ms)
+  Rendered layouts/_messages.html.erb (0.0ms)
+Completed 200 OK in 11ms (Views: 9.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 14:22:43 -0500
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (0.3939ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={"$query"=>{"_id"=>"52e83fda946cf15136000001"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.3860ms)
+Processing by HomeController#index as HTML
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.4528ms)
+  Rendered home/index.html.erb within layouts/application (2.2ms)
+  Rendered layouts/_navigation_links.html.erb (0.0ms)
+  Rendered layouts/_navigation.html.erb (0.9ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 49ms (Views: 49.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 14:25:57 -0500
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={"$query"=>{"_id"=>"52e83fda946cf15136000001"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.5598ms)
+Processing by HomeController#index as HTML
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.4790ms)
+  Rendered home/index.html.erb within layouts/application (2.1ms)
+  Rendered layouts/_navigation_links.html.erb (0.0ms)
+  Rendered layouts/_navigation.html.erb (1.1ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 17ms (Views: 16.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 14:29:30 -0500
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (0.4611ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={"$query"=>{"_id"=>"52e83fda946cf15136000001"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.3622ms)
+Processing by HomeController#index as HTML
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.4799ms)
+  Rendered home/index.html.erb within layouts/application (2.4ms)
+  Rendered layouts/_navigation_links.html.erb (0.0ms)
+  Rendered layouts/_navigation.html.erb (0.8ms)
+  Rendered layouts/_messages.html.erb (0.0ms)
+Completed 200 OK in 16ms (Views: 15.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 14:30:42 -0500
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={"$query"=>{"_id"=>"52e83fda946cf15136000001"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.5190ms)
+Processing by HomeController#index as HTML
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.6521ms)
+  Rendered home/index.html.erb within layouts/application (4.3ms)
+  Rendered layouts/_navigation_links.html.erb (0.0ms)
+  Rendered layouts/_navigation.html.erb (1.6ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 17ms (Views: 16.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 14:31:03 -0500
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={"$query"=>{"_id"=>"52e83fda946cf15136000001"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.4969ms)
+Processing by HomeController#index as HTML
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.5391ms)
+  Rendered home/index.html.erb within layouts/application (2.7ms)
+  Rendered layouts/_navigation_links.html.erb (0.0ms)
+  Rendered layouts/_navigation.html.erb (1.3ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 54ms (Views: 53.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 14:32:07 -0500
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={"$query"=>{"_id"=>"52e83fda946cf15136000001"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.5538ms)
+Processing by HomeController#index as HTML
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.4821ms)
+  Rendered home/index.html.erb within layouts/application (2.0ms)
+  Rendered layouts/_navigation_links.html.erb (0.0ms)
+  Rendered layouts/_navigation.html.erb (0.9ms)
+  Rendered layouts/_messages.html.erb (0.0ms)
+Completed 200 OK in 15ms (Views: 14.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 14:32:50 -0500
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={"$query"=>{"_id"=>"52e83fda946cf15136000001"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.6189ms)
+Processing by HomeController#index as HTML
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.4921ms)
+  Rendered home/index.html.erb within layouts/application (2.2ms)
+  Rendered layouts/_navigation_links.html.erb (0.0ms)
+  Rendered layouts/_navigation.html.erb (0.9ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 14ms (Views: 13.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 14:51:16 -0500
+Processing by HomeController#index as HTML
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (0.5171ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.3912ms)
+  Rendered home/index.html.erb within layouts/application (3.4ms)
+  Rendered layouts/_navigation_links.html.erb (0.0ms)
+  Rendered layouts/_navigation.html.erb (0.9ms)
+  Rendered layouts/_messages.html.erb (0.0ms)
+Completed 200 OK in 17ms (Views: 16.9ms)
+
+
+Started GET "/users/52cb1bda946cf1f3ce000002" for 127.0.0.1 at 2014-01-30 14:51:20 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"52cb1bda946cf1f3ce000002"}
+Completed 401 Unauthorized in 0ms
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2014-01-30 14:51:20 -0500
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (0.5ms)
+  Rendered /Users/philgarber/.rvm/gems/ruby-2.0.0-p247@rails3-mongoid-devise/gems/devise-3.0.3/app/views/devise/sessions/new.html.erb within layouts/application (4.6ms)
+  Rendered layouts/_navigation_links.html.erb (0.0ms)
+  Rendered layouts/_navigation.html.erb (0.8ms)
+  Rendered layouts/_messages.html.erb (0.2ms)
+Completed 200 OK in 57ms (Views: 56.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 14:56:58 -0500
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (0.7029ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={"$query"=>{"_id"=>"52e83fda946cf15136000001"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.3941ms)
+Processing by HomeController#index as HTML
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.5569ms)
+  Rendered home/index.html.erb within layouts/application (2.5ms)
+  Rendered layouts/_navigation_links.html.erb (0.0ms)
+  Rendered layouts/_navigation.html.erb (1.2ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 19ms (Views: 18.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 14:57:37 -0500
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={"$query"=>{"_id"=>"52e83fda946cf15136000001"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.5600ms)
+Processing by HomeController#index as HTML
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.4730ms)
+  Rendered home/index.html.erb within layouts/application (1.9ms)
+  Rendered layouts/_navigation_links.html.erb (0.0ms)
+  Rendered layouts/_navigation.html.erb (1.0ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 14ms (Views: 13.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 14:58:06 -0500
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={"$query"=>{"_id"=>"52e83fda946cf15136000001"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.4842ms)
+Processing by HomeController#index as HTML
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.4680ms)
+  Rendered home/index.html.erb within layouts/application (1.9ms)
+  Rendered layouts/_navigation_links.html.erb (0.0ms)
+  Rendered layouts/_navigation.html.erb (0.9ms)
+  Rendered layouts/_messages.html.erb (0.0ms)
+  Rendered layouts/_landing_page.html (0.5ms)
+Completed 200 OK in 17ms (Views: 16.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 14:59:31 -0500
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={"$query"=>{"_id"=>"52e83fda946cf15136000001"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.5119ms)
+Processing by HomeController#index as HTML
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.4489ms)
+  Rendered home/index.html.erb within layouts/application (3.2ms)
+  Rendered layouts/_navigation_links.html.erb (0.0ms)
+  Rendered layouts/_navigation.html.erb (0.8ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+  Rendered layouts/_landing_page.html (0.0ms)
+Completed 200 OK in 16ms (Views: 15.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 14:59:53 -0500
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={"$query"=>{"_id"=>"52e83fda946cf15136000001"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.5031ms)
+Processing by HomeController#index as HTML
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.4470ms)
+  Rendered home/index.html.erb within layouts/application (2.0ms)
+  Rendered layouts/_navigation_links.html.erb (0.0ms)
+  Rendered layouts/_navigation.html.erb (0.9ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 13ms (Views: 13.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 15:00:41 -0500
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={"$query"=>{"_id"=>"52e83fda946cf15136000001"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.5131ms)
+Processing by HomeController#index as HTML
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.4683ms)
+  Rendered home/index.html.erb within layouts/application (2.0ms)
+  Rendered layouts/_navigation_links.html.erb (0.0ms)
+  Rendered layouts/_navigation.html.erb (1.1ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+  Rendered layouts/_landing_page.html (0.0ms)
+Completed 200 OK in 15ms (Views: 14.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 15:33:03 -0500
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (0.4170ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={"$query"=>{"_id"=>"52e83fda946cf15136000001"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.3378ms)
+Processing by HomeController#index as HTML
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.4849ms)
+  Rendered home/index.html.erb within layouts/application (2.3ms)
+  Rendered layouts/_header_user.html (0.4ms)
+  Rendered layouts/_navigation_links.html.erb (0.0ms)
+  Rendered layouts/_navigation.html.erb (1.4ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+  Rendered layouts/_landing_page.html (0.0ms)
+Completed 200 OK in 19ms (Views: 19.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 15:34:25 -0500
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={"$query"=>{"_id"=>"52e83fda946cf15136000001"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.5250ms)
+Processing by HomeController#index as HTML
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.5767ms)
+  Rendered home/index.html.erb within layouts/application (2.3ms)
+  Rendered layouts/_header_user.html (0.0ms)
+  Rendered layouts/_navigation_links.html.erb (0.0ms)
+  Rendered layouts/_navigation.html.erb (0.9ms)
+  Rendered layouts/_messages.html.erb (0.0ms)
+  Rendered layouts/_landing_page.html (0.0ms)
+Completed 200 OK in 19ms (Views: 19.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 15:34:28 -0500
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={"$query"=>{"_id"=>"52e83fda946cf15136000001"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.4950ms)
+Processing by HomeController#index as HTML
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.4811ms)
+  Rendered home/index.html.erb within layouts/application (1.9ms)
+  Rendered layouts/_header_user.html (0.0ms)
+  Rendered layouts/_navigation_links.html.erb (0.0ms)
+  Rendered layouts/_navigation.html.erb (0.8ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+  Rendered layouts/_landing_page.html (0.0ms)
+Completed 200 OK in 48ms (Views: 47.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 15:34:57 -0500
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={"$query"=>{"_id"=>"52e83fda946cf15136000001"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.5519ms)
+Processing by HomeController#index as HTML
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.6170ms)
+  Rendered home/index.html.erb within layouts/application (2.4ms)
+  Rendered layouts/_navigation_links.html.erb (0.0ms)
+  Rendered layouts/_navigation.html.erb (0.9ms)
+  Rendered layouts/_messages.html.erb (0.0ms)
+  Rendered layouts/_landing_page.html (0.0ms)
+Completed 200 OK in 14ms (Views: 13.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 15:36:22 -0500
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={"$query"=>{"_id"=>"52e83fda946cf15136000001"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.5319ms)
+Processing by HomeController#index as HTML
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.4659ms)
+  Rendered home/index.html.erb within layouts/application (2.0ms)
+  Rendered layouts/_header_user.html (0.0ms)
+  Rendered layouts/_navigation_links.html.erb (0.0ms)
+  Rendered layouts/_navigation.html.erb (1.0ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 14ms (Views: 13.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 15:36:45 -0500
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={"$query"=>{"_id"=>"52e83fda946cf15136000001"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.5589ms)
+Processing by HomeController#index as HTML
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.5159ms)
+  Rendered home/index.html.erb within layouts/application (2.4ms)
+  Rendered layouts/_header_user.html (0.0ms)
+  Rendered layouts/_navigation_links.html.erb (0.0ms)
+  Rendered layouts/_navigation.html.erb (1.1ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+  Rendered layouts/_landing_page.html (0.0ms)
+Completed 200 OK in 20ms (Views: 19.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 15:39:52 -0500
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (0.4270ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={"$query"=>{"_id"=>"52e83fda946cf15136000001"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.4280ms)
+Processing by HomeController#index as HTML
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.5071ms)
+  Rendered home/index.html.erb within layouts/application (2.5ms)
+  Rendered layouts/_header_landing.html (0.4ms)
+  Rendered layouts/_navigation_links.html.erb (0.0ms)
+  Rendered layouts/_navigation.html.erb (1.2ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+  Rendered layouts/_landing_page.html (0.1ms)
+Completed 200 OK in 54ms (Views: 50.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 22:09:41 -0500
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (6.8419ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={"$query"=>{"_id"=>"52e83fda946cf15136000001"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (4.9820ms)
+Processing by HomeController#index as HTML
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.5779ms)
+  Rendered home/index.html.erb within layouts/application (6.0ms)
+  Rendered layouts/_header_landing.html (0.1ms)
+  Rendered layouts/_navigation_links.html.erb (0.0ms)
+  Rendered layouts/_navigation.html.erb (1.7ms)
+  Rendered layouts/_messages.html.erb (0.4ms)
+  Rendered layouts/_landing_page.html (0.1ms)
+Completed 200 OK in 47ms (Views: 45.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 22:10:02 -0500
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={"$query"=>{"_id"=>"52e83fda946cf15136000001"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.4890ms)
+Processing by HomeController#index as HTML
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.6630ms)
+  Rendered home/index.html.erb within layouts/application (2.7ms)
+  Rendered layouts/_header_landing.html (0.0ms)
+  Rendered layouts/_navigation_links.html.erb (0.0ms)
+  Rendered layouts/_navigation.html.erb (0.9ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+  Rendered layouts/_landing_page.html (0.0ms)
+Completed 200 OK in 18ms (Views: 18.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 22:54:36 -0500
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (0.5629ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={"$query"=>{"_id"=>"52e83fda946cf15136000001"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.4418ms)
+Processing by HomeController#index as HTML
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.5882ms)
+  Rendered home/index.html.erb within layouts/application (6.8ms)
+  Rendered layouts/_header_landing.html (0.1ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+  Rendered layouts/_landing_page.html (0.1ms)
+Completed 200 OK in 31ms (Views: 30.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 22:55:25 -0500
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={"$query"=>{"_id"=>"52e83fda946cf15136000001"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.5198ms)
+Processing by HomeController#index as HTML
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.5629ms)
+  Rendered home/index.html.erb within layouts/application (2.6ms)
+  Rendered layouts/_header_landing.html (0.0ms)
+  Rendered layouts/_navigation_links.html.erb (0.1ms)
+  Rendered layouts/_navigation.html.erb (1.9ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+  Rendered layouts/_landing_page.html (0.1ms)
+Completed 200 OK in 22ms (Views: 22.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 22:55:45 -0500
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={"$query"=>{"_id"=>"52e83fda946cf15136000001"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.4978ms)
+Processing by HomeController#index as HTML
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.5078ms)
+  Rendered home/index.html.erb within layouts/application (2.1ms)
+ERROR: compiling _app_views_layouts_application_html_erb___263263927401537971_70119723472540 RAISED /Users/philgarber/code/BUv1/app/views/layouts/application.html.erb:17: unknown regexp options - ag
+unmatched close parenthesis: /header>
+    <main role="main">
+       ');@output_buffer.append= ( render 'layouts/m
+/Users/philgarber/code/BUv1/app/views/layouts/application.html.erb:17: syntax error, unexpected tSTRING_BEG, expecting ')'
+...nd= ( render 'layouts/messages' );@output_buffer.safe_concat...
+...                               ^
+/Users/philgarber/code/BUv1/app/views/layouts/application.html.erb:18: syntax error, unexpected tIDENTIFIER, expecting keyword_do or '{' or '('
+...er.safe_concat(' <!-- yields to users/index.html.erb -->
+...                               ^
+/Users/philgarber/code/BUv1/app/views/layouts/application.html.erb:18: syntax error, unexpected unary-, expecting ')'
+...ields to users/index.html.erb -->
+...                               ^
+/Users/philgarber/code/BUv1/app/views/layouts/application.html.erb:20: unknown regexp options - bdy
+/Users/philgarber/code/BUv1/app/views/layouts/application.html.erb:20: syntax error, unexpected '\n', expecting keyword_do_LAMBDA or tLAMBEG
+/Users/philgarber/code/BUv1/app/views/layouts/application.html.erb:23: syntax error, unexpected tIDENTIFIER, expecting ')'
+...uffer.append= ( render 'layouts/landing_page' );@output_buff...
+...                               ^
+/Users/philgarber/code/BUv1/app/views/layouts/application.html.erb:23: syntax error, unexpected tSTRING_BEG, expecting keyword_do or '{' or '('
+...( render 'layouts/landing_page' );@output_buffer.safe_concat...
+...                               ^
+/Users/philgarber/code/BUv1/app/views/layouts/application.html.erb:23: syntax error, unexpected tIDENTIFIER, expecting keyword_do or '{' or '('
+...e_concat(' <!-- divshot landing page -->
+...                               ^
+/Users/philgarber/code/BUv1/app/views/layouts/application.html.erb:23: syntax error, unexpected '\n', expecting keyword_do_LAMBDA or tLAMBEG
+/Users/philgarber/code/BUv1/app/views/layouts/application.html.erb:26: unterminated regexp meets end of file
+Function body:           def _app_views_layouts_application_html_erb___263263927401537971_70119723472540(local_assigns, output_buffer)
+            _old_virtual_path, @virtual_path = @virtual_path, "layouts/application";_old_output_buffer = @output_buffer;;@output_buffer = output_buffer || ActionView::OutputBuffer.new;@output_buffer.safe_concat('<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>');@output_buffer.append= ( content_for?(:title) ? yield(:title) : "BumptUp" );@output_buffer.safe_concat('</title>
+    <meta name="description" content="');@output_buffer.append= ( content_for?(:description) ? yield(:description) : "BumptUp" );@output_buffer.safe_concat('">
+    ');@output_buffer.append= ( stylesheet_link_tag "application", media: "all" );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('    ');@output_buffer.append= ( javascript_include_tag "application" );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('    ');@output_buffer.append= ( csrf_meta_tags );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('  </head>
+  <body>
+    <header>
+      ');@output_buffer.append= ( #render 'layouts/header_landing' );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('      <!-- ');@output_buffer.append= ( render 'layouts/navigation' );@output_buffer.safe_concat(' --> <!-- little header -->
+    </header>
+    <main role="main">
+       ');@output_buffer.append= ( render 'layouts/messages' );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('       ');@output_buffer.append= ( yield );@output_buffer.safe_concat(' <!-- yields to users/index.html.erb -->
+    </main>
+<!--   </body> -->
+
+
+');@output_buffer.append= ( render 'layouts/landing_page' );@output_buffer.safe_concat(' <!-- divshot landing page -->
+
+
+</html>');@output_buffer.to_s
+          ensure
+            @virtual_path, @output_buffer = _old_virtual_path, _old_output_buffer
+          end
+
+Backtrace: /Users/philgarber/.rvm/gems/ruby-2.0.0-p247@rails3-mongoid-devise/gems/actionpack-3.2.14/lib/action_view/template.rb:297:in `module_eval'
+/Users/philgarber/.rvm/gems/ruby-2.0.0-p247@rails3-mongoid-devise/gems/actionpack-3.2.14/lib/action_view/template.rb:297:in `compile'
+/Users/philgarber/.rvm/gems/ruby-2.0.0-p247@rails3-mongoid-devise/gems/actionpack-3.2.14/lib/action_view/template.rb:244:in `block in compile!'
+/Users/philgarber/.rvm/gems/ruby-2.0.0-p247@rails3-mongoid-devise/gems/actionpack-3.2.14/lib/action_view/template.rb:232:in `synchronize'
+/Users/philgarber/.rvm/gems/ruby-2.0.0-p247@rails3-mongoid-devise/gems/actionpack-3.2.14/lib/action_view/template.rb:232:in `compile!'
+/Users/philgarber/.rvm/gems/ruby-2.0.0-p247@rails3-mongoid-devise/gems/actionpack-3.2.14/lib/action_view/template.rb:144:in `block in render'
+/Users/philgarber/.rvm/gems/ruby-2.0.0-p247@rails3-mongoid-devise/gems/activesupport-3.2.14/lib/active_support/notifications.rb:125:in `instrument'
+/Users/philgarber/.rvm/gems/ruby-2.0.0-p247@rails3-mongoid-devise/gems/actionpack-3.2.14/lib/action_view/template.rb:143:in `render'
+/Users/philgarber/.rvm/gems/ruby-2.0.0-p247@rails3-mongoid-devise/gems/actionpack-3.2.14/lib/action_view/renderer/template_renderer.rb:60:in `render_with_layout'
+/Users/philgarber/.rvm/gems/ruby-2.0.0-p247@rails3-mongoid-devise/gems/actionpack-3.2.14/lib/action_view/renderer/template_renderer.rb:46:in `render_template'
+/Users/philgarber/.rvm/gems/ruby-2.0.0-p247@rails3-mongoid-devise/gems/actionpack-3.2.14/lib/action_view/renderer/template_renderer.rb:19:in `render'
+/Users/philgarber/.rvm/gems/ruby-2.0.0-p247@rails3-mongoid-devise/gems/actionpack-3.2.14/lib/action_view/renderer/renderer.rb:36:in `render_template'
+/Users/philgarber/.rvm/gems/ruby-2.0.0-p247@rails3-mongoid-devise/gems/actionpack-3.2.14/lib/action_view/renderer/renderer.rb:17:in `render'
+/Users/philgarber/.rvm/gems/ruby-2.0.0-p247@rails3-mongoid-devise/gems/actionpack-3.2.14/lib/abstract_controller/rendering.rb:110:in `_render_template'
+/Users/philgarber/.rvm/gems/ruby-2.0.0-p247@rails3-mongoid-devise/gems/actionpack-3.2.14/lib/action_controller/metal/streaming.rb:225:in `_render_template'
+/Users/philgarber/.rvm/gems/ruby-2.0.0-p247@rails3-mongoid-devise/gems/actionpack-3.2.14/lib/abstract_controller/rendering.rb:103:in `render_to_body'
+/Users/philgarber/.rvm/gems/ruby-2.0.0-p247@rails3-mongoid-devise/gems/actionpack-3.2.14/lib/action_controller/metal/renderers.rb:28:in `render_to_body'
+/Users/philgarber/.rvm/gems/ruby-2.0.0-p247@rails3-mongoid-devise/gems/actionpack-3.2.14/lib/action_controller/metal/compatibility.rb:50:in `render_to_body'
+/Users/philgarber/.rvm/gems/ruby-2.0.0-p247@rails3-mongoid-devise/gems/actionpack-3.2.14/lib/abstract_controller/rendering.rb:88:in `render'
+/Users/philgarber/.rvm/gems/ruby-2.0.0-p247@rails3-mongoid-devise/gems/actionpack-3.2.14/lib/action_controller/metal/rendering.rb:16:in `render'
+/Users/philgarber/.rvm/gems/ruby-2.0.0-p247@rails3-mongoid-devise/gems/actionpack-3.2.14/lib/action_controller/metal/instrumentation.rb:40:in `block (2 levels) in render'
+/Users/philgarber/.rvm/gems/ruby-2.0.0-p247@rails3-mongoid-devise/gems/activesupport-3.2.14/lib/active_support/core_ext/benchmark.rb:5:in `block in ms'
+/Users/philgarber/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/benchmark.rb:296:in `realtime'
+/Users/philgarber/.rvm/gems/ruby-2.0.0-p247@rails3-mongoid-devise/gems/activesupport-3.2.14/lib/active_support/core_ext/benchmark.rb:5:in `ms'
+/Users/philgarber/.rvm/gems/ruby-2.0.0-p247@rails3-mongoid-devise/gems/actionpack-3.2.14/lib/action_controller/metal/instrumentation.rb:40:in `block in render'
+/Users/philgarber/.rvm/gems/ruby-2.0.0-p247@rails3-mongoid-devise/gems/actionpack-3.2.14/lib/action_controller/metal/instrumentation.rb:83:in `cleanup_view_runtime'
+/Users/philgarber/.rvm/gems/ruby-2.0.0-p247@rails3-mongoid-devise/gems/actionpack-3.2.14/lib/action_controller/metal/instrumentation.rb:39:in `render'
+/Users/philgarber/.rvm/gems/ruby-2.0.0-p247@rails3-mongoid-devise/gems/actionpack-3.2.14/lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+/Users/philgarber/.rvm/gems/ruby-2.0.0-p247@rails3-mongoid-devise/gems/actionpack-3.2.14/lib/action_controller/metal/implicit_render.rb:5:in `send_action'
+/Users/philgarber/.rvm/gems/ruby-2.0.0-p247@rails3-mongoid-devise/gems/actionpack-3.2.14/lib/abstract_controller/base.rb:167:in `process_action'
+/Users/philgarber/.rvm/gems/ruby-2.0.0-p247@rails3-mongoid-devise/gems/actionpack-3.2.14/lib/action_controller/metal/rendering.rb:10:in `process_action'
+/Users/philgarber/.rvm/gems/ruby-2.0.0-p247@rails3-mongoid-devise/gems/actionpack-3.2.14/lib/abstract_controller/callbacks.rb:18:in `block in process_action'
+/Users/philgarber/.rvm/gems/ruby-2.0.0-p247@rails3-mongoid-devise/gems/activesupport-3.2.14/lib/active_support/callbacks.rb:414:in `_run__1789627212405751285__process_action__1097528781755117727__callbacks'
+/Users/philgarber/.rvm/gems/ruby-2.0.0-p247@rails3-mongoid-devise/gems/activesupport-3.2.14/lib/active_support/callbacks.rb:405:in `__run_callback'
+/Users/philgarber/.rvm/gems/ruby-2.0.0-p247@rails3-mongoid-devise/gems/activesupport-3.2.14/lib/active_support/callbacks.rb:385:in `_run_process_action_callbacks'
+/Users/philgarber/.rvm/gems/ruby-2.0.0-p247@rails3-mongoid-devise/gems/activesupport-3.2.14/lib/active_support/callbacks.rb:81:in `run_callbacks'
+/Users/philgarber/.rvm/gems/ruby-2.0.0-p247@rails3-mongoid-devise/gems/actionpack-3.2.14/lib/abstract_controller/callbacks.rb:17:in `process_action'
+/Users/philgarber/.rvm/gems/ruby-2.0.0-p247@rails3-mongoid-devise/gems/actionpack-3.2.14/lib/action_controller/metal/rescue.rb:29:in `process_action'
+/Users/philgarber/.rvm/gems/ruby-2.0.0-p247@rails3-mongoid-devise/gems/actionpack-3.2.14/lib/action_controller/metal/instrumentation.rb:30:in `block in process_action'
+/Users/philgarber/.rvm/gems/ruby-2.0.0-p247@rails3-mongoid-devise/gems/activesupport-3.2.14/lib/active_support/notifications.rb:123:in `block in instrument'
+/Users/philgarber/.rvm/gems/ruby-2.0.0-p247@rails3-mongoid-devise/gems/activesupport-3.2.14/lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+/Users/philgarber/.rvm/gems/ruby-2.0.0-p247@rails3-mongoid-devise/gems/activesupport-3.2.14/lib/active_support/notifications.rb:123:in `instrument'
+/Users/philgarber/.rvm/gems/ruby-2.0.0-p247@rails3-mongoid-devise/gems/actionpack-3.2.14/lib/action_controller/metal/instrumentation.rb:29:in `process_action'
+/Users/philgarber/.rvm/gems/ruby-2.0.0-p247@rails3-mongoid-devise/gems/actionpack-3.2.14/lib/action_controller/metal/params_wrapper.rb:207:in `process_action'
+/Users/philgarber/.rvm/gems/ruby-2.0.0-p247@rails3-mongoid-devise/gems/actionpack-3.2.14/lib/abstract_controller/base.rb:121:in `process'
+/Users/philgarber/.rvm/gems/ruby-2.0.0-p247@rails3-mongoid-devise/gems/actionpack-3.2.14/lib/abstract_controller/rendering.rb:45:in `process'
+/Users/philgarber/.rvm/gems/ruby-2.0.0-p247@rails3-mongoid-devise/gems/actionpack-3.2.14/lib/action_controller/metal.rb:203:in `dispatch'
+/Users/philgarber/.rvm/gems/ruby-2.0.0-p247@rails3-mongoid-devise/gems/actionpack-3.2.14/lib/action_controller/metal/rack_delegation.rb:14:in `dispatch'
+/Users/philgarber/.rvm/gems/ruby-2.0.0-p247@rails3-mongoid-devise/gems/actionpack-3.2.14/lib/action_controller/metal.rb:246:in `block in action'
+/Users/philgarber/.rvm/gems/ruby-2.0.0-p247@rails3-mongoid-devise/gems/actionpack-3.2.14/lib/action_dispatch/routing/route_set.rb:73:in `call'
+/Users/philgarber/.rvm/gems/ruby-2.0.0-p247@rails3-mongoid-devise/gems/actionpack-3.2.14/lib/action_dispatch/routing/route_set.rb:73:in `dispatch'
+/Users/philgarber/.rvm/gems/ruby-2.0.0-p247@rails3-mongoid-devise/gems/actionpack-3.2.14/lib/action_dispatch/routing/route_set.rb:36:in `call'
+/Users/philgarber/.rvm/gems/ruby-2.0.0-p247@rails3-mongoid-devise/gems/actionpack-3.2.14/lib/action_dispatch/routing/mapper.rb:43:in `call'
+/Users/philgarber/.rvm/gems/ruby-2.0.0-p247@rails3-mongoid-devise/gems/journey-1.0.4/lib/journey/router.rb:68:in `block in call'
+/Users/philgarber/.rvm/gems/ruby-2.0.0-p247@rails3-mongoid-devise/gems/journey-1.0.4/lib/journey/router.rb:56:in `each'
+/Users/philgarber/.rvm/gems/ruby-2.0.0-p247@rails3-mongoid-devise/gems/journey-1.0.4/lib/journey/router.rb:56:in `call'
+/Users/philgarber/.rvm/gems/ruby-2.0.0-p247@rails3-mongoid-devise/gems/actionpack-3.2.14/lib/action_dispatch/routing/route_set.rb:608:in `call'
+/Users/philgarber/.rvm/gems/ruby-2.0.0-p247@rails3-mongoid-devise/gems/mongoid-3.1.4/lib/rack/mongoid/middleware/identity_map.rb:34:in `block in call'
+/Users/philgarber/.rvm/gems/ruby-2.0.0-p247@rails3-mongoid-devise/gems/mongoid-3.1.4/lib/mongoid/unit_of_work.rb:39:in `unit_of_work'
+/Users/philgarber/.rvm/gems/ruby-2.0.0-p247@rails3-mongoid-devise/gems/mongoid-3.1.4/lib/rack/mongoid/middleware/identity_map.rb:34:in `call'
+/Users/philgarber/.rvm/gems/ruby-2.0.0-p247@rails3-mongoid-devise/gems/warden-1.2.3/lib/warden/manager.rb:35:in `block in call'
+/Users/philgarber/.rvm/gems/ruby-2.0.0-p247@rails3-mongoid-devise/gems/warden-1.2.3/lib/warden/manager.rb:34:in `catch'
+/Users/philgarber/.rvm/gems/ruby-2.0.0-p247@rails3-mongoid-devise/gems/warden-1.2.3/lib/warden/manager.rb:34:in `call'
+/Users/philgarber/.rvm/gems/ruby-2.0.0-p247@rails3-mongoid-devise/gems/actionpack-3.2.14/lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+/Users/philgarber/.rvm/gems/ruby-2.0.0-p247@rails3-mongoid-devise/gems/rack-1.4.5/lib/rack/etag.rb:23:in `call'
+/Users/philgarber/.rvm/gems/ruby-2.0.0-p247@rails3-mongoid-devise/gems/rack-1.4.5/lib/rack/conditionalget.rb:25:in `call'
+/Users/philgarber/.rvm/gems/ruby-2.0.0-p247@rails3-mongoid-devise/gems/actionpack-3.2.14/lib/action_dispatch/middleware/head.rb:14:in `call'
+/Users/philgarber/.rvm/gems/ruby-2.0.0-p247@rails3-mongoid-devise/gems/actionpack-3.2.14/lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+/Users/philgarber/.rvm/gems/ruby-2.0.0-p247@rails3-mongoid-devise/gems/actionpack-3.2.14/lib/action_dispatch/middleware/flash.rb:242:in `call'
+/Users/philgarber/.rvm/gems/ruby-2.0.0-p247@rails3-mongoid-devise/gems/rack-1.4.5/lib/rack/session/abstract/id.rb:210:in `context'
+/Users/philgarber/.rvm/gems/ruby-2.0.0-p247@rails3-mongoid-devise/gems/rack-1.4.5/lib/rack/session/abstract/id.rb:205:in `call'
+/Users/philgarber/.rvm/gems/ruby-2.0.0-p247@rails3-mongoid-devise/gems/actionpack-3.2.14/lib/action_dispatch/middleware/cookies.rb:341:in `call'
+/Users/philgarber/.rvm/gems/ruby-2.0.0-p247@rails3-mongoid-devise/gems/actionpack-3.2.14/lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+/Users/philgarber/.rvm/gems/ruby-2.0.0-p247@rails3-mongoid-devise/gems/activesupport-3.2.14/lib/active_support/callbacks.rb:405:in `_run__1776207102691558963__call__4524832243254415280__callbacks'
+/Users/philgarber/.rvm/gems/ruby-2.0.0-p247@rails3-mongoid-devise/gems/activesupport-3.2.14/lib/active_support/callbacks.rb:405:in `__run_callback'
+/Users/philgarber/.rvm/gems/ruby-2.0.0-p247@rails3-mongoid-devise/gems/activesupport-3.2.14/lib/active_support/callbacks.rb:385:in `_run_call_callbacks'
+/Users/philgarber/.rvm/gems/ruby-2.0.0-p247@rails3-mongoid-devise/gems/activesupport-3.2.14/lib/active_support/callbacks.rb:81:in `run_callbacks'
+/Users/philgarber/.rvm/gems/ruby-2.0.0-p247@rails3-mongoid-devise/gems/actionpack-3.2.14/lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+/Users/philgarber/.rvm/gems/ruby-2.0.0-p247@rails3-mongoid-devise/gems/actionpack-3.2.14/lib/action_dispatch/middleware/reloader.rb:65:in `call'
+/Users/philgarber/.rvm/gems/ruby-2.0.0-p247@rails3-mongoid-devise/gems/actionpack-3.2.14/lib/action_dispatch/middleware/remote_ip.rb:31:in `call'
+/Users/philgarber/.rvm/gems/ruby-2.0.0-p247@rails3-mongoid-devise/gems/better_errors-0.9.0/lib/better_errors/middleware.rb:84:in `protected_app_call'
+/Users/philgarber/.rvm/gems/ruby-2.0.0-p247@rails3-mongoid-devise/gems/better_errors-0.9.0/lib/better_errors/middleware.rb:79:in `better_errors_call'
+/Users/philgarber/.rvm/gems/ruby-2.0.0-p247@rails3-mongoid-devise/gems/better_errors-0.9.0/lib/better_errors/middleware.rb:56:in `call'
+/Users/philgarber/.rvm/gems/ruby-2.0.0-p247@rails3-mongoid-devise/gems/actionpack-3.2.14/lib/action_dispatch/middleware/debug_exceptions.rb:16:in `call'
+/Users/philgarber/.rvm/gems/ruby-2.0.0-p247@rails3-mongoid-devise/gems/actionpack-3.2.14/lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+/Users/philgarber/.rvm/gems/ruby-2.0.0-p247@rails3-mongoid-devise/gems/railties-3.2.14/lib/rails/rack/logger.rb:32:in `call_app'
+/Users/philgarber/.rvm/gems/ruby-2.0.0-p247@rails3-mongoid-devise/gems/railties-3.2.14/lib/rails/rack/logger.rb:16:in `block in call'
+/Users/philgarber/.rvm/gems/ruby-2.0.0-p247@rails3-mongoid-devise/gems/activesupport-3.2.14/lib/active_support/tagged_logging.rb:22:in `tagged'
+/Users/philgarber/.rvm/gems/ruby-2.0.0-p247@rails3-mongoid-devise/gems/railties-3.2.14/lib/rails/rack/logger.rb:16:in `call'
+/Users/philgarber/.rvm/gems/ruby-2.0.0-p247@rails3-mongoid-devise/gems/quiet_assets-1.0.2/lib/quiet_assets.rb:18:in `call_with_quiet_assets'
+/Users/philgarber/.rvm/gems/ruby-2.0.0-p247@rails3-mongoid-devise/gems/actionpack-3.2.14/lib/action_dispatch/middleware/request_id.rb:22:in `call'
+/Users/philgarber/.rvm/gems/ruby-2.0.0-p247@rails3-mongoid-devise/gems/rack-1.4.5/lib/rack/methodoverride.rb:21:in `call'
+/Users/philgarber/.rvm/gems/ruby-2.0.0-p247@rails3-mongoid-devise/gems/rack-1.4.5/lib/rack/runtime.rb:17:in `call'
+/Users/philgarber/.rvm/gems/ruby-2.0.0-p247@rails3-mongoid-devise/gems/activesupport-3.2.14/lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+/Users/philgarber/.rvm/gems/ruby-2.0.0-p247@rails3-mongoid-devise/gems/rack-1.4.5/lib/rack/lock.rb:15:in `call'
+/Users/philgarber/.rvm/gems/ruby-2.0.0-p247@rails3-mongoid-devise/gems/actionpack-3.2.14/lib/action_dispatch/middleware/static.rb:63:in `call'
+/Users/philgarber/.rvm/gems/ruby-2.0.0-p247@rails3-mongoid-devise/gems/railties-3.2.14/lib/rails/engine.rb:484:in `call'
+/Users/philgarber/.rvm/gems/ruby-2.0.0-p247@rails3-mongoid-devise/gems/railties-3.2.14/lib/rails/application.rb:231:in `call'
+/Users/philgarber/.rvm/gems/ruby-2.0.0-p247@rails3-mongoid-devise/gems/rack-1.4.5/lib/rack/content_length.rb:14:in `call'
+/Users/philgarber/.rvm/gems/ruby-2.0.0-p247@rails3-mongoid-devise/gems/railties-3.2.14/lib/rails/rack/log_tailer.rb:17:in `call'
+/Users/philgarber/.rvm/gems/ruby-2.0.0-p247@rails3-mongoid-devise/gems/thin-1.6.1/lib/thin/connection.rb:82:in `block in pre_process'
+/Users/philgarber/.rvm/gems/ruby-2.0.0-p247@rails3-mongoid-devise/gems/thin-1.6.1/lib/thin/connection.rb:80:in `catch'
+/Users/philgarber/.rvm/gems/ruby-2.0.0-p247@rails3-mongoid-devise/gems/thin-1.6.1/lib/thin/connection.rb:80:in `pre_process'
+/Users/philgarber/.rvm/gems/ruby-2.0.0-p247@rails3-mongoid-devise/gems/thin-1.6.1/lib/thin/connection.rb:55:in `process'
+/Users/philgarber/.rvm/gems/ruby-2.0.0-p247@rails3-mongoid-devise/gems/thin-1.6.1/lib/thin/connection.rb:41:in `receive_data'
+/Users/philgarber/.rvm/gems/ruby-2.0.0-p247@rails3-mongoid-devise/gems/eventmachine-1.0.3/lib/eventmachine.rb:187:in `run_machine'
+/Users/philgarber/.rvm/gems/ruby-2.0.0-p247@rails3-mongoid-devise/gems/eventmachine-1.0.3/lib/eventmachine.rb:187:in `run'
+/Users/philgarber/.rvm/gems/ruby-2.0.0-p247@rails3-mongoid-devise/gems/thin-1.6.1/lib/thin/backends/base.rb:73:in `start'
+/Users/philgarber/.rvm/gems/ruby-2.0.0-p247@rails3-mongoid-devise/gems/thin-1.6.1/lib/thin/server.rb:162:in `start'
+/Users/philgarber/.rvm/gems/ruby-2.0.0-p247@rails3-mongoid-devise/gems/rack-1.4.5/lib/rack/handler/thin.rb:13:in `run'
+/Users/philgarber/.rvm/gems/ruby-2.0.0-p247@rails3-mongoid-devise/gems/rack-1.4.5/lib/rack/server.rb:268:in `start'
+/Users/philgarber/.rvm/gems/ruby-2.0.0-p247@rails3-mongoid-devise/gems/railties-3.2.14/lib/rails/commands/server.rb:70:in `start'
+/Users/philgarber/.rvm/gems/ruby-2.0.0-p247@rails3-mongoid-devise/gems/railties-3.2.14/lib/rails/commands.rb:55:in `block in <top (required)>'
+/Users/philgarber/.rvm/gems/ruby-2.0.0-p247@rails3-mongoid-devise/gems/railties-3.2.14/lib/rails/commands.rb:50:in `tap'
+/Users/philgarber/.rvm/gems/ruby-2.0.0-p247@rails3-mongoid-devise/gems/railties-3.2.14/lib/rails/commands.rb:50:in `<top (required)>'
+script/rails:6:in `require'
+script/rails:6:in `<main>'
+Completed 500 Internal Server Error in 48ms
+
+SyntaxError - /Users/philgarber/code/BUv1/app/views/layouts/application.html.erb:17: unknown regexp options - ag
+unmatched close parenthesis: /header>
+    <main role="main">
+       ');@output_buffer.append= ( render 'layouts/m
+/Users/philgarber/code/BUv1/app/views/layouts/application.html.erb:17: syntax error, unexpected tSTRING_BEG, expecting ')'
+...nd= ( render 'layouts/messages' );@output_buffer.safe_concat...
+...                               ^
+/Users/philgarber/code/BUv1/app/views/layouts/application.html.erb:18: syntax error, unexpected tIDENTIFIER, expecting keyword_do or '{' or '('
+...er.safe_concat(' <!-- yields to users/index.html.erb -->
+...                               ^
+/Users/philgarber/code/BUv1/app/views/layouts/application.html.erb:18: syntax error, unexpected unary-, expecting ')'
+...ields to users/index.html.erb -->
+...                               ^
+/Users/philgarber/code/BUv1/app/views/layouts/application.html.erb:20: unknown regexp options - bdy
+/Users/philgarber/code/BUv1/app/views/layouts/application.html.erb:20: syntax error, unexpected '\n', expecting keyword_do_LAMBDA or tLAMBEG
+/Users/philgarber/code/BUv1/app/views/layouts/application.html.erb:23: syntax error, unexpected tIDENTIFIER, expecting ')'
+...uffer.append= ( render 'layouts/landing_page' );@output_buff...
+...                               ^
+/Users/philgarber/code/BUv1/app/views/layouts/application.html.erb:23: syntax error, unexpected tSTRING_BEG, expecting keyword_do or '{' or '('
+...( render 'layouts/landing_page' );@output_buffer.safe_concat...
+...                               ^
+/Users/philgarber/code/BUv1/app/views/layouts/application.html.erb:23: syntax error, unexpected tIDENTIFIER, expecting keyword_do or '{' or '('
+...e_concat(' <!-- divshot landing page -->
+...                               ^
+/Users/philgarber/code/BUv1/app/views/layouts/application.html.erb:23: syntax error, unexpected '\n', expecting keyword_do_LAMBDA or tLAMBEG
+/Users/philgarber/code/BUv1/app/views/layouts/application.html.erb:26: unterminated regexp meets end of file:
+  app/views/layouts/application.html.erb:17:in `'
+  actionpack (3.2.14) lib/action_view/template.rb:297:in `compile'
+  actionpack (3.2.14) lib/action_view/template.rb:244:in `block in compile!'
+  actionpack (3.2.14) lib/action_view/template.rb:232:in `compile!'
+  actionpack (3.2.14) lib/action_view/template.rb:144:in `block in render'
+  activesupport (3.2.14) lib/active_support/notifications.rb:125:in `instrument'
+  actionpack (3.2.14) lib/action_view/template.rb:143:in `render'
+  actionpack (3.2.14) lib/action_view/renderer/template_renderer.rb:60:in `render_with_layout'
+  actionpack (3.2.14) lib/action_view/renderer/template_renderer.rb:46:in `render_template'
+  actionpack (3.2.14) lib/action_view/renderer/template_renderer.rb:19:in `render'
+  actionpack (3.2.14) lib/action_view/renderer/renderer.rb:36:in `render_template'
+  actionpack (3.2.14) lib/action_view/renderer/renderer.rb:17:in `render'
+  actionpack (3.2.14) lib/abstract_controller/rendering.rb:110:in `_render_template'
+  actionpack (3.2.14) lib/action_controller/metal/streaming.rb:225:in `_render_template'
+  actionpack (3.2.14) lib/abstract_controller/rendering.rb:103:in `render_to_body'
+  actionpack (3.2.14) lib/action_controller/metal/renderers.rb:28:in `render_to_body'
+  actionpack (3.2.14) lib/action_controller/metal/compatibility.rb:50:in `render_to_body'
+  actionpack (3.2.14) lib/abstract_controller/rendering.rb:88:in `render'
+  actionpack (3.2.14) lib/action_controller/metal/rendering.rb:16:in `render'
+  actionpack (3.2.14) lib/action_controller/metal/instrumentation.rb:40:in `block (2 levels) in render'
+  activesupport (3.2.14) lib/active_support/core_ext/benchmark.rb:5:in `block in ms'
+  /Users/philgarber/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/benchmark.rb:296:in `realtime'
+  activesupport (3.2.14) lib/active_support/core_ext/benchmark.rb:5:in `ms'
+  actionpack (3.2.14) lib/action_controller/metal/instrumentation.rb:40:in `block in render'
+  actionpack (3.2.14) lib/action_controller/metal/instrumentation.rb:83:in `cleanup_view_runtime'
+  actionpack (3.2.14) lib/action_controller/metal/instrumentation.rb:39:in `render'
+  actionpack (3.2.14) lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+  actionpack (3.2.14) lib/action_controller/metal/implicit_render.rb:5:in `send_action'
+  actionpack (3.2.14) lib/abstract_controller/base.rb:167:in `process_action'
+  actionpack (3.2.14) lib/action_controller/metal/rendering.rb:10:in `process_action'
+  actionpack (3.2.14) lib/abstract_controller/callbacks.rb:18:in `block in process_action'
+  activesupport (3.2.14) lib/active_support/callbacks.rb:414:in `_run__1789627212405751285__process_action__1097528781755117727__callbacks'
+  activesupport (3.2.14) lib/active_support/callbacks.rb:405:in `__run_callback'
+  activesupport (3.2.14) lib/active_support/callbacks.rb:385:in `_run_process_action_callbacks'
+  activesupport (3.2.14) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (3.2.14) lib/abstract_controller/callbacks.rb:17:in `process_action'
+  actionpack (3.2.14) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (3.2.14) lib/action_controller/metal/instrumentation.rb:30:in `block in process_action'
+  activesupport (3.2.14) lib/active_support/notifications.rb:123:in `block in instrument'
+  activesupport (3.2.14) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (3.2.14) lib/active_support/notifications.rb:123:in `instrument'
+  actionpack (3.2.14) lib/action_controller/metal/instrumentation.rb:29:in `process_action'
+  actionpack (3.2.14) lib/action_controller/metal/params_wrapper.rb:207:in `process_action'
+  actionpack (3.2.14) lib/abstract_controller/base.rb:121:in `process'
+  actionpack (3.2.14) lib/abstract_controller/rendering.rb:45:in `process'
+  actionpack (3.2.14) lib/action_controller/metal.rb:203:in `dispatch'
+  actionpack (3.2.14) lib/action_controller/metal/rack_delegation.rb:14:in `dispatch'
+  actionpack (3.2.14) lib/action_controller/metal.rb:246:in `block in action'
+  actionpack (3.2.14) lib/action_dispatch/routing/route_set.rb:73:in `dispatch'
+  actionpack (3.2.14) lib/action_dispatch/routing/route_set.rb:36:in `call'
+  actionpack (3.2.14) lib/action_dispatch/routing/mapper.rb:43:in `call'
+  journey (1.0.4) lib/journey/router.rb:68:in `block in call'
+  journey (1.0.4) lib/journey/router.rb:56:in `call'
+  actionpack (3.2.14) lib/action_dispatch/routing/route_set.rb:608:in `call'
+  mongoid (3.1.4) lib/rack/mongoid/middleware/identity_map.rb:34:in `block in call'
+  mongoid (3.1.4) lib/mongoid/unit_of_work.rb:39:in `unit_of_work'
+  mongoid (3.1.4) lib/rack/mongoid/middleware/identity_map.rb:34:in `call'
+  warden (1.2.3) lib/warden/manager.rb:35:in `block in call'
+  warden (1.2.3) lib/warden/manager.rb:34:in `call'
+  actionpack (3.2.14) lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+  rack (1.4.5) lib/rack/etag.rb:23:in `call'
+  rack (1.4.5) lib/rack/conditionalget.rb:25:in `call'
+  actionpack (3.2.14) lib/action_dispatch/middleware/head.rb:14:in `call'
+  actionpack (3.2.14) lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+  actionpack (3.2.14) lib/action_dispatch/middleware/flash.rb:242:in `call'
+  rack (1.4.5) lib/rack/session/abstract/id.rb:210:in `context'
+  rack (1.4.5) lib/rack/session/abstract/id.rb:205:in `call'
+  actionpack (3.2.14) lib/action_dispatch/middleware/cookies.rb:341:in `call'
+  actionpack (3.2.14) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+  activesupport (3.2.14) lib/active_support/callbacks.rb:405:in `_run__1776207102691558963__call__4524832243254415280__callbacks'
+  activesupport (3.2.14) lib/active_support/callbacks.rb:405:in `__run_callback'
+  activesupport (3.2.14) lib/active_support/callbacks.rb:385:in `_run_call_callbacks'
+  activesupport (3.2.14) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (3.2.14) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (3.2.14) lib/action_dispatch/middleware/reloader.rb:65:in `call'
+  actionpack (3.2.14) lib/action_dispatch/middleware/remote_ip.rb:31:in `call'
+  better_errors (0.9.0) lib/better_errors/middleware.rb:84:in `protected_app_call'
+  better_errors (0.9.0) lib/better_errors/middleware.rb:79:in `better_errors_call'
+  better_errors (0.9.0) lib/better_errors/middleware.rb:56:in `call'
+  actionpack (3.2.14) lib/action_dispatch/middleware/debug_exceptions.rb:16:in `call'
+  actionpack (3.2.14) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.14) lib/rails/rack/logger.rb:32:in `call_app'
+  railties (3.2.14) lib/rails/rack/logger.rb:16:in `block in call'
+  activesupport (3.2.14) lib/active_support/tagged_logging.rb:22:in `tagged'
+  railties (3.2.14) lib/rails/rack/logger.rb:16:in `call'
+  quiet_assets (1.0.2) lib/quiet_assets.rb:18:in `call_with_quiet_assets'
+  actionpack (3.2.14) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.5) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.5) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.14) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.5) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.14) lib/action_dispatch/middleware/static.rb:63:in `call'
+  railties (3.2.14) lib/rails/engine.rb:484:in `call'
+  railties (3.2.14) lib/rails/application.rb:231:in `call'
+  rack (1.4.5) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.14) lib/rails/rack/log_tailer.rb:17:in `call'
+  thin (1.6.1) lib/thin/connection.rb:82:in `block in pre_process'
+  thin (1.6.1) lib/thin/connection.rb:80:in `pre_process'
+  thin (1.6.1) lib/thin/connection.rb:55:in `process'
+  thin (1.6.1) lib/thin/connection.rb:41:in `receive_data'
+  eventmachine (1.0.3) lib/eventmachine.rb:187:in `run'
+  thin (1.6.1) lib/thin/backends/base.rb:73:in `start'
+  thin (1.6.1) lib/thin/server.rb:162:in `start'
+  rack (1.4.5) lib/rack/handler/thin.rb:13:in `run'
+  rack (1.4.5) lib/rack/server.rb:268:in `start'
+  railties (3.2.14) lib/rails/commands/server.rb:70:in `start'
+  railties (3.2.14) lib/rails/commands.rb:55:in `block in <top (required)>'
+  railties (3.2.14) lib/rails/commands.rb:50:in `<top (required)>'
+  script/rails:6:in `<main>'
+
+
+
+Started POST "/__better_errors/70119723683060/variables" for 127.0.0.1 at 2014-01-30 22:55:45 -0500
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 22:56:06 -0500
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={"$query"=>{"_id"=>"52e83fda946cf15136000001"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.5410ms)
+Processing by HomeController#index as HTML
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.5052ms)
+  Rendered home/index.html.erb within layouts/application (2.1ms)
+  Rendered layouts/_header_landing.html (0.0ms)
+  Rendered layouts/_navigation_links.html.erb (0.0ms)
+  Rendered layouts/_navigation.html.erb (1.1ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+  Rendered layouts/_landing_page.html (0.0ms)
+Completed 200 OK in 18ms (Views: 18.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 22:56:41 -0500
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={"$query"=>{"_id"=>"52e83fda946cf15136000001"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.5891ms)
+Processing by HomeController#index as HTML
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.4890ms)
+  Rendered home/index.html.erb within layouts/application (2.0ms)
+  Rendered layouts/_navigation_links.html.erb (0.0ms)
+  Rendered layouts/_navigation.html.erb (1.3ms)
+  Rendered layouts/_messages.html.erb (0.0ms)
+  Rendered layouts/_landing_page.html (0.0ms)
+Completed 200 OK in 17ms (Views: 17.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 22:57:07 -0500
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={"$query"=>{"_id"=>"52e83fda946cf15136000001"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.5000ms)
+Processing by HomeController#index as HTML
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.4811ms)
+  Rendered home/index.html.erb within layouts/application (1.9ms)
+  Rendered layouts/_header_landing.html (0.1ms)
+  Rendered layouts/_navigation_links.html.erb (0.0ms)
+  Rendered layouts/_navigation.html.erb (0.8ms)
+  Rendered layouts/_messages.html.erb (0.0ms)
+  Rendered layouts/_landing_page.html (0.0ms)
+Completed 200 OK in 19ms (Views: 19.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 22:57:20 -0500
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={"$query"=>{"_id"=>"52e83fda946cf15136000001"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.5057ms)
+Processing by HomeController#index as HTML
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.4692ms)
+  Rendered home/index.html.erb within layouts/application (1.8ms)
+  Rendered layouts/_header_landing.html (0.0ms)
+  Rendered layouts/_navigation_links.html.erb (0.0ms)
+  Rendered layouts/_navigation.html.erb (0.8ms)
+  Rendered layouts/_messages.html.erb (0.0ms)
+  Rendered layouts/_landing_page.html (0.0ms)
+Completed 200 OK in 17ms (Views: 16.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 22:57:34 -0500
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={"$query"=>{"_id"=>"52e83fda946cf15136000001"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.4921ms)
+Processing by HomeController#index as HTML
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.4699ms)
+  Rendered home/index.html.erb within layouts/application (1.9ms)
+  Rendered layouts/_navigation_links.html.erb (0.0ms)
+  Rendered layouts/_navigation.html.erb (1.7ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+  Rendered layouts/_landing_page.html (0.0ms)
+Completed 200 OK in 17ms (Views: 17.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 22:57:37 -0500
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={"$query"=>{"_id"=>"52e83fda946cf15136000001"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (36.7610ms)
+Processing by HomeController#index as HTML
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.5481ms)
+  Rendered home/index.html.erb within layouts/application (2.4ms)
+  Rendered layouts/_navigation_links.html.erb (0.0ms)
+  Rendered layouts/_navigation.html.erb (0.7ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+  Rendered layouts/_landing_page.html (0.0ms)
+Completed 200 OK in 14ms (Views: 13.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 22:57:51 -0500
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={"$query"=>{"_id"=>"52e83fda946cf15136000001"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.4680ms)
+Processing by HomeController#index as HTML
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.4609ms)
+  Rendered home/index.html.erb within layouts/application (1.8ms)
+  Rendered layouts/_navigation_links.html.erb (0.0ms)
+  Rendered layouts/_navigation.html.erb (1.0ms)
+  Rendered layouts/_messages.html.erb (0.0ms)
+  Rendered layouts/_landing_page.html (0.0ms)
+Completed 200 OK in 12ms (Views: 12.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 22:57:54 -0500
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={"$query"=>{"_id"=>"52e83fda946cf15136000001"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.4411ms)
+Processing by HomeController#index as HTML
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.4559ms)
+  Rendered home/index.html.erb within layouts/application (1.6ms)
+  Rendered layouts/_header_landing.html (0.0ms)
+  Rendered layouts/_navigation_links.html.erb (0.0ms)
+  Rendered layouts/_navigation.html.erb (1.3ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+  Rendered layouts/_landing_page.html (0.0ms)
+Completed 200 OK in 20ms (Views: 20.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 22:58:04 -0500
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={"$query"=>{"_id"=>"52e83fda946cf15136000001"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.6542ms)
+Processing by HomeController#index as HTML
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.5620ms)
+  Rendered home/index.html.erb within layouts/application (1.9ms)
+  Rendered layouts/_header_landing.html (0.1ms)
+  Rendered layouts/_navigation_links.html.erb (0.0ms)
+  Rendered layouts/_navigation.html.erb (1.1ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+  Rendered layouts/_landing_page.html (0.0ms)
+Completed 200 OK in 18ms (Views: 18.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 22:58:23 -0500
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={"$query"=>{"_id"=>"52e83fda946cf15136000001"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.5209ms)
+Processing by HomeController#index as HTML
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.4752ms)
+  Rendered home/index.html.erb within layouts/application (1.8ms)
+  Rendered layouts/_header_landing.html (0.0ms)
+  Rendered layouts/_navigation_links.html.erb (0.0ms)
+  Rendered layouts/_navigation.html.erb (0.8ms)
+  Rendered layouts/_messages.html.erb (0.0ms)
+  Rendered layouts/_landing_page.html (0.0ms)
+Completed 200 OK in 52ms (Views: 51.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 22:58:42 -0500
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={"$query"=>{"_id"=>"52e83fda946cf15136000001"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.5109ms)
+Processing by HomeController#index as HTML
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.4742ms)
+  Rendered home/index.html.erb within layouts/application (2.0ms)
+  Rendered layouts/_navigation_links.html.erb (0.0ms)
+  Rendered layouts/_navigation.html.erb (1.0ms)
+  Rendered layouts/_messages.html.erb (0.0ms)
+  Rendered layouts/_landing_page.html (0.0ms)
+Completed 200 OK in 15ms (Views: 14.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 22:58:45 -0500
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={"$query"=>{"_id"=>"52e83fda946cf15136000001"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.5260ms)
+Processing by HomeController#index as HTML
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.4649ms)
+  Rendered home/index.html.erb within layouts/application (2.0ms)
+  Rendered layouts/_navigation_links.html.erb (0.0ms)
+  Rendered layouts/_navigation.html.erb (0.8ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+  Rendered layouts/_landing_page.html (0.0ms)
+Completed 200 OK in 13ms (Views: 12.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 23:00:40 -0500
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (0.3850ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={"$query"=>{"_id"=>"52e83fda946cf15136000001"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.3657ms)
+Processing by HomeController#index as HTML
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.4699ms)
+  Rendered home/index.html.erb within layouts/application (1.8ms)
+  Rendered layouts/_header_landing.html (0.4ms)
+  Rendered layouts/_navigation_links.html.erb (0.0ms)
+  Rendered layouts/_navigation.html.erb (1.0ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+  Rendered layouts/_landing_page.html (0.0ms)
+Completed 200 OK in 15ms (Views: 15.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 23:01:10 -0500
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={"$query"=>{"_id"=>"52e83fda946cf15136000001"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.4990ms)
+Processing by HomeController#index as HTML
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.4902ms)
+  Rendered home/index.html.erb within layouts/application (2.1ms)
+  Rendered layouts/_header_landing.html (0.5ms)
+  Rendered layouts/_navigation_links.html.erb (0.0ms)
+  Rendered layouts/_navigation.html.erb (0.8ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+  Rendered layouts/_landing_page.html (0.0ms)
+Completed 200 OK in 14ms (Views: 14.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 23:01:18 -0500
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={"$query"=>{"_id"=>"52e83fda946cf15136000001"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.5093ms)
+Processing by HomeController#index as HTML
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.4740ms)
+  Rendered home/index.html.erb within layouts/application (2.0ms)
+  Rendered layouts/_header_landing.html (0.5ms)
+  Rendered layouts/_navigation_links.html.erb (0.0ms)
+  Rendered layouts/_navigation.html.erb (1.2ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+  Rendered layouts/_landing_page.html (0.0ms)
+Completed 200 OK in 15ms (Views: 15.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 23:01:42 -0500
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={"$query"=>{"_id"=>"52e83fda946cf15136000001"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.5019ms)
+Processing by HomeController#index as HTML
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.7679ms)
+  Rendered home/index.html.erb within layouts/application (2.8ms)
+  Rendered layouts/_header_landing.html (0.4ms)
+  Rendered layouts/_navigation_links.html.erb (0.0ms)
+  Rendered layouts/_navigation.html.erb (1.2ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+  Rendered layouts/_landing_page.html (0.0ms)
+Completed 200 OK in 22ms (Views: 22.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 23:01:52 -0500
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={"$query"=>{"_id"=>"52e83fda946cf15136000001"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.5372ms)
+Processing by HomeController#index as HTML
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.4678ms)
+  Rendered home/index.html.erb within layouts/application (2.1ms)
+  Rendered layouts/_header_landing.html (0.3ms)
+  Rendered layouts/_navigation_links.html.erb (0.0ms)
+  Rendered layouts/_navigation.html.erb (1.4ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+  Rendered layouts/_landing_page.html (0.0ms)
+Completed 200 OK in 16ms (Views: 15.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 23:01:55 -0500
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={"$query"=>{"_id"=>"52e83fda946cf15136000001"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.5031ms)
+Processing by HomeController#index as HTML
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.4621ms)
+  Rendered home/index.html.erb within layouts/application (2.0ms)
+  Rendered layouts/_header_landing.html (0.0ms)
+  Rendered layouts/_navigation_links.html.erb (0.0ms)
+  Rendered layouts/_navigation.html.erb (0.7ms)
+  Rendered layouts/_messages.html.erb (0.0ms)
+  Rendered layouts/_landing_page.html (0.0ms)
+Completed 200 OK in 13ms (Views: 13.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 23:03:51 -0500
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={"$query"=>{"_id"=>"52e83fda946cf15136000001"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.5257ms)
+Processing by HomeController#index as HTML
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.4771ms)
+  Rendered home/index.html.erb within layouts/application (2.4ms)
+  Rendered layouts/_header_landing.html (0.4ms)
+  Rendered layouts/_navigation_links.html.erb (0.0ms)
+  Rendered layouts/_navigation.html.erb (1.0ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+  Rendered layouts/_landing_page.html (0.0ms)
+Completed 200 OK in 16ms (Views: 15.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 23:04:21 -0500
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={"$query"=>{"_id"=>"52e83fda946cf15136000001"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.5271ms)
+Processing by HomeController#index as HTML
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.5000ms)
+  Rendered home/index.html.erb within layouts/application (2.1ms)
+  Rendered layouts/_header_landing.html (0.1ms)
+  Rendered layouts/_navigation_links.html.erb (0.0ms)
+  Rendered layouts/_navigation.html.erb (1.0ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 15ms (Views: 15.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 23:07:33 -0500
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (0.4470ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={"$query"=>{"_id"=>"52e83fda946cf15136000001"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.3209ms)
+Processing by HomeController#index as HTML
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.5429ms)
+  Rendered home/index.html.erb within layouts/application (2.2ms)
+  Rendered layouts/_header_landing.html (0.0ms)
+  Rendered layouts/_navigation_links.html.erb (0.0ms)
+  Rendered layouts/_navigation.html.erb (1.1ms)
+  Rendered layouts/_messages.html.erb (0.0ms)
+  Rendered layouts/_landing_page.html (0.0ms)
+Completed 200 OK in 17ms (Views: 16.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 23:07:59 -0500
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={"$query"=>{"_id"=>"52e83fda946cf15136000001"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.5331ms)
+Processing by HomeController#index as HTML
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.4752ms)
+  Rendered home/index.html.erb within layouts/application (2.0ms)
+  Rendered layouts/_header_landing.html (0.0ms)
+  Rendered layouts/_navigation_links.html.erb (0.0ms)
+  Rendered layouts/_navigation.html.erb (0.9ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+  Rendered layouts/_landing_page.html (0.0ms)
+Completed 200 OK in 17ms (Views: 16.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 23:08:36 -0500
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={"$query"=>{"_id"=>"52e83fda946cf15136000001"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.5131ms)
+Processing by HomeController#index as HTML
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.4909ms)
+  Rendered home/index.html.erb within layouts/application (2.5ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+  Rendered layouts/_landing_page.html (0.0ms)
+Completed 200 OK in 62ms (Views: 61.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 23:09:24 -0500
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={"$query"=>{"_id"=>"52e83fda946cf15136000001"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.4671ms)
+Processing by HomeController#index as HTML
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.4869ms)
+  Rendered home/index.html.erb within layouts/application (2.1ms)
+  Rendered layouts/_messages.html.erb (0.0ms)
+  Rendered layouts/_landing_page.html (0.0ms)
+Completed 200 OK in 11ms (Views: 11.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 23:10:01 -0500
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={"$query"=>{"_id"=>"52e83fda946cf15136000001"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.4780ms)
+Processing by HomeController#index as HTML
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.4590ms)
+  Rendered home/index.html.erb within layouts/application (1.7ms)
+  Rendered layouts/_header_landing.html (0.0ms)
+  Rendered layouts/_navigation_links.html.erb (0.0ms)
+  Rendered layouts/_navigation.html.erb (0.8ms)
+  Rendered layouts/_messages.html.erb (0.0ms)
+  Rendered layouts/_landing_page.html (0.0ms)
+Completed 200 OK in 15ms (Views: 15.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 23:10:16 -0500
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={"$query"=>{"_id"=>"52e83fda946cf15136000001"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.4971ms)
+Processing by HomeController#index as HTML
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.4721ms)
+  Rendered home/index.html.erb within layouts/application (2.3ms)
+  Rendered layouts/_header_landing.html (0.0ms)
+  Rendered layouts/_navigation_links.html.erb (0.0ms)
+  Rendered layouts/_navigation.html.erb (1.2ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+  Rendered layouts/_landing_page.html (0.0ms)
+Completed 200 OK in 15ms (Views: 14.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 23:10:22 -0500
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={"$query"=>{"_id"=>"52e83fda946cf15136000001"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.4570ms)
+Processing by HomeController#index as HTML
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.4151ms)
+  Rendered home/index.html.erb within layouts/application (1.6ms)
+  Rendered layouts/_header_landing.html (0.0ms)
+  Rendered layouts/_navigation_links.html.erb (0.0ms)
+  Rendered layouts/_navigation.html.erb (0.8ms)
+  Rendered layouts/_messages.html.erb (0.0ms)
+  Rendered layouts/_landing_page.html (0.0ms)
+Completed 200 OK in 15ms (Views: 14.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 23:15:36 -0500
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (0.5541ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={"$query"=>{"_id"=>"52e83fda946cf15136000001"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.6070ms)
+Processing by HomeController#index as HTML
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.4668ms)
+  Rendered home/index.html.erb within layouts/application (2.0ms)
+Completed 500 Internal Server Error in 16ms
+
+ActionView::MissingTemplate - Missing partial home/header_landing, application/header_landing with {:locale=>[:en], :formats=>[:html], :handlers=>[:erb, :builder, :coffee]}. Searched in:
+  * "/Users/philgarber/code/BUv1/app/views"
+  * "/Users/philgarber/.rvm/gems/ruby-2.0.0-p247@rails3-mongoid-devise/gems/devise-3.0.3/app/views"
+:
+  actionpack (3.2.14) lib/action_view/path_set.rb:58:in `find'
+  actionpack (3.2.14) lib/action_view/lookup_context.rb:115:in `find'
+  actionpack (3.2.14) lib/action_view/renderer/partial_renderer.rb:341:in `find_template'
+  actionpack (3.2.14) lib/action_view/renderer/partial_renderer.rb:335:in `find_partial'
+  actionpack (3.2.14) lib/action_view/renderer/partial_renderer.rb:222:in `render'
+  actionpack (3.2.14) lib/action_view/renderer/renderer.rb:41:in `render_partial'
+  actionpack (3.2.14) lib/action_view/helpers/rendering_helper.rb:27:in `render'
+  app/views/layouts/application.html.erb:13:in `_app_views_layouts_application_html_erb___263263927401537971_70119723814640'
+  actionpack (3.2.14) lib/action_view/template.rb:145:in `block in render'
+  activesupport (3.2.14) lib/active_support/notifications.rb:125:in `instrument'
+  actionpack (3.2.14) lib/action_view/template.rb:143:in `render'
+  actionpack (3.2.14) lib/action_view/renderer/template_renderer.rb:60:in `render_with_layout'
+  actionpack (3.2.14) lib/action_view/renderer/template_renderer.rb:46:in `render_template'
+  actionpack (3.2.14) lib/action_view/renderer/template_renderer.rb:19:in `render'
+  actionpack (3.2.14) lib/action_view/renderer/renderer.rb:36:in `render_template'
+  actionpack (3.2.14) lib/action_view/renderer/renderer.rb:17:in `render'
+  actionpack (3.2.14) lib/abstract_controller/rendering.rb:110:in `_render_template'
+  actionpack (3.2.14) lib/action_controller/metal/streaming.rb:225:in `_render_template'
+  actionpack (3.2.14) lib/abstract_controller/rendering.rb:103:in `render_to_body'
+  actionpack (3.2.14) lib/action_controller/metal/renderers.rb:28:in `render_to_body'
+  actionpack (3.2.14) lib/action_controller/metal/compatibility.rb:50:in `render_to_body'
+  actionpack (3.2.14) lib/abstract_controller/rendering.rb:88:in `render'
+  actionpack (3.2.14) lib/action_controller/metal/rendering.rb:16:in `render'
+  actionpack (3.2.14) lib/action_controller/metal/instrumentation.rb:40:in `block (2 levels) in render'
+  activesupport (3.2.14) lib/active_support/core_ext/benchmark.rb:5:in `block in ms'
+  /Users/philgarber/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/benchmark.rb:296:in `realtime'
+  activesupport (3.2.14) lib/active_support/core_ext/benchmark.rb:5:in `ms'
+  actionpack (3.2.14) lib/action_controller/metal/instrumentation.rb:40:in `block in render'
+  actionpack (3.2.14) lib/action_controller/metal/instrumentation.rb:83:in `cleanup_view_runtime'
+  actionpack (3.2.14) lib/action_controller/metal/instrumentation.rb:39:in `render'
+  actionpack (3.2.14) lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+  actionpack (3.2.14) lib/action_controller/metal/implicit_render.rb:5:in `send_action'
+  actionpack (3.2.14) lib/abstract_controller/base.rb:167:in `process_action'
+  actionpack (3.2.14) lib/action_controller/metal/rendering.rb:10:in `process_action'
+  actionpack (3.2.14) lib/abstract_controller/callbacks.rb:18:in `block in process_action'
+  activesupport (3.2.14) lib/active_support/callbacks.rb:414:in `_run__1789627212405751285__process_action__1097528781755117727__callbacks'
+  activesupport (3.2.14) lib/active_support/callbacks.rb:405:in `__run_callback'
+  activesupport (3.2.14) lib/active_support/callbacks.rb:385:in `_run_process_action_callbacks'
+  activesupport (3.2.14) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (3.2.14) lib/abstract_controller/callbacks.rb:17:in `process_action'
+  actionpack (3.2.14) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (3.2.14) lib/action_controller/metal/instrumentation.rb:30:in `block in process_action'
+  activesupport (3.2.14) lib/active_support/notifications.rb:123:in `block in instrument'
+  activesupport (3.2.14) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (3.2.14) lib/active_support/notifications.rb:123:in `instrument'
+  actionpack (3.2.14) lib/action_controller/metal/instrumentation.rb:29:in `process_action'
+  actionpack (3.2.14) lib/action_controller/metal/params_wrapper.rb:207:in `process_action'
+  actionpack (3.2.14) lib/abstract_controller/base.rb:121:in `process'
+  actionpack (3.2.14) lib/abstract_controller/rendering.rb:45:in `process'
+  actionpack (3.2.14) lib/action_controller/metal.rb:203:in `dispatch'
+  actionpack (3.2.14) lib/action_controller/metal/rack_delegation.rb:14:in `dispatch'
+  actionpack (3.2.14) lib/action_controller/metal.rb:246:in `block in action'
+  actionpack (3.2.14) lib/action_dispatch/routing/route_set.rb:73:in `dispatch'
+  actionpack (3.2.14) lib/action_dispatch/routing/route_set.rb:36:in `call'
+  actionpack (3.2.14) lib/action_dispatch/routing/mapper.rb:43:in `call'
+  journey (1.0.4) lib/journey/router.rb:68:in `block in call'
+  journey (1.0.4) lib/journey/router.rb:56:in `call'
+  actionpack (3.2.14) lib/action_dispatch/routing/route_set.rb:608:in `call'
+  mongoid (3.1.4) lib/rack/mongoid/middleware/identity_map.rb:34:in `block in call'
+  mongoid (3.1.4) lib/mongoid/unit_of_work.rb:39:in `unit_of_work'
+  mongoid (3.1.4) lib/rack/mongoid/middleware/identity_map.rb:34:in `call'
+  warden (1.2.3) lib/warden/manager.rb:35:in `block in call'
+  warden (1.2.3) lib/warden/manager.rb:34:in `call'
+  actionpack (3.2.14) lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+  rack (1.4.5) lib/rack/etag.rb:23:in `call'
+  rack (1.4.5) lib/rack/conditionalget.rb:25:in `call'
+  actionpack (3.2.14) lib/action_dispatch/middleware/head.rb:14:in `call'
+  actionpack (3.2.14) lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+  actionpack (3.2.14) lib/action_dispatch/middleware/flash.rb:242:in `call'
+  rack (1.4.5) lib/rack/session/abstract/id.rb:210:in `context'
+  rack (1.4.5) lib/rack/session/abstract/id.rb:205:in `call'
+  actionpack (3.2.14) lib/action_dispatch/middleware/cookies.rb:341:in `call'
+  actionpack (3.2.14) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+  activesupport (3.2.14) lib/active_support/callbacks.rb:405:in `_run__1776207102691558963__call__4524832243254415280__callbacks'
+  activesupport (3.2.14) lib/active_support/callbacks.rb:405:in `__run_callback'
+  activesupport (3.2.14) lib/active_support/callbacks.rb:385:in `_run_call_callbacks'
+  activesupport (3.2.14) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (3.2.14) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (3.2.14) lib/action_dispatch/middleware/reloader.rb:65:in `call'
+  actionpack (3.2.14) lib/action_dispatch/middleware/remote_ip.rb:31:in `call'
+  better_errors (0.9.0) lib/better_errors/middleware.rb:84:in `protected_app_call'
+  better_errors (0.9.0) lib/better_errors/middleware.rb:79:in `better_errors_call'
+  better_errors (0.9.0) lib/better_errors/middleware.rb:56:in `call'
+  actionpack (3.2.14) lib/action_dispatch/middleware/debug_exceptions.rb:16:in `call'
+  actionpack (3.2.14) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.14) lib/rails/rack/logger.rb:32:in `call_app'
+  railties (3.2.14) lib/rails/rack/logger.rb:16:in `block in call'
+  activesupport (3.2.14) lib/active_support/tagged_logging.rb:22:in `tagged'
+  railties (3.2.14) lib/rails/rack/logger.rb:16:in `call'
+  quiet_assets (1.0.2) lib/quiet_assets.rb:18:in `call_with_quiet_assets'
+  actionpack (3.2.14) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.5) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.5) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.14) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.5) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.14) lib/action_dispatch/middleware/static.rb:63:in `call'
+  railties (3.2.14) lib/rails/engine.rb:484:in `call'
+  railties (3.2.14) lib/rails/application.rb:231:in `call'
+  rack (1.4.5) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.14) lib/rails/rack/log_tailer.rb:17:in `call'
+  thin (1.6.1) lib/thin/connection.rb:82:in `block in pre_process'
+  thin (1.6.1) lib/thin/connection.rb:80:in `pre_process'
+  thin (1.6.1) lib/thin/connection.rb:55:in `process'
+  thin (1.6.1) lib/thin/connection.rb:41:in `receive_data'
+  eventmachine (1.0.3) lib/eventmachine.rb:187:in `run'
+  thin (1.6.1) lib/thin/backends/base.rb:73:in `start'
+  thin (1.6.1) lib/thin/server.rb:162:in `start'
+  rack (1.4.5) lib/rack/handler/thin.rb:13:in `run'
+  rack (1.4.5) lib/rack/server.rb:268:in `start'
+  railties (3.2.14) lib/rails/commands/server.rb:70:in `start'
+  railties (3.2.14) lib/rails/commands.rb:55:in `block in <top (required)>'
+  railties (3.2.14) lib/rails/commands.rb:50:in `<top (required)>'
+  script/rails:6:in `<main>'
+
+
+
+Started POST "/__better_errors/70119737029820/variables" for 127.0.0.1 at 2014-01-30 23:15:36 -0500
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 23:16:25 -0500
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={"$query"=>{"_id"=>"52e83fda946cf15136000001"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.4950ms)
+Processing by HomeController#index as HTML
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.6559ms)
+  Rendered home/index.html.erb within layouts/application (3.2ms)
+Completed 500 Internal Server Error in 19ms
+
+ActionView::MissingTemplate - Missing partial home/_header_landing, application/_header_landing with {:locale=>[:en], :formats=>[:html], :handlers=>[:erb, :builder, :coffee]}. Searched in:
+  * "/Users/philgarber/code/BUv1/app/views"
+  * "/Users/philgarber/.rvm/gems/ruby-2.0.0-p247@rails3-mongoid-devise/gems/devise-3.0.3/app/views"
+:
+  actionpack (3.2.14) lib/action_view/path_set.rb:58:in `find'
+  actionpack (3.2.14) lib/action_view/lookup_context.rb:115:in `find'
+  actionpack (3.2.14) lib/action_view/renderer/partial_renderer.rb:341:in `find_template'
+  actionpack (3.2.14) lib/action_view/renderer/partial_renderer.rb:335:in `find_partial'
+  actionpack (3.2.14) lib/action_view/renderer/partial_renderer.rb:222:in `render'
+  actionpack (3.2.14) lib/action_view/renderer/renderer.rb:41:in `render_partial'
+  actionpack (3.2.14) lib/action_view/helpers/rendering_helper.rb:27:in `render'
+  app/views/layouts/application.html.erb:13:in `_app_views_layouts_application_html_erb___263263927401537971_70119717063840'
+  actionpack (3.2.14) lib/action_view/template.rb:145:in `block in render'
+  activesupport (3.2.14) lib/active_support/notifications.rb:125:in `instrument'
+  actionpack (3.2.14) lib/action_view/template.rb:143:in `render'
+  actionpack (3.2.14) lib/action_view/renderer/template_renderer.rb:60:in `render_with_layout'
+  actionpack (3.2.14) lib/action_view/renderer/template_renderer.rb:46:in `render_template'
+  actionpack (3.2.14) lib/action_view/renderer/template_renderer.rb:19:in `render'
+  actionpack (3.2.14) lib/action_view/renderer/renderer.rb:36:in `render_template'
+  actionpack (3.2.14) lib/action_view/renderer/renderer.rb:17:in `render'
+  actionpack (3.2.14) lib/abstract_controller/rendering.rb:110:in `_render_template'
+  actionpack (3.2.14) lib/action_controller/metal/streaming.rb:225:in `_render_template'
+  actionpack (3.2.14) lib/abstract_controller/rendering.rb:103:in `render_to_body'
+  actionpack (3.2.14) lib/action_controller/metal/renderers.rb:28:in `render_to_body'
+  actionpack (3.2.14) lib/action_controller/metal/compatibility.rb:50:in `render_to_body'
+  actionpack (3.2.14) lib/abstract_controller/rendering.rb:88:in `render'
+  actionpack (3.2.14) lib/action_controller/metal/rendering.rb:16:in `render'
+  actionpack (3.2.14) lib/action_controller/metal/instrumentation.rb:40:in `block (2 levels) in render'
+  activesupport (3.2.14) lib/active_support/core_ext/benchmark.rb:5:in `block in ms'
+  /Users/philgarber/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/benchmark.rb:296:in `realtime'
+  activesupport (3.2.14) lib/active_support/core_ext/benchmark.rb:5:in `ms'
+  actionpack (3.2.14) lib/action_controller/metal/instrumentation.rb:40:in `block in render'
+  actionpack (3.2.14) lib/action_controller/metal/instrumentation.rb:83:in `cleanup_view_runtime'
+  actionpack (3.2.14) lib/action_controller/metal/instrumentation.rb:39:in `render'
+  actionpack (3.2.14) lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+  actionpack (3.2.14) lib/action_controller/metal/implicit_render.rb:5:in `send_action'
+  actionpack (3.2.14) lib/abstract_controller/base.rb:167:in `process_action'
+  actionpack (3.2.14) lib/action_controller/metal/rendering.rb:10:in `process_action'
+  actionpack (3.2.14) lib/abstract_controller/callbacks.rb:18:in `block in process_action'
+  activesupport (3.2.14) lib/active_support/callbacks.rb:414:in `_run__1789627212405751285__process_action__1097528781755117727__callbacks'
+  activesupport (3.2.14) lib/active_support/callbacks.rb:405:in `__run_callback'
+  activesupport (3.2.14) lib/active_support/callbacks.rb:385:in `_run_process_action_callbacks'
+  activesupport (3.2.14) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (3.2.14) lib/abstract_controller/callbacks.rb:17:in `process_action'
+  actionpack (3.2.14) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (3.2.14) lib/action_controller/metal/instrumentation.rb:30:in `block in process_action'
+  activesupport (3.2.14) lib/active_support/notifications.rb:123:in `block in instrument'
+  activesupport (3.2.14) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (3.2.14) lib/active_support/notifications.rb:123:in `instrument'
+  actionpack (3.2.14) lib/action_controller/metal/instrumentation.rb:29:in `process_action'
+  actionpack (3.2.14) lib/action_controller/metal/params_wrapper.rb:207:in `process_action'
+  actionpack (3.2.14) lib/abstract_controller/base.rb:121:in `process'
+  actionpack (3.2.14) lib/abstract_controller/rendering.rb:45:in `process'
+  actionpack (3.2.14) lib/action_controller/metal.rb:203:in `dispatch'
+  actionpack (3.2.14) lib/action_controller/metal/rack_delegation.rb:14:in `dispatch'
+  actionpack (3.2.14) lib/action_controller/metal.rb:246:in `block in action'
+  actionpack (3.2.14) lib/action_dispatch/routing/route_set.rb:73:in `dispatch'
+  actionpack (3.2.14) lib/action_dispatch/routing/route_set.rb:36:in `call'
+  actionpack (3.2.14) lib/action_dispatch/routing/mapper.rb:43:in `call'
+  journey (1.0.4) lib/journey/router.rb:68:in `block in call'
+  journey (1.0.4) lib/journey/router.rb:56:in `call'
+  actionpack (3.2.14) lib/action_dispatch/routing/route_set.rb:608:in `call'
+  mongoid (3.1.4) lib/rack/mongoid/middleware/identity_map.rb:34:in `block in call'
+  mongoid (3.1.4) lib/mongoid/unit_of_work.rb:39:in `unit_of_work'
+  mongoid (3.1.4) lib/rack/mongoid/middleware/identity_map.rb:34:in `call'
+  warden (1.2.3) lib/warden/manager.rb:35:in `block in call'
+  warden (1.2.3) lib/warden/manager.rb:34:in `call'
+  actionpack (3.2.14) lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+  rack (1.4.5) lib/rack/etag.rb:23:in `call'
+  rack (1.4.5) lib/rack/conditionalget.rb:25:in `call'
+  actionpack (3.2.14) lib/action_dispatch/middleware/head.rb:14:in `call'
+  actionpack (3.2.14) lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+  actionpack (3.2.14) lib/action_dispatch/middleware/flash.rb:242:in `call'
+  rack (1.4.5) lib/rack/session/abstract/id.rb:210:in `context'
+  rack (1.4.5) lib/rack/session/abstract/id.rb:205:in `call'
+  actionpack (3.2.14) lib/action_dispatch/middleware/cookies.rb:341:in `call'
+  actionpack (3.2.14) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+  activesupport (3.2.14) lib/active_support/callbacks.rb:405:in `_run__1776207102691558963__call__4524832243254415280__callbacks'
+  activesupport (3.2.14) lib/active_support/callbacks.rb:405:in `__run_callback'
+  activesupport (3.2.14) lib/active_support/callbacks.rb:385:in `_run_call_callbacks'
+  activesupport (3.2.14) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (3.2.14) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (3.2.14) lib/action_dispatch/middleware/reloader.rb:65:in `call'
+  actionpack (3.2.14) lib/action_dispatch/middleware/remote_ip.rb:31:in `call'
+  better_errors (0.9.0) lib/better_errors/middleware.rb:84:in `protected_app_call'
+  better_errors (0.9.0) lib/better_errors/middleware.rb:79:in `better_errors_call'
+  better_errors (0.9.0) lib/better_errors/middleware.rb:56:in `call'
+  actionpack (3.2.14) lib/action_dispatch/middleware/debug_exceptions.rb:16:in `call'
+  actionpack (3.2.14) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.14) lib/rails/rack/logger.rb:32:in `call_app'
+  railties (3.2.14) lib/rails/rack/logger.rb:16:in `block in call'
+  activesupport (3.2.14) lib/active_support/tagged_logging.rb:22:in `tagged'
+  railties (3.2.14) lib/rails/rack/logger.rb:16:in `call'
+  quiet_assets (1.0.2) lib/quiet_assets.rb:18:in `call_with_quiet_assets'
+  actionpack (3.2.14) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.5) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.5) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.14) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.5) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.14) lib/action_dispatch/middleware/static.rb:63:in `call'
+  railties (3.2.14) lib/rails/engine.rb:484:in `call'
+  railties (3.2.14) lib/rails/application.rb:231:in `call'
+  rack (1.4.5) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.14) lib/rails/rack/log_tailer.rb:17:in `call'
+  thin (1.6.1) lib/thin/connection.rb:82:in `block in pre_process'
+  thin (1.6.1) lib/thin/connection.rb:80:in `pre_process'
+  thin (1.6.1) lib/thin/connection.rb:55:in `process'
+  thin (1.6.1) lib/thin/connection.rb:41:in `receive_data'
+  eventmachine (1.0.3) lib/eventmachine.rb:187:in `run'
+  thin (1.6.1) lib/thin/backends/base.rb:73:in `start'
+  thin (1.6.1) lib/thin/server.rb:162:in `start'
+  rack (1.4.5) lib/rack/handler/thin.rb:13:in `run'
+  rack (1.4.5) lib/rack/server.rb:268:in `start'
+  railties (3.2.14) lib/rails/commands/server.rb:70:in `start'
+  railties (3.2.14) lib/rails/commands.rb:55:in `block in <top (required)>'
+  railties (3.2.14) lib/rails/commands.rb:50:in `<top (required)>'
+  script/rails:6:in `<main>'
+
+
+
+Started POST "/__better_errors/70119722812740/variables" for 127.0.0.1 at 2014-01-30 23:16:25 -0500
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 23:17:10 -0500
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={"$query"=>{"_id"=>"52e83fda946cf15136000001"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.5479ms)
+Processing by HomeController#index as HTML
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.5100ms)
+  Rendered home/index.html.erb within layouts/application (2.2ms)
+Completed 500 Internal Server Error in 15ms
+
+ActionView::MissingTemplate - Missing partial home/_header_landing, application/_header_landing with {:locale=>[:en], :formats=>[:html], :handlers=>[:erb, :builder, :coffee]}. Searched in:
+  * "/Users/philgarber/code/BUv1/app/views"
+  * "/Users/philgarber/.rvm/gems/ruby-2.0.0-p247@rails3-mongoid-devise/gems/devise-3.0.3/app/views"
+:
+  actionpack (3.2.14) lib/action_view/path_set.rb:58:in `find'
+  actionpack (3.2.14) lib/action_view/lookup_context.rb:115:in `find'
+  actionpack (3.2.14) lib/action_view/renderer/partial_renderer.rb:341:in `find_template'
+  actionpack (3.2.14) lib/action_view/renderer/partial_renderer.rb:335:in `find_partial'
+  actionpack (3.2.14) lib/action_view/renderer/partial_renderer.rb:222:in `render'
+  actionpack (3.2.14) lib/action_view/renderer/renderer.rb:41:in `render_partial'
+  actionpack (3.2.14) lib/action_view/helpers/rendering_helper.rb:27:in `render'
+  app/views/layouts/application.html.erb:13:in `_app_views_layouts_application_html_erb___263263927401537971_70119717063840'
+  actionpack (3.2.14) lib/action_view/template.rb:145:in `block in render'
+  activesupport (3.2.14) lib/active_support/notifications.rb:125:in `instrument'
+  actionpack (3.2.14) lib/action_view/template.rb:143:in `render'
+  actionpack (3.2.14) lib/action_view/renderer/template_renderer.rb:60:in `render_with_layout'
+  actionpack (3.2.14) lib/action_view/renderer/template_renderer.rb:46:in `render_template'
+  actionpack (3.2.14) lib/action_view/renderer/template_renderer.rb:19:in `render'
+  actionpack (3.2.14) lib/action_view/renderer/renderer.rb:36:in `render_template'
+  actionpack (3.2.14) lib/action_view/renderer/renderer.rb:17:in `render'
+  actionpack (3.2.14) lib/abstract_controller/rendering.rb:110:in `_render_template'
+  actionpack (3.2.14) lib/action_controller/metal/streaming.rb:225:in `_render_template'
+  actionpack (3.2.14) lib/abstract_controller/rendering.rb:103:in `render_to_body'
+  actionpack (3.2.14) lib/action_controller/metal/renderers.rb:28:in `render_to_body'
+  actionpack (3.2.14) lib/action_controller/metal/compatibility.rb:50:in `render_to_body'
+  actionpack (3.2.14) lib/abstract_controller/rendering.rb:88:in `render'
+  actionpack (3.2.14) lib/action_controller/metal/rendering.rb:16:in `render'
+  actionpack (3.2.14) lib/action_controller/metal/instrumentation.rb:40:in `block (2 levels) in render'
+  activesupport (3.2.14) lib/active_support/core_ext/benchmark.rb:5:in `block in ms'
+  /Users/philgarber/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/benchmark.rb:296:in `realtime'
+  activesupport (3.2.14) lib/active_support/core_ext/benchmark.rb:5:in `ms'
+  actionpack (3.2.14) lib/action_controller/metal/instrumentation.rb:40:in `block in render'
+  actionpack (3.2.14) lib/action_controller/metal/instrumentation.rb:83:in `cleanup_view_runtime'
+  actionpack (3.2.14) lib/action_controller/metal/instrumentation.rb:39:in `render'
+  actionpack (3.2.14) lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+  actionpack (3.2.14) lib/action_controller/metal/implicit_render.rb:5:in `send_action'
+  actionpack (3.2.14) lib/abstract_controller/base.rb:167:in `process_action'
+  actionpack (3.2.14) lib/action_controller/metal/rendering.rb:10:in `process_action'
+  actionpack (3.2.14) lib/abstract_controller/callbacks.rb:18:in `block in process_action'
+  activesupport (3.2.14) lib/active_support/callbacks.rb:414:in `_run__1789627212405751285__process_action__1097528781755117727__callbacks'
+  activesupport (3.2.14) lib/active_support/callbacks.rb:405:in `__run_callback'
+  activesupport (3.2.14) lib/active_support/callbacks.rb:385:in `_run_process_action_callbacks'
+  activesupport (3.2.14) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (3.2.14) lib/abstract_controller/callbacks.rb:17:in `process_action'
+  actionpack (3.2.14) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (3.2.14) lib/action_controller/metal/instrumentation.rb:30:in `block in process_action'
+  activesupport (3.2.14) lib/active_support/notifications.rb:123:in `block in instrument'
+  activesupport (3.2.14) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (3.2.14) lib/active_support/notifications.rb:123:in `instrument'
+  actionpack (3.2.14) lib/action_controller/metal/instrumentation.rb:29:in `process_action'
+  actionpack (3.2.14) lib/action_controller/metal/params_wrapper.rb:207:in `process_action'
+  actionpack (3.2.14) lib/abstract_controller/base.rb:121:in `process'
+  actionpack (3.2.14) lib/abstract_controller/rendering.rb:45:in `process'
+  actionpack (3.2.14) lib/action_controller/metal.rb:203:in `dispatch'
+  actionpack (3.2.14) lib/action_controller/metal/rack_delegation.rb:14:in `dispatch'
+  actionpack (3.2.14) lib/action_controller/metal.rb:246:in `block in action'
+  actionpack (3.2.14) lib/action_dispatch/routing/route_set.rb:73:in `dispatch'
+  actionpack (3.2.14) lib/action_dispatch/routing/route_set.rb:36:in `call'
+  actionpack (3.2.14) lib/action_dispatch/routing/mapper.rb:43:in `call'
+  journey (1.0.4) lib/journey/router.rb:68:in `block in call'
+  journey (1.0.4) lib/journey/router.rb:56:in `call'
+  actionpack (3.2.14) lib/action_dispatch/routing/route_set.rb:608:in `call'
+  mongoid (3.1.4) lib/rack/mongoid/middleware/identity_map.rb:34:in `block in call'
+  mongoid (3.1.4) lib/mongoid/unit_of_work.rb:39:in `unit_of_work'
+  mongoid (3.1.4) lib/rack/mongoid/middleware/identity_map.rb:34:in `call'
+  warden (1.2.3) lib/warden/manager.rb:35:in `block in call'
+  warden (1.2.3) lib/warden/manager.rb:34:in `call'
+  actionpack (3.2.14) lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+  rack (1.4.5) lib/rack/etag.rb:23:in `call'
+  rack (1.4.5) lib/rack/conditionalget.rb:25:in `call'
+  actionpack (3.2.14) lib/action_dispatch/middleware/head.rb:14:in `call'
+  actionpack (3.2.14) lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+  actionpack (3.2.14) lib/action_dispatch/middleware/flash.rb:242:in `call'
+  rack (1.4.5) lib/rack/session/abstract/id.rb:210:in `context'
+  rack (1.4.5) lib/rack/session/abstract/id.rb:205:in `call'
+  actionpack (3.2.14) lib/action_dispatch/middleware/cookies.rb:341:in `call'
+  actionpack (3.2.14) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+  activesupport (3.2.14) lib/active_support/callbacks.rb:405:in `_run__1776207102691558963__call__4524832243254415280__callbacks'
+  activesupport (3.2.14) lib/active_support/callbacks.rb:405:in `__run_callback'
+  activesupport (3.2.14) lib/active_support/callbacks.rb:385:in `_run_call_callbacks'
+  activesupport (3.2.14) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (3.2.14) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (3.2.14) lib/action_dispatch/middleware/reloader.rb:65:in `call'
+  actionpack (3.2.14) lib/action_dispatch/middleware/remote_ip.rb:31:in `call'
+  better_errors (0.9.0) lib/better_errors/middleware.rb:84:in `protected_app_call'
+  better_errors (0.9.0) lib/better_errors/middleware.rb:79:in `better_errors_call'
+  better_errors (0.9.0) lib/better_errors/middleware.rb:56:in `call'
+  actionpack (3.2.14) lib/action_dispatch/middleware/debug_exceptions.rb:16:in `call'
+  actionpack (3.2.14) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.14) lib/rails/rack/logger.rb:32:in `call_app'
+  railties (3.2.14) lib/rails/rack/logger.rb:16:in `block in call'
+  activesupport (3.2.14) lib/active_support/tagged_logging.rb:22:in `tagged'
+  railties (3.2.14) lib/rails/rack/logger.rb:16:in `call'
+  quiet_assets (1.0.2) lib/quiet_assets.rb:18:in `call_with_quiet_assets'
+  actionpack (3.2.14) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.5) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.5) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.14) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.5) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.14) lib/action_dispatch/middleware/static.rb:63:in `call'
+  railties (3.2.14) lib/rails/engine.rb:484:in `call'
+  railties (3.2.14) lib/rails/application.rb:231:in `call'
+  rack (1.4.5) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.14) lib/rails/rack/log_tailer.rb:17:in `call'
+  thin (1.6.1) lib/thin/connection.rb:82:in `block in pre_process'
+  thin (1.6.1) lib/thin/connection.rb:80:in `pre_process'
+  thin (1.6.1) lib/thin/connection.rb:55:in `process'
+  thin (1.6.1) lib/thin/connection.rb:41:in `receive_data'
+  eventmachine (1.0.3) lib/eventmachine.rb:187:in `run'
+  thin (1.6.1) lib/thin/backends/base.rb:73:in `start'
+  thin (1.6.1) lib/thin/server.rb:162:in `start'
+  rack (1.4.5) lib/rack/handler/thin.rb:13:in `run'
+  rack (1.4.5) lib/rack/server.rb:268:in `start'
+  railties (3.2.14) lib/rails/commands/server.rb:70:in `start'
+  railties (3.2.14) lib/rails/commands.rb:55:in `block in <top (required)>'
+  railties (3.2.14) lib/rails/commands.rb:50:in `<top (required)>'
+  script/rails:6:in `<main>'
+
+
+
+Started POST "/__better_errors/70119723483960/variables" for 127.0.0.1 at 2014-01-30 23:17:10 -0500
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 23:17:47 -0500
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={"$query"=>{"_id"=>"52e83fda946cf15136000001"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.5739ms)
+Processing by HomeController#index as HTML
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.9658ms)
+  Rendered home/index.html.erb within layouts/application (4.2ms)
+Completed 500 Internal Server Error in 16ms
+
+ActionView::MissingTemplate - Missing partial home/_header_landing, application/_header_landing with {:locale=>[:en], :formats=>[:html], :handlers=>[:erb, :builder, :coffee]}. Searched in:
+  * "/Users/philgarber/code/BUv1/app/views"
+  * "/Users/philgarber/.rvm/gems/ruby-2.0.0-p247@rails3-mongoid-devise/gems/devise-3.0.3/app/views"
+:
+  actionpack (3.2.14) lib/action_view/path_set.rb:58:in `find'
+  actionpack (3.2.14) lib/action_view/lookup_context.rb:115:in `find'
+  actionpack (3.2.14) lib/action_view/renderer/partial_renderer.rb:341:in `find_template'
+  actionpack (3.2.14) lib/action_view/renderer/partial_renderer.rb:335:in `find_partial'
+  actionpack (3.2.14) lib/action_view/renderer/partial_renderer.rb:222:in `render'
+  actionpack (3.2.14) lib/action_view/renderer/renderer.rb:41:in `render_partial'
+  actionpack (3.2.14) lib/action_view/helpers/rendering_helper.rb:27:in `render'
+  app/views/layouts/application.html.erb:13:in `_app_views_layouts_application_html_erb___263263927401537971_70119717063840'
+  actionpack (3.2.14) lib/action_view/template.rb:145:in `block in render'
+  activesupport (3.2.14) lib/active_support/notifications.rb:125:in `instrument'
+  actionpack (3.2.14) lib/action_view/template.rb:143:in `render'
+  actionpack (3.2.14) lib/action_view/renderer/template_renderer.rb:60:in `render_with_layout'
+  actionpack (3.2.14) lib/action_view/renderer/template_renderer.rb:46:in `render_template'
+  actionpack (3.2.14) lib/action_view/renderer/template_renderer.rb:19:in `render'
+  actionpack (3.2.14) lib/action_view/renderer/renderer.rb:36:in `render_template'
+  actionpack (3.2.14) lib/action_view/renderer/renderer.rb:17:in `render'
+  actionpack (3.2.14) lib/abstract_controller/rendering.rb:110:in `_render_template'
+  actionpack (3.2.14) lib/action_controller/metal/streaming.rb:225:in `_render_template'
+  actionpack (3.2.14) lib/abstract_controller/rendering.rb:103:in `render_to_body'
+  actionpack (3.2.14) lib/action_controller/metal/renderers.rb:28:in `render_to_body'
+  actionpack (3.2.14) lib/action_controller/metal/compatibility.rb:50:in `render_to_body'
+  actionpack (3.2.14) lib/abstract_controller/rendering.rb:88:in `render'
+  actionpack (3.2.14) lib/action_controller/metal/rendering.rb:16:in `render'
+  actionpack (3.2.14) lib/action_controller/metal/instrumentation.rb:40:in `block (2 levels) in render'
+  activesupport (3.2.14) lib/active_support/core_ext/benchmark.rb:5:in `block in ms'
+  /Users/philgarber/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/benchmark.rb:296:in `realtime'
+  activesupport (3.2.14) lib/active_support/core_ext/benchmark.rb:5:in `ms'
+  actionpack (3.2.14) lib/action_controller/metal/instrumentation.rb:40:in `block in render'
+  actionpack (3.2.14) lib/action_controller/metal/instrumentation.rb:83:in `cleanup_view_runtime'
+  actionpack (3.2.14) lib/action_controller/metal/instrumentation.rb:39:in `render'
+  actionpack (3.2.14) lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+  actionpack (3.2.14) lib/action_controller/metal/implicit_render.rb:5:in `send_action'
+  actionpack (3.2.14) lib/abstract_controller/base.rb:167:in `process_action'
+  actionpack (3.2.14) lib/action_controller/metal/rendering.rb:10:in `process_action'
+  actionpack (3.2.14) lib/abstract_controller/callbacks.rb:18:in `block in process_action'
+  activesupport (3.2.14) lib/active_support/callbacks.rb:414:in `_run__1789627212405751285__process_action__1097528781755117727__callbacks'
+  activesupport (3.2.14) lib/active_support/callbacks.rb:405:in `__run_callback'
+  activesupport (3.2.14) lib/active_support/callbacks.rb:385:in `_run_process_action_callbacks'
+  activesupport (3.2.14) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (3.2.14) lib/abstract_controller/callbacks.rb:17:in `process_action'
+  actionpack (3.2.14) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (3.2.14) lib/action_controller/metal/instrumentation.rb:30:in `block in process_action'
+  activesupport (3.2.14) lib/active_support/notifications.rb:123:in `block in instrument'
+  activesupport (3.2.14) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (3.2.14) lib/active_support/notifications.rb:123:in `instrument'
+  actionpack (3.2.14) lib/action_controller/metal/instrumentation.rb:29:in `process_action'
+  actionpack (3.2.14) lib/action_controller/metal/params_wrapper.rb:207:in `process_action'
+  actionpack (3.2.14) lib/abstract_controller/base.rb:121:in `process'
+  actionpack (3.2.14) lib/abstract_controller/rendering.rb:45:in `process'
+  actionpack (3.2.14) lib/action_controller/metal.rb:203:in `dispatch'
+  actionpack (3.2.14) lib/action_controller/metal/rack_delegation.rb:14:in `dispatch'
+  actionpack (3.2.14) lib/action_controller/metal.rb:246:in `block in action'
+  actionpack (3.2.14) lib/action_dispatch/routing/route_set.rb:73:in `dispatch'
+  actionpack (3.2.14) lib/action_dispatch/routing/route_set.rb:36:in `call'
+  actionpack (3.2.14) lib/action_dispatch/routing/mapper.rb:43:in `call'
+  journey (1.0.4) lib/journey/router.rb:68:in `block in call'
+  journey (1.0.4) lib/journey/router.rb:56:in `call'
+  actionpack (3.2.14) lib/action_dispatch/routing/route_set.rb:608:in `call'
+  mongoid (3.1.4) lib/rack/mongoid/middleware/identity_map.rb:34:in `block in call'
+  mongoid (3.1.4) lib/mongoid/unit_of_work.rb:39:in `unit_of_work'
+  mongoid (3.1.4) lib/rack/mongoid/middleware/identity_map.rb:34:in `call'
+  warden (1.2.3) lib/warden/manager.rb:35:in `block in call'
+  warden (1.2.3) lib/warden/manager.rb:34:in `call'
+  actionpack (3.2.14) lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+  rack (1.4.5) lib/rack/etag.rb:23:in `call'
+  rack (1.4.5) lib/rack/conditionalget.rb:25:in `call'
+  actionpack (3.2.14) lib/action_dispatch/middleware/head.rb:14:in `call'
+  actionpack (3.2.14) lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+  actionpack (3.2.14) lib/action_dispatch/middleware/flash.rb:242:in `call'
+  rack (1.4.5) lib/rack/session/abstract/id.rb:210:in `context'
+  rack (1.4.5) lib/rack/session/abstract/id.rb:205:in `call'
+  actionpack (3.2.14) lib/action_dispatch/middleware/cookies.rb:341:in `call'
+  actionpack (3.2.14) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+  activesupport (3.2.14) lib/active_support/callbacks.rb:405:in `_run__1776207102691558963__call__4524832243254415280__callbacks'
+  activesupport (3.2.14) lib/active_support/callbacks.rb:405:in `__run_callback'
+  activesupport (3.2.14) lib/active_support/callbacks.rb:385:in `_run_call_callbacks'
+  activesupport (3.2.14) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (3.2.14) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (3.2.14) lib/action_dispatch/middleware/reloader.rb:65:in `call'
+  actionpack (3.2.14) lib/action_dispatch/middleware/remote_ip.rb:31:in `call'
+  better_errors (0.9.0) lib/better_errors/middleware.rb:84:in `protected_app_call'
+  better_errors (0.9.0) lib/better_errors/middleware.rb:79:in `better_errors_call'
+  better_errors (0.9.0) lib/better_errors/middleware.rb:56:in `call'
+  actionpack (3.2.14) lib/action_dispatch/middleware/debug_exceptions.rb:16:in `call'
+  actionpack (3.2.14) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.14) lib/rails/rack/logger.rb:32:in `call_app'
+  railties (3.2.14) lib/rails/rack/logger.rb:16:in `block in call'
+  activesupport (3.2.14) lib/active_support/tagged_logging.rb:22:in `tagged'
+  railties (3.2.14) lib/rails/rack/logger.rb:16:in `call'
+  quiet_assets (1.0.2) lib/quiet_assets.rb:18:in `call_with_quiet_assets'
+  actionpack (3.2.14) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.5) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.5) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.14) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.5) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.14) lib/action_dispatch/middleware/static.rb:63:in `call'
+  railties (3.2.14) lib/rails/engine.rb:484:in `call'
+  railties (3.2.14) lib/rails/application.rb:231:in `call'
+  rack (1.4.5) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.14) lib/rails/rack/log_tailer.rb:17:in `call'
+  thin (1.6.1) lib/thin/connection.rb:82:in `block in pre_process'
+  thin (1.6.1) lib/thin/connection.rb:80:in `pre_process'
+  thin (1.6.1) lib/thin/connection.rb:55:in `process'
+  thin (1.6.1) lib/thin/connection.rb:41:in `receive_data'
+  eventmachine (1.0.3) lib/eventmachine.rb:187:in `run'
+  thin (1.6.1) lib/thin/backends/base.rb:73:in `start'
+  thin (1.6.1) lib/thin/server.rb:162:in `start'
+  rack (1.4.5) lib/rack/handler/thin.rb:13:in `run'
+  rack (1.4.5) lib/rack/server.rb:268:in `start'
+  railties (3.2.14) lib/rails/commands/server.rb:70:in `start'
+  railties (3.2.14) lib/rails/commands.rb:55:in `block in <top (required)>'
+  railties (3.2.14) lib/rails/commands.rb:50:in `<top (required)>'
+  script/rails:6:in `<main>'
+
+
+
+Started POST "/__better_errors/70119724106780/variables" for 127.0.0.1 at 2014-01-30 23:17:47 -0500
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 23:18:06 -0500
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={"$query"=>{"_id"=>"52e83fda946cf15136000001"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.5970ms)
+Processing by HomeController#index as HTML
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.5350ms)
+  Rendered home/index.html.erb within layouts/application (3.0ms)
+Completed 500 Internal Server Error in 46ms
+
+ActionView::MissingTemplate - Missing partial layouts/_header_landing with {:locale=>[:en], :formats=>[:html], :handlers=>[:erb, :builder, :coffee]}. Searched in:
+  * "/Users/philgarber/code/BUv1/app/views"
+  * "/Users/philgarber/.rvm/gems/ruby-2.0.0-p247@rails3-mongoid-devise/gems/devise-3.0.3/app/views"
+:
+  actionpack (3.2.14) lib/action_view/path_set.rb:58:in `find'
+  actionpack (3.2.14) lib/action_view/lookup_context.rb:115:in `find'
+  actionpack (3.2.14) lib/action_view/renderer/partial_renderer.rb:341:in `find_template'
+  actionpack (3.2.14) lib/action_view/renderer/partial_renderer.rb:335:in `find_partial'
+  actionpack (3.2.14) lib/action_view/renderer/partial_renderer.rb:222:in `render'
+  actionpack (3.2.14) lib/action_view/renderer/renderer.rb:41:in `render_partial'
+  actionpack (3.2.14) lib/action_view/helpers/rendering_helper.rb:27:in `render'
+  app/views/layouts/application.html.erb:13:in `_app_views_layouts_application_html_erb___263263927401537971_70119723785860'
+  actionpack (3.2.14) lib/action_view/template.rb:145:in `block in render'
+  activesupport (3.2.14) lib/active_support/notifications.rb:125:in `instrument'
+  actionpack (3.2.14) lib/action_view/template.rb:143:in `render'
+  actionpack (3.2.14) lib/action_view/renderer/template_renderer.rb:60:in `render_with_layout'
+  actionpack (3.2.14) lib/action_view/renderer/template_renderer.rb:46:in `render_template'
+  actionpack (3.2.14) lib/action_view/renderer/template_renderer.rb:19:in `render'
+  actionpack (3.2.14) lib/action_view/renderer/renderer.rb:36:in `render_template'
+  actionpack (3.2.14) lib/action_view/renderer/renderer.rb:17:in `render'
+  actionpack (3.2.14) lib/abstract_controller/rendering.rb:110:in `_render_template'
+  actionpack (3.2.14) lib/action_controller/metal/streaming.rb:225:in `_render_template'
+  actionpack (3.2.14) lib/abstract_controller/rendering.rb:103:in `render_to_body'
+  actionpack (3.2.14) lib/action_controller/metal/renderers.rb:28:in `render_to_body'
+  actionpack (3.2.14) lib/action_controller/metal/compatibility.rb:50:in `render_to_body'
+  actionpack (3.2.14) lib/abstract_controller/rendering.rb:88:in `render'
+  actionpack (3.2.14) lib/action_controller/metal/rendering.rb:16:in `render'
+  actionpack (3.2.14) lib/action_controller/metal/instrumentation.rb:40:in `block (2 levels) in render'
+  activesupport (3.2.14) lib/active_support/core_ext/benchmark.rb:5:in `block in ms'
+  /Users/philgarber/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/benchmark.rb:296:in `realtime'
+  activesupport (3.2.14) lib/active_support/core_ext/benchmark.rb:5:in `ms'
+  actionpack (3.2.14) lib/action_controller/metal/instrumentation.rb:40:in `block in render'
+  actionpack (3.2.14) lib/action_controller/metal/instrumentation.rb:83:in `cleanup_view_runtime'
+  actionpack (3.2.14) lib/action_controller/metal/instrumentation.rb:39:in `render'
+  actionpack (3.2.14) lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+  actionpack (3.2.14) lib/action_controller/metal/implicit_render.rb:5:in `send_action'
+  actionpack (3.2.14) lib/abstract_controller/base.rb:167:in `process_action'
+  actionpack (3.2.14) lib/action_controller/metal/rendering.rb:10:in `process_action'
+  actionpack (3.2.14) lib/abstract_controller/callbacks.rb:18:in `block in process_action'
+  activesupport (3.2.14) lib/active_support/callbacks.rb:414:in `_run__1789627212405751285__process_action__1097528781755117727__callbacks'
+  activesupport (3.2.14) lib/active_support/callbacks.rb:405:in `__run_callback'
+  activesupport (3.2.14) lib/active_support/callbacks.rb:385:in `_run_process_action_callbacks'
+  activesupport (3.2.14) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (3.2.14) lib/abstract_controller/callbacks.rb:17:in `process_action'
+  actionpack (3.2.14) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (3.2.14) lib/action_controller/metal/instrumentation.rb:30:in `block in process_action'
+  activesupport (3.2.14) lib/active_support/notifications.rb:123:in `block in instrument'
+  activesupport (3.2.14) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (3.2.14) lib/active_support/notifications.rb:123:in `instrument'
+  actionpack (3.2.14) lib/action_controller/metal/instrumentation.rb:29:in `process_action'
+  actionpack (3.2.14) lib/action_controller/metal/params_wrapper.rb:207:in `process_action'
+  actionpack (3.2.14) lib/abstract_controller/base.rb:121:in `process'
+  actionpack (3.2.14) lib/abstract_controller/rendering.rb:45:in `process'
+  actionpack (3.2.14) lib/action_controller/metal.rb:203:in `dispatch'
+  actionpack (3.2.14) lib/action_controller/metal/rack_delegation.rb:14:in `dispatch'
+  actionpack (3.2.14) lib/action_controller/metal.rb:246:in `block in action'
+  actionpack (3.2.14) lib/action_dispatch/routing/route_set.rb:73:in `dispatch'
+  actionpack (3.2.14) lib/action_dispatch/routing/route_set.rb:36:in `call'
+  actionpack (3.2.14) lib/action_dispatch/routing/mapper.rb:43:in `call'
+  journey (1.0.4) lib/journey/router.rb:68:in `block in call'
+  journey (1.0.4) lib/journey/router.rb:56:in `call'
+  actionpack (3.2.14) lib/action_dispatch/routing/route_set.rb:608:in `call'
+  mongoid (3.1.4) lib/rack/mongoid/middleware/identity_map.rb:34:in `block in call'
+  mongoid (3.1.4) lib/mongoid/unit_of_work.rb:39:in `unit_of_work'
+  mongoid (3.1.4) lib/rack/mongoid/middleware/identity_map.rb:34:in `call'
+  warden (1.2.3) lib/warden/manager.rb:35:in `block in call'
+  warden (1.2.3) lib/warden/manager.rb:34:in `call'
+  actionpack (3.2.14) lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+  rack (1.4.5) lib/rack/etag.rb:23:in `call'
+  rack (1.4.5) lib/rack/conditionalget.rb:25:in `call'
+  actionpack (3.2.14) lib/action_dispatch/middleware/head.rb:14:in `call'
+  actionpack (3.2.14) lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+  actionpack (3.2.14) lib/action_dispatch/middleware/flash.rb:242:in `call'
+  rack (1.4.5) lib/rack/session/abstract/id.rb:210:in `context'
+  rack (1.4.5) lib/rack/session/abstract/id.rb:205:in `call'
+  actionpack (3.2.14) lib/action_dispatch/middleware/cookies.rb:341:in `call'
+  actionpack (3.2.14) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+  activesupport (3.2.14) lib/active_support/callbacks.rb:405:in `_run__1776207102691558963__call__4524832243254415280__callbacks'
+  activesupport (3.2.14) lib/active_support/callbacks.rb:405:in `__run_callback'
+  activesupport (3.2.14) lib/active_support/callbacks.rb:385:in `_run_call_callbacks'
+  activesupport (3.2.14) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (3.2.14) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (3.2.14) lib/action_dispatch/middleware/reloader.rb:65:in `call'
+  actionpack (3.2.14) lib/action_dispatch/middleware/remote_ip.rb:31:in `call'
+  better_errors (0.9.0) lib/better_errors/middleware.rb:84:in `protected_app_call'
+  better_errors (0.9.0) lib/better_errors/middleware.rb:79:in `better_errors_call'
+  better_errors (0.9.0) lib/better_errors/middleware.rb:56:in `call'
+  actionpack (3.2.14) lib/action_dispatch/middleware/debug_exceptions.rb:16:in `call'
+  actionpack (3.2.14) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.14) lib/rails/rack/logger.rb:32:in `call_app'
+  railties (3.2.14) lib/rails/rack/logger.rb:16:in `block in call'
+  activesupport (3.2.14) lib/active_support/tagged_logging.rb:22:in `tagged'
+  railties (3.2.14) lib/rails/rack/logger.rb:16:in `call'
+  quiet_assets (1.0.2) lib/quiet_assets.rb:18:in `call_with_quiet_assets'
+  actionpack (3.2.14) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.5) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.5) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.14) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.5) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.14) lib/action_dispatch/middleware/static.rb:63:in `call'
+  railties (3.2.14) lib/rails/engine.rb:484:in `call'
+  railties (3.2.14) lib/rails/application.rb:231:in `call'
+  rack (1.4.5) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.14) lib/rails/rack/log_tailer.rb:17:in `call'
+  thin (1.6.1) lib/thin/connection.rb:82:in `block in pre_process'
+  thin (1.6.1) lib/thin/connection.rb:80:in `pre_process'
+  thin (1.6.1) lib/thin/connection.rb:55:in `process'
+  thin (1.6.1) lib/thin/connection.rb:41:in `receive_data'
+  eventmachine (1.0.3) lib/eventmachine.rb:187:in `run'
+  thin (1.6.1) lib/thin/backends/base.rb:73:in `start'
+  thin (1.6.1) lib/thin/server.rb:162:in `start'
+  rack (1.4.5) lib/rack/handler/thin.rb:13:in `run'
+  rack (1.4.5) lib/rack/server.rb:268:in `start'
+  railties (3.2.14) lib/rails/commands/server.rb:70:in `start'
+  railties (3.2.14) lib/rails/commands.rb:55:in `block in <top (required)>'
+  railties (3.2.14) lib/rails/commands.rb:50:in `<top (required)>'
+  script/rails:6:in `<main>'
+
+
+
+Started POST "/__better_errors/70119721878260/variables" for 127.0.0.1 at 2014-01-30 23:18:07 -0500
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 23:18:17 -0500
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={"$query"=>{"_id"=>"52e83fda946cf15136000001"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.5081ms)
+Processing by HomeController#index as HTML
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.5980ms)
+  Rendered home/index.html.erb within layouts/application (2.5ms)
+  Rendered layouts/_header_landing.html (0.5ms)
+  Rendered layouts/_navigation_links.html.erb (0.0ms)
+  Rendered layouts/_navigation.html.erb (1.5ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+  Rendered layouts/_landing_page.html (0.0ms)
+Completed 200 OK in 20ms (Views: 20.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 23:18:34 -0500
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={"$query"=>{"_id"=>"52e83fda946cf15136000001"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.5410ms)
+Processing by HomeController#index as HTML
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.5181ms)
+  Rendered home/index.html.erb within layouts/application (2.2ms)
+Completed 500 Internal Server Error in 13ms
+
+ActionView::MissingTemplate - Missing partial layouts/header_landing with {:locale=>[:en], :formats=>[:html], :handlers=>[:erb, :builder, :coffee]}. Searched in:
+  * "/Users/philgarber/code/BUv1/app/views"
+  * "/Users/philgarber/.rvm/gems/ruby-2.0.0-p247@rails3-mongoid-devise/gems/devise-3.0.3/app/views"
+:
+  actionpack (3.2.14) lib/action_view/path_set.rb:58:in `find'
+  actionpack (3.2.14) lib/action_view/lookup_context.rb:115:in `find'
+  actionpack (3.2.14) lib/action_view/renderer/partial_renderer.rb:341:in `find_template'
+  actionpack (3.2.14) lib/action_view/renderer/partial_renderer.rb:335:in `find_partial'
+  actionpack (3.2.14) lib/action_view/renderer/partial_renderer.rb:222:in `render'
+  actionpack (3.2.14) lib/action_view/renderer/renderer.rb:41:in `render_partial'
+  actionpack (3.2.14) lib/action_view/helpers/rendering_helper.rb:27:in `render'
+  app/views/layouts/application.html.erb:13:in `_app_views_layouts_application_html_erb___263263927401537971_70119717032980'
+  actionpack (3.2.14) lib/action_view/template.rb:145:in `block in render'
+  activesupport (3.2.14) lib/active_support/notifications.rb:125:in `instrument'
+  actionpack (3.2.14) lib/action_view/template.rb:143:in `render'
+  actionpack (3.2.14) lib/action_view/renderer/template_renderer.rb:60:in `render_with_layout'
+  actionpack (3.2.14) lib/action_view/renderer/template_renderer.rb:46:in `render_template'
+  actionpack (3.2.14) lib/action_view/renderer/template_renderer.rb:19:in `render'
+  actionpack (3.2.14) lib/action_view/renderer/renderer.rb:36:in `render_template'
+  actionpack (3.2.14) lib/action_view/renderer/renderer.rb:17:in `render'
+  actionpack (3.2.14) lib/abstract_controller/rendering.rb:110:in `_render_template'
+  actionpack (3.2.14) lib/action_controller/metal/streaming.rb:225:in `_render_template'
+  actionpack (3.2.14) lib/abstract_controller/rendering.rb:103:in `render_to_body'
+  actionpack (3.2.14) lib/action_controller/metal/renderers.rb:28:in `render_to_body'
+  actionpack (3.2.14) lib/action_controller/metal/compatibility.rb:50:in `render_to_body'
+  actionpack (3.2.14) lib/abstract_controller/rendering.rb:88:in `render'
+  actionpack (3.2.14) lib/action_controller/metal/rendering.rb:16:in `render'
+  actionpack (3.2.14) lib/action_controller/metal/instrumentation.rb:40:in `block (2 levels) in render'
+  activesupport (3.2.14) lib/active_support/core_ext/benchmark.rb:5:in `block in ms'
+  /Users/philgarber/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/benchmark.rb:296:in `realtime'
+  activesupport (3.2.14) lib/active_support/core_ext/benchmark.rb:5:in `ms'
+  actionpack (3.2.14) lib/action_controller/metal/instrumentation.rb:40:in `block in render'
+  actionpack (3.2.14) lib/action_controller/metal/instrumentation.rb:83:in `cleanup_view_runtime'
+  actionpack (3.2.14) lib/action_controller/metal/instrumentation.rb:39:in `render'
+  actionpack (3.2.14) lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+  actionpack (3.2.14) lib/action_controller/metal/implicit_render.rb:5:in `send_action'
+  actionpack (3.2.14) lib/abstract_controller/base.rb:167:in `process_action'
+  actionpack (3.2.14) lib/action_controller/metal/rendering.rb:10:in `process_action'
+  actionpack (3.2.14) lib/abstract_controller/callbacks.rb:18:in `block in process_action'
+  activesupport (3.2.14) lib/active_support/callbacks.rb:414:in `_run__1789627212405751285__process_action__1097528781755117727__callbacks'
+  activesupport (3.2.14) lib/active_support/callbacks.rb:405:in `__run_callback'
+  activesupport (3.2.14) lib/active_support/callbacks.rb:385:in `_run_process_action_callbacks'
+  activesupport (3.2.14) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (3.2.14) lib/abstract_controller/callbacks.rb:17:in `process_action'
+  actionpack (3.2.14) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (3.2.14) lib/action_controller/metal/instrumentation.rb:30:in `block in process_action'
+  activesupport (3.2.14) lib/active_support/notifications.rb:123:in `block in instrument'
+  activesupport (3.2.14) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (3.2.14) lib/active_support/notifications.rb:123:in `instrument'
+  actionpack (3.2.14) lib/action_controller/metal/instrumentation.rb:29:in `process_action'
+  actionpack (3.2.14) lib/action_controller/metal/params_wrapper.rb:207:in `process_action'
+  actionpack (3.2.14) lib/abstract_controller/base.rb:121:in `process'
+  actionpack (3.2.14) lib/abstract_controller/rendering.rb:45:in `process'
+  actionpack (3.2.14) lib/action_controller/metal.rb:203:in `dispatch'
+  actionpack (3.2.14) lib/action_controller/metal/rack_delegation.rb:14:in `dispatch'
+  actionpack (3.2.14) lib/action_controller/metal.rb:246:in `block in action'
+  actionpack (3.2.14) lib/action_dispatch/routing/route_set.rb:73:in `dispatch'
+  actionpack (3.2.14) lib/action_dispatch/routing/route_set.rb:36:in `call'
+  actionpack (3.2.14) lib/action_dispatch/routing/mapper.rb:43:in `call'
+  journey (1.0.4) lib/journey/router.rb:68:in `block in call'
+  journey (1.0.4) lib/journey/router.rb:56:in `call'
+  actionpack (3.2.14) lib/action_dispatch/routing/route_set.rb:608:in `call'
+  mongoid (3.1.4) lib/rack/mongoid/middleware/identity_map.rb:34:in `block in call'
+  mongoid (3.1.4) lib/mongoid/unit_of_work.rb:39:in `unit_of_work'
+  mongoid (3.1.4) lib/rack/mongoid/middleware/identity_map.rb:34:in `call'
+  warden (1.2.3) lib/warden/manager.rb:35:in `block in call'
+  warden (1.2.3) lib/warden/manager.rb:34:in `call'
+  actionpack (3.2.14) lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+  rack (1.4.5) lib/rack/etag.rb:23:in `call'
+  rack (1.4.5) lib/rack/conditionalget.rb:25:in `call'
+  actionpack (3.2.14) lib/action_dispatch/middleware/head.rb:14:in `call'
+  actionpack (3.2.14) lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+  actionpack (3.2.14) lib/action_dispatch/middleware/flash.rb:242:in `call'
+  rack (1.4.5) lib/rack/session/abstract/id.rb:210:in `context'
+  rack (1.4.5) lib/rack/session/abstract/id.rb:205:in `call'
+  actionpack (3.2.14) lib/action_dispatch/middleware/cookies.rb:341:in `call'
+  actionpack (3.2.14) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+  activesupport (3.2.14) lib/active_support/callbacks.rb:405:in `_run__1776207102691558963__call__4524832243254415280__callbacks'
+  activesupport (3.2.14) lib/active_support/callbacks.rb:405:in `__run_callback'
+  activesupport (3.2.14) lib/active_support/callbacks.rb:385:in `_run_call_callbacks'
+  activesupport (3.2.14) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (3.2.14) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (3.2.14) lib/action_dispatch/middleware/reloader.rb:65:in `call'
+  actionpack (3.2.14) lib/action_dispatch/middleware/remote_ip.rb:31:in `call'
+  better_errors (0.9.0) lib/better_errors/middleware.rb:84:in `protected_app_call'
+  better_errors (0.9.0) lib/better_errors/middleware.rb:79:in `better_errors_call'
+  better_errors (0.9.0) lib/better_errors/middleware.rb:56:in `call'
+  actionpack (3.2.14) lib/action_dispatch/middleware/debug_exceptions.rb:16:in `call'
+  actionpack (3.2.14) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.14) lib/rails/rack/logger.rb:32:in `call_app'
+  railties (3.2.14) lib/rails/rack/logger.rb:16:in `block in call'
+  activesupport (3.2.14) lib/active_support/tagged_logging.rb:22:in `tagged'
+  railties (3.2.14) lib/rails/rack/logger.rb:16:in `call'
+  quiet_assets (1.0.2) lib/quiet_assets.rb:18:in `call_with_quiet_assets'
+  actionpack (3.2.14) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.5) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.5) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.14) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.5) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.14) lib/action_dispatch/middleware/static.rb:63:in `call'
+  railties (3.2.14) lib/rails/engine.rb:484:in `call'
+  railties (3.2.14) lib/rails/application.rb:231:in `call'
+  rack (1.4.5) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.14) lib/rails/rack/log_tailer.rb:17:in `call'
+  thin (1.6.1) lib/thin/connection.rb:82:in `block in pre_process'
+  thin (1.6.1) lib/thin/connection.rb:80:in `pre_process'
+  thin (1.6.1) lib/thin/connection.rb:55:in `process'
+  thin (1.6.1) lib/thin/connection.rb:41:in `receive_data'
+  eventmachine (1.0.3) lib/eventmachine.rb:187:in `run'
+  thin (1.6.1) lib/thin/backends/base.rb:73:in `start'
+  thin (1.6.1) lib/thin/server.rb:162:in `start'
+  rack (1.4.5) lib/rack/handler/thin.rb:13:in `run'
+  rack (1.4.5) lib/rack/server.rb:268:in `start'
+  railties (3.2.14) lib/rails/commands/server.rb:70:in `start'
+  railties (3.2.14) lib/rails/commands.rb:55:in `block in <top (required)>'
+  railties (3.2.14) lib/rails/commands.rb:50:in `<top (required)>'
+  script/rails:6:in `<main>'
+
+
+
+Started POST "/__better_errors/70119719611760/variables" for 127.0.0.1 at 2014-01-30 23:18:34 -0500
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 23:18:51 -0500
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={"$query"=>{"_id"=>"52e83fda946cf15136000001"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.5159ms)
+Processing by HomeController#index as HTML
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.6053ms)
+  Rendered home/index.html.erb within layouts/application (2.5ms)
+  Rendered layouts/_header_landing.html (0.5ms)
+  Rendered layouts/_navigation_links.html.erb (0.0ms)
+  Rendered layouts/_navigation.html.erb (1.2ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+  Rendered layouts/_landing_page.html (0.0ms)
+Completed 200 OK in 21ms (Views: 21.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 23:19:20 -0500
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={"$query"=>{"_id"=>"52e83fda946cf15136000001"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.5028ms)
+Processing by HomeController#index as HTML
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.5481ms)
+  Rendered home/index.html.erb within layouts/application (2.5ms)
+  Rendered layouts/_navigation_links.html.erb (0.0ms)
+  Rendered layouts/_navigation.html.erb (0.9ms)
+  Rendered layouts/_messages.html.erb (0.0ms)
+  Rendered layouts/_landing_page.html (0.0ms)
+Completed 200 OK in 15ms (Views: 14.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 23:19:22 -0500
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={"$query"=>{"_id"=>"52e83fda946cf15136000001"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.5751ms)
+Processing by HomeController#index as HTML
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.4539ms)
+  Rendered home/index.html.erb within layouts/application (2.4ms)
+  Rendered layouts/_navigation_links.html.erb (0.0ms)
+  Rendered layouts/_navigation.html.erb (0.7ms)
+  Rendered layouts/_messages.html.erb (0.0ms)
+  Rendered layouts/_landing_page.html (0.0ms)
+Completed 200 OK in 13ms (Views: 12.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 23:19:24 -0500
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={"$query"=>{"_id"=>"52e83fda946cf15136000001"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.4752ms)
+Processing by HomeController#index as HTML
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.5078ms)
+  Rendered home/index.html.erb within layouts/application (2.2ms)
+  Rendered layouts/_navigation_links.html.erb (0.0ms)
+  Rendered layouts/_navigation.html.erb (0.7ms)
+  Rendered layouts/_messages.html.erb (0.0ms)
+  Rendered layouts/_landing_page.html (0.0ms)
+Completed 200 OK in 18ms (Views: 17.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 23:21:03 -0500
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (0.4308ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={"$query"=>{"_id"=>"52e83fda946cf15136000001"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.3669ms)
+Processing by HomeController#index as HTML
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.6189ms)
+  Rendered home/index.html.erb within layouts/application (2.4ms)
+  Rendered layouts/_header_landing.html (0.0ms)
+  Rendered layouts/_navigation_links.html.erb (0.0ms)
+  Rendered layouts/_navigation.html.erb (0.8ms)
+  Rendered layouts/_messages.html.erb (0.0ms)
+  Rendered layouts/_landing_page.html (0.0ms)
+Completed 200 OK in 15ms (Views: 15.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 23:21:28 -0500
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={"$query"=>{"_id"=>"52e83fda946cf15136000001"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.5431ms)
+Processing by HomeController#index as HTML
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.6020ms)
+  Rendered home/index.html.erb within layouts/application (2.7ms)
+  Rendered layouts/_header_landing.html (0.0ms)
+  Rendered layouts/_navigation_links.html.erb (0.0ms)
+  Rendered layouts/_navigation.html.erb (1.0ms)
+  Rendered layouts/_messages.html.erb (0.0ms)
+  Rendered layouts/_landing_page.html (0.0ms)
+Completed 200 OK in 20ms (Views: 19.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 23:24:33 -0500
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={"$query"=>{"_id"=>"52e83fda946cf15136000001"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.4480ms)
+Processing by HomeController#index as HTML
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.4640ms)
+  Rendered home/index.html.erb within layouts/application (1.7ms)
+  Rendered layouts/_header_landing.html (0.4ms)
+  Rendered layouts/_navigation_links.html.erb (0.0ms)
+  Rendered layouts/_navigation.html.erb (0.8ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+  Rendered layouts/_landing_page.html (0.0ms)
+Completed 200 OK in 13ms (Views: 13.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 23:24:38 -0500
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={"$query"=>{"_id"=>"52e83fda946cf15136000001"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.5248ms)
+Processing by HomeController#index as HTML
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.4690ms)
+  Rendered home/index.html.erb within layouts/application (2.0ms)
+  Rendered layouts/_header_landing.html (0.0ms)
+  Rendered layouts/_navigation_links.html.erb (0.0ms)
+  Rendered layouts/_navigation.html.erb (0.9ms)
+  Rendered layouts/_messages.html.erb (0.0ms)
+  Rendered layouts/_landing_page.html (0.0ms)
+Completed 200 OK in 15ms (Views: 14.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 23:24:42 -0500
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={"$query"=>{"_id"=>"52e83fda946cf15136000001"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.4601ms)
+Processing by HomeController#index as HTML
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.5248ms)
+  Rendered home/index.html.erb within layouts/application (2.0ms)
+  Rendered layouts/_header_landing.html (0.0ms)
+  Rendered layouts/_navigation_links.html.erb (0.0ms)
+  Rendered layouts/_navigation.html.erb (0.7ms)
+  Rendered layouts/_messages.html.erb (0.0ms)
+  Rendered layouts/_landing_page.html (0.0ms)
+Completed 200 OK in 14ms (Views: 13.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 23:27:12 -0500
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (0.4520ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={"$query"=>{"_id"=>"52e83fda946cf15136000001"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.3321ms)
+Processing by HomeController#index as HTML
+  MOPED: 127.0.0.1:27017 QUERY        database=rails3_mongoid_devise_development collection=users selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.6661ms)
+  Rendered home/index.html.erb within layouts/application (2.5ms)
+  Rendered layouts/_header_landing.html (0.4ms)
+  Rendered layouts/_navigation_links.html.erb (0.0ms)
+  Rendered layouts/_navigation.html.erb (0.8ms)
+  Rendered layouts/_landing_page.html (0.0ms)
+Completed 200 OK in 16ms (Views: 15.7ms)

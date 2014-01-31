@@ -2,147 +2,25 @@
 <html>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= content_for?(:title) ? yield(:title) : "8rate" %></title>
-    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "8rate" %>">
+    <title><%= content_for?(:title) ? yield(:title) : "BumptUp" %></title>
+    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "BumptUp" %>">
     <%= stylesheet_link_tag "application", media: "all" %>
     <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
   </head>
   <body>
     <header>
-      <%= render 'layouts/navigation' %>
+      <%= render 'layouts/header_landing' %> <!-- this isn't doing anything.  Why is header showing??? -->
+      <!-- <%= render 'layouts/navigation' %> --> <!-- little header -->
     </header>
     <main role="main">
        <%= render 'layouts/messages' %>
-       <%= yield %>
+       <%= yield %> <!-- yields to home/index.html.erb -->
     </main>
-  </body>
+<!--   </body> -->
 
-  
-  <head>
-    <title>Jumbotron</title>
-    <meta name="viewport" content="width=device-width">
-    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-    <script type="text/javascript" src="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-    <style type="text/css">
-      body {
-        padding-top: 50px;
-        padding-bottom: 20px;
-      }
-    </style>
-  </head>
-  
-  <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">BumptUp</a>
-        </div>
-        <div class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-            <li class="active">
-              <a href="#">Home</a>
-            </li>
-            <li>
-              <a href="#about">About</a>
-            </li>
-            <li>
-              <a href="#contact">Contact</a>
-            </li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-              <ul class="dropdown-menu">
-                <li>
-                  <a href="#">Action</a>
-                </li>
-                <li>
-                  <a href="#">Another action</a>
-                </li>
-                <li>
-                  <a href="#">Something else here</a>
-                </li>
-                <li class="divider"></li>
-                <li class="dropdown-header">Nav header</li>
-                <li>
-                  <a href="#">Separated link</a>
-                </li>
-                <li>
-                  <a href="#">One more separated link</a>
-                </li>
-              </ul>
-            </li>
-          </ul>
-          <form class="navbar-form navbar-right">
-            <div class="form-group">
-              <input type="text" placeholder="Email" class="form-control">
-            </div>
-            <div class="form-group">
-              <input type="password" placeholder="Password" class="form-control">
-            </div>
-            <button type="submit" class="btn btn-success">Sign in</button>
-          </form>
-        </div>
-        <!--/.navbar-collapse -->
-      </div>
-    </div>
-    <!-- Main jumbotron for a primary marketing message or call to action -->
-    <div class="container">
-      <!-- Example row of columns -->
-      <div class="row">
-        <div class="col-md-12">
-          <img src="http://i.imgur.com/0Pua12E.png" width="250">
-          <h4 class="media-heading">Transparency made easy</h4>
-          <div class="media">
-            <a class="pull-left" href="#"></a>
-            <div class="media-body">
-              <p><!--StartFragment--></p>
-              <p></p>
-              <!--EndFragment-->
-              <p></p>
-              <form>
-                <div class="form-group">
-                  <label class="control-label">Join your company's feedback network for free</label>
-                  <div class="controls"></div>
-                </div>
-                <div class="form-group">
-                  <label class="control-label">Enter your work email address:</label>
-                  <div class="controls">
-                    <input type="text" class="form-control">
-                  </div>
-                </div>
-                <a class="btn btn-primary btn-lg">Sign Up</a>
-                <div class="drag-mask" data-ds-form="text_field" style="width: 1140px; height: 34px;"></div>
-              </form>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-8">
-          <h2>How it works</h2>
-          <p>BumptUp verifies that you are an employee of your company through your work email address. After that, you can give your company the feedback it needs about its direction and its employees. All of your actions on BumptUp are private. No one else even knows you use the system if you don't let them know.</p>
-          <p><a class="btn btn-default" href="#">View details &raquo;</a></p>
-        </div>
-        <div class="col-lg-4">
-          <h2>How it helps</h2>
-          <p>Your company needs real, honest, real time feedback from the people who know best: you and your coworkers. While it's easy enough to give praise, it is more difficult to give constructive feedback about what needs to improve. Yet, constructive feedback is what helps your company the most and what your coworkers yearn for. BumptUp tears down the barriers to providing this feedback with a system that allows the feedback to come from anonymized sources within the organization.</p>
-          <p><a class="btn btn-default" href="#">View details &raquo;</a></p>
-        </div>
-        <div class="col-lg-4">
-          <h2>How BumptUp is better</h2>
-          <p>"<span style="font-family: Helvetica, Arial, sans-serif; font-size: 15px;">Most employee engagement or satisfaction surveys are a stupendous waste of money and time. Everyone in the organization dreads them and little or nothing ever happens to the feedback." - Bernard Marr</span></p>
-          <p>BumptUp is <b><i>pushed</i></b> by employees rather than <b><i>pulled</i></b> by HR or senior management. &nbsp;It is quick, safe, and gets honest feedback.</p>
-          <p><a class="btn btn-default" href="#">View details &raquo;</a></p>
-        </div>
-      </div>
-      <hr>
-      <footer>
-        <p>&copy; BumptUp 2014</p>
-      </footer>
-    </div>
-    <!-- /container -->
-  </body>
+
+<%= render 'layouts/landing_page' %> <!-- divshot landing page -->
+
 
 </html>

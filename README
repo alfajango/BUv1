@@ -1,17 +1,15 @@
-Rails3-Mongoid-Devise
-========================
+Building 8rate from a rails 3.1, mongoid, devise, bootstrap barebones app
 
-You can use this project as a starting point for a Rails web application. It requires Rails 3 and uses Mongoid http://mongoid.org/ for data storage and Devise http://github.com/plataformatec/devise for user management and authentication.
-________________________
+Start with code/8ratev1_pre_theme
 
-See the README file on GitHub
+compare to John's sample_user_auth:
 
-For more information, please see the updated README file on GitHub:
+In 8ratev1_pre_theme, add a bunch of html from divshot to application.html.erb
 
-http://github.com/railsapps/rails3-mongoid-devise
+I'm calling it BumptUp now.  I have spider blocker on.  
 
-________________________
+BU logo is http://i.imgur.com/0Pua12E.png
 
-MIT License
+my git is pretty messed up in this project.  I dont think I had github going on 8ratev1_pre_theme.  then I branched to BUv1.  
 
-http://www.opensource.org/licenses/mit-license
+So, SWITCH TO BUv1 repo and BUv1 folder on my local drive (code/BUv1).  Branch is main
