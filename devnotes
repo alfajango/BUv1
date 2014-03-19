@@ -13,4 +13,22 @@ BU logo is http://i.imgur.com/0Pua12E.png
 my git is pretty messed up in this project.  I dont think I had github going on 8ratev1_pre_theme.  then I branched to BUv1.  
 
 So, SWITCH TO BUv1 repo and BUv1 folder on my local drive (code/BUv1).  Branch is main
-.
+
+3/19/14 - come back to this one after a couple months to get Devise and Mongo
+
+To start this project, 
+1 tab: BUv1 $ rails s
+2nd tab: BUv1 $ mongod
+go to localhost:3000
+
+It looks like I can create create a user, but there are no pages other than the landing page
+
+What I need to do:
+- put in one view at a time, keep everything working
+- put in models projects first?
+
+
+$ rails generate controller Attributes  # didn't do no-test-framework
+$ rails generate model Attribute attribute_name:string category:string identifier:integer
+# assuming I don't need to rake db:migrate
+
