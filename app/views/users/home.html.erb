@@ -1,0 +1,12 @@
+<%# this one is users/home.html.erb %>
+
+<% if signed_in? %>
+
+  <%=render 'users/homepage' %>
+
+<% else %>
+  <div>
+    <%= render 'static_pages/landing' %>
+  </div>
+
+<% end %>
