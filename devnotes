@@ -1,0 +1,16 @@
+Building 8rate from a rails 3.1, mongoid, devise, bootstrap barebones app
+
+Start with code/8ratev1_pre_theme
+
+compare to John's sample_user_auth:
+
+In 8ratev1_pre_theme, add a bunch of html from divshot to application.html.erb
+
+I'm calling it BumptUp now.  I have spider blocker on.  
+
+BU logo is http://i.imgur.com/0Pua12E.png
+
+my git is pretty messed up in this project.  I dont think I had github going on 8ratev1_pre_theme.  then I branched to BUv1.  
+
+So, SWITCH TO BUv1 repo and BUv1 folder on my local drive (code/BUv1).  Branch is main
+.
