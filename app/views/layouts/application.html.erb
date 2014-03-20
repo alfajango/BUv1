@@ -9,11 +9,11 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
-    <header>
+    <!-- <header> -->
       <%= render 'layouts/header' %> 
       <!-- <%#= render 'layouts/navigation' %> --> <!-- little header -->
-    </header>
-    <body>
+    <!-- </header> -->
+    <!-- <body> -->
        <%= render 'layouts/messages' %>
        <%= yield %> <!-- yields to home/index.html.erb -->
        <%= debug(params) if Rails.env.development? %>
