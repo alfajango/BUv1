@@ -32,3 +32,25 @@ $ rails generate controller Attributes  # didn't do no-test-framework
 $ rails generate model Attribute attribute_name:string category:string identifier:integer
 # assuming I don't need to rake db:migrate
 
+$ rails g controller Feedbacks
+    conflict  app/controllers/feedbacks_controller.rb
+Overwrite /Users/philgarber/code/BUv1/app/controllers/feedbacks_controller.rb? (enter "h" for help) [Ynaqdh] n
+$ rails g model Feedback from_id:integer to_id:integer attribute_identifier rating_given:float accounted_for:datetime 
+
+to view my db, open MongoHub.  go to the right table on the left, then hit Query.  Then Run in the window that pops up
+http://stackoverflow.com/questions/7000605/how-to-implement-has-many-through-relationships-with-mongoid-and-mongodb
+
+$ rails g controller Companies
+$ rails g model Company domain:string name:string
+$ rails g controller Projects
+    conflict  app/controllers/projects_controller.rb
+Overwrite /Users/philgarber/code/BUv1/app/controllers/projects_controller.rb? (enter "h" for help) [Ynaqdh] n
+$ rails g model Project name:string company_id:integer
+$ rails g controller ProjectFeedbacks  # forgot to add columns
+$ rails g controller ProjectRatings
+$ rails g model ProjectRating project_id:integer project_attribute_identifier:integer current_rating:float num_fb_received:float 
+$ rails g controller ProjectAttributes
+$ rails g model ProjectAttribute name:strin
+
+change a bunch of things to belongs_to or has_many in the models files
+

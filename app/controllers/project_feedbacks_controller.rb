@@ -1,0 +1,2 @@
+class ProjectFeedbacksController < ApplicationController
+end

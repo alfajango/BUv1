@@ -8699,3 +8699,19 @@ ActionController::RoutingError (No route matches [GET] "/assets/chartkick.js"):
   script/rails:6:in `<main>'
 
 
+
+
+Started GET "/" for 127.0.0.1 at 2014-03-20 12:15:43 -0400
+Processing by HomeController#index as HTML
+  Rendered static_pages/_landing.html.erb (1.1ms)
+  Rendered home/index.html.erb within layouts/application (5.3ms)
+Compiled feedbacks.css  (9ms)  (pid 42179)
+Compiled application.css  (221ms)  (pid 42179)
+Compiled feedbacks.js  (884ms)  (pid 42179)
+Compiled application.js  (1003ms)  (pid 42179)
+  Rendered devise/menu/_registration_items.html.erb (1.5ms)
+  Rendered devise/menu/_login_items.html.erb (0.5ms)
+  Rendered layouts/_header.html.erb (5.2ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+  Rendered layouts/_footer.html.erb (0.1ms)
+Completed 200 OK in 1640ms (Views: 1639.4ms)

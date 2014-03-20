@@ -1,0 +1,2 @@
+class ProjectAttributesController < ApplicationController
+end

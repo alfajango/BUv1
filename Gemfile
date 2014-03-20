@@ -1,3 +1,4 @@
+# need gem 'Origin' per http://mongoid.org/en/mongoid/docs/querying.html ?
 source 'https://rubygems.org'
 ruby '2.0.0'
 gem 'rails', '3.2.14'
