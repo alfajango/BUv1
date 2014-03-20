@@ -15,12 +15,12 @@
         <div class="well well-sm">
           <% user = set_user(params) #User.find_by(id: params[:id]) %>  
           <p><b><%= user.name + " | " + user.email %> </b></p>
-          <% graph_data(@user.id) %>  <%# get the top 5 attributes for this user and set them in @show_attributes %>
-          <% if @show_attributes.any? %>
-            <%= bar_chart @show_attributes, :height => "200px"%> <%# call chartkick %>
-          <% else %>
-            <%= user.name + " has not yet received any attribute feedback" %>
-          <% end %>  
+          <%# graph_data(@user.id) %>  <%# get the top 5 attributes for this user and set them in @show_attributes %>
+          <%# if @show_attributes.any? %>
+            <%#= bar_chart @show_attributes, :height => "200px"%> <%# call chartkick %>
+          <%# else %>
+            <%#= user.name + " has not yet received any attribute feedback" %>
+          <%# end %>  
         </div>
 
         <div class="well well-sm">
@@ -110,19 +110,19 @@
             <%= form_tag("/feedbacks/complete/"+params[:id],  :method => "post", :remote => true) do %> <%# from codelearn.org %>
             
               <% all_attributes.each do |attribute| %> 
-                <% if attribute.good == 'true' %>  <%# put good ones in left column %>
+                <%# if attribute.good == 'true' %>  <%# put good ones in left column %>
                   <div class="col-sm-6" >
                     <label>
                       <%= check_box_tag  ("attribute_checkbox[]"),attribute.identifier %><%=  attribute.attribute_name %> 
                     </label> 
                   </div>  
-                  <div class="col-sm-6">
-                    <label>
-                      <%= check_box_tag  ("attribute_checkbox[]"),attribute.opposite_identifier %>
-                      <%= all_attributes.find_by(identifier: attribute.opposite_identifier).attribute_name %>
-                    </label>
-                  </div>  
-                <% end %>  <%# end if good %>
+                  <!-- <div class="col-sm-6">
+                    <label> -->
+                      <%#= check_box_tag  ("attribute_checkbox[]"),attribute.opposite_identifier %>
+                      <%#= all_attributes.find_by(identifier: attribute.opposite_identifier).attribute_name %>
+                   <!--  </label>
+                  </div>  --> 
+                <%# end %>  <%# end if good %>
 
               <%end%>  <%# end each do %>
             
