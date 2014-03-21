@@ -3,7 +3,7 @@ class ProjectsController < ApplicationController
   def index
     #    @users = current_user.company.users.paginate(page: params[:page])  
 
-    @projects = current_user.company.projects.paginate(page: params[:page])
+    @projects = current_user.company.projects.all   # paginate(page: params[:page])
     @project = Project.new   # need this for creating new on index page
   end
 

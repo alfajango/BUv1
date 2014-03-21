@@ -50,7 +50,7 @@ $ rails g controller ProjectFeedbacks  # forgot to add columns
 $ rails g controller ProjectRatings
 $ rails g model ProjectRating project_id:integer project_attribute_identifier:integer current_rating:float num_fb_received:float 
 $ rails g controller ProjectAttributes
-$ rails g model ProjectAttribute name:strin
+$ rails g model ProjectAttribute name:string
 
 change a bunch of things to belongs_to or has_many in the models files
 

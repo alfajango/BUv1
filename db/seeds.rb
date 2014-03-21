@@ -8,41 +8,131 @@
 # Environment variables (ENV['...']) can be set in the file config/application.yml.
 # See http://railsapps.github.io/rails-environment-variables.html
 
-make_users
-make_attributes
-make feedbacks
+# make_users
+# make_attributes
+# make feedbacks
 
-def make_users
-	users = User.all
-	users.delete_all
+# def make_users
 
-	puts 'DEFAULT USERS'
-	user = User.create! :name => ENV['ADMIN_NAME'].dup, :email => ENV['ADMIN_EMAIL'].dup, 
-				:password => ENV['ADMIN_PASSWORD'].dup, 
-				:password_confirmation => ENV['ADMIN_PASSWORD'].dup
-	puts 'user: ' << user.name
+
+#--------------- Users ------------------------------
+users = User.all
+users.delete_all
+
+puts 'DEFAULT USERS'
+user = User.create! :name => ENV['ADMIN_NAME'].dup, :email => ENV['ADMIN_EMAIL'].dup, 
+			:password => ENV['ADMIN_PASSWORD'].dup, 
+			:password_confirmation => ENV['ADMIN_PASSWORD'].dup			
+puts 'user: ' << user.name
+User.create!(name: "Jane Williams", email: "jwilliams@example.com", password: "password", 
+			password_confirmation: "password")
+User.create!(name: "Bill Jones", email: "bjones@example.com", password: "password", 
+			password_confirmation: "password")
+User.create!(name: "Beth Hillman", email: "bhillman@example.com", password: "password", 
+			password_confirmation: "password")
+User.create!(name: "Trevor Carawell", email: "tcarawell@example.com", password: "password", 
+			password_confirmation: "password")
+# end
+
+
+#--------------- Attributes ------------------------------
+# def make_attributes
+attrib = Attribute.all
+attrib.delete_all
+
+attribute_list = [
+	[ "Polished presentation", "posattrib", 1 ],
+	[ "Deflects credit", "posattrib", 2 ]
+]
+
+puts 'ATTRIBUTES'
+attribute_list.each do |attribute_name, category, identifier|
+  Attribute.create!(  attribute_name: attribute_name, 
+                  category: category, identifier: identifier )
+end
+# end
+
+
+#--------------- Feedbacks ------------------------------
+# def make_feedbacks
+feedback = Feedback.all
+feedback.delete_all
+attrib = Attribute.first # make this better at some point
+users = User.all(limit: 6)
+
+
+feedback_list = [  # 10 votes, from 3 different people, chosen randomly
+	[ rand(1..3), rand(1..10) ],
+	[ rand(1..3), rand(1..10) ],	
+	[ rand(1..3), rand(1..10) ],
+	[ rand(1..3), rand(1..10) ],	
+	[ rand(1..3), rand(1..10) ],
+	[ rand(1..3), rand(1..10) ],	
+	[ rand(1..3), rand(1..10) ],
+	[ rand(1..3), rand(1..10) ],	
+	[ rand(1..3), rand(1..10) ],
+	[ rand(1..3), rand(1..10) ]
+]
+puts "feedback_list: #{feedback_list}"
+
+feedback_list.each do |from_id, rating_given| 
+ users.each { |user| user.attrib.feedback.create!(from_id: from_id, rating_given: rating_given) }
 end
 
 
-def make_attributes
-	attrib = Attribute.all
-	attrib.delete_all
-	# project_attrib = ProjectAttribute.all
-	# project_attrib.delete_all
+# do ratings in crunch_ratings
+#--------------- Companies ------------------------------
+companies = Company.all
+companies.delete_all
+Company.create!(domain: "example.com", name: "Example" )
+Company.create!(domain: "acme.com", name: "Acme" )
+puts "COMPANY: #{Company.first.name}"
 
-	attribute_list = [
-		[ "Polished presentation", "posattrib", 1 ],
-		[ "Deflects credit", "posattrib", 2 ]
-	]
 
-	puts 'ATTRIBUTES'
-	attribute_list.each do |attribute_name, category, identifier|
-	  Attribute.create!(  attribute_name: attribute_name, 
-	                  category: category, identifier: identifier )
-	end
+#--------------- Projects ------------------------------
+proj = Project.all
+proj.delete_all
+company = Company.find_by(name: "Example") #Company.where(..) gives the string Company.  use find_by
+puts "in projects, company.name: #{company.name}"
+company.projects.create!(name: "Factory cost reduction")  # why projectS ???
+company.projects.create!(name: "Acquire competitors")  # why projectS ???
+company = Company.find_by(name: "Acme")
+puts "in projects, 2nd company.name: #{company.name}"
+company.projects.create!(name: "Factory cost reduction")
+company.projects.create!(name: "Put ExampleCo out of business")
+puts "PROJECT: #{Project.first.name}"
+
+
+#--------------- ProjectAttributes ------------------------------
+# need to put these attributes on every project, the way I have it
+projectatts = ProjectAttribute.all
+projectatts.delete_all
+
+# is this wrong?
+ProjectAttribute.create!(name: "Strategy")
+ProjectAttribute.create!(name: "Execution")
+puts "ProjectAttribute.first.name: #{ProjectAttribute.first.name}"
+
+projects = Project.all
+projects.each do |project|
+	project.project_attributes.create!(name: "Strategy")
+	project.project_attributes.create!(name: "Execution")
 end
+project=Project.first
+puts "project.project_attribute.first.name #{project.project_attribute.first.name}"
 
-def make_feedbacks
+
+#--------------- ProjectFeedbacks ------------------------------
+projfb = ProjectFeedback.all
+projfb.delete_all
+user = User.find_by(name: "Jane Williams")
+puts "in ProjectFeedbacks, user.name: #{user.name}"
+project = Project.find_by(name: "Factory cost reduction")
+puts "in ProjectFeedbacks, project.name: #{project.name}"
+project_attribute = ProjectAttribute.where(name: "Strategy")
+project.project_attribute.project_feedback.create!(from_id: user.id, rating_given: 8)
+puts "ProjectFeedback.first.name #{ProjectFeedback.first.name}"
+
 
 # def make_feedbacks
 #   users = User.all
