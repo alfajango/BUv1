@@ -3,7 +3,7 @@ class User
   include Mongoid::Timestamps
   belongs_to :company
   has_many :project_feedbacks  # ??
-  has_many :feedbacks #( feedback this person has received )
+  has_many :feedbacks,  class_name: "Feedback", inverse_of: :user #( feedback this person has received )
 
   # don't think I also need this:
   # field :company_id         :type => Integer, :default => 0  # will be example or something seeded

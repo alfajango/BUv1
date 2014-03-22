@@ -26,8 +26,12 @@ user = User.create! :name => ENV['ADMIN_NAME'].dup, :email => ENV['ADMIN_EMAIL']
 puts 'user: ' << user.name
 User.create!(name: "Jane Williams", email: "jwilliams@example.com", password: "password", 
 			password_confirmation: "password")
+temp_user = User.find_by(name: "Jane Williams")
+puts "temp_user.id: #{temp_user.id}"
 User.create!(name: "Bill Jones", email: "bjones@example.com", password: "password", 
 			password_confirmation: "password")
+temp_user = User.find_by(name: "Bill Jones")
+puts "temp_user.id: #{temp_user.id}"
 User.create!(name: "Beth Hillman", email: "bhillman@example.com", password: "password", 
 			password_confirmation: "password")
 User.create!(name: "Trevor Carawell", email: "tcarawell@example.com", password: "password", 
@@ -58,7 +62,56 @@ end
 feedback = Feedback.all
 feedback.delete_all
 attrib = Attribute.first # make this better at some point
-users = User.all(limit: 6)
+some_users = User.all(limit: 6)
+a_user = User.find_by(name: "Jane Williams")
+fb = feedback.create!(from_id: user.id, rating_given: 1)
+fb.save # need?
+puts "fb.from_id: #{fb.from_id}"
+puts "fb.rating_given: #{fb.rating_given}"
+puts "fb.class: #{fb.class}"
+fb.attribute = attrib # seems to be working now
+puts "hi, mom"
+puts "fb.attribute.attribute_name #{fb.attribute.attribute_name}"
+puts "a_user.name #{a_user.name}"
+fb.user = a_user   # a_user.feedback = fb didn't work.  Maybe need a inverse_of
+puts "hi phil"
+puts "a_user.feedbacks.class #{a_user.feedbacks.class}" # can't do .feedback  - must be plural ??
+puts "a_user.feedbacks.first.class #{a_user.feedbacks.first.class}" # nilclass
+puts "a_user.feedbacks.size #{a_user.feedbacks.size}" # 0 
+
+a_user.feedbacks << fb  # do these two lines do the same thing?  Which one is correct, if not?
+puts "jay z"
+puts "a_user.feedbacks.class #{a_user.feedbacks.class}" # can't do .feedback  - must be plural ??
+puts "a_user.feedbacks.first.class #{a_user.feedbacks.first.class}" # feedback
+puts "a_user.feedbacks.size #{a_user.feedbacks.size}" # 1 
+
+
+# a_user.feedbacks = fb  # doesn't work - undefined method 'compact'
+
+############## THE FOLLOWING WORKS #######################
+# adding the same exact fb to an user doesn't do anything:
+a_user.feedbacks << fb
+puts "what what"
+puts "a_user.feedbacks.size #{a_user.feedbacks.size}" # still just 1 
+
+# adding a new feedback to a user does increase a_user.feedbacks.size:
+fb2 = feedback.create!(from_id: user.id, rating_given: 1)
+attrib = Attribute.find_by(attribute_name: "Deflects credit")
+fb2.attribute = attrib
+a_user.feedbacks << fb2
+puts "a_user.feedbacks.size #{a_user.feedbacks.size}" # now it is 2
+
+# how about if fb is now a different piece of fb? that seems to be OK
+fb = feedback.create!(from_id: user.id, rating_given: 1)
+fb.attribute = attrib
+
+a_user.feedbacks << fb
+puts " 3rd a_user.feedbacks.size #{a_user.feedbacks.size}" # now it is 3
+##############  THE PROCEEDING WORKS #######################
+
+#puts "a_user.feedbacks.methods - Object.methods #{a_user.feedbacks.methods - Object.methods}"
+# puts "a_user.feedbacks.rating_given #{a_user.feedbacks.rating_given}"  # I need to figure out how to do this!
+# puts "fb.attribute.attribute_name #{fb.attribute.attribute_name}"
 
 
 feedback_list = [  # 10 votes, from 3 different people, chosen randomly
@@ -75,8 +128,7 @@ feedback_list = [  # 10 votes, from 3 different people, chosen randomly
 ]
 puts "feedback_list: #{feedback_list}"
 
-user = User.find_by(name: "Jane Williams")
-feedback.create!(attribute: "Polished presentation", from_id: user.id, rating_given: 1)
+fb = feedback.create!(from_id: user.id, rating_given: 1)
 
 
 

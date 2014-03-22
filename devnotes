@@ -1,3 +1,6 @@
+source /Users/philgarber/.rvm/scripts/rvm
+
+
 Building 8rate from a rails 3.1, mongoid, devise, bootstrap barebones app
 
 Start with code/8ratev1_pre_theme
@@ -53,4 +56,6 @@ $ rails g controller ProjectAttributes
 $ rails g model ProjectAttribute name:string
 
 change a bunch of things to belongs_to or has_many in the models files
+
+change again...
 
