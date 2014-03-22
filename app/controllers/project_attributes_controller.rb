@@ -1,2 +1,0 @@
-class ProjectAttributesController < ApplicationController
-end

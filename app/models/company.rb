@@ -3,4 +3,5 @@ class Company
   field :domain, type: String
   field :name, type: String
   has_many :projects
+  has_many :users
 end

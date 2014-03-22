@@ -75,18 +75,33 @@ feedback_list = [  # 10 votes, from 3 different people, chosen randomly
 ]
 puts "feedback_list: #{feedback_list}"
 
-feedback_list.each do |from_id, rating_given| 
- users.each { |user| user.attrib.feedback.create!(from_id: from_id, rating_given: rating_given) }
-end
+user = User.find_by(name: "Jane Williams")
+feedback.create!(attribute: "Polished presentation", from_id: user.id, rating_given: 1)
 
+
+
+feedback_list.each do |from_id, rating_given| 
+  users.each { |user| user.attrib.feedback.create!(from_id: from_id, rating_given: rating_given) } # no FB created!
+end
+user = User.find_by(name: "Jane Williams")
+puts "user.name: #{user.name}"
+
+# users don't have attributes:
+# puts "user.attrib.feedback.from_id: #{user.attrib.feedback.from_id}" # fails on undefined method attrib for nilclass
+puts "attrib.feedbacks: #{attrib.feedbacks}"
+# puts "feedback.first.rating_given: #{feedback.first.rating_given}"
 
 # do ratings in crunch_ratings
+
+
 #--------------- Companies ------------------------------
 companies = Company.all
 companies.delete_all
 Company.create!(domain: "example.com", name: "Example" )
 Company.create!(domain: "acme.com", name: "Acme" )
+Company.create!(domain: "apple.com", name: "Apple" )
 puts "COMPANY: #{Company.first.name}"
+# need to put people in those companies:
 
 
 #--------------- Projects ------------------------------
@@ -95,44 +110,44 @@ proj.delete_all
 company = Company.find_by(name: "Example") #Company.where(..) gives the string Company.  use find_by
 puts "in projects, company.name: #{company.name}"
 company.projects.create!(name: "Factory cost reduction")  # why projectS ???
-company.projects.create!(name: "Acquire competitors")  # why projectS ???
+project2 = company.projects.create!(name: "Acquire competitors")  # why projectS ???
+puts "project2.company.name #{project2.company.name }"
 company = Company.find_by(name: "Acme")
-puts "in projects, 2nd company.name: #{company.name}"
+puts "in projects, 2nd project's company.name: #{project2.company.name}"
 company.projects.create!(name: "Factory cost reduction")
 company.projects.create!(name: "Put ExampleCo out of business")
 puts "PROJECT: #{Project.first.name}"
+puts "in projects, 2nd project's company.name is still: #{project2.company.name}"
 
 
-#--------------- ProjectAttributes ------------------------------
-# need to put these attributes on every project, the way I have it
-projectatts = ProjectAttribute.all
-projectatts.delete_all
-
-# is this wrong?
-ProjectAttribute.create!(name: "Strategy")
-ProjectAttribute.create!(name: "Execution")
-puts "ProjectAttribute.first.name: #{ProjectAttribute.first.name}"
-
-projects = Project.all
-projects.each do |project|
-	project.project_attributes.create!(name: "Strategy")
-	project.project_attributes.create!(name: "Execution")
-end
-project=Project.first
-puts "project.project_attribute.first.name #{project.project_attribute.first.name}"
-
+# Get rid of projectattributes
+# projatts = ProjectAttribute.all
+# projatts.delete_all
+# projatts.destroy
 
 #--------------- ProjectFeedbacks ------------------------------
 projfb = ProjectFeedback.all
 projfb.delete_all
 user = User.find_by(name: "Jane Williams")
 puts "in ProjectFeedbacks, user.name: #{user.name}"
-project = Project.find_by(name: "Factory cost reduction")
+company = Company.find_by(name:"Example")
+project = company.projects.find_by(name: "Factory cost reduction")  # which company - BE CAREFUL
+# it will let you do project = project.find_by(name...) but it seems like it leave company ambiguous
 puts "in ProjectFeedbacks, project.name: #{project.name}"
-project_attribute = ProjectAttribute.where(name: "Strategy")
-project.project_attribute.project_feedback.create!(from_id: user.id, rating_given: 8)
-puts "ProjectFeedback.first.name #{ProjectFeedback.first.name}"
+puts "in ProjectFeedbacks, project.company.name: #{project.company.name}"
 
+user.project.project_ratings.create(attribute: "Execution")
+puts "here 0"
+
+pfb = ProjectFeedback.create()
+puts "here 1"
+#pfb.attribute = "Execution"
+puts "here 2"
+#firstfeedback = project.project_feedbacks.new #create()
+puts "here 3"
+#ProjectFeedback.create!(attribute: "Execution", from_id: user.id, rating_given: 8)
+#puts "ProjectFeedback.first.rating_given #{ProjectFeedback.first.rating_given}"
+#puts "project.project_feedback.attribute: #{project.project_feedback.attribute}"
 
 # def make_feedbacks
 #   users = User.all
