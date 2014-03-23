@@ -144,19 +144,20 @@ feedback_list = [ # from_id, attribute object, to_user object
 puts "1"
 
 feedback_list.each do | from_id, attrib_obj, to_user_obj | 
-  #puts "2"
-  fb = feedback.create!(from_id: from_id, rating_given: 1) # why is this not Feedback.create! ??  how does this run?
-  #fb = Feedback.create!(from_id: from_id, rating_given: 1)  # this one runs also
+
+  #fb = feedback.create!(from_id: from_id, rating_given: 1) 
+  #  runs because when I deleted all, I did feedback = Feedback.all, then feedback.delete_all
+
+  fb = Feedback.create!(from_id: from_id, rating_given: 1)  # this one runs also
   #puts "3"
   fb.attribute = attrib_obj
   #puts "4"
   to_user_obj.feedbacks << fb
   #puts "5"
-  # users.each { |user| user.attrib.feedback.create!(from_id: from_id, rating_given: rating_given) } # no FB created!
 end
 
 
-# do ratings in crunch_ratings
+# create ratings in crunch_ratings if I want to do those
 
 
 #--------------- Companies ------------------------------
@@ -211,28 +212,61 @@ puts "company.projects[0].name: #{company.projects[0].name}"  # projects is an a
 
 
 #--------------- ProjectFeedbacks ------------------------------
-projfb = ProjectFeedback.all
-projfb.delete_all
+pfb = ProjectFeedback.all
+puts "pfb.size: #{pfb.size}"
+pfb.delete_all
 
-user = User.find_by(name: "Jane Williams")
-puts "in ProjectFeedbacks, user.name: #{user.name}"
-company = user.company  
+# user = User.find_by(name: "Jane Williams")
+# puts "in ProjectFeedbacks, user.name: #{user.name}"
+# company = user.company  
 
-puts "company.name: #{company.name}"
-# company = Company.find_by(name:"Example")
-project = company.projects.find_by(name: "Factory cost reduction")  
-# it will let you do project = project.find_by(name...) but it seems like it leave company ambiguous
-puts "in ProjectFeedbacks, project.name: #{project.name}"
-puts "in ProjectFeedbacks, project.company.name: #{project.company.name}"
-from_id = User.find_by(name: "Jane Williams").id
-puts "from_id: #{from_id}"
-projfb = ProjectFeedback.create!(attribute: "Execution",  # giving wrong number of arguments (1 for 0)
-				from_id: from_id, rating_given: 8)
-Company.create!(domain: "apple.com", name: "Apple" )
-puts "here doggy"
-project.project_feedbacks << projfb
+# puts "company.name: #{company.name}"
+# # company = Company.find_by(name:"Example")
+# project = company.projects.find_by(name: "Factory cost reduction")  
+# # it will let you do project = project.find_by(name...) but it seems like it leave company ambiguous
+# puts "in ProjectFeedbacks, project.name: #{project.name}"
+# puts "in ProjectFeedbacks, project.company.name: #{project.company.name}"
+# from_id = User.find_by(name: "Jane Williams").id
+# puts "from_id: #{from_id}"
+#projfb = ProjectFeedback.create!(attribute: "Execution",  # giving wrong number of arguments (1 for 0)
+				#from_id: from_id, rating_given: 8)
+# Company.create!(domain: "apple.com", name: "Apple" )
+# puts "here doggy"
+#project.project_feedbacks << projfb
 #user.project.project_ratings.create(attribute: "Execution")
 puts "here 0"
+
+project_feedback_list = [ # from_id, attribute, rating_given, project object
+	[1, "Execution", 8, Project.find_by(name: "Acquire competitors") ],
+	[1, "Strategy", 7, Project.find_by(name: "Acquire competitors") ],
+	[1, "Execution", 6, Project.find_by(name: "Factory cost reduction") ],
+	[1, "Strategy", 5, Project.find_by(name: "Factory cost reduction") ],
+	[1, "Execution", 10, Project.find_by(name: "Refresh website") ],
+	[1, "Strategy", 9, Project.find_by(name: "Refresh website") ],
+	[2, "Execution", 10, Project.find_by(name: "Acquire competitors") ],
+	[2, "Strategy", 9, Project.find_by(name: "Acquire competitors") ],
+	[2, "Execution", 8, Project.find_by(name: "Factory cost reduction") ],
+	[2, "Strategy", 7, Project.find_by(name: "Factory cost reduction") ],
+	[2, "Execution", 6, Project.find_by(name: "Refresh website") ],
+	[2, "Strategy", 5, Project.find_by(name: "Refresh website") ],
+	[3, "Execution", 1, Project.find_by(name: "Acquire competitors") ],
+	[3, "Strategy", 2, Project.find_by(name: "Acquire competitors") ],
+	[3, "Execution", 3, Project.find_by(name: "Factory cost reduction") ],
+	[3, "Strategy", 4, Project.find_by(name: "Factory cost reduction") ],
+	[3, "Execution", 5, Project.find_by(name: "Refresh website") ],
+	[3, "Strategy", 6, Project.find_by(name: "Refresh website") ]
+    ]
+puts "a1"
+
+project_feedback_list.each do | from_id, attribute, rating_given, project | 
+  puts "a2"
+  pfb = ProjectFeedback.create!(from_id: from_id, attribute: attribute, rating_given: rating_given)
+  #projfb = pfb.create!(from_id: from_id, attribute: attribute, rating_given: rating_given)
+  # try pfb = project_feedback.create 
+  puts "a3"
+  project.project_feedbacks << pfb
+  puts "a4"
+end
 
 # pfb = ProjectFeedback.create()
 # puts "here 1"
