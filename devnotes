@@ -59,3 +59,6 @@ change a bunch of things to belongs_to or has_many in the models files
 
 change again...
 
+
+  # user.company = co   # this line isn't getting it done #####################
+  co.users << user  # THIS WORKS AND PREVIOUS LINE DOESNT!!!
