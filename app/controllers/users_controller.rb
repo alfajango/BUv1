@@ -47,7 +47,7 @@ class UsersController < ApplicationController
   	@user = User.new
   end
   
-  def create  # where is this called from?
+  def create  # not getting here
     puts "in users_controller create()"
     @user = User.new(user_params)   
     @companies = Company.all

@@ -68,3 +68,7 @@ change again...
   $ rails g controller Pfeedbacks
   $ rails g model Pfeedback attrib:string from_id:string rating_given:float accounted_for:datetime  # needed to be DateTime?  this gave accounted_for:time
 
+  it works with pfeedback, but not project_feedback model.  No idea why.  Oh well, move on
+
+  TODO: assign ( & create if needed) companies when users sign up
+

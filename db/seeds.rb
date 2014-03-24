@@ -216,26 +216,6 @@ pfb = Pfeedback.all
 puts "pfb.size: #{pfb.size}"
 pfb.delete_all
 
-# user = User.find_by(name: "Jane Williams")
-# puts "in ProjectFeedbacks, user.name: #{user.name}"
-# company = user.company  
-
-# puts "company.name: #{company.name}"
-# # company = Company.find_by(name:"Example")
-# project = company.projects.find_by(name: "Factory cost reduction")  
-# # it will let you do project = project.find_by(name...) but it seems like it leave company ambiguous
-# puts "in ProjectFeedbacks, project.name: #{project.name}"
-# puts "in ProjectFeedbacks, project.company.name: #{project.company.name}"
-# from_id = User.find_by(name: "Jane Williams").id
-# puts "from_id: #{from_id}"
-#projfb = ProjectFeedback.create!(attribute: "Execution",  # giving wrong number of arguments (1 for 0)
-				#from_id: from_id, rating_given: 8)
-# Company.create!(domain: "apple.com", name: "Apple" )
-# puts "here doggy"
-#project.project_feedbacks << projfb
-#user.project.project_ratings.create(attribute: "Execution")
-puts "here 0"
-
 pfeedback_list = [ # from_id, attribute, rating_given, project object
 	[1, "Execution", 8, Project.find_by(name: "Acquire competitors") ],
 	[1, "Strategy", 7, Project.find_by(name: "Acquire competitors") ],
@@ -256,30 +236,12 @@ pfeedback_list = [ # from_id, attribute, rating_given, project object
 	[3, "Execution", 5, Project.find_by(name: "Refresh website") ],
 	[3, "Strategy", 6, Project.find_by(name: "Refresh website") ]
     ]
-puts "a1"
+
 
 pfeedback_list.each do | from_id, attribute, rating_given, project | 
-  puts "a2"
-
   pfb = Pfeedback.create!(from_id: from_id, attribute: attribute, rating_given: rating_given)
   #projfb = pfb.create!(from_id: from_id, attribute: attribute, rating_given: rating_given)
   # try pfb = project_feedback.create 
-  puts "a3"
   project.pfeedbacks << pfb
-  puts "a4"
 end
-
-# pfb = ProjectFeedback.create()
-# puts "here 1"
-# #pfb.attribute = "Execution"
-# puts "here 2"
-# #firstfeedback = project.project_feedbacks.new #create()
-# puts "here 3"
-#ProjectFeedback.create!(attribute: "Execution", from_id: user.id, rating_given: 8)
-#puts "ProjectFeedback.first.rating_given #{ProjectFeedback.first.rating_given}"
-#puts "project.project_feedback.attribute: #{project.project_feedback.attribute}"
-
-
-
-
-
+puts "PFeedbacks"

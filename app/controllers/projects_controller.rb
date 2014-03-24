@@ -20,13 +20,15 @@ class ProjectsController < ApplicationController
     # do I need the next 2 lines?
   	# companies = Company.all
   	# domain_id = CompanyEmployee.find_by(user_id: (current_user.id))  # would now be company_id
-    
+    puts "in projects_controller create"
     @project = Project.new(project_params)
     if @project.save
+      puts "in if @project.save"
       flash[:success] = "Project / Strategy / Effort created succesfully!  You and your colleagues can now weigh in"
       project_id = @project.id
       redirect_to '/projects/'+project_id.to_s   # @user   # todo: set this to rate the project once that exists
     else
+      puts "in else - couldn't @project.save"
       render 'new'
     end
   end    
