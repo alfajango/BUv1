@@ -1,0 +1,2 @@
+class PfeedbacksController < ApplicationController
+end

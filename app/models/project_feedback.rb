@@ -1,6 +1,6 @@
 class ProjectFeedback
   include Mongoid::Document
-  field :from_id #, type: String  # my id's are no longer integers
+  field :from_id , type: String #ObjectId?  # my id's are no longer integers
   field :attribute, type: String
   #field :to_project_id, type: Integer
   #field :project_attribute_identifier, type: Integer

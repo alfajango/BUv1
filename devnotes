@@ -62,3 +62,9 @@ change again...
 
   # user.company = co   # this line isn't getting it done #####################
   co.users << user  # THIS WORKS AND PREVIOUS LINE DOESNT!!!
+  A user belongs to a company, so I guess you have to assign as co.users << user
+
+  can't get ProjectFeedback to work.  Try generating again, slight different name:
+  $ rails g controller Pfeedbacks
+  $ rails g model Pfeedback attrib:string from_id:string rating_given:float accounted_for:datetime  # needed to be DateTime?  this gave accounted_for:time
+

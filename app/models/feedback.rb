@@ -1,6 +1,6 @@
 class Feedback
   include Mongoid::Document
-  field :from_id, type: Integer
+  field :from_id, type: String  #ObjectId?  Binary?
   #field :to_id, type: Integer
   #field :attribute_identifier, type: String
   field :rating_given, type: Float

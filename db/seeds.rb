@@ -211,8 +211,8 @@ puts "company.projects[0].name: #{company.projects[0].name}"  # projects is an a
 # puts "in projects, 2nd project's company.name is still: #{project2.company.name}"
 
 
-#--------------- ProjectFeedbacks ------------------------------
-pfb = ProjectFeedback.all
+#--------------- Pfeedbacks ------------------------------
+pfb = Pfeedback.all
 puts "pfb.size: #{pfb.size}"
 pfb.delete_all
 
@@ -236,7 +236,7 @@ pfb.delete_all
 #user.project.project_ratings.create(attribute: "Execution")
 puts "here 0"
 
-project_feedback_list = [ # from_id, attribute, rating_given, project object
+pfeedback_list = [ # from_id, attribute, rating_given, project object
 	[1, "Execution", 8, Project.find_by(name: "Acquire competitors") ],
 	[1, "Strategy", 7, Project.find_by(name: "Acquire competitors") ],
 	[1, "Execution", 6, Project.find_by(name: "Factory cost reduction") ],
@@ -258,13 +258,14 @@ project_feedback_list = [ # from_id, attribute, rating_given, project object
     ]
 puts "a1"
 
-project_feedback_list.each do | from_id, attribute, rating_given, project | 
+pfeedback_list.each do | from_id, attribute, rating_given, project | 
   puts "a2"
-  pfb = ProjectFeedback.create!(from_id: from_id, attribute: attribute, rating_given: rating_given)
+
+  pfb = Pfeedback.create!(from_id: from_id, attribute: attribute, rating_given: rating_given)
   #projfb = pfb.create!(from_id: from_id, attribute: attribute, rating_given: rating_given)
   # try pfb = project_feedback.create 
   puts "a3"
-  project.project_feedbacks << pfb
+  project.pfeedbacks << pfb
   puts "a4"
 end
 
