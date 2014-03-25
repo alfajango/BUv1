@@ -11,14 +11,13 @@
   <body>
     <!-- <header> -->
       <%= render 'layouts/header' %> 
-      <!-- <%#= render 'layouts/navigation' %> --> <!-- little header -->
+      <%#= render 'layouts/navigation' %>  <!-- little header -->
     <!-- </header> -->
     <!-- <body> -->
-       <%= render 'layouts/messages' %>
+       <%#= render 'layouts/messages' %> <%# todo: put this back in, and get it out from under navbar %>
        <%= yield %> <!-- yields to home/index.html.erb -->
-       <%= debug(params) if Rails.env.development? %>
        <%= render 'layouts/footer' %>
-
+       <%= debug(params) if Rails.env.development? %>
     </body>
 <!--   </body> -->
 

@@ -21,6 +21,7 @@ class ProjectsController < ApplicationController
   	# companies = Company.all
   	# domain_id = CompanyEmployee.find_by(user_id: (current_user.id))  # would now be company_id
     puts "in projects_controller create"
+    #@project = Project.new(project_params)
     @project = Project.new(project_params)
     if @project.save
       puts "in if @project.save"
@@ -36,7 +37,14 @@ class ProjectsController < ApplicationController
   private
 
     def project_params
-      params.require(:project).permit(:name, :company_id)
+      puts "params[:project][:company_id]: #{params[:project][:company_id]}"  # correct
+      pparam[:name] = params[:project][:name]
+      # does this work, or do I need to assign company & proj, then do company.projects << proj ??
+      pparam[:company_id] = params[:project][:company_id]
+      puts "2nd pparam: #{pparam}"
+      #params.require(:project).permit(:name, :company_id)
+      return pparam
+
     end
 
 end

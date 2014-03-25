@@ -1,5 +1,5 @@
 // import the CSS framework
-@import "bootstrap";
+//@import "bootstrap";  // PG: if this is in, then my Mist navbar styling doesnt show up
 
 // make all images responsive by default
 img {
@@ -7,9 +7,9 @@ img {
   margin: 0 auto;
   }
 // override for the 'Home' navigation link
-.navbar-brand {
-  font-size: inherit;
-  }
+//.navbar-brand {
+//  font-size: inherit;
+//  }
 
 // THESE ARE EXAMPLES YOU CAN MODIFY
 // create your own classes

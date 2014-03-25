@@ -3,7 +3,7 @@ module ProjectHelper
 	def histogram_project_data(target_project_id, target_project_attribute)
 	  @proj_hist_data = { "1" => 0, "2" => 0, "3" => 0, "4" => 0, "5" => 0, "6" => 0, "7" => 0, "8" => 0, "9" => 0, "10" => 0}
   	  @proj_hist_has_data = 0 
-  	  relevant_data = ProjectFeedback.where(to_project_id: target_project_id, 
+  	  relevant_data = Pfeedback.where(to_project_id: target_project_id, 
 	  							project_attribute_identifier: target_project_attribute)
 	  relevant_data.each do |feedback|
 	  	@proj_hist_data[ feedback.rating_given ] = @proj_hist_data[ feedback.rating_given ].to_i + 1

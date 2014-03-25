@@ -11,27 +11,29 @@
         <!-- this is the main section -->
         <div class="well well-sm">
           <% project = Project.find_by(id: params[:id]) %>  
-          <p><b><%= project.name + " | " + Company.find_by(id: project.company_id).name %> </b></p>
+          <p><b><%= project.name  %> </b></p> <%# #+ " | " + current_user.comany.name todo: put this back %>
 
           <%# put these two back in once we have ProjectRating table %>
           <%# graph_project_data(project.id) %>  <%# get all the attributes for this project and load into @show_project_attributes %>
           <%#= bar_chart @show_project_attributes, :height => "250px"%> <%# call chartkick %>
           <b>Strategy</b>
-          <% histogram_project_data(project.id, "1") %> <%# set @proj_hist_data for first attrib%>  
-          <% if @proj_hist_has_data > 0 %>
-            <%= column_chart @proj_hist_data, :height => "250px" %> <%# chartkick pseudo-histogram %>        
-          <% else %>
-            <br><%= project.name + " has not yet received any feedback" %><br><p></p>
-          <% end %>  
+          <%# histogram_project_data(project.id, "1") %> <%# set @proj_hist_data for first attrib%>  
+          <%# if @proj_hist_has_data > 0 %>
+            <%#= column_chart @proj_hist_data, :height => "250px" %> <%# chartkick pseudo-histogram %>        
+          <%# else %>
+            <br> placeholder text 
+            <br><%#= project.name + " has not yet received any feedback or function isn't implemented yet" %><br><p></p>
+          <%# end %>  
 
           <b>Execution</b>
-          <% histogram_project_data(project.id, "2") %> <%# set @proj_hist_data for second attrib%>  
-          <% if @proj_hist_has_data > 0 %>
-            <%= column_chart @proj_hist_data, :height => "250px" %> <%# chartkick pseudo-histogram %>
-          <% else %>
+          <%# histogram_project_data(project.id, "2") %> <%# set @proj_hist_data for second attrib%>  
+          <%# if @proj_hist_has_data > 0 %>
+            <%#= column_chart @proj_hist_data, :height => "250px" %> <%# chartkick pseudo-histogram %>
+          <%# else %>
+            <br>placeholder text2
             <br>
-            <%= project.name + " has not yet received any  feedback" %>
-          <% end %>  
+            <%#= project.name + " has not yet received any  feedback or function insn't implemented yet" %>
+          <%# end %>  
         </div>
 
 
@@ -83,7 +85,7 @@
                 <%= submit_tag("Submit rating feedback", :class=>"btn btn-success", :onclick => "return validateform(#{@variable});") %>
               <%end%>  <%# end form tag do %>
 
-              <% all_attributes = ProjectAttribute.all %>
+              <%# all_attributes = ProjectAttribute.all %>
             </div>
           </div>
         </div> 

@@ -18,7 +18,7 @@
         	<%= render @projects %><%# renders _project.html.erb and passes the project%>
         </ul>
         <%#= will_paginate %> 
-
+        <br>
         <% if @projects.size.to_i < 1 %>
           <div class="well well-sm"> <b> No projects created for your company yet. </b></div>
         <% end %> 
@@ -29,8 +29,9 @@
               <%#= render 'shared/error_messages', object: f.object %>
               <h4>Create a new project.  Enter project name:</h4>
               <%= f.text_field :name %>
-              Use the official project name.  Do not editorialize or feedback will be biased.
-              <%= f.hidden_field :company_id, :value => current_user.company.id %>
+              <br>
+              Use the official project name.  Do not editorialize or feedback will be biased. <br>
+              <%= f.hidden_field :company_id, :value => current_user.company.id %><br>
               <%= f.submit "Create the project", class: "btn btn-large btn-primary" %>
             <% end %>
 <!--           </div>

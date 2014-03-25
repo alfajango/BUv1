@@ -36,9 +36,9 @@ html {
   overflow-y: scroll;
 }
 
-body {  /* this doesn't get called because body in custom1.css overrules it */
-  padding-top: 30px;  /* PG: move the body down some */
-}
+// body {  /* this doesn't get called because body in custom1.css overrules it */
+//   padding-top: 00px;  /* PG: move the body down some - smaller number is farther down ??*/
+// }  
 
 section {
   overflow: auto;

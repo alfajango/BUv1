@@ -48,7 +48,7 @@ class UsersController < ApplicationController
   end
   
   def create  # not getting here
-    puts "in users_controller create()"
+    puts "in users_controller create"
     @user = User.new(user_params)   
     @companies = Company.all
     domain = @user.email.split("@").last

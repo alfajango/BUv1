@@ -5,6 +5,7 @@ Rails3MongoidDevise::Application.routes.draw do
   root :to => "home#index"
   devise_for :users
   resources :users
+  resources :projects
 
   # from BUv2
   #root 'users#home'  # caused an error
@@ -19,6 +20,7 @@ Rails3MongoidDevise::Application.routes.draw do
   match 'feedbacks/complete/:id', to: 'feedbacks#complete', via: 'post' 
   match 'feedbacks/slider_complete/:id', to: 'feedbacks#slider_complete', via: 'post' 
   match '/myfeedback', to: 'users#myfeedback',  via: 'get'
+  match '/newproject', to: 'projects#new',      via: 'get'  # I think this is wrong
   match '/newproject', to: 'projects#new',      via: 'post'  # improve this
   match '/projects', to: 'projects#index',      via: 'get'  # I think if resources :projects is working, I shouldn't need this
 
@@ -36,3 +38,12 @@ Rails3MongoidDevise::Application.routes.draw do
 
 
 end
+
+# # reources :users    gives:
+# GET /users  index users_path  page to list all users
+# GET /users/1  show  user_path(user) page to show user
+# GET /users/new  new new_user_path page to make a new user (signup)
+# POST  /users  create  users_path  create a new user
+# GET /users/1/edit edit  edit_user_path(user)  page to edit user with id 1
+# PATCH /users/1  update  user_path(user) update user
+# DELETE  /users/1  destroy user_path(user) delete user

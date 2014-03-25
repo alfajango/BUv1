@@ -72,3 +72,6 @@ change again...
 
   TODO: assign ( & create if needed) companies when users sign up
 
+  framework_and_overrides.css - importing bootstrap here was killing my Mist navbar styling, and some other styling
+
+the view for signin is not in my files, so: $ rails generate devise:views 

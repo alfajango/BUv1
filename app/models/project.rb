@@ -6,4 +6,6 @@ class Project
   #has_many :project_feedbacks
   has_many :pfeedbacks
   has_many :project_ratings
+
+  # todo: set permissions here?
 end
