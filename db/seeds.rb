@@ -188,13 +188,16 @@ proj = Project.create!(name: "Factory cost reduction")
 company.projects << proj
 proj = Project.create!(name: "Refresh website")
 company.projects << proj
+
 company = Company.find_by(name: "Acme")
 company.projects << proj  # Acme will also refresh their website
 proj = Project.create!(name: "acquire ExxonMobil")
 company.projects << proj
+
 company = Company.find_by(name: "Apple")
 proj = Project.create!(name: "bigger iPhone")
 company.projects << proj
+
 puts "company.projects[0].name: #{company.projects[0].name}"  # projects is an array
 
 # OLD CODE:

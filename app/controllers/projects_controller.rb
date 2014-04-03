@@ -38,11 +38,12 @@ class ProjectsController < ApplicationController
 
     def project_params
       puts "params[:project][:company_id]: #{params[:project][:company_id]}"  # correct
+      puts "params[:project][:name]: #{params[:project][:name]}"  # correct
+      pparam = {}   # define it as a hash so it doesn't think it's an array!
       pparam[:name] = params[:project][:name]
-      # does this work, or do I need to assign company & proj, then do company.projects << proj ??
+      puts "pparam: #{pparam}"
       pparam[:company_id] = params[:project][:company_id]
       puts "2nd pparam: #{pparam}"
-      #params.require(:project).permit(:name, :company_id)
       return pparam
 
     end
