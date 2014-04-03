@@ -3,7 +3,8 @@ Rails3MongoidDevise::Application.routes.draw do
     root :to => 'home#index'
   end
   root :to => "home#index"
-  devise_for :users
+  devise_for :users, 
+             :controllers => { :registrations => "devise/my_devise/registrations" }
   resources :users
   resources :projects
 
@@ -19,6 +20,8 @@ Rails3MongoidDevise::Application.routes.draw do
   match '/give_feedback', to: 'feedbacks#give_feedback', via: 'get'
   match 'feedbacks/complete/:id', to: 'feedbacks#complete', via: 'post' 
   match 'feedbacks/slider_complete/:id', to: 'feedbacks#slider_complete', via: 'post' 
+  match 'pfeedbacks/pslider_complete/:id', to: 'pfeedbacks#pslider_complete', via: 'post' 
+
   match '/myfeedback', to: 'users#myfeedback',  via: 'get'
   match '/newproject', to: 'projects#new',      via: 'get'  # I think this is wrong
   match '/newproject', to: 'projects#new',      via: 'post'  # improve this

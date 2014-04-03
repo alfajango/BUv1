@@ -23,15 +23,12 @@ puts 'DEFAULT USERS'
 user = User.create! :name => ENV['ADMIN_NAME'].dup, :email => ENV['ADMIN_EMAIL'].dup, 
 			:password => ENV['ADMIN_PASSWORD'].dup, 
 			:password_confirmation => ENV['ADMIN_PASSWORD'].dup			
-puts 'user: ' << user.name
 User.create!(name: "Jane Williams", email: "jwilliams@example.com", password: "password", 
 			password_confirmation: "password")
-temp_user = User.find_by(name: "Jane Williams")
-puts "temp_user.id: #{temp_user.id}"
+#temp_user = User.find_by(name: "Jane Williams")
 User.create!(name: "Bill Jones", email: "bjones@example.com", password: "password", 
 			password_confirmation: "password")
-temp_user = User.find_by(name: "Bill Jones")
-puts "temp_user.id: #{temp_user.id}"
+#temp_user = User.find_by(name: "Bill Jones")
 User.create!(name: "Beth Hillman", email: "bhillman@example.com", password: "password", 
 			password_confirmation: "password")
 User.create!(name: "Trevor Carawell", email: "tcarawell@example.com", password: "password", 
@@ -175,6 +172,8 @@ users.each do | user |
   # user.company = co   # this line isn't getting it done #####################
   co.users << user  # THIS WORKS AND PREVIOUS LINE DOESNT!!!
 end
+
+
 
 
 

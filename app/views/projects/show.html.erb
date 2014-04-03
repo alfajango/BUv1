@@ -53,7 +53,8 @@
             </div>
             <div class="col-md-5">
 
-              <%= form_tag("/feedbacks/slider_complete/"+params[:id],  :method => "post", :remote => true) do %> 
+              <%= form_tag("/pfeedbacks/pslider_complete/"+params[:id],  :method => "post", :remote => true) do %> 
+              <%= puts "in form_tag .. do" %>
 
                 <b>Strategy:</b> <span id="strategyRange">No Rating</span>
                 <input type="range" min="0" max="10" value="0" step="1" onchange="strategyValue(this.value)" name="strategyScore" />  
@@ -82,7 +83,7 @@
                 </script>
                 
                 <p></p>
-                <%= submit_tag("Submit rating feedback", :class=>"btn btn-success", :onclick => "return validateform(#{@variable});") %>
+                <%= submit_tag("Submit rating feedback", :class=>"btn btn-success", :onclick => "return validateform(#{@variable});") %> <%# what is this return validateform... ? %>
               <%end%>  <%# end form tag do %>
 
               <%# all_attributes = ProjectAttribute.all %>

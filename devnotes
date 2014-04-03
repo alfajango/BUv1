@@ -74,4 +74,5 @@ change again...
 
   framework_and_overrides.css - importing bootstrap here was killing my Mist navbar styling, and some other styling
 
-the view for signin is not in my files, so: $ rails generate devise:views 
+the view for signin is not in my files, so: $ rails generate devise:views
+now, the RegistrationsController whose create method gets called when I create new user is also not in the files.   
