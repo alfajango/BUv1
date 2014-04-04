@@ -41,13 +41,73 @@ User.create!(name: "Trevor Carawell", email: "tcarawell@example.com", password: 
 attrib = Attribute.all
 attrib.delete_all
 
-attribute_list = [
-	[ "Polished presentation", "posattrib", 1 ],
-	[ "Deflects credit", "posattrib", 2 ],
-	[ "Works hard", "posattrib", 3 ],
-	[ "Great leader", "posattrib", 4 ],
-	[ "Need to improve at communication", "constructive", 5 ],
+# name, category, identifier
+sentence_list = [
+	[ "is the best at technical knowledge", "posattrib", 1 ],
+	[ "is the best at communication", "posattrib", 2 ],
+	[ "is the best at leadership", "posattrib", 3 ],
+	[ "is the best at hiring", "posattrib", 4 ],
+	[ "is the best at management", "posattrib", 5 ],
+	[ "has the most job knowledge", "posattrib", 6 ],
+	[ "has the most job experience", "posattrib", 7 ],
+	[ "has achieved the most", "posattrib", 8 ],
+	[ "is the best at self marketing", "posattrib", 9 ],
+	[ "is the best at presenting", "posattrib", 10 ],
+
+	[ "is great at technical knowledge", "posattrib", 11 ],
+	[ "is great at communication", "posattrib", 12 ],
+	[ "is great at leadership", "posattrib", 13 ],
+	[ "is great at hiring", "posattrib", 14 ],
+	[ "is great at management", "posattrib", 15 ],
+	[ "has great job knowledge", "posattrib", 16 ],
+	[ "has great job experience", "posattrib", 17 ],
+	[ "has great achievements", "posattrib", 18 ],
+	[ "is great at self marketing", "posattrib", 19 ],
+	[ "is great at presenting", "posattrib", 20 ],
+
+	[ "is competent at technical knowledge", "constructive", 21 ],
+	[ "is competent at communication", "constructive", 22 ],
+	[ "is competent at leadership", "constructive", 23 ],
+	[ "is competent at hiring", "constructive", 24 ],
+	[ "is competent at management", "constructive", 25 ],
+	[ "has some job knowledge", "constructive", 26 ],
+	[ "has some job experience", "constructive", 27 ],
+	[ "has some achievements", "constructive", 28 ],
+	[ "is competent at self marketing", "constructive", 29 ],
+	[ "is competent at presenting", "constructive", 30 ],
+
+	[ "is improving at technical knowledge", "constructive", 31 ],
+	[ "is improving at communication", "constructive", 32 ],
+	[ "is improving at leadership", "constructive", 33 ],
+	[ "is improving at hiring", "constructive", 34 ],
+	[ "is improving at management", "constructive", 35 ],
+	[ "is improving job knowledge", "constructive", 36 ],
+	[ "is improving job experience", "constructive", 37 ],
+	[ "is improving achievements", "constructive", 38 ],
+	[ "is improving at self marketing", "constructive", 39 ],
+	[ "is improving at presenting", "constructive", 40 ],
+
+	[ "is poor at technical knowledge", "alert", 41 ],
+	[ "is poor at communication", "alert", 42 ],
+	[ "is poor at leadership", "alert", 43 ],
+	[ "is poor at hiring", "alert", 44 ],
+	[ "is poor at management", "alert", 45 ],
+	[ "has poor job knowledge", "alert", 46 ],
+	[ "has poor job experience", "alert", 47 ],
+	[ "has poor achievements", "alert", 348 ],
+	[ "is poor at self marketing", "alert", 49 ],
+	[ "is poor at presenting", "alert", 50 ],
+
+	
 ]
+
+# attribute_list = [
+# 	[ "Polished presentation", "posattrib", 1 ],
+# 	[ "Deflects credit", "posattrib", 2 ],
+# 	[ "Works hard", "posattrib", 3 ],
+# 	[ "Great leader", "posattrib", 4 ],
+# 	[ "Need to improve at communication", "constructive", 5 ],
+# ]
 
 puts 'ATTRIBUTES'
 attribute_list.each do |attribute_name, category, identifier|
