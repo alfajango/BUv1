@@ -98,7 +98,7 @@ sentence_list = [
 	[ "is poor at self marketing", "alert", 49 ],
 	[ "is poor at presenting", "alert", 50 ],
 
-	
+
 ]
 
 # attribute_list = [
@@ -110,7 +110,7 @@ sentence_list = [
 # ]
 
 puts 'ATTRIBUTES'
-attribute_list.each do |attribute_name, category, identifier|
+sentence_list.each do |attribute_name, category, identifier|
   Attribute.create!(  attribute_name: attribute_name, 
                   category: category, identifier: identifier )
 end

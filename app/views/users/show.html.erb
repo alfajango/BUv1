@@ -26,9 +26,7 @@
         <div class="well well-sm">
           <h4>Give feedback for <%= @user.name %></h4>
           
-
-
-          Search: <input ng-model="query">
+          <!-- Search: <input ng-model="query">
           <div ng-controller="List">
             <ul>
               <li ng-repeat="name in names | filter:query ">{{name}}</li>
@@ -36,12 +34,36 @@
           </div>
           <script>
             var List = function ($scope) {
-              $scope.names = ["Tom", "jeffrey", "Phil", "Mark"];
+              $scope.names = ["Tom", "Jeffrey", "Phil", "Mark", "Paul"];
+            }
+          </script>  -->
+
+          <% @attributes = Attribute.all %>  <%# this should be in controller but it's not going there%>
+
+          <%# from http://codequizzes.wordpress.com/2013/06/06/rails-javascript-workflow-rendering-javascript-partials/ %>
+          <%= content_tag :div, class: "attributes_class", data: {attributes: @attributes} do %>
+          <% end %>
+
+          <%= @attributes.first.attribute_name %><br>
+
+          Write feedback: <input ng-model="query">
+          <div ng-controller="List">
+            <ul>
+              <li ng-repeat="attrib in attribs | filter:query ">{{attrib}}</li>
+            </ul>
+          </div>
+          <script>
+            var List = function ($scope) {
+              // $('.attributes_class').data('attributes')[1].attribute_name    gives "is the best at managment"
+              var arrayLength = $('.attributes_class').data('attributes').length;
+              $scope.attribs = [];
+              for (var i = 0; i < arrayLength; i++) {
+                $scope.attribs.push($('.attributes_class').data('attributes')[i].attribute_name);
+              }
+
+              // $scope.attribs = ["Tom", "Jeffrey", "Phil", "Mark", "Paul"];
             }
           </script>
-
-
-
         </div>
 
 
