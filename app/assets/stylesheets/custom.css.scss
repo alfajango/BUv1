@@ -17,6 +17,11 @@ $blue:                  #0101DF;
 
 /* mixins, variables, etc */
 
+.colleage_attribs { /* PG, for formatting the presentation of colleage attributes to select from */
+  display: inline;
+  /* color: #999 */  /* just to see if this CSS is working */
+}
+
 .alignright {   /* need .alignright, not just alignright */
   float: right;
 }

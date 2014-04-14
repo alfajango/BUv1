@@ -23,7 +23,7 @@
             <%#= user.name + " has not yet received any attribute feedback" %>
           <%# end %>  
         </div>
-        <div class="well well-sm">
+        <div class="well well-sm" id="colleaguedDisplay">
           <h4>Give feedback for <%= @user.name %></h4>
           
           <!-- Search: <input ng-model="query">
@@ -44,21 +44,53 @@
           <%= content_tag :div, class: "attributes_class", data: {attributes: @attributes} do %>
           <% end %>
 
-          <%= @attributes.first.attribute_name %><br>
+          <%#= @attributes.first.attribute_name %><br>
+
+
+          <%############# first, set up a js link and on click, create a feedback ######## %>
+
+          <script>
+            var anarray = ["Phil", "Joe", "Mike"];
+
+          </script>
+          
+          <script>
+          
+            var a = document.createElement('a');
+            var linkText = document.createTextNode("my title text");
+            var fbdiv = document.getElementById("colleaguedDisplay")
+            a.appendChild(linkText);
+            a.title = "my title text";
+            a.href = "http://example.com";
+            fbdiv.appendChild(a);
+
+          </script>
+
+          <%############# ####################################################### ######## %>
 
           Write feedback: <input ng-model="query">
-          <div ng-controller="List">
+          <div ng-controller="List" class="colleage_attribs">
             <ul>
-              <li ng-repeat="attrib in attribs | filter:query ">{{attrib}}</li>
+              <li ng-repeat="attrib in attribs | filter:query ">
+                <!-- {{attrib.attribute_name}} -->
+                <div ng-switch on="attrib.category">
+                  <span ng-switch-when="posattrib">{{attrib.attribute_name}} | Public</span>
+                  <span ng-switch-when="constructive">{{attrib.attribute_name}} | Employee and Manager</span>
+                  <span ng-switch-when="alert">{{attrib.attribute_name}} | Manager only</span>
+                  <span ng-switch-default></span>
+                </div>
+              <%# it's not JSON, but attrib.attribute_name works fine %>
             </ul>
           </div>
-          <script>
+
+          <%# puts seeded attributes into $scope.attribs array %>
+          <script>  
             var List = function ($scope) {
               // $('.attributes_class').data('attributes')[1].attribute_name    gives "is the best at managment"
               var arrayLength = $('.attributes_class').data('attributes').length;
               $scope.attribs = [];
               for (var i = 0; i < arrayLength; i++) {
-                $scope.attribs.push($('.attributes_class').data('attributes')[i].attribute_name);
+                $scope.attribs.push($('.attributes_class').data('attributes')[i]);
               }
 
               // $scope.attribs = ["Tom", "Jeffrey", "Phil", "Mark", "Paul"];

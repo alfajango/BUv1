@@ -41,7 +41,7 @@ User.create!(name: "Trevor Carawell", email: "tcarawell@example.com", password: 
 attrib = Attribute.all
 attrib.delete_all
 
-# name, category, identifier
+# attributge_name, category, identifier
 sentence_list = [
 	[ "is the best at technical knowledge", "posattrib", 1 ],
 	[ "is the best at communication", "posattrib", 2 ],
