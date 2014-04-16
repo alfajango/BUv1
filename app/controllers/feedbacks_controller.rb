@@ -11,8 +11,23 @@ class FeedbacksController < ApplicationController
   # end
 
   def new
-  	@relationship = Relationship.new
+    puts "in FeedbacksController new action"
+    @feedback = Feedback.new
+  	# @relationship = Relationship.new
   end
+
+  def attribute_selected
+    put "in feedbacks_controller attribute_selected"
+    #@attribute=Attribute.all
+    puts "params: #{params}"
+    attrib_obj = params[:attribute] # ??
+    to_user = params[:user] # fix
+    to_user = User.find(params[:id])
+    fb = Feedback.create!(from_id: from_id, rating_given: 1)  
+    fb.attribute = attrib_obj
+    to_user.feedbacks << fb
+  end
+
 
   def complete
     puts "in complete"
