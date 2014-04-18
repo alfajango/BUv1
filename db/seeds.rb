@@ -33,6 +33,8 @@ User.create!(name: "Beth Hillman", email: "bhillman@example.com", password: "pas
 			password_confirmation: "password")
 User.create!(name: "Trevor Carawell", email: "tcarawell@example.com", password: "password", 
 			password_confirmation: "password")
+User.create!(name: "Phil Garber", email: "phil@example.com", password: "password", 
+			password_confirmation: "password")
 # end
 
 
@@ -101,14 +103,6 @@ sentence_list = [
 
 ]
 
-# attribute_list = [
-# 	[ "Polished presentation", "posattrib", 1 ],
-# 	[ "Deflects credit", "posattrib", 2 ],
-# 	[ "Works hard", "posattrib", 3 ],
-# 	[ "Great leader", "posattrib", 4 ],
-# 	[ "Need to improve at communication", "constructive", 5 ],
-# ]
-
 puts 'ATTRIBUTES'
 sentence_list.each do |attribute_name, category, identifier|
   Attribute.create!(  attribute_name: attribute_name, 
@@ -176,39 +170,39 @@ feedback.delete_all
 ##############  THE PROCEEDING WORKS #######################
 
 
-#feedback_list = [ 1, 1, 1, 2, 2, 2, 3, 3, 3 ]
-feedback_list = [ # from_id, attribute object, to_user object
-	[1, Attribute.find_by(identifier: 1), User.find_by(name: "Jane Williams") ],
-	[1, Attribute.find_by(identifier: 2), User.find_by(name: "Jane Williams") ],
-	[1, Attribute.find_by(identifier: 3), User.find_by(name: "Jane Williams") ],
-	[1, Attribute.find_by(identifier: 4), User.find_by(name: "Jane Williams") ],
-	[1, Attribute.find_by(identifier: 1), User.find_by(name: "Bill Jones") ],
-	[1, Attribute.find_by(identifier: 2), User.find_by(name: "Bill Jones") ],
-	[1, Attribute.find_by(identifier: 3), User.find_by(name: "Bill Jones") ],
-	[1, Attribute.find_by(identifier: 4), User.find_by(name: "Bill Jones") ],		 
-	[1, Attribute.find_by(identifier: 5), User.find_by(name: "Bill Jones") ],		
-	[2, Attribute.find_by(identifier: 3), User.find_by(name: "Bill Jones") ],
-	[2, Attribute.find_by(identifier: 4), User.find_by(name: "Bill Jones") ],		 
-	[2, Attribute.find_by(identifier: 5), User.find_by(name: "Bill Jones") ],
-	[3, Attribute.find_by(identifier: 1), User.find_by(name: "Jane Williams") ],
-	[3, Attribute.find_by(identifier: 2), User.find_by(name: "Jane Williams") ],
-	[3, Attribute.find_by(identifier: 3), User.find_by(name: "Jane Williams") ],
-	[3, Attribute.find_by(identifier: 4), User.find_by(name: "Jane Williams") ],
-	[3, Attribute.find_by(identifier: 1), User.find_by(name: "Bill Jones") ],
-	[3, Attribute.find_by(identifier: 2), User.find_by(name: "Bill Jones") ],
-	[3, Attribute.find_by(identifier: 3), User.find_by(name: "Bill Jones") ]
+
+feedback_list = [ # from_email, attribute object, to_user object
+	["tcarawell@example.com", Attribute.find_by(identifier: 1), User.find_by(name: "Jane Williams") ],
+	["tcarawell@example.com", Attribute.find_by(identifier: 2), User.find_by(name: "Jane Williams") ],
+	["tcarawell@example.com", Attribute.find_by(identifier: 3), User.find_by(name: "Jane Williams") ],
+	["tcarawell@example.com", Attribute.find_by(identifier: 4), User.find_by(name: "Jane Williams") ],
+	["tcarawell@example.com", Attribute.find_by(identifier: 1), User.find_by(name: "Bill Jones") ],
+	["tcarawell@example.com", Attribute.find_by(identifier: 2), User.find_by(name: "Bill Jones") ],
+	["tcarawell@example.com", Attribute.find_by(identifier: 3), User.find_by(name: "Bill Jones") ],
+	["tcarawell@example.com", Attribute.find_by(identifier: 4), User.find_by(name: "Bill Jones") ],		 
+	["tcarawell@example.com", Attribute.find_by(identifier: 5), User.find_by(name: "Bill Jones") ],		
+	["tcarawell@example.com", Attribute.find_by(identifier: 3), User.find_by(name: "Bill Jones") ],
+	["tcarawell@example.com", Attribute.find_by(identifier: 4), User.find_by(name: "Bill Jones") ],		 
+	["tcarawell@example.com", Attribute.find_by(identifier: 5), User.find_by(name: "Bill Jones") ],
+	["tcarawell@example.com", Attribute.find_by(identifier: 1), User.find_by(name: "Jane Williams") ],
+	["tcarawell@example.com", Attribute.find_by(identifier: 2), User.find_by(name: "Jane Williams") ],
+	["tcarawell@example.com", Attribute.find_by(identifier: 3), User.find_by(name: "Jane Williams") ],
+	["tcarawell@example.com", Attribute.find_by(identifier: 4), User.find_by(name: "Jane Williams") ],
+	["tcarawell@example.com", Attribute.find_by(identifier: 1), User.find_by(name: "Bill Jones") ],
+	["tcarawell@example.com", Attribute.find_by(identifier: 2), User.find_by(name: "Bill Jones") ],
+	["tcarawell@example.com", Attribute.find_by(identifier: 3), User.find_by(name: "Bill Jones") ]
     ]
 puts "1"
 
-feedback_list.each do | from_id, attrib_obj, to_user_obj | 
+feedback_list.each do | from_email, attrib_obj, to_user_obj | 
 
   #fb = feedback.create!(from_id: from_id, rating_given: 1) 
   #  runs because when I deleted all, I did feedback = Feedback.all, then feedback.delete_all
-
-  fb = Feedback.create!(from_id: from_id, rating_given: 1)  # this one runs also
+  from_id = User.find_by(email: from_email).id
+  fb = Feedback.create!(from_id: from_id, rating_given: 1)  
   #puts "3"
   fb.attribute = attrib_obj
-  #puts "4"
+  # puts "fb.attribute.attribute_name: #{fb.attribute.attribute_name} "
   to_user_obj.feedbacks << fb
   #puts "5"
 end

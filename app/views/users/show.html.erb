@@ -15,7 +15,36 @@
         <!-- this is the main section -->
         <div class="well well-sm">
           <% user = set_user(params) #User.find_by(id: params[:id]) %>  
-          <p><b><%= user.name + " | " + user.email %> </b></p>
+          <p><b><%= user.name %></b> | <%=user.email %></p>
+
+          <%# last works, first doesnt' %>
+          <%= @users_feedback.last.attribute.attribute_name %> <%# just an example that works %>
+
+
+          <p>Positive feedback received: </p>
+          <ul>
+            <% @users_fb_array.each { |fb| puts fb }%>
+              <li>
+
+          </ul>
+
+          <p>Positive feedback received: </p>
+          <ul>
+            <% @users_feedback.each do |fb| %>
+              <li>
+              <% if fb.attribute %> <%# sometimes this doesn't exist ??? %>
+                <%= fb.attribute.attribute_name %>
+              <% end %>
+              <%= fb.rating_given %>
+             <%#= fb.attribute.attribute_name %>
+             </li>
+            <% end %>
+          </ul>
+
+
+          <!-- <div ng-controller="List" class="colleague_attribs"> <%# ???? %> -->
+
+
           <%# graph_data(@user.id) %>  <%# get the top 5 attributes for this user and set them in @show_attributes %>
           <%# if @show_attributes.any? %>
             <%#= bar_chart @show_attributes, :height => "200px"%> <%# call chartkick %>
@@ -69,7 +98,7 @@
           <%############# ####################################################### ######## %>
 
           Write feedback: <input ng-model="query">
-          <div ng-controller="List" class="colleage_attribs">
+          <div ng-controller="List" class="colleague_attribs">
             <ul>
               <li ng-repeat="attrib in attribs | filter:query ">
                 <!-- {{attrib.attribute_name}} -->
