@@ -4,5 +4,5 @@ class Attribute
   field :category, type: String # posattrib, constructive, alert 
   field :identifier, type: Integer
   #has_many :users
-  belongs_to :feedback , class_name: "Feedback", inverse_of: :attribute # needed?
+  has_many :feedback #, class_name: "Feedback", inverse_of: :attribute # needed?
 end
