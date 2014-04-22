@@ -190,9 +190,10 @@ feedback_list = [ # from_email, attribute object, to_user object
 	["tcarawell@example.com", Attribute.find_by(identifier: 4), User.find_by(name: "Jane Williams") ],
 	["tcarawell@example.com", Attribute.find_by(identifier: 1), User.find_by(name: "Bill Jones") ],
 	["tcarawell@example.com", Attribute.find_by(identifier: 2), User.find_by(name: "Bill Jones") ],
-	["tcarawell@example.com", Attribute.find_by(identifier: 3), User.find_by(name: "Bill Jones") ]
+	["tcarawell@example.com", Attribute.find_by(identifier: 3), User.find_by(name: "Bill Jones") ],
+	["tcarawell@example.com", Attribute.find_by(identifier: 12), User.find_by(name: "Phil Garber") ],
+	["tcarawell@example.com", Attribute.find_by(identifier: 13), User.find_by(name: "Beth Hillman") ],
     ]
-puts "1"
 
 feedback_list.each do | from_email, attrib_obj, to_user_obj | 
 
@@ -235,14 +236,15 @@ end
 proj = Project.all
 proj.delete_all
 
-proj = Project.create!(name: "Acquire competitors")
+proj = Project.create!(name: "Acquire competitors", creator: "Jane Williams")
 company = Company.find_by(name: "Example") 
 company.projects << proj
-proj = Project.create!(name: "Factory cost reduction")
+proj = Project.create!(name: "Factory cost reduction", creator: "Bill Jones")
 company.projects << proj
-proj = Project.create!(name: "Refresh website")
+proj = Project.create!(name: "Refresh website", creator: "Phil Garber")
 company.projects << proj
 
+proj = Project.create!(name: "Refresh website")
 company = Company.find_by(name: "Acme")
 company.projects << proj  # Acme will also refresh their website
 proj = Project.create!(name: "acquire ExxonMobil")

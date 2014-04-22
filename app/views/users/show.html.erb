@@ -12,7 +12,7 @@
 
           <p>Positive feedback received: </p>
           <ul>
-            <% @users_feedback.each do |fb| %>
+            <% @users_feedback.reverse_each do |fb| %>
               <li>
               <% if fb.attribute %> <%# sometimes this doesn't exist ??? %>
                 <%= fb.attribute.attribute_name %>

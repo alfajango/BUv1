@@ -25,7 +25,9 @@ class UsersController < ApplicationController
     #   end
     # end
     # # puts "users_fb_array[0]: #{users_fb_array[0]}"
-    puts "@users_feedback.last.attribute.attribute_name: #{@users_feedback.last.attribute.attribute_name}"
+
+    # The following line can cause a failure if there are no feedbacks
+    # puts "@users_feedback.last.attribute.attribute_name: #{@users_feedback.last.attribute.attribute_name}"
     #@microposts = @user.microposts.paginate(page: params[:page])
   end
 

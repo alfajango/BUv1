@@ -56,38 +56,22 @@ module UsersHelper
 	  end
 	end
 
-	def users_to_graph()
-		@show_user_id = Array.new # this array will contain 3 user_id's (in order) to graph
-		# puts "current_user.company.name #{current_user.company.name}"
-		# puts "current_user.company.id #{current_user.company.id}"
+  def users_for_homepage()
+	@show_users = Array.new
 
-		colleagues = current_user.company.users  # cool!  
-		#There is even a way to just do per last paragraph of Rails recipes, recipe 1.
+	company_users = current_user.company.users
 
-		# it would be more explicit to order these by date first, but it's most likely in date order
-		#last_user_id = @ratings.pop.user_id
-
-		all_ratings = Rating.all   # this still needs optimization
-		@ratings = Array.new
-		colleague_ids = colleagues.map(&:id)
-		all_ratings.each do |rating|
-		  if colleague_ids.include?(rating.user_id)  # if rating is for a colleague
-		  	@ratings.push(rating)
-		  end
-		end
-
-		count = 1  
-		@ratings.each do |rating|
-		  if count > 3
-			return
-		  end	 
-  		  last_user_id = @ratings.pop.user_id
-  		  unless @show_user_id.include?(last_user_id)
-			@show_user_id.push(last_user_id)
-			count += 1
-		  end
-		end
+	count = 1  
+	company_users.reverse_each do |user|   # traverse newest (last) first
+	  if count > 3
+		return
+	  end	 
+	  unless (@show_users.include?(user) or user.feedbacks.size.to_i < 1)
+	    @show_users.push(user)
+		count += 1
+	  end
 	end
+  end
 
 
 	def graph_all_data(target_user_id)

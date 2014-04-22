@@ -8,11 +8,14 @@
         <!-- this is the main section -->
         <div class="well well-sm">
           <% project = set_project(params) #set_project is in project_helper %>  
-          <p><b><%= project.name %></b> 
-
+          <p class="alignleft"><b><%= project.name %></b></p> 
+          <% if project.creator %>
+            <p class="alignright"><%= "Created by #{project.creator}" %></p>
+          <% end %>  
+          <div style="clear: both;"></div>
           <p>Project feedback received: </p>
           <ul>
-            <% @project_pfeedback.each do |fb| %>
+            <% @project_pfeedback.reverse_each do |fb| %>
               <li>
               <% if fb.pattribute %> <%# sometimes this doesn't exist ??? %>
                 <%= fb.pattribute.name %>

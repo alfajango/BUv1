@@ -19,7 +19,9 @@ class ProjectsController < ApplicationController
     #     @project_fb_array.push(feedback_obj.pattribute.name)
     #   end
     # end
-    puts "@project_pfeedback.last.pattribute.name: #{@project_pfeedback.last.pattribute.name}"
+
+    # following line causes error if there is no feedback
+    # puts "@project_pfeedback.last.pattribute.name: #{@project_pfeedback.last.pattribute.name}"
 
   end
 
