@@ -17,13 +17,13 @@ class UsersController < ApplicationController
   	@user = User.find(params[:id])
     puts "@user.name: #{@user.name}"
     @users_feedback = @user.feedbacks
-    @users_fb_array=[]
-    @users_feedback.each do |feedback_obj|
-      if feedback_obj.attribute
-        puts "there was an attribute"
-        @users_fb_array.push(feedback_obj.attribute.attribute_name)
-      end
-    end
+    # @users_fb_array=[]
+    # @users_feedback.each do |feedback_obj|
+    #   if feedback_obj.attribute
+    #     puts "there was an attribute"
+    #     @users_fb_array.push(feedback_obj.attribute.attribute_name)
+    #   end
+    # end
     # # puts "users_fb_array[0]: #{users_fb_array[0]}"
     puts "@users_feedback.last.attribute.attribute_name: #{@users_feedback.last.attribute.attribute_name}"
     #@microposts = @user.microposts.paginate(page: params[:page])

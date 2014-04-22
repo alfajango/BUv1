@@ -85,3 +85,6 @@ HEAD is now at 13dd6e7 create projects works
 
 Skip to entering sentences:
 - to get Angular working, in application.html.erb, put <html ng-app> and <script> for the angular CDN
+
+$ rails generate model Pattribute name:string category:string identifier:integer category:string
+$ rails generate controller Pattributes

@@ -267,37 +267,131 @@ puts "company.projects[0].name: #{company.projects[0].name}"  # projects is an a
 # puts "in projects, 2nd project's company.name is still: #{project2.company.name}"
 
 
+
+#--------------- Pattributes ------------------------------
+# def make_attributes
+pattrib = Pattribute.all
+pattrib.delete_all
+
+# name, category, identifier
+# just do name - and so it seems like the syntax is no brackets
+
+pattribute_list = [
+	"is important for the company" ,
+	"is important for our customers",
+	"is critical for the company",
+	"is critical for our customers",
+	"is unnecessary for the company",
+	"is unnecessary for our customers",
+	"is going well",
+	"is going great",
+	"is doing poorly",
+	"could be doing better",
+	"needs to be prioritized",
+	"needs to be de-priorized",
+	"needs to be rescoped",
+	"needs to be cancelled",
+	"needs to show progress",
+	"needs to show market need",
+	"needs to pivot",
+	"needs more funding",
+	"needs more resources",
+	"needs more time",
+	"needs more visiblility",
+	"needs more support from management",
+	"needs less funding",
+	"needs a fresh start",
+	"needs different resources",
+	"needs different leadership",
+	"needs a different team",
+	"needs additional resources",
+	"needs additional resources",
+	"needs additional team"
+]
+
+
+pattribute_list.each do | name |
+  Pattribute.create!(  name: name )
+end
+puts 'PATTRIBUTES'
+
+
 #--------------- Pfeedbacks ------------------------------
 pfb = Pfeedback.all
 puts "pfb.size: #{pfb.size}"
 pfb.delete_all
 
-pfeedback_list = [ # from_id, attribute, rating_given, project object
-	[1, "Execution", 8, Project.find_by(name: "Acquire competitors") ],
-	[1, "Strategy", 7, Project.find_by(name: "Acquire competitors") ],
-	[1, "Execution", 6, Project.find_by(name: "Factory cost reduction") ],
-	[1, "Strategy", 5, Project.find_by(name: "Factory cost reduction") ],
-	[1, "Execution", 10, Project.find_by(name: "Refresh website") ],
-	[1, "Strategy", 9, Project.find_by(name: "Refresh website") ],
-	[2, "Execution", 10, Project.find_by(name: "Acquire competitors") ],
-	[2, "Strategy", 9, Project.find_by(name: "Acquire competitors") ],
-	[2, "Execution", 8, Project.find_by(name: "Factory cost reduction") ],
-	[2, "Strategy", 7, Project.find_by(name: "Factory cost reduction") ],
-	[2, "Execution", 6, Project.find_by(name: "Refresh website") ],
-	[2, "Strategy", 5, Project.find_by(name: "Refresh website") ],
-	[3, "Execution", 1, Project.find_by(name: "Acquire competitors") ],
-	[3, "Strategy", 2, Project.find_by(name: "Acquire competitors") ],
-	[3, "Execution", 3, Project.find_by(name: "Factory cost reduction") ],
-	[3, "Strategy", 4, Project.find_by(name: "Factory cost reduction") ],
-	[3, "Execution", 5, Project.find_by(name: "Refresh website") ],
-	[3, "Strategy", 6, Project.find_by(name: "Refresh website") ]
+pfeedback_list = [ # from_email, pattribute object, to_project object
+	["tcarawell@example.com", Pattribute.find_by(name: "is important for the company"), Project.find_by(name: "Acquire competitors") ],
+	["tcarawell@example.com", Pattribute.find_by(name: "needs to pivot"), Project.find_by(name: "Acquire competitors") ],
+	["tcarawell@example.com", Pattribute.find_by(name: "needs additional team"), Project.find_by(name: "Acquire competitors") ],
+	["tcarawell@example.com", Pattribute.find_by(name: "needs to show market need"), Project.find_by(name: "Acquire competitors") ],
+	["tcarawell@example.com", Pattribute.find_by(name: "needs more funding"), Project.find_by(name: "Acquire competitors") ],
+	["tcarawell@example.com", Pattribute.find_by(name: "needs to be rescoped"), Project.find_by(name: "Acquire competitors") ],
+	["tcarawell@example.com", Pattribute.find_by(name: "needs different leadership"), Project.find_by(name: "Acquire competitors") ],
+
+	["tcarawell@example.com", Pattribute.find_by(name: "needs more time"), Project.find_by(name: "Factory cost reduction") ],
+	["tcarawell@example.com", Pattribute.find_by(name: "is important for the company"), Project.find_by(name: "Factory cost reduction") ],
+	["tcarawell@example.com", Pattribute.find_by(name: "needs different resources"), Project.find_by(name: "Factory cost reduction") ],
+	["tcarawell@example.com", Pattribute.find_by(name: "needs a different team"), Project.find_by(name: "Factory cost reduction") ],
+	["tcarawell@example.com", Pattribute.find_by(name: "is going great"), Project.find_by(name: "Factory cost reduction") ],
+	["tcarawell@example.com", Pattribute.find_by(name: "needs additional team"), Project.find_by(name: "Factory cost reduction") ],
+
+	["tcarawell@example.com", Pattribute.find_by(name: "needs different resources"), Project.find_by(name: "Refresh website") ],
+	["tcarawell@example.com", Pattribute.find_by(name: "needs a different team"), Project.find_by(name: "Refresh website") ],
+	["tcarawell@example.com", Pattribute.find_by(name: "needs more time"), Project.find_by(name: "Refresh website") ],
+	["tcarawell@example.com", Pattribute.find_by(name: "needs to be rescoped"), Project.find_by(name: "Refresh website") ],
+	["tcarawell@example.com", Pattribute.find_by(name: "needs to show market need"), Project.find_by(name: "Refresh website") ]
     ]
+puts "before pfeedback_list.each"
 
+pfeedback_list.each do | from_email, pattrib_obj, to_proj_obj | 
 
-pfeedback_list.each do | from_id, attribute, rating_given, project | 
-  pfb = Pfeedback.create!(from_id: from_id, attribute: attribute, rating_given: rating_given)
-  #projfb = pfb.create!(from_id: from_id, attribute: attribute, rating_given: rating_given)
-  # try pfb = project_feedback.create 
-  project.pfeedbacks << pfb
+  #fb = feedback.create!(from_id: from_id, rating_given: 1) 
+  #  runs because when I deleted all, I did feedback = Feedback.all, then feedback.delete_all
+  from_id = User.find_by(email: from_email).id
+  pfb = Pfeedback.create!(from_id: from_id, rating_given: 1)  
+  #puts "3"
+  pfb.pattribute = pattrib_obj
+  # puts "fb.attribute.attribute_name: #{fb.attribute.attribute_name} "
+  to_proj_obj.pfeedbacks << pfb
+  #puts "5"
 end
 puts "PFeedbacks"
+
+
+
+# #--------------- Pfeedbacks ------------------------------
+# pfb = Pfeedback.all
+# puts "pfb.size: #{pfb.size}"
+# pfb.delete_all
+
+# pfeedback_list = [ # from_id, attribute, rating_given, project object
+# 	[1, "Execution", 8, Project.find_by(name: "Acquire competitors") ],
+# 	[1, "Strategy", 7, Project.find_by(name: "Acquire competitors") ],
+# 	[1, "Execution", 6, Project.find_by(name: "Factory cost reduction") ],
+# 	[1, "Strategy", 5, Project.find_by(name: "Factory cost reduction") ],
+# 	[1, "Execution", 10, Project.find_by(name: "Refresh website") ],
+# 	[1, "Strategy", 9, Project.find_by(name: "Refresh website") ],
+# 	[2, "Execution", 10, Project.find_by(name: "Acquire competitors") ],
+# 	[2, "Strategy", 9, Project.find_by(name: "Acquire competitors") ],
+# 	[2, "Execution", 8, Project.find_by(name: "Factory cost reduction") ],
+# 	[2, "Strategy", 7, Project.find_by(name: "Factory cost reduction") ],
+# 	[2, "Execution", 6, Project.find_by(name: "Refresh website") ],
+# 	[2, "Strategy", 5, Project.find_by(name: "Refresh website") ],
+# 	[3, "Execution", 1, Project.find_by(name: "Acquire competitors") ],
+# 	[3, "Strategy", 2, Project.find_by(name: "Acquire competitors") ],
+# 	[3, "Execution", 3, Project.find_by(name: "Factory cost reduction") ],
+# 	[3, "Strategy", 4, Project.find_by(name: "Factory cost reduction") ],
+# 	[3, "Execution", 5, Project.find_by(name: "Refresh website") ],
+# 	[3, "Strategy", 6, Project.find_by(name: "Refresh website") ]
+#     ]
+
+
+# pfeedback_list.each do | from_id, attribute, rating_given, project | 
+#   pfb = Pfeedback.create!(from_id: from_id, attribute: attribute, rating_given: rating_given)
+#   #projfb = pfb.create!(from_id: from_id, attribute: attribute, rating_given: rating_given)
+#   # try pfb = project_feedback.create 
+#   project.pfeedbacks << pfb
+# end
+# puts "PFeedbacks"

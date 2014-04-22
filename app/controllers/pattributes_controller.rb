@@ -1,0 +1,2 @@
+class PattributesController < ApplicationController
+end
