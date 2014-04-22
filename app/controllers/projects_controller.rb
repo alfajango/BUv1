@@ -7,10 +7,26 @@ class ProjectsController < ApplicationController
     @project = Project.new   # need this for creating new on index page
   end
 
+
   def show
     @project = Project.find(params[:id])
-    # @microposts = @user.microposts.paginate(page: params[:page])
+    puts "@project.name: #{@project.name}"
+    @project_pfeedback = @project.pfeedbacks
+    # @project_fb_array=[]
+    # @project_pfeedback.each do |feedback_obj|
+    #   if feedback_obj.pattribute
+    #     puts "there was an attribute"
+    #     @project_fb_array.push(feedback_obj.pattribute.name)
+    #   end
+    # end
+    puts "@project_pfeedback.last.pattribute.name: #{@project_pfeedback.last.pattribute.name}"
+
   end
+
+  # def show
+  #   @project = Project.find(params[:id])
+  #   # @microposts = @user.microposts.paginate(page: params[:page])
+  # end
 
   def new
   	@project = Project.new

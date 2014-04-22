@@ -5,7 +5,7 @@ class Project
   belongs_to :company
   #has_many :project_feedbacks
   has_many :pfeedbacks
-  has_many :project_ratings
+  # has_many :project_ratings
 
   # todo: set permissions here?
 end

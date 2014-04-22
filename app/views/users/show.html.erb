@@ -1,12 +1,5 @@
 <%#### USERS/show ########### %>
 
-<%#= javascript_include_tag "//www.google.com/jsapi", "chartkick" %> <%# need this on any page that has a chart %>
-<!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.5/angular.min.js"></script> -->
-<%# rails includes all this stuff automatically becasue its in the asset pipeline %>
-<!-- <script src="vendor/jquery.min.js"></script>
-<script type"text/javascript" src="/path/bootstrap-dropdown-checkbox.js"></script> <%# needs to be after jquery call %>
-<link rel="stylesheet" type="text/css" href="/path/bootstrap-dropdown-checkbox.css"> -->
-
 <div class="wrapper body">
   <div class="container">
     <div class="row">
@@ -15,28 +8,22 @@
         <!-- this is the main section -->
         <div class="well well-sm">
           <% user = set_user(params) #User.find_by(id: params[:id]) %>  
-          <p><b><%= user.name + " | " + user.email %> </b></p>
-          <%# graph_data(@user.id) %>  <%# get the top 5 attributes for this user and set them in @show_attributes %>
-          <%# if @show_attributes.any? %>
-            <%#= bar_chart @show_attributes, :height => "200px"%> <%# call chartkick %>
-          <%# else %>
-            <%#= user.name + " has not yet received any attribute feedback" %>
-          <%# end %>  
+          <p><b><%= user.name %></b> | <%=user.email %></p>
+
+          <p>Positive feedback received: </p>
+          <ul>
+            <% @users_feedback.each do |fb| %>
+              <li>
+              <% if fb.attribute %> <%# sometimes this doesn't exist ??? %>
+                <%= fb.attribute.attribute_name %>
+              <% end %>
+             </li>
+            <% end %>
+          </ul>
+
         </div>
         <div class="well well-sm" id="colleaguedDisplay">
           <h4>Give feedback for <%= @user.name %></h4>
-          
-          <!-- Search: <input ng-model="query">
-          <div ng-controller="List">
-            <ul>
-              <li ng-repeat="name in names | filter:query ">{{name}}</li>
-            </ul>
-          </div>
-          <script>
-            var List = function ($scope) {
-              $scope.names = ["Tom", "Jeffrey", "Phil", "Mark", "Paul"];
-            }
-          </script>  -->
 
           <% @attributes = Attribute.all %>  <%# this should be in controller but it's not going there%>
 
@@ -44,32 +31,32 @@
           <%= content_tag :div, class: "attributes_class", data: {attributes: @attributes} do %>
           <% end %>
 
-          <%#= @attributes.first.attribute_name %><br>
+          <%#= @attributes.first.attribute_name %>
 
 
           <%############# first, set up a js link and on click, create a feedback ######## %>
-
+<!-- 
           <script>
-            var anarray = ["Phil", "Joe", "Mike"];
+          //   var anarray = ["Phil", "Joe", "Mike"];
 
-          </script>
+          // </script>
           
-          <script>
+          // <script>
           
-            var a = document.createElement('a');
-            var linkText = document.createTextNode("my title text");
-            var fbdiv = document.getElementById("colleaguedDisplay")
-            a.appendChild(linkText);
-            a.title = "my title text";
-            a.href = "http://example.com";
-            fbdiv.appendChild(a);
+          //   var a = document.createElement('a');
+          //   var linkText = document.createTextNode("my title text");
+          //   var fbdiv = document.getElementById("colleaguedDisplay")
+          //   a.appendChild(linkText);
+          //   a.title = "my title text";
+          //   a.href = "http://example.com";
+          //   fbdiv.appendChild(a);
 
-          </script>
-
+          // </script>
+ -->
           <%############# ####################################################### ######## %>
 
           Write feedback: <input ng-model="query">
-          <div ng-controller="List" class="colleage_attribs">
+          <div ng-controller="List" class="colleague_attribs">
             <ul>
               <li ng-repeat="attrib in attribs | filter:query ">
                 <div ng-switch on="attrib.category">
