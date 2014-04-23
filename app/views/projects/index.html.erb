@@ -30,7 +30,7 @@
               <h4>Create a new project.  Enter project name:</h4>
               <%= f.text_field :name %>
               <br>
-              Use the official project name.  Do not editorialize or feedback will be biased. <br>
+              Your name will be shown as the creator of the project.  All feedback given will be anonymous.<br>
               <%= f.hidden_field :company_id, :value => current_user.company.id %><br>
               <%= f.submit "Create the project", class: "btn btn-large btn-primary" %>
             <% end %>

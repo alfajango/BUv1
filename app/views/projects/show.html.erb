@@ -7,14 +7,19 @@
       <div class="col-md-8">
         <!-- this is the main section -->
         <div class="well well-sm">
-          <% project = set_project(params) %> <%##set_project is in project_helper %>  
-          <p class="alignleft"><b><%= project.name %></b></p> 
-          <% if project.user %>
-            <p class="alignright"><%= "Created by #{project.user}" %></p>
-          <% end %>  
-          <% if current_user===(project.user) %> 
-            <%= link_to "modify", method: :edit, title: project.name %>
-          <% end %>
+          <% project = set_project(params) %> <%##set_project is in project_helper %> 
+
+          <div>
+            <p class="alignleft"><b><%= "#{project.name}  " %>
+   
+            <% if current_user===(project.user) %> 
+              <i><%= link_to "edit ", edit_project_path(project) %></i>
+            <% end %></b></p> 
+            <% if project.user %>
+              <p class="alignright"><%= "Created by #{project.user.name}" %></p>
+            <% end %> 
+          </div>
+          <div style="clear: both;"></div>
           <p>Project feedback received: </p>
           <ul>
             <% @project_pfeedback.reverse_each do |fb| %>

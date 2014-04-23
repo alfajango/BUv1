@@ -38,11 +38,12 @@ class ProjectsController < ApplicationController
     # do I need the next 2 lines?
   	# companies = Company.all
   	# domain_id = CompanyEmployee.find_by(user_id: (current_user.id))  # would now be company_id
-    puts "in projects_controller create"
+    #puts "in projects_controller create"
     #@project = Project.new(project_params)
     @project = Project.new(project_params)
+    current_user.projects << @project
     if @project.save
-      puts "in if @project.save"
+      #puts "in if @project.save"
       flash[:success] = "Project / Strategy / Effort created succesfully!  You and your colleagues can now weigh in"
       project_id = @project.id
       redirect_to '/projects/'+project_id.to_s   # @user   # todo: set this to rate the project once that exists
@@ -69,8 +70,8 @@ class ProjectsController < ApplicationController
 
   def destroy
     Project.find(params[:id]).destroy
-    flash[:success] = "Project delted."
-    redirect_to users_url
+    flash[:success] = "Project deleted."
+    redirect_to projects_url
   end
 
 
@@ -81,9 +82,9 @@ class ProjectsController < ApplicationController
       puts "params[:project][:name]: #{params[:project][:name]}"  # correct
       pparam = {}   # define it as a hash so it doesn't think it's an array!
       pparam[:name] = params[:project][:name]
-      puts "pparam: #{pparam}"
+      #puts "pparam: #{pparam}"
       pparam[:company_id] = params[:project][:company_id]
-      puts "2nd pparam: #{pparam}"
+      #puts "2nd pparam: #{pparam}"
       return pparam
 
     end
