@@ -32,6 +32,7 @@ Rails3MongoidDevise::Application.routes.draw do
   
   match '/project', to: 'projects#index',       via: 'get'  # added in BUv1 because route for project was not found
   match '/projects/:id', to: 'projects#show',   via: 'get'  # I think if resources :projects is working, I shouldn't need this
+  match '/projects/edit/:id', to: 'projects#edit', via: 'post'   # ???
 
   #get "static_pages/home"  
   get "users/home"

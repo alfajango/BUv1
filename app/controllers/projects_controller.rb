@@ -52,6 +52,28 @@ class ProjectsController < ApplicationController
     end
   end    
 
+  # edit, update, and destroy pulled from Hartl's users_controller
+  def edit
+    @project = Project.find(params[:id])
+  end
+
+  def update
+    @project = Project.find(params[:id])
+    if @project.update_attributes(project_params)  # what is update_attributes?
+      flash[:success] = "Project updated"
+      redirect_to @project
+    else
+      render 'edit'
+    end
+  end
+
+  def destroy
+    Project.find(params[:id]).destroy
+    flash[:success] = "Project delted."
+    redirect_to users_url
+  end
+
+
   private
 
     def project_params

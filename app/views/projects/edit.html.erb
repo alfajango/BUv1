@@ -1,0 +1,19 @@
+<div class="wrapper body">
+  <div class="col-sm-6 col-sm-offset-3">
+    <% provide(:title, 'Edit project') %>
+    <h2>Edit <%= resource_name.to_s.humanize %></h2> <%# this yields Edit User or Edit Project - cool! %>
+
+    <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
+      <%= devise_error_messages! %>
+    <p><%= f.label :name %><br />
+    <%= f.text_field :name %></p>
+
+      
+      <br />
+
+      <div><%= f.submit "Update" %></div> <%# calls update method in projects_controller? %>
+    <% end %>
+
+    <%= link_to "Back", :back %>
+  </div>
+</div>

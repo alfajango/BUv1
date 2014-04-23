@@ -1,6 +1,11 @@
 <li>
   <%= link_to project.name, project %>
-  <%# if current_user.admin? # TODO: put this back in%>  
+  <%# if current_user.admin? %> <%# # TODO: put this back in%>  
   	  <%#= link_to "delete", project, method: :delete, data: { confirm: "you sure?" } %>
   <%# end %>
+  <% if project.user %>  
+    <% if current_user === project.user %>
+  	  <%= link_to "edit", project, method: :update %> <%# # :edit instead?, data: { confirm: "you sure?" } %>
+    <% end %>
+  <% end %>
 </li>
