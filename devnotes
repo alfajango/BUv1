@@ -91,3 +91,12 @@ $ rails generate controller Pattributes
 
 4/23/14  It seems like I've got no .gitignore  
 There is .git/info/exclude, but nothing's listed.  add application.example.yml.  Anything else?  
+
+
+Merge back to master, got merge conflicts.  To solve it, do this (in addition to manually fixing any actual conflicts)
+$ git mergetool  // can do this to pop up a window & see differences
+$ git checkout --ours log/development.log   // --theirs is the other way
+$ git add log/development.log
+$ git commit -m "trying to solve master vs build1 merge issues"
+$ git merge build1
+Already up-to-date.
