@@ -38,27 +38,27 @@ attrib.delete_all
 
 # attributge_name, category, identifier
 sentence_list = [
-	[ "is the best at technical knowledge", "posattrib", 1 ],
-	[ "is the best at communication", "posattrib", 2 ],
-	[ "is the best at leadership", "posattrib", 3 ],
-	[ "is the best at hiring", "posattrib", 4 ],
-	[ "is the best at management", "posattrib", 5 ],
-	[ "has the most job knowledge", "posattrib", 6 ],
-	[ "has the most job experience", "posattrib", 7 ],
-	[ "has achieved the most", "posattrib", 8 ],
-	[ "is the best at self marketing", "posattrib", 9 ],
-	[ "is the best at presenting", "posattrib", 10 ],
+	[ "is the best at technical knowledge", "positive", 1 ],
+	[ "is the best at communication", "positive", 2 ],
+	[ "is the best at leadership", "positive", 3 ],
+	[ "is the best at hiring", "positive", 4 ],
+	[ "is the best at management", "positive", 5 ],
+	[ "has the most job knowledge", "positive", 6 ],
+	[ "has the most job experience", "positive", 7 ],
+	[ "has achieved the most", "positive", 8 ],
+	[ "is the best at self marketing", "positive", 9 ],
+	[ "is the best at presenting", "positive", 10 ],
 
-	[ "is great at technical knowledge", "posattrib", 11 ],
-	[ "is great at communication", "posattrib", 12 ],
-	[ "is great at leadership", "posattrib", 13 ],
-	[ "is great at hiring", "posattrib", 14 ],
-	[ "is great at management", "posattrib", 15 ],
-	[ "has great job knowledge", "posattrib", 16 ],
-	[ "has great job experience", "posattrib", 17 ],
-	[ "has great achievements", "posattrib", 18 ],
-	[ "is great at self marketing", "posattrib", 19 ],
-	[ "is great at presenting", "posattrib", 20 ],
+	[ "is great at technical knowledge", "positive", 11 ],
+	[ "is great at communication", "positive", 12 ],
+	[ "is great at leadership", "positive", 13 ],
+	[ "is great at hiring", "positive", 14 ],
+	[ "is great at management", "positive", 15 ],
+	[ "has great job knowledge", "positive", 16 ],
+	[ "has great job experience", "positive", 17 ],
+	[ "has great achievements", "positive", 18 ],
+	[ "is great at self marketing", "positive", 19 ],
+	[ "is great at presenting", "positive", 20 ],
 
 	[ "is competent at technical knowledge", "constructive", 21 ],
 	[ "is competent at communication", "constructive", 22 ],
@@ -89,7 +89,7 @@ sentence_list = [
 	[ "is poor at management", "alert", 45 ],
 	[ "has poor job knowledge", "alert", 46 ],
 	[ "has poor job experience", "alert", 47 ],
-	[ "has poor achievements", "alert", 348 ],
+	[ "has poor achievements", "alert", 48 ],
 	[ "is poor at self marketing", "alert", 49 ],
 	[ "is poor at presenting", "alert", 50 ],
 
@@ -116,6 +116,8 @@ feedback_list = [ # from_email, attribute object, to_user object
 	["tcarawell@example.com", Attribute.find_by(identifier: 2), User.find_by(name: "Jane Williams") ],
 	["tcarawell@example.com", Attribute.find_by(identifier: 3), User.find_by(name: "Jane Williams") ],
 	["tcarawell@example.com", Attribute.find_by(identifier: 4), User.find_by(name: "Jane Williams") ],
+	["tcarawell@example.com", Attribute.find_by(identifier: 39), User.find_by(name: "Jane Williams") ],
+	["tcarawell@example.com", Attribute.find_by(identifier: 48), User.find_by(name: "Jane Williams") ],
 	["tcarawell@example.com", Attribute.find_by(identifier: 1), User.find_by(name: "Bill Jones") ],
 	["tcarawell@example.com", Attribute.find_by(identifier: 2), User.find_by(name: "Bill Jones") ],
 	["tcarawell@example.com", Attribute.find_by(identifier: 3), User.find_by(name: "Bill Jones") ],
@@ -132,6 +134,8 @@ feedback_list = [ # from_email, attribute object, to_user object
 	["tcarawell@example.com", Attribute.find_by(identifier: 2), User.find_by(name: "Bill Jones") ],
 	["tcarawell@example.com", Attribute.find_by(identifier: 3), User.find_by(name: "Bill Jones") ],
 	["tcarawell@example.com", Attribute.find_by(identifier: 12), User.find_by(name: "Phil Garber") ],
+	["tcarawell@example.com", Attribute.find_by(identifier: 27), User.find_by(name: "Phil Garber") ],
+	["tcarawell@example.com", Attribute.find_by(identifier: 44), User.find_by(name: "Phil Garber") ],
 	["tcarawell@example.com", Attribute.find_by(identifier: 13), User.find_by(name: "Beth Hillman") ],
     ]
 
@@ -199,6 +203,16 @@ company.projects << proj
 company = Company.find_by(name: "Apple")
 proj = Project.create!(name: "bigger iPhone")
 company.projects << proj
+
+# put in two projects for each company.  No user created these
+companies = Company.all
+companies.each do | co |
+  proj = Project.create!(name: "Keep customers happy")
+  co.projects << proj
+  proj = Project.create!(name: "Keep employees motivated and engaged")
+  co.projects << proj
+end
+
 
 puts "company.projects[0].name: #{company.projects[0].name}"  # projects is an array
 

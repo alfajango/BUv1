@@ -88,3 +88,6 @@ Skip to entering sentences:
 
 $ rails generate model Pattribute name:string category:string identifier:integer category:string
 $ rails generate controller Pattributes
+
+4/23/14  It seems like I've got no .gitignore  
+There is .git/info/exclude, but nothing's listed.  add application.example.yml.  Anything else?  

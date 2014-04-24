@@ -11,21 +11,21 @@
     <!-- this is the sidebar.  Remember to put the co. strategy ratings back in.  -->
       <%= render "users/signed_in_sidebar" %>        
       <div class="col-md-8">
-
-        <%# Plot attributes %>
+        <%# detailed_feedback() %> <%# function in users_helper that sets all current_user's feedback to @myfb %>        
         <div class="well well-sm">
-          <p><b><%= current_user.name + " | " + current_user.email %> </b></p>
-          <p><b>Attributes your colleagues have given to you</b></p>
-          <% graph_all_data(current_user.id) %>  <%# put all of my feedback in @chartkick_data  %>
-          <%= bar_chart @chartkick_data, :height => "250px"%> <%# call chartkick %>
-        </div>
 
-        <%# Plot ratings %>
-        <div class="well well-sm">
-          <p><b>Job performance feedback you've received from colleagues </b></p>
-          <% graph_all_rating_data(current_user.id) %>  <%# put all of my feedback in @chartkick_data  %>
-          <%= bar_chart @all_rating_data, :height => "250px"%> <%# call chartkick %>
-        </div>
+          <p>Feedback received: </p>
+          <ul>
+            <% current_user.feedbacks.reverse_each do |fb| %>
+              <li>
+                <% if fb.attribute %> 
+                  <%= fb.attribute.attribute_name %>
+                <% end %>
+              </li>
+            <% end %>
+          </ul>
+
+        </div>   
       </div>
     </div>
   </div>

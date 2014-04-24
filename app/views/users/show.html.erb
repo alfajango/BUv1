@@ -13,11 +13,11 @@
           <p>Positive feedback received: </p>
           <ul>
             <% @users_feedback.reverse_each do |fb| %>
-              <li>
               <% if fb.attribute %> <%# sometimes this doesn't exist ??? %>
-                <%= fb.attribute.attribute_name %>
+                <% if fb.attribute.category==="positive" %>
+                  <li><%= fb.attribute.attribute_name %></li>
+                <% end %>
               <% end %>
-             </li>
             <% end %>
           </ul>
 
@@ -61,7 +61,7 @@
               <li ng-repeat="attrib in attribs | filter:query ">
                 <div ng-switch on="attrib.category">
                   <%= puts "params[:id] = #{params[:id]}" %>
-                  <span ng-switch-when="posattrib"><a href=<%="/feedbacks/attribute_selected/#{params[:id]}"%>>{{attrib.attribute_name}}</a> | Public | to <%=user.name%> only</span>
+                  <span ng-switch-when="positive"><a href=<%="/feedbacks/attribute_selected/#{params[:id]}"%>>{{attrib.attribute_name}}</a> | Public | to <%=user.name%> only</span>
                   <span ng-switch-when="constructive">{{attrib.attribute_name}} | Employee and Manager</span>
                   <span ng-switch-when="alert">{{attrib.attribute_name}} | Manager only</span>
                   <span ng-switch-default></span>
