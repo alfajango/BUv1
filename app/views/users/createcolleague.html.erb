@@ -1,0 +1,24 @@
+<div class="wrapper body">
+  <div class="col-sm-6 col-sm-offset-3">
+  	<h2>Create Colleagues</h2>
+  	It is a good idea to set up a few colleagues in Prietary.  This helps to keep anonymous any feedback that your or they create.  Just enter their name (spell it correctly) and email (must be the same as your email after the @).  <br>
+  	Your colleague will then be listed in your company's Prietary network whether your colleague takes action or not. <br>
+  	Your colleague will get an email with a link to complete the signup procedure (just verify name and setting up a password to log in with).  No one will know whether they've registered for Prietary or not, just like others don't know whether you've registered. <br>
+
+	<%#= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+	<%= form_for(resource, :as => 'user', :url => registration_path('user')) do |f| %>
+	  <%= devise_error_messages! %>
+	<p><%= f.label "Colleague's first and last name" %><br />
+	<%= f.text_field :name %></p>
+
+	  <div><%= f.label "Colleague's work email address" %><br />
+	  <%= f.email_field :email %></div><%="@#{current_user.company.domain}" %>
+
+	  <% f.password_field "createduser"%> <%# don't render the field %>
+
+	  <div><%= f.submit "Create Colleague" %></div>
+	<% end %>
+
+	<%#= render "devise/shared/links" %><%# renders Sign in and Forgot your password? links %>
+  </div>
+</div>

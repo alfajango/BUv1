@@ -1,0 +1,72 @@
+<div class="wrapper body"> <!-- or body-inverse -->
+  <div class="container">
+    <div class="row">
+      <%= render "users/signed_in_sidebar" %>  
+      
+      <div class="col-md-8">
+
+        <h4><%= link_to "Projects", projects_path %></h4>
+        <% projects_for_homepage() %> <%# call a function in projects_helper that sets a list of project id's to show ratings graphs for on the homepage in @show_projects %>
+        <% @show_projects.each do |project| %>    
+
+        <div class="well well-sm">
+          <p><b><%= project.name %></b></p> 
+
+          <p>Project feedback received: </p>
+          <ul>
+            <% project.pfeedbacks.reverse_each do |fb| %>
+              <li>
+              <% if fb.pattribute %> 
+                <%= fb.pattribute.name %>
+              <% end %>
+             </li>
+            <% end %>
+          </ul>
+
+        </div> 
+        <% end %>  
+        <% if @show_projects.size.to_i < 1 %>
+          <div class="well well-sm"> <b> No projects with ratings yet. Give input to your <%= link_to "Projects", projects_path %> </b>
+          </div>
+        <% else %> <%# there were some projects shown %>  
+          <div class="alignright"><%= link_to "more projects", projects_path %></div>
+          <br>
+        <% end %>        
+
+
+                 
+        <h4><%= link_to "Colleagues", users_path %></h4>
+        <% users_for_homepage() %> <%# call a function in users_helper that sets a list of users to show ratings for on the homepage in @show_user %>        
+        <% @show_users.each do |user| %>    
+
+
+        <div class="well well-sm">
+          <p><b><%= user.name %></b></p> 
+
+          <p>Feedback received: </p>
+          <ul>
+            <% user.feedbacks.reverse_each do |fb| %>
+              <li>
+              <% if fb.attribute %> 
+                <%= fb.attribute.attribute_name %>
+              <% end %>
+             </li>
+            <% end %>
+          </ul>
+
+        </div> 
+        <% end %>  
+        <% if @show_users.size.to_i < 1 %>
+          <div class="well well-sm"> <b> No colleagues with feedback yet. Give input to your <%= link_to "Colleagues", users_path %> </b>
+          </div>
+        <% else %> <%# there were some projects shown %>  
+          <div class="alignright"><%= link_to "more collagues", users_path %></div>
+          <br>
+        <% end %> 
+        
+      </div>
+    </div>
+    <hr>
+
+  </div><!-- /container -->
+</div><!-- /wrapper -->

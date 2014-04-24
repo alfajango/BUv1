@@ -1,0 +1,93 @@
+source /Users/philgarber/.rvm/scripts/rvm
+
+
+Building 8rate from a rails 3.1, mongoid, devise, bootstrap barebones app
+
+Start with code/8ratev1_pre_theme
+
+compare to John's sample_user_auth:
+
+In 8ratev1_pre_theme, add a bunch of html from divshot to application.html.erb
+
+I'm calling it BumptUp now.  I have spider blocker on.  
+
+BU logo is http://i.imgur.com/0Pua12E.png
+
+my git is pretty messed up in this project.  I dont think I had github going on 8ratev1_pre_theme.  then I branched to BUv1.  
+
+So, SWITCH TO BUv1 repo and BUv1 folder on my local drive (code/BUv1).  Branch is main
+
+3/19/14 - come back to this one after a couple months to get Devise and Mongo
+
+To start this project, 
+1 tab: BUv1 $ rails s
+2nd tab: BUv1 $ mongod
+go to localhost:3000
+
+It looks like I can create create a user, but there are no pages other than the landing page
+
+What I need to do:
+- put in one view at a time, keep everything working
+- put in models projects first?
+
+
+$ rails generate controller Attributes  # didn't do no-test-framework
+$ rails generate model Attribute attribute_name:string category:string identifier:integer
+# assuming I don't need to rake db:migrate
+
+$ rails g controller Feedbacks
+    conflict  app/controllers/feedbacks_controller.rb
+Overwrite /Users/philgarber/code/BUv1/app/controllers/feedbacks_controller.rb? (enter "h" for help) [Ynaqdh] n
+$ rails g model Feedback from_id:integer to_id:integer attribute_identifier rating_given:float accounted_for:datetime 
+
+to view my db, open MongoHub.  go to the right table on the left, then hit Query.  Then Run in the window that pops up
+http://stackoverflow.com/questions/7000605/how-to-implement-has-many-through-relationships-with-mongoid-and-mongodb
+
+$ rails g controller Companies
+$ rails g model Company domain:string name:string
+$ rails g controller Projects
+    conflict  app/controllers/projects_controller.rb
+Overwrite /Users/philgarber/code/BUv1/app/controllers/projects_controller.rb? (enter "h" for help) [Ynaqdh] n
+$ rails g model Project name:string company_id:integer
+$ rails g controller ProjectFeedbacks  # forgot to add columns
+$ rails g controller ProjectRatings
+$ rails g model ProjectRating project_id:integer project_attribute_identifier:integer current_rating:float num_fb_received:float 
+$ rails g controller ProjectAttributes
+$ rails g model ProjectAttribute name:string
+
+change a bunch of things to belongs_to or has_many in the models files
+
+change again...
+
+
+  # user.company = co   # this line isn't getting it done #####################
+  co.users << user  # THIS WORKS AND PREVIOUS LINE DOESNT!!!
+  A user belongs to a company, so I guess you have to assign as co.users << user
+
+  can't get ProjectFeedback to work.  Try generating again, slight different name:
+  $ rails g controller Pfeedbacks
+  $ rails g model Pfeedback attrib:string from_id:string rating_given:float accounted_for:datetime  # needed to be DateTime?  this gave accounted_for:time
+
+  it works with pfeedback, but not project_feedback model.  No idea why.  Oh well, move on
+
+  TODO: assign ( & create if needed) companies when users sign up
+
+  framework_and_overrides.css - importing bootstrap here was killing my Mist navbar styling, and some other styling
+
+the view for signin is not in my files, so: $ rails generate devise:views
+now, the RegistrationsController whose create method gets called when I create new user is also not in the files.   
+
+After trying to get create colleagues going (I got as far as rendering the page and it seems to work, yet no new user is created.  Then I added a self_create to the model and nothing works anymore).  I stashed this:
+$ git stash
+Saved working directory and index state WIP on build1: 13dd6e7 create projects works
+HEAD is now at 13dd6e7 create projects works
+
+
+Skip to entering sentences:
+- to get Angular working, in application.html.erb, put <html ng-app> and <script> for the angular CDN
+
+$ rails generate model Pattribute name:string category:string identifier:integer category:string
+$ rails generate controller Pattributes
+
+4/23/14  It seems like I've got no .gitignore  
+There is .git/info/exclude, but nothing's listed.  add application.example.yml.  Anything else?  

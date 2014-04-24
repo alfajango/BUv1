@@ -1,0 +1,32 @@
+<%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %> <%# need this on any page that has a chart %>
+
+
+<%# provide(:title, @user.name) # why did this not get @user.  When this code was in show.html.erb, it had @user ? %> 
+<%# maybe OK that I put current_user every palce that @user was - to start, we only want to show this for current_user.  Down the road, once your boss has access, that will change %>
+<% provide(:title, current_user.name) %>
+
+<div class="wrapper body">
+  <div class="container">
+    <div class="row">
+    <!-- this is the sidebar.  Remember to put the co. strategy ratings back in.  -->
+      <%= render "users/signed_in_sidebar" %>        
+      <div class="col-md-8">
+        <%# detailed_feedback() %> <%# function in users_helper that sets all current_user's feedback to @myfb %>        
+        <div class="well well-sm">
+
+          <p>Feedback received: </p>
+          <ul>
+            <% current_user.feedbacks.reverse_each do |fb| %>
+              <li>
+                <% if fb.attribute %> 
+                  <%= fb.attribute.attribute_name %>
+                <% end %>
+              </li>
+            <% end %>
+          </ul>
+
+        </div>   
+      </div>
+    </div>
+  </div>
+</div>  

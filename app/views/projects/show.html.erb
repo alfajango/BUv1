@@ -1,0 +1,72 @@
+<%# this is PROJECT/show.html.erb %>
+
+<div class="wrapper body">
+  <div class="container">
+    <div class="row">
+      <%= render "users/signed_in_sidebar" %>
+      <div class="col-md-8">
+        <!-- this is the main section -->
+        <div class="well well-sm">
+          <% project = set_project(params) %> <%##set_project is in project_helper %> 
+
+          <div>
+            <p class="alignleft"><b><%= "#{project.name}  " %>
+   
+            <% if current_user===(project.user) %> 
+              <i><%= link_to "edit ", edit_project_path(project) %></i>
+            <% end %></b></p> 
+            <% if project.user %>
+              <p class="alignright"><%= "Created by #{project.user.name}" %></p>
+            <% end %> 
+          </div>
+          <div style="clear: both;"></div>
+          <p>Project feedback received: </p>
+          <ul>
+            <% @project_pfeedback.reverse_each do |fb| %>
+              <li>
+              <% if fb.pattribute %> <%# sometimes this doesn't exist ??? %>
+                <%= fb.pattribute.name %>
+              <% end %>
+             </li>
+            <% end %>
+          </ul>
+
+        </div>
+        <div class="well well-sm" id="colleaguedDisplay">
+          <h4>Give feedback for <%= @project.name %></h4>
+
+          <% @pattributes = Pattribute.all %>  <%# this should be in controller but it's not going there%>
+
+          <%# from http://codequizzes.wordpress.com/2013/06/06/rails-javascript-workflow-rendering-javascript-partials/ %>
+          <%= content_tag :div, class: "pattributes_class", data: {pattributes: @pattributes} do %>
+          <% end %>
+
+
+          Write feedback: <input ng-model="query">
+          <div ng-controller="List" class="project_attribs">
+            <ul>
+              <li ng-repeat="pattrib in pattribs | filter:query ">
+                {{pattrib.name}}
+              <%# it's not JSON, but attrib.attribute_name works fine %>
+            </ul>
+          </div>
+
+          <%# puts seeded attributes into $scope.pattribs array: %>
+          <script>  
+            var List = function ($scope) {
+              // $('.attributes_class').data('attributes')[1].attribute_name    gives "is the best at managment"
+              // $('.pattributes_class').data('pattributes')[1].name
+
+              var arrayLength = $('.pattributes_class').data('pattributes').length;
+              $scope.pattribs = [];
+              for (var i = 0; i < arrayLength; i++) {
+                $scope.pattribs.push($('.pattributes_class').data('pattributes')[i]);
+              }
+            }
+          </script>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

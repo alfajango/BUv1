@@ -1,0 +1,29 @@
+
+<div class="col-md-4">
+
+    <div class="well well-sm">
+      <%# was @user.name, @user.email but that was nil %>
+      <h4><%= current_user.name %>, <%= current_user.email %></h4>
+       <%= link_to "View Detailed Feedback", myfeedback_path(current_user) %> <%# I didn't need to define a myfeedback_path - it just went to users/myfeedback.html.erb %>
+      <%# an example of going to a secure page= link_to "Settings", edit_user_path(current_user) %>
+    </div>
+    <div class="well well-sm">
+      <p>Search Projects or Colleague</p>
+      <input type="text" class="form-control">
+      <p></p>
+      <a class="btn btn-primary btn-sm">Search</a>
+      <br><p></p>
+      <p><%= link_to "New colleague", '#' %> <%#createuser_path(current_user) %></p>
+      
+      <%= link_to "New project / strategy / effort", newproject_path %>
+
+    </div>
+    <div class="well well-sm">
+      <%= link_to "Company Leaderboard", '/leaderboard' %> 
+    </div>
+    <div class="well well-sm">
+      <%= link_to "Promote my profile", '#'%>
+    </div>
+
+</div>
+

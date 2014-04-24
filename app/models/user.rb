@@ -1,10 +1,18 @@
 class User
   include Mongoid::Document
   include Mongoid::Timestamps
+  belongs_to :company  #, class_name: "Company", inverse_of: :user 
+  has_many :feedbacks #,  class_name: "Feedback", inverse_of: :user #( feedback this person has received )
+  has_many :projects
+
+  # don't think I also need this:
+  # field :company_id         :type => Integer, :default => 0  # will be example or something seeded
 
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
+
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 

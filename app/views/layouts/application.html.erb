@@ -1,26 +1,30 @@
 <!DOCTYPE html>
-<html>
+<html ng-app>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= content_for?(:title) ? yield(:title) : "BumptUp" %></title>
-    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "BumptUp" %>">
+    <title><%= content_for?(:title) ? yield(:title) : "Prietary" %></title>
+    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Prietary" %>">
     <%= stylesheet_link_tag "application", media: "all" %>
     <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
   </head>
   <body>
-    <header>
-      <%= render 'layouts/header_landing' %> <!-- this isn't doing anything.  Why is header showing??? -->
-      <!-- <%= render 'layouts/navigation' %> --> <!-- little header -->
-    </header>
-    <main role="main">
-       <%= render 'layouts/messages' %>
+    <!-- <header> -->
+      <%= render 'layouts/header' %> 
+      <%#= render 'layouts/navigation' %>  <!-- little header -->
+    <!-- </header> -->
+    <!-- <body> -->
+       <%#= render 'layouts/messages' %> <%# todo: put this back in, and get it out from under navbar %>
        <%= yield %> <!-- yields to home/index.html.erb -->
-    </main>
+       <%= render 'layouts/footer' %>
+       <%= debug(params) if Rails.env.development? %>
+
+
+    </body>
 <!--   </body> -->
 
 
-<%= render 'layouts/landing_page' %> <!-- divshot landing page -->
+<%#= render 'layouts/landing_page' %> <!-- divshot landing page -->
 
 
 </html>
