@@ -100,3 +100,7 @@ $ git add log/development.log
 $ git commit -m "trying to solve master vs build1 merge issues"
 $ git merge build1
 Already up-to-date.
+
+MAIL
+first, I have to get application.yml and other things out of my git.  Put a .gitignore in project root folder.
+
