@@ -103,4 +103,23 @@ Already up-to-date.
 
 MAIL
 first, I have to get application.yml and other things out of my git.  Put a .gitignore in project root folder.
+$ git rm --cached config/application.example.yml  // not sure I need --cached
+then, git add, git commit, git push
+$ rails g mailer user_mailer project_creation
+      create  app/mailers/user_mailer.rb
+      invoke  erb
+      create    app/views/user_mailer
+      create    app/views/user_mailer/project_creation.text.erb
+      invoke  rspec
+      create    spec/mailers/user_mailer_spec.rb
+      create    spec/fixtures/user_mailer/project_creation
 
+Trying to get Google Apps going so I can use phil@prietary.com email
+$ heroku domains:add www.prietary.com
+Adding www.prietary.com to polar-badlands-2176... done
+$ heroku domains:add prietary.com
+Adding prietary.com to polar-badlands-2176... done
+
+Follow instuctions on Heroku site for using your own url.  I can't figure out how to create a CNAME record in 1and1 (never use this site again).  So, I created a DNSimple account and moved the nameservers to dnsimple's.
+
+Actually, now that I have DNSimple, I should be able to verify my domain just by creating the CNAME record, rather than pointing a heroku app there and putting in the meta tag  

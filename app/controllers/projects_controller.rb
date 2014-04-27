@@ -42,8 +42,10 @@ class ProjectsController < ApplicationController
     #@project = Project.new(project_params)
     @project = Project.new(project_params)
     current_user.projects << @project
+    @user = current_user # to pass to UserMailer
     if @project.save
-      #puts "in if @project.save"
+      puts "in if @project.save, should send an email"
+      UserMailer.project_creation(@user).deliver
       flash[:success] = "Project / Strategy / Effort created succesfully!  You and your colleagues can now weigh in"
       project_id = @project.id
       redirect_to '/projects/'+project_id.to_s   # @user   # todo: set this to rate the project once that exists
