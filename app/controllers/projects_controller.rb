@@ -45,7 +45,7 @@ class ProjectsController < ApplicationController
     @user = current_user # to pass to UserMailer
     if @project.save
       puts "in if @project.save, should send an email"
-      UserMailer.project_creation(@user).deliver
+      UserMailer.project_creation(@user, @project).deliver
       flash[:success] = "Project / Strategy / Effort created succesfully!  You and your colleagues can now weigh in"
       project_id = @project.id
       redirect_to '/projects/'+project_id.to_s   # @user   # todo: set this to rate the project once that exists

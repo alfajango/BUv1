@@ -64,7 +64,7 @@ change again...
   co.users << user  # THIS WORKS AND PREVIOUS LINE DOESNT!!!
   A user belongs to a company, so I guess you have to assign as co.users << user
 
-  can't get ProjectFeedback to work.  Try generating again, slight different name:
+  cant get ProjectFeedback to work.  Try generating again, slight different name:
   $ rails g controller Pfeedbacks
   $ rails g model Pfeedback attrib:string from_id:string rating_given:float accounted_for:datetime  # needed to be DateTime?  this gave accounted_for:time
 
@@ -101,18 +101,22 @@ $ git commit -m "trying to solve master vs build1 merge issues"
 $ git merge build1
 Already up-to-date.
 
-MAIL
-first, I have to get application.yml and other things out of my git.  Put a .gitignore in project root folder.
-$ git rm --cached config/application.example.yml  // not sure I need --cached
-then, git add, git commit, git push
-$ rails g mailer user_mailer project_creation
-      create  app/mailers/user_mailer.rb
-      invoke  erb
-      create    app/views/user_mailer
-      create    app/views/user_mailer/project_creation.text.erb
-      invoke  rspec
-      create    spec/mailers/user_mailer_spec.rb
-      create    spec/fixtures/user_mailer/project_creation
+MAIL #######################
+  first, I have to get application.yml and other things out of my git.  Put a .gitignore in project root folder.
+  $ git rm --cached config/application.example.yml  // not sure I need --cached
+  then, git add, git commit, git push
+  $ rails g mailer user_mailer project_creation
+        create  app/mailers/user_mailer.rb
+        invoke  erb
+        create    app/views/user_mailer
+        create    app/views/user_mailer/project_creation.text.erb
+        invoke  rspec
+        create    spec/mailers/user_mailer_spec.rb
+        create    spec/fixtures/user_mailer/project_creation
+
+    also make views/user_mailer/project_creation.html.erb
+    each email needs a method in user_mailer.rb
+    call the method in projects_controller create action with UserMailer.project_creation(@user, @project).deliver
 
 Trying to get Google Apps going so I can use phil@prietary.com email
 $ heroku domains:add www.prietary.com
@@ -122,4 +126,26 @@ Adding prietary.com to polar-badlands-2176... done
 
 Follow instuctions on Heroku site for using your own url.  I can't figure out how to create a CNAME record in 1and1 (never use this site again).  So, I created a DNSimple account and moved the nameservers to dnsimple's.
 
-Actually, now that I have DNSimple, I should be able to verify my domain just by creating the CNAME record, rather than pointing a heroku app there and putting in the meta tag  
+Actually, now that I have DNSimple, I should be able to verify my domain just by creating the CNAME record, rather than pointing a heroku app there and putting in the meta tag. 
+So, I got prietary verified @ Google Apps by adding a TXT record in DNsimple.  Have phil@prietary.com and contact@prietary.com
+ToDo: put a decent site on Heroku, and, using instructions on heroku, set Prietary.com to point there.  Screw it - just go live.  Maybe say its in Alpha  
+
+########## List of emails I wan to send #######
+1) sign up - before signing in, user must click on link in email. So, before this is done, redirect to "need to verify include resend link and suggestion to check spam folder" page rather than homepage
+2) account verified email (what you can do, how to create colleagues)
+3) forgot password (link on login page and sign up page)
+4) create project (done)
+5) you receive feedback (once per day, max)
+6) you receive a response to a feedback (1x/day max)
+7) One of your projects receives feedback (1x/day max with link to stop getting notified)
+8) 
+
+
+Working on getting alerts working again.  
+In application.html.erb, need all of this:
+        <% flash.each do |key, value| %>
+          <%= content_tag(:div, value, class: "alert alert-#{key}") %>
+        <% end %>
+        <%= render 'layouts/messages' %>
+        
+messages are in config/locales/devise.en.yml

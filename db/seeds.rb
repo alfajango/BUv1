@@ -11,9 +11,14 @@
 #--------------- Users ------------------------------
 users = User.all
 users.delete_all
+# in case it creates companies & projects, also do this:
+companies = Company.all
+companies.delete_all
+proj = Project.all
+proj.delete_all
 
 puts 'DEFAULT USERS'
-user = User.create! :name => ENV['ADMIN_NAME'].dup, :email => ENV['ADMIN_EMAIL'].dup, 
+User.create! :name => ENV['ADMIN_NAME'].dup, :email => ENV['ADMIN_EMAIL'].dup, 
 			:password => ENV['ADMIN_PASSWORD'].dup, 
 			:password_confirmation => ENV['ADMIN_PASSWORD'].dup			
 User.create!(name: "Jane Williams", email: "jwilliams@example.com", password: "password", 
@@ -151,31 +156,38 @@ feedback_list.each do | from_email, attrib_obj, to_user_obj |
   to_user_obj.feedbacks << fb
   #puts "5"
 end
-
+puts "FEEDBACKS"
 
 # create ratings in crunch_ratings if I want to do those
 
 
 #--------------- Companies ------------------------------
-companies = Company.all
-companies.delete_all
+# # shouldn't need this since companies should be set up when user created.  But, they're not being createed  
+
+# companies = Company.all
+# companies.delete_all
 Company.create!(domain: "example.com", name: "Example" )
 Company.create!(domain: "acme.com", name: "Acme" )
-Company.create!(domain: "apple.com", name: "Apple" )
-puts "COMPANY: #{Company.first.name}"
+Company.create!(domain: "prietary.com", name: "Prietary" )
+#puts "Company.first.name: #{Company.first.name}"
+#puts "Company.last.name: #{Company.last.name}"
 # need to put people in those companies:
 users = User.all
+#puts "users.last.email: #{users.last.email}"
 users.each do | user |
+	puts "user.email: #{user.email}"
   domain = user.email.split("@").last
   co = Company.find_by(domain: domain)
-  # user.company = co   # this line isn't getting it done #####################
+  # user.company = co   # this way doesn't work
   co.users << user  # THIS WORKS AND PREVIOUS LINE DOESNT!!!
+  #puts "co.name: #{co.name}, user.email: #{user.email}"
 end
-
+puts "COMPANIES"
 
 #--------------- Projects ------------------------------
-proj = Project.all
-proj.delete_all
+# delete all up top.
+#proj = Project.all
+#proj.delete_all
 
 proj = Project.create!(name: "Acquire competitors")
 company = Company.find_by(name: "Example") 
@@ -193,25 +205,27 @@ company.projects << proj
 user = User.find_by(name: "Phil Garber")
 user.projects << proj
 
-#Acme & Apple projects don't have creators yet
+#Acme & Prietary projects don't have creators yet
 proj = Project.create!(name: "Refresh website")
 company = Company.find_by(name: "Acme")
 company.projects << proj  # Acme will also refresh their website
 proj = Project.create!(name: "acquire ExxonMobil")
 company.projects << proj
 
-company = Company.find_by(name: "Apple")
-proj = Project.create!(name: "bigger iPhone")
+company = Company.find_by(name: "Prietary")
+proj = Project.create!(name: "Launch!!")
 company.projects << proj
 
 # put in two projects for each company.  No user created these
+#no.  I think this should be done in registrations_controller create action when a user is created
 companies = Company.all
 companies.each do | co |
-  proj = Project.create!(name: "Keep customers happy")
+  proj = Project.create!(name: "Make our customers happy.") # . says it was set here.  I'd rather this be done by user create calling company create
   co.projects << proj
-  proj = Project.create!(name: "Keep employees motivated and engaged")
+  proj = Project.create!(name: "Keep employees motivated and engaged.")
   co.projects << proj
 end
+
 
 
 puts "company.projects[0].name: #{company.projects[0].name}"  # projects is an array

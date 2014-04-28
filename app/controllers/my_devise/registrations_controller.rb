@@ -5,7 +5,7 @@ class MyDevise::RegistrationsController < Devise::RegistrationsController
 		super # this calls Devise::RegistrationsController#create
 
 		puts "in mydevise create after super"
-		puts "current_user.name: #{current_user.name}"
+		puts "current_user.name: #{current_user.name}" #causes error when creating new company
     
 	    #@user = User.new(user_params)   
 	    @companies = Company.all
@@ -15,13 +15,19 @@ class MyDevise::RegistrationsController < Devise::RegistrationsController
 	    if @companies.where(domain: domain).exists?  
 	      puts " this company already exists"
 	      co = @companies.where(domain: domain).first # not sure why I need first ??
-	      puts "co: #{co}"
-	      puts "co.class: #{co.class}"
+	      #puts "co: #{co}"
+	      #puts "co.class: #{co.class}"
 	      puts "co.name: #{co.name}"
 	    else 
 	      puts " first user in this company "
 	      co = Company.create!(domain: domain, name: name)  
  		  puts "in forming new company, co= #{co}"
+
+ 		  #also create 2 baseline projects for this company:
+ 		  proj1 = Project.create!(name: "Make our customers happy")
+		  co.projects << proj1
+		  proj2 = Project.create!(name: "Keep employees motivated and engaged")
+		  co.projects << proj2		  
 	    end 
 	    co.users << current_user
 	    puts "done mydevise#create"

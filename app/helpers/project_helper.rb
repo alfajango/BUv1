@@ -17,6 +17,9 @@ module ProjectHelper
   def projects_for_homepage()  # put up to 3 project_id's in @show_project_id
 	@show_projects = Array.new
 
+	puts "project_helper projects_for_homepage current_user.name: #{current_user.name}"
+	puts "current_user.company.name: #{current_user.company.name}"
+
 	company_projects = current_user.company.projects
 
 	count = 1  
