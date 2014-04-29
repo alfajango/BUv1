@@ -5,5 +5,6 @@ class ProjectRating
   field :attribute, type: String
   field :current_rating, type: Float
   field :num_fb_received, type: Float
+  field :created, type: Time, default: -> { Time.now } 
   belongs_to :project
 end

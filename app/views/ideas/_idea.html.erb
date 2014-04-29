@@ -1,0 +1,12 @@
+<li>
+  <div>
+    <p class="alignleft"><%= link_to idea.body, idea %>
+      <% if current_user===(idea.user) %> 
+        <i><%= link_to "edit ", edit_idea_path(idea) %></i>
+      <% end %></p> 
+    <% if idea.user %>
+      <p class="alignright"><%= "#{idea.user.name}" %></p>
+    <% end %> 
+  </div>
+  <div style="clear: both;"></div>
+</li>

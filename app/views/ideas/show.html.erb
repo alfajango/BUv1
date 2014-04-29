@@ -1,0 +1,40 @@
+<%# this is ideas/show.html.erb %>
+
+<div class="wrapper body">
+  <div class="container">
+    <div class="row">
+      <%= render "users/signed_in_sidebar" %>
+      <div class="col-md-8">
+        <!-- this is the main section -->
+        <div class="well well-sm">
+          <% idea = set_idea(params) %> <%##set_project is in ideas_helper %> 
+
+          <div>
+            <p class="alignleft"><b><%= "#{idea.body}  " %>
+   
+            <% if current_user===(idea.user) %> 
+              <i><%= link_to "edit ", edit_idea_path(idea) %></i>
+            <% end %></b></p> 
+            <% if idea.user %>
+              <p class="alignright"><%= "Created by #{idea.user.name}" %></p>
+            <% end %> 
+          </div>
+          <div style="clear: both;"></div>
+          <p>Replies</p>
+          <ul>
+            <% @comments.each do |comment| %>
+              <li>
+              <%# if comment.body %> <%# sometimes this doesn't exist ??? %>
+                <%= comment.body %>
+              <%# end %>
+             </li>
+            <% end %>
+          </ul>
+
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+

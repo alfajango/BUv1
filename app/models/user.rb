@@ -4,6 +4,8 @@ class User
   belongs_to :company  #, class_name: "Company", inverse_of: :user 
   has_many :feedbacks #,  class_name: "Feedback", inverse_of: :user #( feedback this person has received )
   has_many :projects
+  has_many :ideas
+  has_many :votes
 
   # don't think I also need this:
   # field :company_id         :type => Integer, :default => 0  # will be example or something seeded

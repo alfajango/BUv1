@@ -147,5 +147,50 @@ In application.html.erb, need all of this:
           <%= content_tag(:div, value, class: "alert alert-#{key}") %>
         <% end %>
         <%= render 'layouts/messages' %>
-        
+
 messages are in config/locales/devise.en.yml
+I am rendering two messages, the first of which is behind the navbar.  I can''t figure out how to get just one to show up, yet have it not covered up.  messes up the spacing as is.  
+
+For date, add this to all my models:
+field :created, type: DateTime, default: -> { Time.now }
+
+########### IDEAS ##################
+
+class Idea < ActiveRecord::Base
+  field :body, type: Text
+  field :created, type: DateTime, default: -> { Time.now }
+  belongs_to :user
+  belongs_to :company
+  belongs_to :thread, :class_name => 'Idea'  # Reference to parent message
+  has_many :replies,  :class_name => 'Idea', :foreign_key => 'thread_id' (?)
+
+  # ? # named_scope :in_reply_to, lambda { |idea| :conditions => {:thread => idea}, :order => 'created_at' }
+  has_many :votes
+end
+
+class User < ActiveRecord::Base
+  has_many :ideas
+  has_many :votes
+end
+
+class Company
+  has_many :ideas
+end
+
+class Vote < ActiveRecord::Base
+  field :value, type: Integer
+  field :created, type: DateTime, default: -> { Time.now }
+  belongs_to :idea
+  belongs_to :user
+
+If you need to capture the message threads, any Message that''s a reply can store a reference to the initial message starting the Conversation (aka Thread). For example:
+I need more advanced than this since it's a message board, not just a text message stream':
+
+first_msg   = Idea.new(user => current_user, :body => 'Hello!')
+sally_reply = first_msg.replies.build(:to_user => bob, :from_user => sally, :body => 'hi back')
+bob_reply   = first_msg.replies.build(:to_user => sally, :from_user => bob, :body => 'later')
+
+$ rails g controller Ideas
+$ rails g model Idea body:text created:datetime # becomes time
+$ rails g controller Votes
+$ rails g model Vote value:integer created:datetime  # becomes time

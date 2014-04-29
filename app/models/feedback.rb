@@ -4,6 +4,7 @@ class Feedback
   #field :to_id, type: Integer
   #field :attribute_identifier, type: String
   field :rating_given, type: Float
+  field :created, type: Time, default: -> { Time.now } 
   field :accounted_for, type: DateTime
   belongs_to :user #,  class_name: "User", inverse_of: :feedbacks
   belongs_to :attribute

@@ -7,6 +7,7 @@ Prietary::Application.routes.draw do
              :controllers => { :registrations => "devise/my_devise/registrations" }
   resources :users
   resources :projects
+  resources :ideas
 
   # from BUv2
   #root 'users#home'  # caused an error

@@ -1,0 +1,42 @@
+<%# ideas/index.html.erb  #################### %>
+
+   
+<div class="wrapper body">
+  <div class="container">
+    <div class="row">
+      <%= render "users/signed_in_sidebar" %>  
+      <div class="col-sm-8">
+        <% provide(:title, 'All Ideas') %>
+        <% company = current_user.company %>
+        <%# company_id = CompanyEmployee.find_by(user_id: (current_user.id)).company_id %>
+        <h1><%= company.name %> | Ideas</h1> 
+        <%# or current_user.company.name %>
+
+        <%#= will_paginate %> 
+
+        <ul class="ideas"> <%# tells it to use the .ideas in custom.css.scss%>
+        	<%= render @root_ideas %><%# renders _idea.html.erb and passes the idea%>
+        </ul>
+        <%#= will_paginate %> 
+        <br>
+        <% if @root_ideas.size.to_i < 1 %>
+          <div class="well well-sm"> <b> No ideas created for your company yet. </b></div>
+        <% end %> 
+
+<!--         <div class="row">
+          <div class="span"> -->
+            <%= form_for(@idea) do |f| %>
+              <%#= render 'shared/error_messages', object: f.object %>
+              <h4>Create a new idea.  Enter the idea:</h4>
+              <%= f.text_field :body %>
+              <br>
+              Your name will be shown as the creator of the idea.  Up and down votes are anonymous.<br>
+              <%= f.hidden_field :company_id, :value => current_user.company.id %><br>
+              <%= f.submit "Create the idea", class: "btn btn-large btn-primary" %>
+            <% end %>
+<!--           </div>
+        </div> -->
+      </div>
+    </div>
+  </div>
+</div>

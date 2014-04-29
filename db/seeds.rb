@@ -175,7 +175,6 @@ Company.create!(domain: "prietary.com", name: "Prietary" )
 users = User.all
 #puts "users.last.email: #{users.last.email}"
 users.each do | user |
-	puts "user.email: #{user.email}"
   domain = user.email.split("@").last
   co = Company.find_by(domain: domain)
   # user.company = co   # this way doesn't work
@@ -188,7 +187,6 @@ puts "COMPANIES"
 # delete all up top.
 #proj = Project.all
 #proj.delete_all
-
 proj = Project.create!(name: "Acquire competitors")
 company = Company.find_by(name: "Example") 
 company.projects << proj
@@ -281,7 +279,7 @@ puts 'PATTRIBUTES'
 
 #--------------- Pfeedbacks ------------------------------
 pfb = Pfeedback.all
-puts "pfb.size: #{pfb.size}"
+#puts "pfb.size: #{pfb.size}"
 pfb.delete_all
 
 pfeedback_list = [ # from_email, pattribute object, to_project object
@@ -306,7 +304,6 @@ pfeedback_list = [ # from_email, pattribute object, to_project object
 	["tcarawell@example.com", Pattribute.find_by(name: "needs to be rescoped"), Project.find_by(name: "Refresh website") ],
 	["tcarawell@example.com", Pattribute.find_by(name: "needs to show market need"), Project.find_by(name: "Refresh website") ]
     ]
-puts "before pfeedback_list.each"
 
 pfeedback_list.each do | from_email, pattrib_obj, to_proj_obj | 
 
@@ -320,6 +317,109 @@ pfeedback_list.each do | from_email, pattrib_obj, to_proj_obj |
   to_proj_obj.pfeedbacks << pfb
   #puts "5"
 end
-puts "PFeedbacks"
+puts "PFEEDBACKS"
 
 
+#--------------- Ideas ------------------------------
+
+ideas = Idea.all
+ideas.delete_all
+
+idea = Idea.create!(body: "Sell non-core assets such as real estate", created: Time.now)
+co = Company.find_by(name: "Example")
+co.ideas << idea # idea belongs to company
+user = User.find_by(name: "Jane Williams")
+user.ideas << idea # idea belongs to user
+# leave thread null - it's it's own idea
+
+idea = Idea.create!(body: "Increase funding for product development", created: Time.now)
+co = Company.find_by(name: "Example")
+co.ideas << idea # idea belongs to company
+user = User.find_by(name: "Jane Williams")
+user.ideas << idea # idea belongs to user
+# leave thread null - it's it's own idea
+
+idea = Idea.create!(body: "Get out of markets where we aren't number 1 or number 2", created: Time.now)
+co = Company.find_by(name: "Example")
+co.ideas << idea # idea belongs to company
+user = User.find_by(name: "Beth Hillman")
+user.ideas << idea # idea belongs to user
+# leave thread null - it's it's own idea
+
+parent = Idea.find_by(body: "Sell non-core assets such as real estate")
+idea = Idea.create!(body: "Real estate is a great investment long term.  Plus, this is not a good time to sell", 
+					created: Time.now,
+					thread: parent)
+co = Company.find_by(name: "Example")
+co.ideas << idea # idea belongs to company
+user = User.find_by(name: "Trevor Carawell")
+user.ideas << idea # idea belongs to user
+# parent.thread = idea  # ?
+
+parent = Idea.find_by(body: "Real estate is a great investment long term.  Plus, this is not a good time to sell")
+idea = Idea.create!(body: "Our cost of capital is higher than real estate appreciation, so we should sell", 
+					created: Time.now, 
+					thread: parent)
+co = Company.find_by(name: "Example")
+co.ideas << idea 
+user = User.find_by(name: "Beth Hillman")
+user.ideas << idea # idea belongs to user
+# parent.thread = idea  
+
+co = Company.find_by(name: "Example")
+user = User.find_by(name: "Beth Hillman")
+parent = Idea.find_by(body: "Sell non-core assets such as real estate")
+
+# also works: idea = Idea.new( ... )
+
+idea = Idea.create!(body: "Where do we work if we sell the real estate?", 
+					created: Time.now,
+					company: co,
+					user: user,
+					thread: parent)
+co = Company.find_by(name: "Example")
+
+# this also works:
+# co.ideas << idea 
+# user.ideas << idea 
+#parent.thread = idea 
+
+puts "IDEAS"
+
+#--------------- Votes ------------------------------
+
+votes = Vote.all
+votes.delete_all
+
+idea = Idea.find_by(body: "Sell non-core assets such as real estate")
+user = User.find_by(name: "Beth Hillman")
+vote = Vote.create!(value: 1, 
+					created: Time.now,
+					idea: idea,
+					user: user)
+
+#another identical vote - should eventaully be negated
+vote = Vote.create!(value: 1, 
+					created: Time.now,
+					idea: idea,
+					user: user)
+
+user = User.find_by(name: "Trevor Carawell")
+vote = Vote.create!(value: 1, 
+					created: Time.now,
+					idea: idea,
+					user: user)
+
+user = User.find_by(name: "Jane Williams")
+vote = Vote.create!(value: 1, 
+					created: Time.now,
+					idea: idea,
+					user: user)
+
+user = User.find_by(name: "Phil Garber")
+vote = Vote.create!(value: -1, 
+					created: Time.now,
+					idea: idea,
+					user: user)
+
+puts "VOTES"
