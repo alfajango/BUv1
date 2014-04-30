@@ -8,27 +8,17 @@
         <!-- this is the main section -->
         <div class="well well-sm">
           <% idea = set_idea(params) %> <%##set_project is in ideas_helper %> 
+          <%= render idea %><%# renders _idea.  this is the root idea.  no indent %>
 
-          <div>
-            <p class="alignleft"><b><%= "#{idea.body}  " %>
-   
-            <% if current_user===(idea.user) %> 
-              <i><%= link_to "edit ", edit_idea_path(idea) %></i>
-            <% end %></b></p> 
-            <% if idea.user %>
-              <p class="alignright"><%= "Created by #{idea.user.name}" %></p>
-            <% end %> 
-          </div>
-          <div style="clear: both;"></div>
-          <p>Replies</p>
           <ul>
             <% @comments.each do |comment| %>
-              <%= render comment %>  <%# how do I get it to go to _idea
-              <li>
-              <%# if comment.body %> <%# sometimes this doesn't exist ??? %>
-                <%#= comment.body %>
-              <%# end %>
-             </li>
+              <%= render comment %>  <%# magically knows to go to _idea %>
+              <% subcomments = comment.replies %>
+              <% if !subcomments.nil? %>
+                <% subcomments.each do |subcomment| %>
+                  <%= render subcomment %>
+                <% end %>
+              <% end %>
             <% end %>
           </ul>
 

@@ -15,6 +15,10 @@ class IdeasController < ApplicationController
     @idea = Idea.find(params[:id])
     puts "@idea.body: #{@idea.body}"
     @comments = @idea.replies
+
+    # if  !@comments.nil? #@comments?
+    #   @subcomments = @comments.replies # this is L2 comments and all the farther I'll go for now
+    # end
   end
 
 # FROM PROJECT_CONTROLLER: ########################
