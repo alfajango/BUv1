@@ -1,12 +1,14 @@
 <li>
   <div>
-    <p class="alignleft"><%= link_to idea.body, idea %>
+    <p><%= link_to(idea.user.name, idea.user) %>&nbsp&nbsp&nbsp&nbsp<%= "#{time_ago_in_words(idea.created)} ago"%>
+    <p><b><%= link_to( idea.body, idea) %></b>
       <% if current_user===(idea.user) %> 
         <i><%= link_to "edit ", edit_idea_path(idea) %></i>
       <% end %></p> 
-    <% if idea.user %>
-      <p class="alignright"><%= "#{idea.user.name}" %></p>
-    <% end %> 
+      <% num_votes(idea) %><%# set @idea_upvotes and @idea_downvotes %>
+      <p><%= @idea_upvotes %> <i class="text-color fa fa-chevron-up fa-1x"></i>
+      &nbsp&nbsp| &nbsp&nbsp
+      <%=@idea_downvotes %> <i class="text-color fa fa-chevron-down fa-1x"></i> </p>
   </div>
-  <div style="clear: both;"></div>
 </li>
+<hr> 

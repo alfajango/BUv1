@@ -1,4 +1,4 @@
-<%# this is ideas/show.html.erb %>
+<%# this is ideas/show.html.erb   This is where I show a single idea and all of its contents%>
 
 <div class="wrapper body">
   <div class="container">
@@ -23,9 +23,10 @@
           <p>Replies</p>
           <ul>
             <% @comments.each do |comment| %>
+              <%= render comment %>  <%# how do I get it to go to _idea
               <li>
               <%# if comment.body %> <%# sometimes this doesn't exist ??? %>
-                <%= comment.body %>
+                <%#= comment.body %>
               <%# end %>
              </li>
             <% end %>
