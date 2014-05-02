@@ -14,7 +14,7 @@
             <% @comments.each do |comment| %>
               <%= render comment %>  <%# magically knows to go to _idea %>
               <% subcomments = comment.replies %>
-              <% if !subcomments.nil? %>
+              <% unless subcomments.nil? %>
                 <% subcomments.each do |subcomment| %>
                   <%= render subcomment %>
                 <% end %>

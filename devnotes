@@ -197,3 +197,5 @@ $ rails g model Vote value:integer created:datetime  # becomes time
 
 Working on ideas
 in development.rb, set   config.action_mailer.perform_deliveries = false #for now
+
+working in branch 'may'

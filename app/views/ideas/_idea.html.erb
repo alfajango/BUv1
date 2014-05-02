@@ -8,32 +8,44 @@
     <% num_votes(idea) %><%# set @idea_upvotes and @idea_downvotes %>
     <p>
       <%= @idea_upvotes %>
+
       <%= form_for(idea.votes.build) do |f| %>
-        <%# put these in controller, not hidden_fields %>
         <%= f.hidden_field :upvote, value: 1 %> 
-        <%= f.hidden_field :idea, value: idea %>
+        <%= f.hidden_field :idea_id, :value => idea.id %>
         <%= f.submit "up", class: "btn btn-large btn-primary" %>
       <% end %>
-
-
 
       <%#= button_to raw("<i class=\"text-color fa fa-chevron-up fa-1x\"></i>"), %>
       &nbsp&nbsp | &nbsp&nbsp
       <%=@idea_downvotes %>
-      <%= form_for(idea.votes.build(upvote: 0, downvote: 1, created: Time.now, idea: idea, user: current_user), remote: true) do |f| %>
+      <%= form_for(idea.votes.build) do |f| %>
+        <%= f.hidden_field :downvote, value: 1 %> 
+        <%= f.hidden_field :idea_id, :value => idea.id %>
         <%= f.submit "down", class: "btn btn-large btn-primary" %>
       <% end %>
 
       <a href <i class="text-color fa fa-chevron-down fa-1x"></i> </a> &nbsp&nbsp
       <%= link_to "Reply", '#' %>
       <%# make this appear when Reply is clicked %>
-      <%= form_for(@idea) do |f| %>
-          <%#= render 'shared/error_messages', object: f.object %>
-        <%= f.text_field :body %>
-        <%= f.hidden_field :thread, :value =>idea %><%# might be a string rather than the object %>
-        <br>
-        <%= f.submit "Submit", class: "btn" %>
-      <% end %>
+      <div ng-controller="showReplyBox">
+        
+        <form>
+          <input type="button" id="show-Replybox" value="Reply" ng-click="Replybox=!Replybox" />
+        </form>
+                <section id="Replybox" ng-show="Replybox">
+          <%= form_for(@idea) do |f| %>  <%# @idea is the new one being created. idea is the parent that's being shown%>
+            <%#= render 'shared/error_messages', object: f.object %>
+            <%= f.text_field :body %>
+            <%= f.hidden_field :thread_id, :value => idea.id %><%#  can't send an object%>
+            <br>
+            <%= f.submit "Submit", class: "btn" %>
+          <% end %>
+        </section>
+
+      </div>
+      <%# this js is in votes.js %>
+
+
 
 
 
@@ -47,16 +59,3 @@
 </div>
 
 <hr> 
-<!-- <ul>
-    <%# sub_idea = Idea.find(params[:id]) # WRONG can't user params%>
-    <%# sub_idea = idea.replies %>
-    <%# puts "sub_idea.body: #{sub_idea.body}" %>
-    <%# sub_comments = sub_idea.replies%>
-    <%# puts "sub_comments.count: #{sub_comments.count}" %>
-    <%# puts "sub_comments.nil?: #{sub_comments.nil?} " %>
-    <%# unless sub_comments.nil? %>
-      <%# sub_comments.each do |comment| %>
-        <%#= render comment %>  <%# magically knows to go to _idea %>
-      <%# end %>
-    <%# end %>
-</ul> -->
