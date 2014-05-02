@@ -1,3 +1,32 @@
 // Place all the styles related to the Votes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.up-arrow {
+  display: "fa fa-chevron-up fa-1x";
+/*  <i class="text-color fa fa-chevron-down fa-1x"></i> */
+  
+  vertical-align: middle;
+  cursor: pointer;
+  
+}
+
+/*
+.btn:focus {
+  outline: thin dotted;
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
+
+.btn:hover,
+.btn:focus {
+  color: #333333;
+  text-decoration: none;
+}
+*/
+
+.song {
+    margin: 10px;
+    padding: 5px;
+    border: 1px solid gray;
+}

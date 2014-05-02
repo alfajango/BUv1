@@ -5,17 +5,12 @@ module IdeasHelper
   end
 
   def num_votes(idea)
-  	puts "in num_votes, idea.body: #{idea.body}"
+  	#puts "in num_votes, idea.body: #{idea.body}"
   	@idea_upvotes=0
   	@idea_downvotes=0
   	idea.votes.each do | vote |
-  	  if vote == 1
-  	  	puts "upvote"
-  	    @idea_upvotes += 1
-  	  elsif	vote == -1
-  	  	puts "downvote"
-  	  	@idea_downvotes -- 1
-  	  end
+  	  @idea_upvotes += vote.upvote 
+  	  @idea_downvotes += vote.downvote
   	end
   end
 end
