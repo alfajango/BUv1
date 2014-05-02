@@ -1,0 +1,25 @@
+<div class="wrapper body">
+  <div class="container">
+    <div class="row">
+      <%= render "users/signed_in_sidebar" %>  
+      <div class="col-sm-8">
+<!--       <div class="wrapper body">
+  <div class="container"> -->
+        <% provide(:title, 'Create new Idea') %>
+        <h1>Enter a Idea for <%=current_user.company.name%></h1>
+       
+
+        <div class="row">
+          <div class="span4 offset3">
+            <%= form_for(@idea) do |f| %>
+              <h4>Create a new idea:</h4>
+              <%= f.text_field :body %>
+              <br>
+              <%= f.submit "Create the idea", class: "btn btn-large btn-primary" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

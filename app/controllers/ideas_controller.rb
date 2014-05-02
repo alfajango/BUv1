@@ -21,6 +21,54 @@ class IdeasController < ApplicationController
     # end
   end
 
+  def create
+    puts "in ideas_controller create"
+    puts "params: #{params}"
+    puts "params[:idea]: #{params[:idea]}"
+    #puts "params[:idea][:user].name: #{params[:idea][:user].name}"
+    @idea = Idea.new(params[:idea])
+    current_user.ideas << @idea
+    current_user.company.ideas << @idea
+    puts "params[:idea][:thread].class: #{params[:idea][:thread].class}"
+    thread = instance_variable_get(params[:idea][:thread])
+    puts "thread: #{thread} "
+    puts "thread.class: #{thread.class}"
+    unless params[:idea][:thread].nil?
+      params[:idea][:thread].replies << @idea  # this might need to be changed.  
+      puts "set the reply to #{params[:idea][:thread].body}"
+    end
+    # need thread
+    #params[:idea][:user].ideas << @idea # or is this in params?
+    # current_user.company.ideas << @idea # or is this in params?
+    @user = current_user # to pass to UserMailer
+
+    if @idea.save
+      puts "in if @idea.save, should send an email"
+      UserMailer.idea_creation(@user, @idea).deliver
+      flash[:success] = "Idea created succesfully!  You and your colleagues can now weigh in"
+      idea_id = @idea.id
+      redirect_to '/ideas'  # @user   
+    else
+      puts "in else - couldn't @idea.save"
+      render 'new'
+    end
+  end   
+
+    # private
+
+    # def idea_params
+    #   return params[:idea]
+    #   #puts "params[:idea][:company_id]: #{params[:idea][:company_id]}"
+    #   puts "in idea_params: params[:idea]: #{params[:idea][:body]}"
+    #   # iparam = {}   # define it as a hash so it doesn't think it's an array!
+    #   # iparam[:body] = params[:idea][:body]
+    #   # #puts "pparam: #{pparam}"
+    #   # iparam[:company_id] = params[:idea][:company_id]
+    #   # #puts "2nd pparam: #{pparam}"
+    #   # return pparam
+
+    # end
+
 # FROM PROJECT_CONTROLLER: ########################
   # def index
   #   #    @users = current_user.company.users.paginate(page: params[:page])  

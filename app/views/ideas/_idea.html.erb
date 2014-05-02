@@ -9,43 +9,40 @@
     <p>
       <%= @idea_upvotes %>
       <%= form_for(idea.votes.build) do |f| %>
-        <%= f.hidden_field :user, value: current_user %>
-        <%= f.hidden_field :upvote, value: 1 %> <%# this is getting the 1 there, but it gets recorded as 0 (the default) without this line %>
-        <%= f.hidden_field :downvote, value: 0 %>
+        <%# put these in controller, not hidden_fields %>
+        <%= f.hidden_field :upvote, value: 1 %> 
         <%= f.hidden_field :idea, value: idea %>
-        <%= f.hidden_field :created, value: Time.now %>
         <%= f.submit "up", class: "btn btn-large btn-primary" %>
-        <%#= f.submit class: "up_arrow" %>
       <% end %>
 
 
 
       <%#= button_to raw("<i class=\"text-color fa fa-chevron-up fa-1x\"></i>"), %>
       &nbsp&nbsp | &nbsp&nbsp
+      <%=@idea_downvotes %>
+      <%= form_for(idea.votes.build(upvote: 0, downvote: 1, created: Time.now, idea: idea, user: current_user), remote: true) do |f| %>
+        <%= f.submit "down", class: "btn btn-large btn-primary" %>
+      <% end %>
+
+      <a href <i class="text-color fa fa-chevron-down fa-1x"></i> </a> &nbsp&nbsp
+      <%= link_to "Reply", '#' %>
+      <%# make this appear when Reply is clicked %>
+      <%= form_for(@idea) do |f| %>
+          <%#= render 'shared/error_messages', object: f.object %>
+        <%= f.text_field :body %>
+        <%= f.hidden_field :thread, :value =>idea %><%# might be a string rather than the object %>
+        <br>
+        <%= f.submit "Submit", class: "btn" %>
+      <% end %>
 
 
-      angular count: 
-<!-- 
-      <div ng-controller="VoteCtrl">
-        <div class="vote" >
-          <a href="#" ng-click="like(vote)">{{vote.title}}</a> ({{vote.like}}) 
-        </div>
-      </div> -->
+
       <div ng-controller="VoteCtrl">
         <div class="vote" ng-repeat="vote in votes">
           <a href="#" ng-click="like(vote)">{{vote.title}}</a> {{vote.like}}
         </div>
       </div>
-      <%=@idea_downvotes %>
 
-      <a href <i class="text-color fa fa-chevron-down fa-1x"></i> </a> &nbsp&nbsp
-      <%= link_to "Reply", '#' %>
-
-      <%= form_for(idea.votes.build(upvote: 0, downvote: 1, created: Time.now, idea: idea, user: current_user), remote: true) do |f| %>
-        <%= f.submit "down", class: "up-arrow" %>
-      <% end %>
-
-      <%= submit_tag("Submit rating feedback", :class=>"up-arrow", :onclick => "return validateform(#{@variable});") %>
     </p>
 </div>
 

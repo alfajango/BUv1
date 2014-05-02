@@ -14,4 +14,14 @@ class UserMailer < ActionMailer::Base
     #mail to: "philip.m.garber@gmail.com", subject: "Project creation confirmation"
     mail to: user.email, subject: "Project creation confirmation"
   end
+
+  def idea_creation(user, idea)
+    @user = user 
+    @idea = idea
+    @greeting = "Hi there idea!  Find me in user_mailer.rb"
+
+    #mail to: "philip.m.garber@gmail.com", subject: "Project creation confirmation"
+    mail to: user.email, subject: "Idea creation confirmation"
+  end
+
 end

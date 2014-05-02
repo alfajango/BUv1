@@ -16,7 +16,8 @@
               <%= f.text_field :name %>
               <br>
               Your name will be shown as the creator of the project.  All feedback given will be anonymous.<br>
-              <%= f.hidden_field :company_id, :value => current_user.company.id %><br>
+              <%= f.hidden_field :company_id, :value => current_user.company.id %>
+              <br>
               <%= f.submit "Create the project", class: "btn btn-large btn-primary" %>
             <% end %>
           </div>

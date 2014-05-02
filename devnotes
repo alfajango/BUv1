@@ -194,3 +194,6 @@ $ rails g controller Ideas
 $ rails g model Idea body:text created:datetime # becomes time
 $ rails g controller Votes
 $ rails g model Vote value:integer created:datetime  # becomes time
+
+Working on ideas
+in development.rb, set   config.action_mailer.perform_deliveries = false #for now
