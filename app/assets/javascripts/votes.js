@@ -17,3 +17,11 @@ function VoteCtrl($scope){
 
 // , symbol: (raw("<i class=\"text-color fa fa-chevron-up fa-1x\"></i>")
 // , symbol: (raw("<i class=\"text-color fa fa-chevron-down fa-1x\"></i>"))
+
+
+
+// For a submit link
+// $('.submit_me').click(function() {
+//   $('form').submit();
+//   return false;
+// });

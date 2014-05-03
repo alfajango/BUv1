@@ -4,7 +4,12 @@
 
 // from http://stackoverflow.com/questions/15247184/angularjs-equivalent-to-jquery-toggle-show-hide-a-section
 
-'use strict';
-var App=angular.module('myApp',[]);
-function Ctrl($scope){
+// 'use strict';
+// var App=angular.module('myApp',[]);
+// function Ctrl($scope){
+// }
+
+
+function ShowDiv() {
+    document.getElementById("replyBox").style.display = "block";
 }
