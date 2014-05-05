@@ -201,4 +201,4 @@ in development.rb, set   config.action_mailer.perform_deliveries = false #for no
 working in branch 'may'
 
 got the form on the same line by doing %= form_for idea.votes.build, :html => { :style => 'display:inline;' } do |f| %>
-to not redirect, do return false; !!
+to not redirect, do "return false;" in the javascript !!

@@ -1,6 +1,8 @@
 class IdeasController < ApplicationController
 
   def index
+        puts "in ideas_controller index"
+
   	#@ideas = current_user.company.ideas.all
   	first_idea = Idea.first
   	puts "current_user.company.ideas.first.thread.nil?: #{current_user.company.ideas.first.thread.nil?}" 	
@@ -12,12 +14,16 @@ class IdeasController < ApplicationController
 
 
   def show
-    @idea = Idea.find(params[:id])
-    puts "@idea.body: #{@idea.body}"
-    @comments = @idea.replies
-  end
+    puts "in ideas_controller show"
+    #@idea = Idea.find(params[:id])  # NO!
+    #puts "@idea.body: #{@idea.body}"
+    #@comments = @idea.replies
+    @idea = Idea.new
+  end 
+
 
   def create
+    puts "in ideas_controller create"
 
     @idea = Idea.new(params[:idea])
     current_user.ideas << @idea
@@ -44,7 +50,24 @@ class IdeasController < ApplicationController
     end
   end   
 
+  def edit
+    @idea = Idea.find(params[:id])
+  end
 
+  def update
+    @idea = Idea.find(params[:id])
+    if @idea.update_attributes(params[:idea])  # what is update_attributes?
+      flash[:success] = "Idea updated"
+      redirect_to @idea
+    else
+      render 'edit'
+    end
+  end  
 
+  def destroy
+    Idea.find(params[:id]).destroy
+    flash[:success] = "Idea deleted."
+    redirect_to ideas_url
+  end
 
 end
