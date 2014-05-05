@@ -10,6 +10,13 @@
 // }
 
 
-function ShowDiv() {
-    document.getElementById("replyBox").style.display = "block";
+// function ShowDiv() {
+//     document.getElementById("replyBox").style.display = "block";
+// }
+
+// Wait for the page to load first
+window.onload = function ShowDiv() {
+  document.getElementById("replyBox").style.display = "block";
+
+  return false;
 }

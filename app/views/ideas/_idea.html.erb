@@ -7,9 +7,9 @@
     <% end %></p> 
     <% num_votes(idea) %><%# set @idea_upvotes and @idea_downvotes %>
     <p>
-      <div id="inline_this">
+      <div style="display:inline;">
         <%= @idea_upvotes %>
-        <%= form_for idea.votes.build, :html => { :id => "upvoter" } do |f| %>
+        <%= form_for idea.votes.build, :html => { :style => 'display:inline;' } do |f| %>
           <%= f.hidden_field :upvote, value: 1 %> 
           <%= f.hidden_field :idea_id, :value => idea.id %>
           <%#= f.submit %> <%# "up", class: "btn btn-large btn-primary" %>
@@ -19,44 +19,53 @@
 
         <% end %>
 
+
         &nbsp&nbsp | &nbsp&nbsp
-        <%=@idea_downvotes %>
-        <%= form_for(idea.votes.build) do |f| %>
-          <%= f.hidden_field :downvote, value: 1 %> 
+        <%= @idea_downvotes %>
+        <%= form_for idea.votes.build, :html => { :style => 'display:inline;' } do |f| %>
+          <%= f.hidden_field :downvote, value: 1 %>
           <%= f.hidden_field :idea_id, :value => idea.id %>
           <%= link_to_submit do %>
             <i class="text-color fa fa-chevron-down fa-1x"></i>
-          <% end %>
+          <% end  %>
         <% end %>
         &nbsp&nbsp
       </div>
 
+
       <%# make this appear when Reply is clicked %>
-<!-- ANGULAR METHOD NOT WORKING      <div ng-controller="showReplyBox">
-        
-        <form>
-          <input type="button" id="show-Replybox" value="Reply" ng-click="Replybox=!Replybox" />
-        </form>
-        <section id="Replybox" ng-show="Replybox"> -->
+
         <div id="replyBox" style="display:none;" class="answer_list">
           <%= form_for(@idea) do |f| %>  <%# @idea is the new one being created. idea is the parent that's being shown%>
             <%#= render 'shared/error_messages', object: f.object %>
-            <%= f.text_field :body %>
+            <%= f.text_field :body, placeholder: "Type your response..." %>
             <%= f.hidden_field :thread_id, :value => idea.id %>
             <br>
             <%= f.submit "Submit", class: "btn btn-primary" %>
 
           <% end %>
         </div>
-        <input type="button" name="answer" value="Reply" onclick="ShowDiv()" />
+
+        <!-- <a id="ShowDiv" href"#">Reply</a> -->
+
+        <a id="mylink" href="#">Reply</a>  
+        <!-- <input type="button" name="answer" value="Reply" onclick="ShowDiv()" /> -->
         
-        <script>
-          function ShowDiv() {
-            document.getElementById("replyBox").style.display = "block";
+        <script type="text/javascript">
+          // function ShowDiv() {
+          //   document.getElementById("replyBox").style.display = "block";
+          // }
+          window.onload = function() {
+
+            var a = document.getElementById("mylink");
+
+            a.onclick = function() {
+              document.getElementById("replyBox").style.display = "block";
+
+              return false;
+            }
           }
         </script>
-  
-        <!-- </section> -->
 
 <!-- demo of clicking and live updating the number      <div ng-controller="VoteCtrl">
         <div class="vote" ng-repeat="vote in votes">
