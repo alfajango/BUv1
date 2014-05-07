@@ -40,7 +40,7 @@ class ProjectsController < ApplicationController
   	# domain_id = CompanyEmployee.find_by(user_id: (current_user.id))  # would now be company_id
     #puts "in projects_controller create"
     #@project = Project.new(project_params)
-    @project = Project.new(project_params)
+    @project = Project.new(project_params) # I should just make this params[:project] and get rid of project_params, right?
     current_user.projects << @project
     @user = current_user # to pass to UserMailer
     if @project.save

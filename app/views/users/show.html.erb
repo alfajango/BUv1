@@ -22,6 +22,31 @@
           </ul>
 
         </div>
+
+        <% if @users_jobs || @users_for_this_job%>
+          <div class="well well-sm"> 
+            <% unless @users_jobs.nil? %>
+              <p><b><%=current_user.company.name %></b> employees have said that: </p>
+                <ul>
+                <% @users_jobs.reverse_each do |job| %>
+                  <li><b><%=user.name%></b> would do well in a role like <b><%=job.job_holder.name %>'s</b></li>
+                <% end %>
+              </ul>
+            <% end %>
+            <% unless @users_for_this_job.nil? %>
+              <ul>
+                <% @users_for_this_job.reverse_each do |job| %>
+                  <li><b><%=job.subject.name %></b> would do well in a role like <b><%=user.name%>'s</b></li>
+                <% end %>
+              </ul>
+            <% end %>
+          </div>
+        <% else %>
+          <div class="well well-sm"> 
+            No job recommendations for <b> <%=user.name%></b> yet
+          </div>
+        <% end %>
+
         <div class="well well-sm" id="colleaguedDisplay">
           <h4>Give feedback for <%= @user.name %></h4>
 
@@ -83,6 +108,19 @@
               // $scope.attribs = ["Tom", "Jeffrey", "Phil", "Mark", "Paul"];
             }
           </script>
+        </div>
+
+        <div class="well well-sm"> <%# job input %>
+          <b><%#= user.name %></b> would do well in a role like: 
+          <%#= form_for(@job) do |f| %>
+            <%#= f.text_field :name %>
+            or 
+            <%#= f.text_field :email %>
+            <br>
+            Your input will be anonymous.  <br>
+            <%#= f.hidden_field :subject, :value => current_user.id %>
+            <%#= f.submit "Submit", class: "btn btn-large btn-primary" %>
+          <%# end %>
         </div>
 
         here1

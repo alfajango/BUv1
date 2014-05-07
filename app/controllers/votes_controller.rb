@@ -16,20 +16,24 @@ class VotesController < ApplicationController
 
     # check to see if this is a duplicate vote
     if priorvote = Vote.find_by(idea: idea, user:current_user) # did this person already vote, up or down, for this idea?
-      if params[:vote][:upvote] == 1 && priorvote[:upvote] == 1 
+      if params[:vote][:upvote].to_i == 1 && priorvote[:upvote].to_i == 1 
         # do nothing, the person already voted this way
         puts "nothing done, this user already made this vote"
-      elsif params[:vote][:downvote] == 1 && priorvote[:downvote] == 1
+      elsif params[:vote][:downvote].to_i == 1 && priorvote[:downvote].to_i == 1
         # do nothing, the person already voted this way
         puts "nothing done, this user already made this vote"
-      elsif params[:vote][:upvote] == 1 && priorvote[:downvote] ==1  
+      elsif params[:vote][:upvote].to_i == 1 && priorvote[:downvote].to_i ==1  
         # destroy the old vote and don't make a new one
-        Idea.find(params[:id]).destroy  # is this the right way to fine?
+        #Idea.find(params[:id]).destroy  # is this the right way to fine?
+        priorvote.destroy
         puts "vote destoyed because opposite vote entered"
-      elsif params[:vote][:downvote] == 1 && priorvote[:upvote] ==1
+      elsif params[:vote][:downvote].to_i == 1 && priorvote[:upvote].to_i ==1
         # destroy the old vote and don't make a new one
-        Idea.find(params[:id]).destroy  # is this the right way to fine?
-        puts "vote destoyed because opposite vote entered"      
+        # Idea.find(params[:id]).destroy  # is this the right way to fine?
+        priorvote.destroy
+        puts "vote destoyed because opposite vote entered"  
+      else
+        puts "PROBLEM: none of the above"    
       end
     else # create the new vote
       puts "going to create vote"

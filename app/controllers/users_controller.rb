@@ -14,9 +14,35 @@ class UsersController < ApplicationController
   end
 
   def show
+    puts "in users_controller show, params: #{params}"
   	@user = User.find(params[:id])
     puts "@user.name: #{@user.name}"
     @users_feedback = @user.feedbacks
+
+
+
+    # for job creation:
+    @users_jobs = Job.where(subject: params[:id])
+    @users_for_this_job = Job.where(job_holder: params[:id])
+    author = current_user
+    subject = @user
+
+    if params[:name]
+      puts "in if, params[:name]: #{params[:name]}"
+      job_holder = User.find_by(name: params[:name])
+    # elsif params[:email]
+    #   puts "in if, params[:email]: #{params[:email]}"
+    #   job_holder = User.find_by(email: params[:email])
+    else
+      puts "params[:name] was not defined"
+    end
+
+    # @job = Job.create!(author: author, subject: subject, job_holder: job_holder, created: Time.now) # this is tough because params contains lots of other stuff here also.  maybe ok.  
+    
+
+    #
+    #author.jobs << @job  # how do I say it's the job's author?
+    #params[:user_id]
     # @users_fb_array=[]
     # @users_feedback.each do |feedback_obj|
     #   if feedback_obj.attribute

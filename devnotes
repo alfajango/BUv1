@@ -202,3 +202,9 @@ working in branch 'may'
 
 got the form on the same line by doing %= form_for idea.votes.build, :html => { :style => 'display:inline;' } do |f| %>
 to not redirect, do "return false;" in the javascript !!
+
+
+################# JOBS #################################
+$ rails g controller Jobs
+$ rails g model Job created:datetime
+

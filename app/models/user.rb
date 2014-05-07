@@ -6,6 +6,11 @@ class User
   has_many :projects
   has_many :ideas
   has_many :votes
+  has_many :opinions, class_name: "Job", :inverse_of => :author
+  has_many :target_users, class_name: "Job", :inverse_of => :subject
+  has_many :target_jobs, class_name: "Job", :inverse_of => :job_holder
+
+
 
   # don't think I also need this:
   # field :company_id         :type => Integer, :default => 0  # will be example or something seeded
