@@ -9,7 +9,11 @@ module UsersHelper
   end
 
   def set_user(params)
+  	puts "in users_helper set_user"
+  	puts "params: #{params}"
   	user = User.find_by(id: params[:id])  # return user is implied
+  	puts "user.name: #{user.name}"
+  	return user
   end
 
 	def graph_data(target_user_id) # gathers & prepares data in @show_attributes for kickchart graphing

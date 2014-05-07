@@ -9,6 +9,7 @@ Prietary::Application.routes.draw do
   resources :projects
   resources :ideas
   resources :votes
+  resources :jobs
 
   # from BUv2
   #root 'users#home'  # caused an error
