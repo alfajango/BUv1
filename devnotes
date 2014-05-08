@@ -210,3 +210,6 @@ $ rails g controller Jobs
 $ rails g model Job created:datetime
 
 Ideas: if you specify a wrong thread during a idea creation, it won't show up on idea page.
+
+Working on alerts layout spacing again.
+custom1.css, in wrapper:  padding-top: 0px; was 91px, which caused extra space below the alert.  

@@ -5298,6 +5298,7 @@ a.thumbnail.active {
 
 .alert {
   padding: 15px;
+  /*margin-top: 66px; */  /*  PG this can slide it down, but there's still an extra 60 or so below the alert */
   margin-bottom: 20px;
   border: 1px solid transparent;
   border-radius: 4px;

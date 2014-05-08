@@ -12,16 +12,16 @@ body {
 	font-family: Arial, Helvetica, sans-serif;
 	margin: 0;
 	padding: 0;
-	padding-top: 0px;  /* this works but don't need it anymore (+ = down) */
+	padding-top: 76px;  /* this is not in the original Mist, but I need it to compensate for something else */
 	background: #F5F5F5; /* #F5F5F5; */   /* gray background */
 }
 .bodybkgndwhite {  /*keep landing page background white */
 	background: #FFF;   /* white background */
 }
-/*.body-inverse {
+.body-inverse {
 	background: #F5F5F5;
 }
-*/
+
 
 /* ===== Sticky Footer Trick ===== */
 
@@ -30,7 +30,7 @@ body {
 	height: auto !important; /* for older versions of IE */
 	height: 100%;
 	margin-bottom: -91px; /* showing the footer */
-	padding-top: 96px; /* going below the navbar 66px + 30px */
+	padding-top: 0px; /* going below the navbar 66px + 30px */ /* PG removed 96 on 5/8/14 */
 	padding-bottom: 91px; /* avoiding content go behind the footer */
 }
 .footer-wrapper {

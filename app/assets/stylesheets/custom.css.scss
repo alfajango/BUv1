@@ -1,4 +1,4 @@
-/* ########### not being  accessed at all right now   ###### */
+/* ########### not sure what this is doing  ###### */
 
 @import "bootstrap";
 
@@ -44,9 +44,9 @@ html {
   overflow-y: scroll;
 }
 
-// body {  /* this doesn't get called because body in custom1.css overrules it */
-//   padding-top: 00px;  /* PG: move the body down some - smaller number is farther down ??*/
-// }  
+body {  /* this doesn't get called because body in custom1.css overrules it */
+  padding-top: 0px;  /* PG: move the body down some - smaller number is farther down ??*/
+}  
 
 section {
   overflow: auto;

@@ -15,12 +15,8 @@
     <!-- <header> -->
       <%= render 'layouts/header' %> 
       <div class="container">
-        <% flash.each do |key, value| %>
-          <%= content_tag(:div, value, class: "alert alert-#{key}") %> <%# this is doing the extra message, but it's also pushing it down so that I can see the message %>
-        <% end %>
-
         <%= render 'layouts/messages' %> 
-      </div>  
+      </div>
         <%= yield %> <%# put outside div so it's full width; yields to home/index.html.erb %>
         <%= render 'layouts/footer' %>
         <%= debug(params) if Rails.env.development? %>
