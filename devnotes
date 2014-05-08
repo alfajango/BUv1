@@ -197,6 +197,7 @@ $ rails g model Vote value:integer created:datetime  # becomes time
 
 Working on ideas
 in development.rb, set   config.action_mailer.perform_deliveries = false #for now
+This wasn't stopping emails from sending. so I did that in production.rb also ??
 
 working in branch 'may'
 
@@ -208,3 +209,4 @@ to not redirect, do "return false;" in the javascript !!
 $ rails g controller Jobs
 $ rails g model Job created:datetime
 
+Ideas: if you specify a wrong thread during a idea creation, it won't show up on idea page.

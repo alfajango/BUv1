@@ -429,24 +429,21 @@ body = "Bring in consultants"
 idea = Idea.create!(body: body, 
 					created: Time.now,
 					company: co,
-					user: user,
-					thread: parent)
+					user: user)
 
 user = User.find_by(name: "Milton Waddams")
 body = "More clarity in the payroll process"
 idea = Idea.create!(body: body, 
 					created: Time.now,
 					company: co,
-					user: user,
-					thread: parent)
+					user: user)
 
 user = User.find_by(name: "Michael Bolton")
 body = "The previous TPS Report format was better"
 idea = Idea.create!(body: body, 
 					created: Time.now,
 					company: co,
-					user: user,
-					thread: parent)
+					user: user)
 # this also works:
 # co.ideas << idea 
 # user.ideas << idea 

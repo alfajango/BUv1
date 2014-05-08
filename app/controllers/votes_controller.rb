@@ -8,21 +8,31 @@ class VotesController < ApplicationController
 
     idea = Idea.find_by(id: params[:vote][:idea_id])
     #puts "votes_controller idea.body: #{idea.body}"
-    puts "params[:vote][:upvote]: #{params[:vote][:upvote] }"
-    puts "params[:vote][:downvote]: #{params[:vote][:downvote] }"
-    priorvote = Vote.find_by(idea: idea, user:current_user)
-    puts "priorvote[:upvote]: #{priorvote[:upvote] }"
-    puts "priorvote[:downvote]: #{priorvote[:downvote] }"
+    #puts "params[:vote][:upvote]: #{params[:vote][:upvote] }"
+    #puts "params[:vote][:downvote]: #{params[:vote][:downvote] }"
+    #priorvote = Vote.find_by(idea: idea, user:current_user)
+    #puts "priorvote[:upvote]: #{priorvote[:upvote] }"
+    #puts "priorvote[:downvote]: #{priorvote[:downvote] }"
 
     # check to see if this is a duplicate vote
-    if priorvote = Vote.find_by(idea: idea, user:current_user) # did this person already vote, up or down, for this idea?
+    #@model = Model.find(id) if Model.exists?(id)
+    # begin
+    priorvote = Vote.where(idea: idea, user: current_user).first#if Vote.find_by(idea: idea, user:current_user).exists? 
+    # rescue Mongoid::RecordNotFound => e
+      # priorvote = nil
+    # end
+    puts "priorvote: #{priorvote}"
+    if priorvote #= Vote.find_by(idea: idea, user:current_user) # did this person already vote, up or down, for this idea?
+      puts "priorvote[:upvote]: #{priorvote[:upvote]}"
+      puts "priorvote[:upvote].class: #{priorvote[:upvote].class}"
       if params[:vote][:upvote].to_i == 1 && priorvote[:upvote].to_i == 1 
+      #  if params[:vote][:upvote].to_i == 1 && priorvote[:upvote].to_i == 1  # this worked before 
         # do nothing, the person already voted this way
         puts "nothing done, this user already made this vote"
       elsif params[:vote][:downvote].to_i == 1 && priorvote[:downvote].to_i == 1
         # do nothing, the person already voted this way
         puts "nothing done, this user already made this vote"
-      elsif params[:vote][:upvote].to_i == 1 && priorvote[:downvote].to_i ==1  
+      elsif params[:vote][:upvote].to_i == 1 && priorvote[:downvote].to_i == 1  
         # destroy the old vote and don't make a new one
         #Idea.find(params[:id]).destroy  # is this the right way to fine?
         priorvote.destroy
