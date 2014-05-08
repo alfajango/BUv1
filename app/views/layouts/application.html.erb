@@ -19,7 +19,6 @@
           <%= content_tag(:div, value, class: "alert alert-#{key}") %> <%# this is doing the extra message, but it's also pushing it down so that I can see the message %>
         <% end %>
 
-        <%# this is what causes the layout to move up and down, but it 's doing it because it's putting a mmessage:%>
         <%= render 'layouts/messages' %> 
       </div>  
         <%= yield %> <%# put outside div so it's full width; yields to home/index.html.erb %>

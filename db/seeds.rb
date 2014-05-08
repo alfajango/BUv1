@@ -33,6 +33,17 @@ User.create!(name: "Trevor Carawell", email: "tcarawell@example.com", password: 
 			password_confirmation: "password")
 User.create!(name: "Phil Garber", email: "phil@example.com", password: "password", 
 			password_confirmation: "password")
+
+User.create!(name: "Peter Gibbons", email: "pgibbons@in-itech.com", password: "password", 
+			password_confirmation: "password")
+User.create!(name: "Bill Lumbergh", email: "BLumbergh@in-itech.com", password: "password", 
+			password_confirmation: "password")
+User.create!(name: "Samir Nagheenanajar", email: "samir@in-itech.com", password: "password", 
+			password_confirmation: "password")
+User.create!(name: "Michael Bolton", email: "mbolton@in-itech.com", password: "password", 
+			password_confirmation: "password")
+User.create!(name: "Milton Waddams", email: "milton@in-itech.com", password: "password", 
+			password_confirmation: "password")
 # end
 
 
@@ -142,6 +153,13 @@ feedback_list = [ # from_email, attribute object, to_user object
 	["tcarawell@example.com", Attribute.find_by(identifier: 27), User.find_by(name: "Phil Garber") ],
 	["tcarawell@example.com", Attribute.find_by(identifier: 44), User.find_by(name: "Phil Garber") ],
 	["tcarawell@example.com", Attribute.find_by(identifier: 13), User.find_by(name: "Beth Hillman") ],
+
+	["milton@in-itech.com", Attribute.find_by(identifier: 13), User.find_by(name: "Bill Lumbergh") ],
+	["milton@in-itech.com", Attribute.find_by(identifier: 23), User.find_by(name: "Peter Gibbons") ],
+	["milton@in-itech.com", Attribute.find_by(identifier: 22), User.find_by(name: "Samir Nagheenanajar") ],
+	["milton@in-itech.com", Attribute.find_by(identifier: 19), User.find_by(name: "Michael Bolton") ],
+	["milton@in-itech.com", Attribute.find_by(identifier: 10), User.find_by(name: "Bill Lumbergh") ],
+	["pgibbons@in-itech.com", Attribute.find_by(identifier: 3), User.find_by(name: "Milton Waddams") ]		
     ]
 
 feedback_list.each do | from_email, attrib_obj, to_user_obj | 
@@ -169,6 +187,7 @@ puts "FEEDBACKS"
 Company.create!(domain: "example.com", name: "Example" )
 Company.create!(domain: "acme.com", name: "Acme" )
 Company.create!(domain: "prietary.com", name: "Prietary" )
+Company.create!(domain: "in-itech.com", name: "In-itech" )
 #puts "Company.first.name: #{Company.first.name}"
 #puts "Company.last.name: #{Company.last.name}"
 # need to put people in those companies:
@@ -214,6 +233,27 @@ company = Company.find_by(name: "Prietary")
 proj = Project.create!(name: "Launch!!")
 company.projects << proj
 
+proj = Project.create!(name: "Office Supply cost reduction")
+company = Company.find_by(name: "In-itech") 
+company.projects << proj
+user = User.find_by(name: "Milton Waddams")
+user.projects << proj
+
+#in-itech
+proj = Project.create!(name: "Think: Is this good for the company?")
+company = Company.find_by(name: "In-itech") 
+company.projects << proj
+user = User.find_by(name: "Bill Lumbergh")
+user.projects << proj
+
+proj = Project.create!(name: "New printer")
+company = Company.find_by(name: "In-itech") 
+company.projects << proj
+user = User.find_by(name: "Samir Nagheenanajar")
+user.projects << proj
+
+
+
 # put in two projects for each company.  No user created these
 #no.  I think this should be done in registrations_controller create action when a user is created
 companies = Company.all
@@ -225,8 +265,8 @@ companies.each do | co |
 end
 
 
-
-puts "company.projects[0].name: #{company.projects[0].name}"  # projects is an array
+puts "PROJECTS"
+#puts "company.projects[0].name: #{company.projects[0].name}"  # projects is an array
 
 
 #--------------- Pattributes ------------------------------
@@ -302,7 +342,11 @@ pfeedback_list = [ # from_email, pattribute object, to_project object
 	["tcarawell@example.com", Pattribute.find_by(name: "needs a different team"), Project.find_by(name: "Refresh website") ],
 	["tcarawell@example.com", Pattribute.find_by(name: "needs more time"), Project.find_by(name: "Refresh website") ],
 	["tcarawell@example.com", Pattribute.find_by(name: "needs to be rescoped"), Project.find_by(name: "Refresh website") ],
-	["tcarawell@example.com", Pattribute.find_by(name: "needs to show market need"), Project.find_by(name: "Refresh website") ]
+	["tcarawell@example.com", Pattribute.find_by(name: "needs to show market need"), Project.find_by(name: "Refresh website") ],
+
+	["milton@in-itech.com", Pattribute.find_by(name: "needs to be rescoped"), Project.find_by(name: "Think: Is this good for the company?") ],
+	["milton@in-itech.com", Pattribute.find_by(name: "needs a different team"), Project.find_by(name: "Office Supply cost reduction") ],
+	["milton@in-itech.com", Pattribute.find_by(name: "needs to show market need"), Project.find_by(name: "New printer") ]
     ]
 
 pfeedback_list.each do | from_email, pattrib_obj, to_proj_obj | 
@@ -377,8 +421,32 @@ idea = Idea.create!(body: "Where do we work if we sell the real estate?",
 					company: co,
 					user: user,
 					thread: parent)
-co = Company.find_by(name: "Example")
 
+
+co = Company.find_by(name: "In-itech")
+user = User.find_by(name: "Samir Nagheenanajar")
+body = "Bring in consultants"
+idea = Idea.create!(body: body, 
+					created: Time.now,
+					company: co,
+					user: user,
+					thread: parent)
+
+user = User.find_by(name: "Milton Waddams")
+body = "More clarity in the payroll process"
+idea = Idea.create!(body: body, 
+					created: Time.now,
+					company: co,
+					user: user,
+					thread: parent)
+
+user = User.find_by(name: "Michael Bolton")
+body = "The previous TPS Report format was better"
+idea = Idea.create!(body: body, 
+					created: Time.now,
+					company: co,
+					user: user,
+					thread: parent)
 # this also works:
 # co.ideas << idea 
 # user.ideas << idea 
@@ -477,4 +545,13 @@ job=Job.create!(created: Time.now,
 				author: author,
 				subject: subject,
 				job_holder: job_holder)
+
+author= User.find_by(name: "Milton Waddams")
+subject=User.find_by(name: "Peter Gibbons")
+job_holder=User.find_by(name: "Bill Lumbergh")
+job=Job.create!(created: Time.now,
+				author: author,
+				subject: subject,
+				job_holder: job_holder)
+
 puts "JOBS"

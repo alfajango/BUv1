@@ -1,7 +1,6 @@
 class JobsController < ApplicationController
 
   def create
-  	puts "in JobsController create, params: #{params}"
     author = current_user
 
     if params[:job][:job_holder]
@@ -21,7 +20,7 @@ class JobsController < ApplicationController
       #UserMailer.project_creation(@user, @project).deliver
       flash[:success] = "Job recommendation created"
       #project_id = @project.id
-      redirect_to '#' #   # @user   # todo: set this to rate the project once that exists
+      redirect_to :back
     else
       puts "in else - couldn't @job.save"
       render 'new'

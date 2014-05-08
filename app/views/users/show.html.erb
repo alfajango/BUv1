@@ -112,7 +112,8 @@
 
         <div class="well well-sm"> <%# job input %>
           <p><b><%= user.name %></b> would do well in a role like that of:</p>
-          <%= form_for @job, :remote => true do |f| %>
+          <%#= form_for @job, :remote => true do |f| %>
+          <%= form_for @job do |f| %>
             <%= f.text_field :job_holder, placeholder: "Enter name of a colleague at #{current_user.company.name}" %>
             <%= f.hidden_field :subject, :value => user.id %>
 
