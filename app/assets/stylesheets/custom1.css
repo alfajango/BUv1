@@ -13,13 +13,13 @@ body {
 	margin: 0;
 	padding: 0;
 	padding-top: 76px;  /* this is not in the original Mist, but I need it to compensate for something else */
-	background: #E3E3DA; /* #F5F5F5; */   /* gray background */
+	background: #E3E3E3; /* #F5F5F5; */   /* gray background */
 }
 .bodybkgndwhite {  /*keep landing page background white */
 	background: #FFF;   /* white background */
 }
 .body-inverse {
-	background: #F5F5F5;
+	background: #E3E3E3;
 }
 
 
@@ -34,7 +34,7 @@ body {
 	padding-bottom: 91px; /* avoiding content go behind the footer */
 }
 .footer-wrapper {
-	background: #F5F5F5; /* for body-inverse */
+	background: #E3E3E3; /* for body-inverse */
 }
 .footer-wrapper hr {
 	border-color: #ddd;
@@ -505,7 +505,7 @@ footer {
 	margin-bottom: 20px;
 }
 footer a {
-	color: #95a5a6 !important;
+	color: #000 !important;
 }
 footer a:hover {
 	color: #333 !important;

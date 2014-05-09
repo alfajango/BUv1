@@ -16,7 +16,7 @@
               <i><%= link_to "edit ", edit_project_path(project) %></i>
             <% end %></b></p> 
             <% if project.user %>
-              <p class="alignright"><%= "Created by #{project.user.name}" %></p>
+              <p class="alignright"> Created by <%=link_to(project.user.name, project.user) %></p>
             <% end %> 
           </div>
           <div style="clear: both;"></div>

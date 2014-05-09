@@ -4,6 +4,7 @@
       <%= render "users/signed_in_sidebar" %>  
       
       <div class="col-md-8">
+        <h1><%= current_user.company.name %> </h1> 
 
         <h4><%= link_to "Projects", projects_path %></h4>
         <% projects_for_homepage() %> <%# call a function in projects_helper that sets a list of project id's to show ratings graphs for on the homepage in @show_projects %>
@@ -11,17 +12,20 @@
 
         <div class="well well-sm">
           <p><b><%= project.name %></b></p> 
-
-          <p>Project feedback received: </p>
-          <ul>
-            <% project.pfeedbacks.reverse_each do |fb| %>
-              <li>
-              <% if fb.pattribute %> 
-                <%= fb.pattribute.name %>
+          <% if project.pfeedbacks.exists? %>
+            <p>Project feedback received: </p>
+            <ul>
+              <% project.pfeedbacks.reverse_each do |fb| %>
+                <li>
+                <% if fb.pattribute %> 
+                  <%= fb.pattribute.name %>
+                <% end %>
+               </li>
               <% end %>
-             </li>
-            <% end %>
-          </ul>
+            </ul>
+          <% else %>
+            <p><%=link_to("Be the first to give feedback", project) %></p>
+          <% end %>
 
         </div> 
         <% end %>  
@@ -33,28 +37,27 @@
           <br>
         <% end %>        
 
-
-                 
         <h4><%= link_to "Colleagues", users_path %></h4>
         <% users_for_homepage() %> <%# call a function in users_helper that sets a list of users to show ratings for on the homepage in @show_user %>        
         <% @show_users.each do |user| %>    
+          <div class="well well-sm">
+            <p><b><%= link_to(user.name, user) %></b></p>
+            <% if user.feedbacks.exists? %> 
 
-
-        <div class="well well-sm">
-          <p><b><%= user.name %></b></p> 
-
-          <p>Feedback received: </p>
-          <ul>
-            <% user.feedbacks.reverse_each do |fb| %>
-              <li>
-              <% if fb.attribute %> 
-                <%= fb.attribute.attribute_name %>
-              <% end %>
-             </li>
-            <% end %>
-          </ul>
-
-        </div> 
+              <p>Feedback received: </p>
+              <ul>
+                <% user.feedbacks.reverse_each do |fb| %>
+                  <li>
+                  <% if fb.attribute %> 
+                    <%= fb.attribute.attribute_name %>
+                  <% end %>
+                 </li>
+                <% end %>
+              </ul>
+            <% else %>
+              <p>No public feedback.  Give <%=link_to(user.name, user)%> some feedback.</p>
+            <% end %>  
+          </div> 
         <% end %>  
         <% if @show_users.size.to_i < 1 %>
           <div class="well well-sm"> <b> No colleagues with feedback yet. Give input to your <%= link_to "Colleagues", users_path %> </b>
@@ -63,6 +66,8 @@
           <div class="alignright"><%= link_to "more colleagues", users_path %></div>
           <br>
         <% end %> 
+
+        <% render "home/front_page_ideas" %>
         
       </div>
     </div>

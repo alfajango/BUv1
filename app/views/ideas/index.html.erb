@@ -9,7 +9,7 @@
         <% provide(:title, 'All Ideas') %>
         <% company = current_user.company %>
         <%# company_id = CompanyEmployee.find_by(user_id: (current_user.id)).company_id %>
-        <h1><%= company.name %> | Ideas</h1> 
+        <h1><%= company.name %> Ideas</h1> 
         <%# or current_user.company.name %>
 
         <%#= will_paginate %> 
@@ -20,7 +20,7 @@
           <%#= will_paginate %> 
           <br>
           <% if @root_ideas.size.to_i < 1 %>
-            <div class="well well-sm"> <b> No ideas created for your company yet. </b></div>
+            <div class="well well-sm"> <b> No ideas created for your company yet.  Create one below! </b></div>
           <% end %> 
         </div>
 
@@ -31,7 +31,7 @@
           <br>
           Your name will be shown as the creator of the idea.  Up and down votes are anonymous.<br>
           <br>
-          <%= f.submit "Create the idea", class: "btn btn-large btn-primary" %>
+          <%= f.submit "Create the idea", class: "btn btn-primary btn-large" %>
         <% end %>
 
       </div>

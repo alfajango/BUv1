@@ -230,3 +230,13 @@ ERROR MESSAGES - they're automatic with .errors.full_messages
  I had to create views/shared folder and put _error_messages.html.erb in it.  then this works:
              <%= render '/shared/error_messages', object: f.object %>
 
+I was getting red alerts when I should have been getting red.  Put a semi-working kludge in _messages.html.erb
+
+########### Layout tweaks ############
+put less space between lines: line-height in custom.css.scss:
+p {
+  font-size: 1.1em;
+  line-height: 1.0em; /* was 1.7em */
+}
+
+colors: right at the top of custom1.css (Mist): background: #E3E3E3;

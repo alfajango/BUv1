@@ -9,18 +9,6 @@
 
 
 
-<!-- PG: remove this section because they're not being found anyway per the console
-     Bootstrap core CSS 
-    <link href="css/bootstrap.css" rel="stylesheet">
-
-     Custom styles for this template 
-    <link href="css/color-styles.css" rel="stylesheet">
-    <link href="css/ui-elements.css" rel="stylesheet">
-    <link href="css/custom.css" rel="stylesheet">
-  
-   Resources 
-  <link href="css/animate.css" rel="stylesheet"> -->
-
 
 
   <!-- <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
@@ -34,61 +22,59 @@
     <![endif]-->  
   </head>  %>
 
-  <body class="body-blue">
-  <!-- <div class="wrapper bodybkgndwhite">--> <!-- wrapper --> 
+<body class="body-blue">
+  <div class="wrapper bodybkgndwhite"> <!-- wrapper --> 
     <div class="crp-showcase">
       <div class="container">
-      <div class="row">
-        <div class="col-sm-12">
-        <h1 class="text-center animated fadeInDown">Prietary brings transparency to your company</h1>
-        <h3 class="text-center animated fadeInDown">Sign up with your work email </h3>
-        <div class="text-center actions animated fadeInDown delay2">
-          <%= link_to "Sign up", new_user_registration_path, class: "btn btn-color" %>    
-          <!-- <a class="btn btn-color" href="#">Sign Up</a> -->
+        <div class="row">
+          <div class="col-sm-12">
+            <h1 class="text-center animated fadeInDown">Prietary brings transparency to your company</h1>
+            <h3 class="text-center animated fadeInDown">Sign up with your work email </h3>
+            <div class="text-center actions animated fadeInDown delay2">
+              <%= link_to "Sign up", new_user_registration_path, class: "btn btn-color" %>    
+              <!-- <a class="btn btn-color" href="#">Sign Up</a> -->
+            </div>
+            <a href="/signup" class="alt-index hidden-xs">
+              <img src="img/BU_screenshot_mist.png" alt="..."> <!-- this is the little image below sign up button -->
+            </a>
+          </div>
         </div>
-        <a href="/signup" class="alt-index hidden-xs">
-          
-          <img src="img/BU_screenshot_mist.png" alt="..."> <!-- this is the little image below sign up button -->
-        </a>
       </div>
-      </div>
-    </div>
     </div>
     <div class="container">
       <!-- Features -->
       <div class="row">
         <div class="col-sm-4">
-      <div class="crp-ft">
-        <i class="text-color fa fa-users fa-3x"></i> 
-        <h4>Colleagues</h4>
-        <p class="text-muted lh">
-          Give feedback which helps your colleagues get recognized or learn what they need to improve on.  If there are issues, management will be alerted.  It's free and your inputs are always anonymous.
-        </p>
-        <a href="#" class="btn btn-color btn-block hidden btn-xxl">Action</a>
-      </div>
-      </div>
+          <div class="crp-ft">
+            <i class="text-color fa fa-users fa-3x"></i> 
+            <h4>Colleagues</h4>
+            <p class="text-muted lh">
+              Give feedback which helps your colleagues get recognized or learn what they need to improve on.  If there are issues, management will be alerted.  It's free and your inputs are always anonymous.
+            </p>
+            <a href="#" class="btn btn-color btn-block hidden btn-xxl">Action</a>
+          </div>
+        </div>
         <div class="col-sm-4">
-      <div class="crp-ft">
-        <i class="text-color fa fa-road fa-3x"></i>
-        <h4>Projects and Strategies</h4>
-        <p class="text-muted lh">
-          Prietary Projects lets your company know what you and your colleagues think about ongoing projects and corporate strategies.  Help answer the questions of what should receive higher priority, and what needs a different approach.  To allow honest and relevant feedback, your project inputs are always anonymous. 
-        </p>
-        <a href="#" class="btn btn-color btn-block hidden btn-xxl">Action</a>
-      </div>
-      </div>
+          <div class="crp-ft">
+            <i class="text-color fa fa-road fa-3x"></i>
+            <h4>Projects and Strategies</h4>
+            <p class="text-muted lh">
+              Prietary Projects lets your company know what you and your colleagues think about ongoing projects and corporate strategies.  Help answer the questions of what should receive higher priority, and what needs a different approach.  To allow honest and relevant feedback, your project inputs are always anonymous. 
+            </p>
+            <a href="#" class="btn btn-color btn-block hidden btn-xxl">Action</a>
+          </div>
+        </div>
         <div class="col-sm-4">
-      <div class="crp-ft">
-        <i class="text-color fa fa-lightbulb-o fa-3x"></i>
-        <h4>Ideas</h4>
-        <p class="text-muted lh">
-          Suggest ideas for your company to increase sales, improve efficiency, or other improvements.  Comment and vote on ideas.  Your name is tied to ideas so that you get credit for great innovations.  It's free, lightweight innovation management.
-        </p>
-        <a href="#" class="btn btn-color btn-block hidden btn-xxl">Action</a>
-      </div>
+        <div class="crp-ft">
+          <i class="text-color fa fa-lightbulb-o fa-3x"></i>
+          <h4>Ideas</h4>
+          <p class="text-muted lh">
+            Suggest ideas for your company to increase sales, improve efficiency, or other improvements.  Comment and vote on ideas.  Your name is tied to ideas so that you get credit for great innovations.  It's free, lightweight innovation management.
+          </p>
+          <a href="#" class="btn btn-color btn-block hidden btn-xxl">Action</a>
+        </div>
       </div>
     </div>
-      <!-- // Features -->
       <!-- Description -->
     <div class="row">
       <div class="col-sm-8 col-sm-offset-2">
@@ -97,8 +83,8 @@
       </div>
     </div>
     <div class="row crp-desc">
-        <div class="col-sm-5 col-sm-offset-1">
-      <img src="img/macbook.png" alt="..." class="img-responsive">
+      <div class="col-sm-5 col-sm-offset-1">
+        <img src="img/macbook.png" alt="..." class="img-responsive">
       </div>
       <div class="col-sm-5">
         <h3 class="text-color text-center-xs">How Prietary works</h3>
@@ -107,7 +93,7 @@
           <ul>  
           <li><b>Colleagues</b>: create an identity for your colleague by entering his or her work email address.  You can then provide them with anonymous feedback by selecting from Prietary's array of attributes. </li>
           <li><b>Projects</b>: what are your company's major intitiatives?  Just enter them in and use Prietary's rating system to let management know what is going well and what needs redesigned.</li>
-          <li><b>Ideas</b>: Everyone has ideas on how to increase revenues or make the company more efficient.  Enter your idea and let your colleagues comment and vote on the best ideas.</li>
+          <li><b>Ideas</b>: Everyone has ideas on how to increase revenues or make the company more efficient.  Enter your idea and let your colleagues comment and vote on the best ideas.</li></ul>
         </p>
         <p class="text-center-xs"><a href="#" class="btn btn-lg btn-default">Find out more</a></p>
       </div>
@@ -129,13 +115,10 @@
         <li>you work at the company "In-itech"</li> 
         <li>your work email is "pgibbons@in-itech.com"</li></ul>
         <p>  Go ahead and give your colleagues some feedback, create new projects and ideas.  All data entered into the sandbox will be removed often.  </p>
-
-
-
       </div>
     </div>
+  </div>
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-
-</body></html>
+</body>

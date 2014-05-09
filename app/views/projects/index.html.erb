@@ -9,7 +9,7 @@
         <% provide(:title, 'All projects') %>
         <% company = current_user.company %>
         <%# company_id = CompanyEmployee.find_by(user_id: (current_user.id)).company_id %>
-        <h1><%= company.name %> | Projects</h1> 
+        <h1><%= company.name %> Projects</h1> 
         <%# or current_user.company.name %>
 
         <%#= will_paginate %> 

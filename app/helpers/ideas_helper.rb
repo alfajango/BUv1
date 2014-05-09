@@ -13,4 +13,22 @@ module IdeasHelper
   	  @idea_downvotes += vote.downvote
   	end
   end
+
+  def ideas_for_homepage
+    @show_ideas = Array.new
+    root_ideas = current_user.company.ideas.where(thread: nil)
+    #company_users = current_user.company.users
+
+    count = 1  
+    root_ideas.reverse_each do |idea|   # traverse newest (last) first
+      if count > 3
+        return
+      end  
+      unless (@show_ideas.include?(idea))
+        @show_ideas.push(idea)
+      count += 1
+      end
+    end
+  end
+
 end
