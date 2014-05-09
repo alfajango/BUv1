@@ -13,7 +13,7 @@ body {
 	margin: 0;
 	padding: 0;
 	padding-top: 76px;  /* this is not in the original Mist, but I need it to compensate for something else */
-	background: #F5F5F5; /* #F5F5F5; */   /* gray background */
+	background: #E3E3DA; /* #F5F5F5; */   /* gray background */
 }
 .bodybkgndwhite {  /*keep landing page background white */
 	background: #FFF;   /* white background */

@@ -210,6 +210,23 @@ $ rails g controller Jobs
 $ rails g model Job created:datetime
 
 Ideas: if you specify a wrong thread during a idea creation, it won't show up on idea page.
+##################################################
 
 Working on alerts layout spacing again.
 custom1.css, in wrapper:  padding-top: 0px; was 91px, which caused extra space below the alert.  
+Fixed it!  probably not the right way, but it looks OK in my browser  
+  - bootstrap.css .alert-top -> comment out
+  - custom1.css (Mist) add back in body -> padding:top 76px
+
+ERROR MESSAGES - they're automatic with .errors.full_messages
+2.0.0p247 :004 > idea=Idea.new(body:"hi")
+ => #<Idea _id: 536c2e9e946cf14bac000002, body: "hi", created: 2014-05-09 01:25:50 UTC, user_id: nil, company_id: nil, thread_id: nil> 
+2.0.0p247 :005 > idea.save
+ => false 
+2.0.0p247 :006 > idea.errors.full_messages
+ => ["Body is too short (minimum is 4 characters)"] 
+
+ config/locales/devise.en.yml also has tons of devise error messages
+ I had to create views/shared folder and put _error_messages.html.erb in it.  then this works:
+             <%= render '/shared/error_messages', object: f.object %>
+

@@ -41,8 +41,8 @@ Prietary::Application.configure do
     domain: "gmail.com",  #domain: ENV["DOMAIN_NAME"],
     authentication: "plain",
     enable_starttls_auto: true,
-    user_name: ENV["GMAIL_USERNAME"],
-    password: ENV["GMAIL_PASSWORD"]
+    user_name: "wronguser", #ENV["GMAIL_USERNAME"],
+    password: "wrongpass" #ENV["GMAIL_PASSWORD"]
   }
 
 end

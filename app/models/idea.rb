@@ -1,6 +1,7 @@
 class Idea
   include Mongoid::Document
   field :body, type: String
+    validates :body, presence: true, length: { minimum: 4, maximum: 250  }
   field :created, type: Time, default: -> { Time.now }  # should this be DateTime?
   belongs_to :user
   belongs_to :company
