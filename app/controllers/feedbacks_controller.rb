@@ -1,5 +1,5 @@
 class FeedbacksController < ApplicationController
-  before_action :signed_in_user
+  #before_action :signed_in_user  # PG todo: put back in. take out because heroku says no method
 
   # def create #make this work for feedbacks - it came from relationships controller 
   #   @user = User.find(params[:relationship][:followed_id])

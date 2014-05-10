@@ -241,7 +241,7 @@ p {
 
 colors: right at the top of custom1.css (Mist): background: #E3E3E3;
 
-####### HEROKU ############################
+####### HEROKU ############################  http://young-harbor-4713.herokuapp.com/
 heroku is not connected: $ git remote -v
 origin  https://github.com/pgarber/BUv1.git (fetch)
 origin  https://github.com/pgarber/BUv1.git (push)
@@ -262,7 +262,13 @@ hint: not have locally. This is usually caused by another repository pushing
 hint: to the same ref. You may want to first integrate the remote changes
 hint: (e.g., 'git pull ...') before pushing again.
 hint: See the 'Note about fast-forwards' in 'git push --help' for details.
-
+  ## so, I can't go to polar-badlands because I already pushed there from another repo.
 $ heroku create
 Creating young-harbor-4713... done, stack is cedar
 http://young-harbor-4713.herokuapp.com/ | git@heroku.com:young-harbor-4713.git
+ # now, change my heroku to that app with 
+$ git remote rm heroku
+$ git remote add heroku git@heroku.com:young-harbor-4713.git
+$ git push -u heroku master  # a bunch or work
+
+
