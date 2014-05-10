@@ -130,7 +130,7 @@ Actually, now that I have DNSimple, I should be able to verify my domain just by
 So, I got prietary verified @ Google Apps by adding a TXT record in DNsimple.  Have phil@prietary.com and contact@prietary.com
 ToDo: put a decent site on Heroku, and, using instructions on heroku, set Prietary.com to point there.  Screw it - just go live.  Maybe say its in Alpha  
 
-########## List of emails I wan to send #######
+########## List of emails I want to send #######
 1) sign up - before signing in, user must click on link in email. So, before this is done, redirect to "need to verify include resend link and suggestion to check spam folder" page rather than homepage
 2) account verified email (what you can do, how to create colleagues)
 3) forgot password (link on login page and sign up page)
@@ -240,3 +240,29 @@ p {
 }
 
 colors: right at the top of custom1.css (Mist): background: #E3E3E3;
+
+####### HEROKU ############################
+heroku is not connected: $ git remote -v
+origin  https://github.com/pgarber/BUv1.git (fetch)
+origin  https://github.com/pgarber/BUv1.git (push)
+$ heroku git:remote -a polar-badlands-2176
+Git remote heroku added
+Philips-MacBook-Air:BUv1 philgarber$ git remote -v
+heroku  git@heroku.com:polar-badlands-2176.git (fetch)
+heroku  git@heroku.com:polar-badlands-2176.git (push)
+origin  https://github.com/pgarber/BUv1.git (fetch)
+origin  https://github.com/pgarber/BUv1.git (push)
+r$ git push heroku master
+Fetching repository, done.
+To git@heroku.com:polar-badlands-2176.git
+ ! [rejected]        master -> master (fetch first)
+error: failed to push some refs to 'git@heroku.com:polar-badlands-2176.git'
+hint: Updates were rejected because the remote contains work that you do
+hint: not have locally. This is usually caused by another repository pushing
+hint: to the same ref. You may want to first integrate the remote changes
+hint: (e.g., 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+
+$ heroku create
+Creating young-harbor-4713... done, stack is cedar
+http://young-harbor-4713.herokuapp.com/ | git@heroku.com:young-harbor-4713.git
