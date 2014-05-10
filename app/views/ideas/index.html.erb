@@ -1,6 +1,4 @@
-<%# ideas/index.html.erb  #################### %>
-
-   
+<%# ideas/index.html.erb  #################### %> 
 <div class="wrapper body">
   <div class="container">
     <div class="row">
@@ -8,21 +6,15 @@
       <div class="col-sm-8">
         <% provide(:title, 'All Ideas') %>
         <% company = current_user.company %>
-        <%# company_id = CompanyEmployee.find_by(user_id: (current_user.id)).company_id %>
-        <h1><%= company.name %> Ideas</h1> 
-        <%# or current_user.company.name %>
 
-        <%#= will_paginate %> 
-        <div class="well well-sm">
-          <ul class="ideas"> <%# tells it to use the .ideas in custom.css.scss%>
+        <h1><%= company.name %> Ideas</h1> 
+
           	<%= render @root_ideas %><%# renders _idea.html.erb and passes the idea%>
-          </ul>
-          <%#= will_paginate %> 
+
           <br>
           <% if @root_ideas.size.to_i < 1 %>
             <div class="well well-sm"> <b> No ideas created for your company yet.  Create one below! </b></div>
           <% end %> 
-        </div>
 
         <%= form_for(@idea) do |f| %>
           <%#= render 'shared/error_messages', object: f.object %>

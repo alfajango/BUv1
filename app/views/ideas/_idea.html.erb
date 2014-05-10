@@ -1,5 +1,6 @@
-
-<div>
+<div class="well well-sm">
+<!-- <ul class="ideas"> -->
+<!-- <div> -->
   <p><%= link_to(idea.user.name, idea.user) %>&nbsp&nbsp&nbsp&nbsp<%= "#{time_ago_in_words(idea.created)} ago"%>
   <p><b><%= link_to( idea.body, idea) %></b>
     <% if current_user===(idea.user) %> 
@@ -69,4 +70,4 @@
     </p>
 </div>
 
-<hr> 
+

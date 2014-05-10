@@ -1,7 +1,7 @@
 class IdeasController < ApplicationController
 
   def index
-        puts "in ideas_controller index"
+    puts "in ideas_controller index"
 
   	#@ideas = current_user.company.ideas.all
   	first_idea = Idea.first

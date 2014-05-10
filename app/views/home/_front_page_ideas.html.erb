@@ -1,29 +1,11 @@
 <h4><%= link_to "Ideas", ideas_path %></h4>
-<% ideas_for_homepage() %> <%# call a function in ideas_helper that sets a list of users to show ratings for on the homepage in @show_ideas %>        
-<% @show_users.each do |user| %>    
-  <div class="well well-sm">
-    <p><b><%= link_to(user.name, user) %></b></p>
-    <% if user.feedbacks.exists? %> 
-
-      <p>Feedback received: </p>
-      <ul>
-        <% user.feedbacks.reverse_each do |fb| %>
-          <li>
-          <% if fb.attribute %> 
-            <%= fb.attribute.attribute_name %>
-          <% end %>
-         </li>
-        <% end %>
-      </ul>
-    <% else %>
-      <p>No public feedback.  Give <%=link_to(user.name, user)%> some feedback.</p>
-    <% end %>  
-  </div> 
-<% end %>  
-<% if @show_users.size.to_i < 1 %>
-  <div class="well well-sm"> <b> No colleagues with feedback yet. Give input to your <%= link_to "Colleagues", users_path %> </b>
+<% ideas_for_homepage() %> <%# call a function in ideas_helper that sets a list of ideas on the homepage in @show_ideas %>        
+<% @idea = Idea.new %>
+<%= render @show_ideas %> 
+<% if @show_ideas.size.to_i < 1 %>
+  <div class="well well-sm"> <b> No ideas yet.  Let <%=user.company.name%> know your great <%=link_to("idea", ideas_path) %> </b>
   </div>
 <% else %> <%# there were some projects shown %>  
-  <div class="alignright"><%= link_to "more colleagues", users_path %></div>
+  <div class="alignright"><%= link_to "more ideas", ideas_path %></div>
   <br>
 <% end %> 
