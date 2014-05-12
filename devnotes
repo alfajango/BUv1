@@ -270,5 +270,8 @@ http://young-harbor-4713.herokuapp.com/ | git@heroku.com:young-harbor-4713.git
 $ git remote rm heroku
 $ git remote add heroku git@heroku.com:young-harbor-4713.git
 $ git push -u heroku master  # a bunch or work
+Get application error in the browser.  For one thing, I didn't set it up for Mongo / Mongoid
+$ heroku run rails console - sort of checks my app first.
+
 
 

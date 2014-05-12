@@ -13,7 +13,7 @@ development:
       options:
         # Change whether the session persists in safe mode by default.
         # (default: false)
-        # safe: false
+        safe: true  # PG uncomment based on https://devcenter.heroku.com/articles/mongohq
 
         # Change the default consistency model to :eventual or :strong.
         # :eventual will send reads to secondaries, :strong sends everything
@@ -81,7 +81,7 @@ development:
 test:
   sessions:
     default:
-      database: rails3_mongoid_devise_test
+      database: rails3_mongoid_devise_test  # PG todo: update the db name
       hosts:
         - localhost:27017
       options:
