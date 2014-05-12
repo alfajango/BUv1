@@ -274,4 +274,9 @@ Get application error in the browser.  For one thing, I didn't set it up for Mon
 $ heroku run rails console - sort of checks my app first.
 Got rid of all project_feedbacks files.  Now, when I deploy, I get a landing page with some styling, but not Mist styling.  
 $ rake assets:precompile   # and recommit, send to heroku.  Now, landing page is correctly styled.  
-$ heroku run rake db:seed # failed.  Try adding 
+$ heroku run rake db:seed # failed.  Try adding a couple things, including production section in mongoid.yml
+I should verify my production mode on local machine.  Also, I can try running development mode on heroku with a setting change
+$ heroku run console
+$ Rails.env
+$ rails s -e production  # doesn't run here.  Get this to run, first
+in mongoid.yml, use what I have for development as production also.  Now, the site works locally in production :-)
