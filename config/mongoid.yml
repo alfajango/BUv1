@@ -1,4 +1,4 @@
-production:  # when I use this section as production, I can run locally in production.  
+
 development:
   # Configure available database sessions. (required)
   sessions:
@@ -69,6 +69,8 @@ development:
     # use_utc: false
 
 # per SBS, and because it works, make production same as devlelopment
+
+
 production:  
   # Configure available database sessions. (required)
   sessions:

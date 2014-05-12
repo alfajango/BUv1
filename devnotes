@@ -280,3 +280,6 @@ $ heroku run console
 $ Rails.env
 $ rails s -e production  # doesn't run here.  Get this to run, first
 in mongoid.yml, use what I have for development as production also.  Now, the site works locally in production :-)
+on heroku, heroku run rake db:seed still fails though.
+
+$rake secret  # and put the result in config/initializers/secret_token.rb
