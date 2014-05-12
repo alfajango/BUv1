@@ -4,6 +4,7 @@ require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'email_spec'
 require 'rspec/autorun'
+require 'rails/mongoid' # add per http://stackoverflow.com/questions/15354936/rails-engine-mongoid-no-configuration-could-be-found-for-a-session-named-def
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
