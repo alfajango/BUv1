@@ -90,3 +90,12 @@ test:
         # low amounts for fast failures.
         max_retries: 1
         retry_interval: 0
+
+# PG add for heroku based on http://stackoverflow.com/questions/15354936/rails-engine-mongoid-no-configuration-could-be-found-for-a-session-named-def
+production:
+  sessions:
+    default:
+      uri: <%= ENV['MONGOHQ_URL'] %>
+      options:
+        skip_version_check: true
+        safe: true
