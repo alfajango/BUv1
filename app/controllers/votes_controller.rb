@@ -25,6 +25,7 @@ class VotesController < ApplicationController
       else
         puts "PROBLEM: none of the above"    
       end
+      redirect_to :back  # avoid going to that nothing page?
     else # create the new vote
       puts "going to create vote"
       @vote = Vote.new(params[:vote])
@@ -32,7 +33,7 @@ class VotesController < ApplicationController
       current_user.votes << @vote
       if @vote.save
         flash[:success] = "vote received"
-        redirect_to '#'  # can I return false here so that I don't redirect to new page?
+        redirect_to :back  # just reload, so that we see the vote in the total
       else
         flash[:success] = "FAIL"
       end

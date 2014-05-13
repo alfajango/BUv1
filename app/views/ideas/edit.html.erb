@@ -15,10 +15,9 @@
     <br />
     <% if current_user === (@idea.user) %>
       <h2> or </h2>
-      <h1>Delete Idea</h1>
-    <%= link_to "delete", @idea, method: :delete,
+      <div style="text-align:center;"><%= link_to "Delete Idea", @idea, method: :delete,
                                      data: { confirm: "Are you sure you want to delete the idea?  All feedback will be lost" },
-                                     title: @idea.body, class: "btn btn-danger"%>
+                                     title: @idea.body, class: "btn btn-danger"%>  </div>
 <% end %>
     </br></br></br>
     <%= link_to "Back", :back %>

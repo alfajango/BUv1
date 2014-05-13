@@ -43,7 +43,11 @@ class IdeasController < ApplicationController
       UserMailer.idea_creation(@user, @idea).deliver
       flash[:success] = "Idea created succesfully!  You and your colleagues can now weigh in"
       idea_id = @idea.id
-      redirect_to '/ideas'  # @user   
+      if thread_id = params[:idea][:thread_id]
+        redirect_to '/ideas/'+thread_id   
+      else # this is root
+        redirect_to '/ideas'
+      end
     else
       puts "in else - couldn't @idea.save"
       render 'new'

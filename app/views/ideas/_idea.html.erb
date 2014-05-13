@@ -35,10 +35,11 @@
 
       <%# make this appear when Reply is clicked %>
 
-        <div id="replyBox" style="display:none;" class="answer_list">
+        <div id="replyBox"<%= idea.id %> style="display:none;" class="answer_list">
+        <!-- <div id="replyBox"<%= idea.id %>  class="answer_list"> -->
           <%= form_for(@idea) do |f| %>  <%# @idea is the new one being created. idea is the parent that's being shown%>
             <%#= render 'shared/error_messages', object: f.object %>
-            <%= f.text_field :body, placeholder: "Type your response..." %>
+            <%= f.text_field :body, placeholder: "Type a response..." %>
             <%= f.hidden_field :thread_id, :value => idea.id %>
             <br>
             <%= f.submit "Submit", class: "btn btn-primary" %>
