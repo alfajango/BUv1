@@ -283,3 +283,38 @@ in mongoid.yml, use what I have for development as production also.  Now, the si
 on heroku, heroku run rake db:seed still fails though.
 
 $rake secret  # and put the result in config/initializers/secret_token.rb
+$ heroku addons:add mongohq
+Adding mongohq on young-harbor-4713... done, v13 (free)
+Use `heroku addons:docs mongohq` to view documentation.
+created mongohq account, called it prietary_staging
+
+put MONGOHQ_URL in ~/dotfiles/.bash_profile  also try putting it in dotfiles/.bashrc
+can run it manually, check it with $ echo ${MONGOHQ_URL}
+on monqhq website, add a user with db.addUser('​pgarber','​ofSpades')
+$ rvm --default use 1.9.3   # in window I launch rails server from  # undo with $ rvm use system
+# change Gemfile to ruby 1.9.3
+$ bundle install
+
+get my db on MONGOHQ: 
+WRONG:
+host: Philips-MacBook-Air.local
+server port: 27021 (I guess)
+databas name: rails3_mongoid_devise_development
+db user:  ?
+db password: ?
+
+RIGHT:
+host: oceanic.mongohq.com  
+server port: 10082    # 27021
+database_name: prietary_staging
+db user:  pgarber ??
+db password: 0f5a24333b2bfb6f496922db6149367e which is of..
+
+#dump my local db to a file:
+$ mongodump -h localhost:27017 -d rails3_mongoid_devise_development -o ~/tmp/mongodump
+ a whole bunch of logs
+
+# put it on mongohq: $ mongorestore -h oceanic.mongohq.com:10082 -d prietary_staging -u pgarber -p ACTUALPWD ~/tmp/mongodump/rails3_mongoid_devise_development 
+ a bunch of logs again
+
+by manually pasting the MONGOHQ_URL , production now works, locally

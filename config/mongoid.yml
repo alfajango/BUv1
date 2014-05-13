@@ -146,17 +146,15 @@ development:
 #PG add per http://railsapps.github.io/rails-heroku-tutorial.html
 
  # puts "in if ENV"
+<% if ENV['MONGOHQ_URL'] %>
 production:
   sessions:
     default:
-      # database: rails3_mongoid_devise_development
-      # hosts:
-      #   - localhost:27017
       uri: <%= ENV['MONGOHQ_URL'] %>
       options:
         skip_version_check: true
         safe: true
-
+<% end %>
 
 test:
   sessions:
