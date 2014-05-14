@@ -289,6 +289,7 @@ Use `heroku addons:docs mongohq` to view documentation.
 created mongohq account, called it prietary_staging
 
 put MONGOHQ_URL in ~/dotfiles/.bash_profile  also try putting it in dotfiles/.bashrc
+export MONGOHQ_URL="mongodb://pgarber:ofSpades@oceanic.mongohq.com:10082/prietary_staging"
 can run it manually, check it with $ echo ${MONGOHQ_URL}
 on monqhq website, add a user with db.addUser('​pgarber','​ofSpades')
 $ rvm --default use 1.9.3   # in window I launch rails server from  # undo with $ rvm use system
@@ -318,3 +319,14 @@ $ mongodump -h localhost:27017 -d rails3_mongoid_devise_development -o ~/tmp/mon
  a bunch of logs again
 
 by manually pasting the MONGOHQ_URL , production now works, locally
+still won't run on heroku, though
+
+Talk to John:
+fix .dotfile / dotfiles link
+vagrant!
+
+$ unlink mySymLink
+$ ln -s /path/to/file /path/to/symlink
+$ ln -s dotfiles/.bash_profile .bash_profile   # -f -s is force
+.bash_profile is the main one.  everything else can be called from that.  I think I accidentally deleted my .bashrc.  It was never getting called anyway
+OK, I can finally load my .bashrc stuff.
