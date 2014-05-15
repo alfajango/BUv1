@@ -1,6 +1,17 @@
 <ul class="dropdown-menu" role="menu">
   <% attribs = Attribute.where(category: category) %>
-  <%= attribs.each do | attrib | %>
+  <%# puts "attribs: #{attribs}" %>
+  <li>
+	<%= form_for(@attribute, url: '#') do |f| %>
+	  <%#= render '/shared/error_messages', object: f.object %>
+	  <%= f.text_field :attribute_name %>
+	  <br>
+	  <%= f.submit "submit", class: "btn btn-small btn-primary" %>
+	<% end %>     
+  </li>       
+  <% attribs.each do | attrib | %>
 	<li><a href="#"><%= attrib.attribute_name %></a></li>
+	<% puts "attrib.attribute_name: #{attrib.attribute_name}, attrib: #{attrib}"  %>
   <% end %>
 </ul>
+

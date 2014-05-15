@@ -57,35 +57,6 @@
           <%#= content_tag :div, class: "attributes_class", data: {attributes: @attributes} do %>
           <%# end %>
           <%= render "/users/button_entry" %>
-
-          Write feedback: <input ng-model="query">
-          <div ng-controller="List" class="colleague_attribs">
-            <ul>
-              <li ng-repeat="attrib in attribs | filter:query ">
-                <div ng-switch on="attrib.category">
-                  <%= puts "params[:id] = #{params[:id]}" %>
-                  <span ng-switch-when="positive"><a href=<%="/feedbacks/attribute_selected/#{params[:id]}"%>>{{attrib.attribute_name}}</a> | Public | to <%=user.name%> only</span>
-                  <span ng-switch-when="constructive">{{attrib.attribute_name}} | Employee and Manager</span>
-                  <span ng-switch-when="alert">{{attrib.attribute_name}} | Manager only</span>
-                  <span ng-switch-default></span>
-                </div>
-              <%# it's not JSON, but attrib.attribute_name works fine %>
-            </ul>
-          </div>
-
-          <%# puts seeded attributes into $scope.attribs array %>
-          <script>  
-            var List = function ($scope) {
-              // $('.attributes_class').data('attributes')[1].attribute_name    gives "is the best at managment"
-              var arrayLength = $('.attributes_class').data('attributes').length;
-              $scope.attribs = [];
-              for (var i = 0; i < arrayLength; i++) {
-                $scope.attribs.push($('.attributes_class').data('attributes')[i]);
-              }
-
-              // $scope.attribs = ["Tom", "Jeffrey", "Phil", "Mark", "Paul"];
-            }
-          </script>
         </div>
 
         <div class="well well-sm"> <%# job input %>

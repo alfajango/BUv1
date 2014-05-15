@@ -25,6 +25,9 @@ class UsersController < ApplicationController
     @users_for_this_job = Job.where(job_holder: params[:id])
 
     @job = Job.new # this calls jobs_controller create action, I believe
+    @attribute = Attribute.new #??
+
+
   end
 
   def homepage

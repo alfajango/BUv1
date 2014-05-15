@@ -17,3 +17,7 @@
 //= require bootstrap
 //= require_tree .
 
+// http://stackoverflow.com/questions/8110356/dropdown-with-a-form-inside-with-twitter-bootstrap
+$('.dropdown-menu').find('form').click(function (e) {
+    e.stopPropagation();
+  });
