@@ -295,6 +295,7 @@ on monqhq website, add a user with db.addUser('​pgarber','​ofSpades')
 $ rvm --default use 1.9.3   # in window I launch rails server from  # undo with $ rvm use system
 # change Gemfile to ruby 1.9.3
 $ bundle install
+$ rvm use 1.9.3
 
 get my db on MONGOHQ: 
 WRONG:
@@ -321,12 +322,19 @@ $ mongodump -h localhost:27017 -d rails3_mongoid_devise_development -o ~/tmp/mon
 by manually pasting the MONGOHQ_URL , production now works, locally
 still won't run on heroku, though
 
-Talk to John:
+############# Talk to John: ############# 
 fix .dotfile / dotfiles link
 vagrant!
+see SBS's setup_sbs.sh
+############# ############# ############# 
 
 $ unlink mySymLink
 $ ln -s /path/to/file /path/to/symlink
 $ ln -s dotfiles/.bash_profile .bash_profile   # -f -s is force
 .bash_profile is the main one.  everything else can be called from that.  I think I accidentally deleted my .bashrc.  It was never getting called anyway
-OK, I can finally load my .bashrc stuff.
+OK,  my .bash stuff finally loads
+
+Back to getting it going on heroku:
+$ heroku config:add MONGOHQ_URL="mongodb://pgarber:ofSpades@oceanic.mongohq.com:10082/prietary_staging"
+now, Heroku works!!
+As a review, I have ruby 1.9.3, data on mongohq, set the MONGOHQ_URL.  But, ruby 2.0.0 works fine on heroku also.  
