@@ -1,0 +1,6 @@
+<ul class="dropdown-menu" role="menu">
+  <% attribs = Attribute.where(category: category) %>
+  <%= attribs.each do | attrib | %>
+	<li><a href="#"><%= attrib.attribute_name %></a></li>
+  <% end %>
+</ul>

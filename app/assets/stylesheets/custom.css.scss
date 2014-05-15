@@ -15,6 +15,56 @@ $grayLight:              #999;
 $grayLighter:            #eee;
 $blue:                  #0101DF;
 
+
+.btn-purple {
+  color: #ffffff;
+  background-color: #D631CD;  
+  border-color: #B327AB;
+}
+
+.btn-purple:hover,
+.btn-purple:focus,
+.btn-purple:active,
+.btn-purple.active,
+.open .dropdown-toggle.btn-purple {
+  color: #ffffff;
+  background-color: #B327AB;
+  border-color: #992292;
+}
+
+.btn-purple:active,
+.btn-purple.active,
+.open .dropdown-toggle.btn-purple {
+  background-image: none;
+}
+
+.btn-purple.disabled,
+.btn-purple[disabled],
+fieldset[disabled] .btn-purple,
+.btn-purple.disabled:hover,
+.btn-purple[disabled]:hover,
+fieldset[disabled] .btn-purple:hover,
+.btn-purple.disabled:focus,
+.btn-purple[disabled]:focus,
+fieldset[disabled] .btn-purple:focus,
+.btn-purple.disabled:active,
+.btn-purple[disabled]:active,
+fieldset[disabled] .btn-purple:active,
+.btn-purple.disabled.active,
+.btn-purple[disabled].active,
+fieldset[disabled] .btn-purple.active {
+  background-color: #D631CD;
+  border-color: #B327AB;
+}
+
+.btn-purple .badge {
+  color: #D631CD;
+  background-color: #fff;
+}
+
+
+
+
 /* mixins, variables, etc */
 
 .colleage_attribs { /* PG, for formatting the presentation of colleage attributes to select from */

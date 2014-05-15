@@ -1,7 +1,7 @@
 class Attribute
   include Mongoid::Document
   field :attribute_name, type: String
-  field :category, type: String # positive, constructive, alert 
+  field :category, type: String # nicejob, greatat, thanks, workon, alert   # WAS:positive, constructive, alert 
   field :identifier, type: Integer
   field :created, type: Time, default: -> { Time.now } 
   #has_many :users
