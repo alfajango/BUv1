@@ -4,7 +4,7 @@ class AttributesController < ApplicationController
 		@attributes = Attribute.all
 	end
 
-	def new
+	def new  # don't think this is needed/ used
 		puts "in AttributesController new"
 		redirect_to :back
 	end

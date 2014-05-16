@@ -14,15 +14,26 @@
         <%# detailed_feedback() %> <%# function in users_helper that sets all current_user's feedback to @myfb %>        
         <div class="well well-sm">
 
-          <p>Feedback received: </p>
+          <% user = current_user %><%##User.find_by(id: params[:id]) %> 
+
+          <p><b><%= user.name %></b> | <%=user.email %></p>
           <ul>
-            <% current_user.feedbacks.reverse_each do |fb| %>
-              <li>
-                <% if fb.attribute %> 
-                  <%= fb.attribute.attribute_name %>
-                <% end %>
-              </li>
+          
+            <% @users_nicejob.each do |fb| %>
+              <%= render "users/feedback_item", :comment => fb.attribute.attribute_name, :category => "nicejob" %>
             <% end %>
+            <% @users_greatat.each do |fb| %>
+              <%= render "users/feedback_item", :comment => fb.attribute.attribute_name, :category => "greatat" %>
+            <% end %>
+            <% @users_thanks.each do |fb| %>
+              <%= render "users/feedback_item", :comment => fb.attribute.attribute_name, :category => "thanks" %>
+            <% end %>
+            <% @users_workon.each do |fb| %>
+              <%= render "users/feedback_item", :comment => fb.attribute.attribute_name, :category => "workon" %>
+            <% end %>
+            <% @users_alert.each do |fb| %>
+              <%= render "users/feedback_item", :comment => fb.attribute.attribute_name, :category => "alert" %>
+            <% end %>     
           </ul>
 
         </div>   

@@ -319,6 +319,11 @@ $ mongodump -h localhost:27017 -d rails3_mongoid_devise_development -o ~/tmp/mon
 # put it on mongohq: $ mongorestore -h oceanic.mongohq.com:10082 -d prietary_staging -u pgarber -p ACTUALPWD ~/tmp/mongodump/rails3_mongoid_devise_development 
  a bunch of logs again
 
+########### Do this every time I push to heroku: ################
+$ mongodump -h localhost:27017 -d rails3_mongoid_devise_development -o ~/tmp/mongodump
+$ mongorestore -h oceanic.mongohq.com:10082 -d prietary_staging -u pgarber -p ACTUALPWD ~/tmp/mongodump/rails3_mongoid_devise_development
+######################################################################
+
 by manually pasting the MONGOHQ_URL , production now works, locally
 still won't run on heroku, though
 
@@ -337,4 +342,9 @@ OK,  my .bash stuff finally loads
 Back to getting it going on heroku:
 $ heroku config:add MONGOHQ_URL="mongodb://pgarber:ofSpades@oceanic.mongohq.com:10082/prietary_staging"
 now, Heroku works!!
-As a review, I have ruby 1.9.3, data on mongohq, set the MONGOHQ_URL.  But, ruby 2.0.0 works fine on heroku also.  
+As a review, I have ruby 1.9.3, data on mongohq, set the MONGOHQ_URL.  But, ruby 2.0.0 works fine on heroku also.
+
+5/16/14
+I've now implemented showing button type feedback on _homepage, myfeedback, and users/show.  I did a couple things that are lazy and should be cleaned up:
+- @users_nicejob 3 different places (home_helper, users_controller, users_helper)
+- I changed users_helper users_for_homepage method to pick 3 users with most recent fb, rather than 3 most recently created users.  But, I couldn't find an elegant way to do that, so I've got many queries, which won't scale at all

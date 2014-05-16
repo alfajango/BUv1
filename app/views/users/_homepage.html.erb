@@ -39,26 +39,33 @@
 
         <h4><%= link_to "Colleagues", users_path %></h4>
         <% users_for_homepage() %> <%# call a function in users_helper that sets a list of users to show ratings for on the homepage in @show_user %>        
-        <% @show_users.each do |user| %>    
-          <div class="well well-sm">
-            <p><b><%= link_to(user.name, user) %></b></p>
-            <% if user.feedbacks.exists? %> 
+        <% @show_users.each do |user| %> 
+          <% set_fbs(user) %>
+          <div class="well well-sm"> 
+            <p><b><%= link_to(user.name, user) %></b> | <%=user.email %></p>
+            <ul>
+              <% @users_nicejob.each do |fb| %>
+                <%= render "users/feedback_item", :comment => fb.attribute.attribute_name, :category => "nicejob" %>
+              <% end %>
+              <% @users_greatat.each do |fb| %>
+                <%= render "users/feedback_item", :comment => fb.attribute.attribute_name, :category => "greatat" %>
+              <% end %>
+              <% @users_thanks.each do |fb| %>
+                <%= render "users/feedback_item", :comment => fb.attribute.attribute_name, :category => "thanks" %>
+              <% end %>
+              <%# for work on and alert, don't show the comment.  maybe show the number %>
+              <%# @users_workon.each do |fb| %>
+                <%#= render "users/feedback_item", :comment => fb.attribute.attribute_name, :category => "workon" %>
+              <%# end %>
+              <%# @users_alert.each do |fb| %>
+                <%#= render "users/feedback_item", :comment => fb.attribute.attribute_name, :category => "alert" %>
+              <%# end %>     
+            </ul>
+          </div>
+        <% end %>
 
-              <p>Feedback received: </p>
-              <ul>
-                <% user.feedbacks.reverse_each do |fb| %>
-                  <li>
-                  <% if fb.attribute %> 
-                    <%= fb.attribute.attribute_name %>
-                  <% end %>
-                 </li>
-                <% end %>
-              </ul>
-            <% else %>
-              <p>No public feedback.  Give <%=link_to(user.name, user)%> some feedback.</p>
-            <% end %>  
-          </div> 
-        <% end %>  
+
+
         <% if @show_users.size.to_i < 1 %>
           <div class="well well-sm"> <b> No colleagues with feedback yet. Give input to your <%= link_to "Colleagues", users_path %> </b>
           </div>

@@ -14,10 +14,33 @@ class UsersController < ApplicationController
   end
 
   def show
-    puts "in users_controller show, params: #{params}"
+    #puts "in users_controller show, params: #{params}"
   	@user = User.find(params[:id])
-    puts "@user.name: #{@user.name}"
+    #puts "@user.name: #{@user.name}"
     @users_feedback = @user.feedbacks
+    @users_nicejob =[]
+    @users_greatat =[]
+    @users_thanks =[]
+    @users_workon =[]
+    @users_alert =[]
+
+    @users_feedback.each do |feedback|
+      case feedback.attribute.category
+      when "nicejob"
+        @users_nicejob << feedback
+      when "greatat"
+        @users_greatat << feedback
+      when "thanks"
+        @users_thanks << feedback
+      when "workon"
+        @users_workon << feedback
+      when "alert"
+        @users_alert << feedback
+      else
+        puts "PROBLEM in users_controller show"
+      end
+    end
+    #@users_nicejob = @users_feedback.find_by(attribute.category == "nicejob")
 
     # for job creation:
     @users_jobs = Job.where(subject: params[:id])
@@ -26,8 +49,35 @@ class UsersController < ApplicationController
 
     @job = Job.new # this calls jobs_controller create action, I believe
     @attribute = Attribute.new #??
+  end
 
+  def myfeedback
+    #puts "in users_controller show, params: #{params}"
+    @user = current_user
+    #puts "@user.name: #{@user.name}"
+    @users_feedback = @user.feedbacks
+    @users_nicejob =[]
+    @users_greatat =[]
+    @users_thanks =[]
+    @users_workon =[]
+    @users_alert =[]
 
+    @users_feedback.each do |feedback|
+      case feedback.attribute.category
+      when "nicejob"
+        @users_nicejob << feedback
+      when "greatat"
+        @users_greatat << feedback
+      when "thanks"
+        @users_thanks << feedback
+      when "workon"
+        @users_workon << feedback
+      when "alert"
+        @users_alert << feedback
+      else
+        puts "PROBLEM in users_controller myfeedback"
+      end
+    end
   end
 
   def homepage

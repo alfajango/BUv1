@@ -9,72 +9,80 @@ module UsersHelper
   end
 
   def set_user(params)
-  	puts "in users_helper set_user"
-  	puts "params: #{params}"
+  	#puts "in users_helper set_user"
+  	#puts "params: #{params}"
   	user = User.find_by(id: params[:id])  # return user is implied
-  	puts "user.name: #{user.name}"
+  	#puts "user.name: #{user.name}"
   	return user
   end
 
-	def graph_data(target_user_id) # gathers & prepares data in @show_attributes for kickchart graphing
-	  print "in graph_data "
+  def set_btn_type(category)
+  	case category
+  	when "nicejob"
+  	  btnclass = "btn btn-purple dropdown-toggle"
+  	  text = "nice job"
+  	when "greatat"
+  	  btnclass = "btn btn-primary dropdown-toggle"
+  	  text = "is great at"
+  	when "thanks"
+  	  btnclass = "btn btn-success dropdown-toggle"
+  	  text = "thanks"
+  	when "workon"
+  	  btnclass = "btn btn-warning dropdown-toggle"
+  	  text = "work on"
+  	when "alert"
+  	  btnclass = "btn btn-dangher dropdown-toggle"
+  	  text = "alert"
+  	end
+  	#puts "btnclass: #{btnclass}"
+  	#puts "text: #{text}"
+  	return btnclass, text
+  end
 
-	  # format data into an array of arrays for chartkick - get top 5 positive attributes and top 1 negative attribute
-	  @show_attributes=Array.new
-	  @ratings = Rating.all
-	  @attributes=Attribute.all
-	  users_good_ratings = Array.new
-	  users_bad_ratings = Array.new
-	  @ratings.each do |rating|
-	  	# TODO: I could use some error checking here because if bad data gets into ratings, can't render home page
-	  	# example: if there is a row in the ratings table with an attribute_identifier that's no longer in the 
-	  	# attributes table
-	  	if rating.user_id == target_user_id  #if the rating is for this user
-	      if @attributes.find_by(identifier: rating.attribute_identifier).good == "true"  # and if it's a good rating
-	      	users_good_ratings.push(rating)  
-	      elsif @attributes.find_by(identifier: rating.attribute_identifier).good == "false" # rating is bad
-	      	users_bad_ratings.push(rating)
-	      end
-	    end
-	  end
 
-	  users_good_ratings.sort! { |a,b| b.current_rating <=> a.current_rating } # sort by current rating
-	  users_bad_ratings.sort! { |a,b| b.current_rating <=> a.current_rating } # sort by current rating
-
-	  count=1
-	  users_good_ratings.each do |rating|
-	  	if count <=5
-	  	  this_attribute_name = @attributes.find_by(identifier: rating.attribute_identifier).attribute_name
-	      @show_attributes.push([this_attribute_name, rating.current_rating])
-	      count+=1 
-	    end
-	  end
-
-	  count =1
-	  users_bad_ratings.each do |rating|  # now find the highest rated negative attrib and add to @show_attributes
-	  	if count <=1 # only 1 negative attribute
-	  	  this_attribute_name = @attributes.find_by(identifier: rating.attribute_identifier).attribute_name
-	      @show_attributes.push([this_attribute_name, -1 * rating.current_rating])
-	      count+=1 	
-	    end
-	  end
-	end
 
   def users_for_homepage()
 	@show_users = Array.new
+	co = current_user.company
+	company_users = co.users
+	#recent_fb = Feedback.find_by(user.company == co).order("created").last  # .last(:order => "id asc", :limit => 20)
+	#recent_fb = Feedback.where("user.company = ?", co)
+	#recent_fb = Feedback.user.company.where(for_company(co)
+	#co_fb = Feedback.where(:user.include? company_users)
 
-	company_users = current_user.company.users
-
-	count = 1  
-	company_users.reverse_each do |user|   # traverse newest (last) first
-	  if count > 3
-		return
-	  end	 
-	  unless (@show_users.include?(user) or user.feedbacks.size.to_i < 1)
-	    @show_users.push(user)
-		count += 1
+	#wrong way to do this:  This is tons of queries and doesn't scale at all. todo: fix it!
+	allfb = Feedback.all
+	company_fb = []
+	allfb.each do |fb|
+	  if company_users.include? fb.user
+	  	company_fb << fb
 	  end
 	end
+	company_fb.sort_by { |a| a[:created] }
+
+	count = 1  
+	company_fb.each do |fb|
+		if count >3
+		  return
+		end
+		unless @show_users.include?(fb.user)
+		  @show_users.push(fb.user)
+		  count += 1
+		end
+	end
+ 
+	# this isn't getting the most recently rated users.  just most recently created.  
+	# company_users.reverse_each do |user|   # traverse newest (last) first
+	#   if count > 3
+	# 	return
+	#   end	 
+	#   unless (@show_users.include?(user) or user.feedbacks.size.to_i < 1)
+	#     @show_users.push(user)
+	# 	count += 1
+	#   end
+	# end
+
+
   end
 
   def detailed_feedback()

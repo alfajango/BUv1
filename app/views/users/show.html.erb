@@ -7,20 +7,38 @@
       <div class="col-md-8">
         <!-- this is the main section -->
         <div class="well well-sm">
-          <% user = set_user(params) %><%##User.find_by(id: params[:id]) %>  
-          <p><b><%= user.name %></b> | <%=user.email %></p>
+          <% user = set_user(params) %><%##User.find_by(id: params[:id]) %> 
 
-          <p>Positive feedback received: </p>
+          <p><b><%= user.name %></b> | <%=user.email %></p>
           <ul>
-            <% @users_feedback.reverse_each do |fb| %>
-              <% if fb.attribute %> <%# sometimes this doesn't exist ??? %>
-                <% if fb.attribute.category==="positive" %>
-                  <li><%= fb.attribute.attribute_name %></li>
-                <% end %>
-              <% end %>
+          
+            <% @users_nicejob.each do |fb| %>
+              <%= render "users/feedback_item", :comment => fb.attribute.attribute_name, :category => "nicejob" %>
             <% end %>
+            <% @users_greatat.each do |fb| %>
+              <%= render "users/feedback_item", :comment => fb.attribute.attribute_name, :category => "greatat" %>
+            <% end %>
+            <% @users_thanks.each do |fb| %>
+              <%= render "users/feedback_item", :comment => fb.attribute.attribute_name, :category => "thanks" %>
+            <% end %>
+
+            <%# for work on and alert, don't show the comment.  maybe show the number %>
+            <%# @users_workon.each do |fb| %>
+              <%#= render "users/feedback_item", :comment => fb.attribute.attribute_name, :category => "workon" %>
+            <%# end %>
+            <%# @users_alert.each do |fb| %>
+              <%#= render "users/feedback_item", :comment => fb.attribute.attribute_name, :category => "alert" %>
+            <%# end %>     
           </ul>
 
+        </div>
+
+
+
+        <div class="well well-sm" id="colleaguedDisplay">
+          <h4>Give feedback for <%= @user.name %></h4>
+          <% @attributes = Attribute.all %>  <%# this should be in controller but it's not going there%>
+          <%= render "/users/button_entry" %>
         </div>
 
         <% if @users_jobs || @users_for_this_job %>
@@ -47,17 +65,6 @@
           </div>
         <% end %>
 
-        <div class="well well-sm" id="colleaguedDisplay">
-          <h4>Give feedback for <%= @user.name %></h4>
-
-          <% @attributes = Attribute.all %>  <%# this should be in controller but it's not going there%>
-
-          <%# from http://codequizzes.wordpress.com/2013/06/06/rails-javascript-workflow-rendering-javascript-partials/ %>
-          <%# This renders the list of attributes%>
-          <%#= content_tag :div, class: "attributes_class", data: {attributes: @attributes} do %>
-          <%# end %>
-          <%= render "/users/button_entry" %>
-        </div>
 
         <div class="well well-sm"> <%# job input %>
           <p><b><%= user.name %></b> would do well in a role like that of:</p>
