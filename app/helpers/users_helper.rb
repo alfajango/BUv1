@@ -50,11 +50,15 @@ module UsersHelper
 	#recent_fb = Feedback.user.company.where(for_company(co)
 	#co_fb = Feedback.where(:user.include? company_users)
 
+	#This gets 3 users with most recent feedback, but:
 	#wrong way to do this:  This is tons of queries and doesn't scale at all. todo: fix it!
+	#@show_users = []
+	#@show_users << User.first
+
 	allfb = Feedback.all
-	company_fb = []
+	company_fb = []  # all good feedback for this company's employees
 	allfb.each do |fb|
-	  if company_users.include? fb.user
+	  if (company_users.include? fb.user) and (fb.attribute.category == ("nicejob" || "greatat" || "thanks"))
 	  	company_fb << fb
 	  end
 	end

@@ -38,7 +38,8 @@
         <% end %>        
 
         <h4><%= link_to "Colleagues", users_path %></h4>
-        <% users_for_homepage() %> <%# call a function in users_helper that sets a list of users to show ratings for on the homepage in @show_user %>        
+        <% users_for_homepage() %> <%# call a function in users_helper that sets a list of users to show ratings for on the homepage in @show_usersΩ %>    
+        <%# puts "@show_users.size: #{@show_users.size}" %>   
         <% @show_users.each do |user| %> 
           <% set_fbs(user) %>
           <div class="well well-sm"> 
@@ -49,7 +50,7 @@
               <% end %>
               <% @users_greatat.each do |fb| %>
                 <%= render "users/feedback_item", :comment => fb.attribute.attribute_name, :category => "greatat" %>
-              <% end %>
+              <% end %> 
               <% @users_thanks.each do |fb| %>
                 <%= render "users/feedback_item", :comment => fb.attribute.attribute_name, :category => "thanks" %>
               <% end %>

@@ -320,6 +320,7 @@ $ mongodump -h localhost:27017 -d rails3_mongoid_devise_development -o ~/tmp/mon
  a bunch of logs again
 
 ########### Do this every time I push to heroku: ################
+check to make sure production works, locally
 $ mongodump -h localhost:27017 -d rails3_mongoid_devise_development -o ~/tmp/mongodump
 $ mongorestore -h oceanic.mongohq.com:10082 -d prietary_staging -u pgarber -p ACTUALPWD ~/tmp/mongodump/rails3_mongoid_devise_development
 ######################################################################
@@ -340,7 +341,7 @@ $ ln -s dotfiles/.bash_profile .bash_profile   # -f -s is force
 OK,  my .bash stuff finally loads
 
 Back to getting it going on heroku:
-$ heroku config:add MONGOHQ_URL="mongodb://pgarber:ofSpades@oceanic.mongohq.com:10082/prietary_staging"
+$ heroku config:add MONGOHQ_URL="mongodb://pgarber:ACTUALPWD@oceanic.mongohq.com:10082/prietary_staging"
 now, Heroku works!!
 As a review, I have ruby 1.9.3, data on mongohq, set the MONGOHQ_URL.  But, ruby 2.0.0 works fine on heroku also.
 
