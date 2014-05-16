@@ -44,11 +44,10 @@ module UsersHelper
   def users_for_homepage()
 	@show_users = Array.new
 	co = current_user.company
+	puts "co.name: #{co.name}"
+
 	company_users = co.users
-	#recent_fb = Feedback.find_by(user.company == co).order("created").last  # .last(:order => "id asc", :limit => 20)
-	#recent_fb = Feedback.where("user.company = ?", co)
-	#recent_fb = Feedback.user.company.where(for_company(co)
-	#co_fb = Feedback.where(:user.include? company_users)
+	count = 1
 
 	#This gets 3 users with most recent feedback, but:
 	#wrong way to do this:  This is tons of queries and doesn't scale at all. todo: fix it!
@@ -57,14 +56,17 @@ module UsersHelper
 
 	allfb = Feedback.all
 	company_fb = []  # all good feedback for this company's employees
+
 	allfb.each do |fb|
-	  if (company_users.include? fb.user) and (fb.attribute.category == ("nicejob" || "greatat" || "thanks"))
-	  	company_fb << fb
+
+	  if fb.user  # sometimes it's null?
+		  if (company_users.include? fb.user)# and (fb.attribute.category == ("nicejob" || "greatat" || "thanks")))
+		  	company_fb << fb
+		  end
 	  end
 	end
 	company_fb.sort_by { |a| a[:created] }
 
-	count = 1  
 	company_fb.each do |fb|
 		if count >3
 		  return
@@ -74,8 +76,8 @@ module UsersHelper
 		  count += 1
 		end
 	end
- 
-	# this isn't getting the most recently rated users.  just most recently created.  
+
+	# #this isn't getting the most recently rated users.  just most recently created.  
 	# company_users.reverse_each do |user|   # traverse newest (last) first
 	#   if count > 3
 	# 	return
@@ -85,6 +87,7 @@ module UsersHelper
 	# 	count += 1
 	#   end
 	# end
+
 
 
   end
