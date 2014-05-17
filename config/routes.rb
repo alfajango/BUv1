@@ -10,6 +10,11 @@ Prietary::Application.routes.draw do
   resources :ideas
   resources :votes
   resources :jobs
+  resources :feedbacks
+  resources :attributes
+  resources :companies
+  resources :pattributes
+  resources :pfeedbacks
 
   # from BUv2
   #root 'users#home'  # caused an error

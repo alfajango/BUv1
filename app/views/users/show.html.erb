@@ -1,89 +1,131 @@
 <%#### USERS/show ########### %>
+<body ng-app="ngToggle"><%# can I call this something other than body and have it still pick up the app? %>
+<div ng-controller="AppCtrl">
+  <div class="wrapper body">
+    <div class="container">
+      <div class="row">
+        <%= render "users/signed_in_sidebar" %>
+        <div class="col-md-8">
+          <!-- this is the main section -->
+          <div class="well well-sm">
+            <% user = set_user(params) %><%##User.find_by(id: params[:id]) %> 
 
-<div class="wrapper body">
-  <div class="container">
-    <div class="row">
-      <%= render "users/signed_in_sidebar" %>
-      <div class="col-md-8">
-        <!-- this is the main section -->
-        <div class="well well-sm">
-          <% user = set_user(params) %><%##User.find_by(id: params[:id]) %> 
+            <p><b><%= user.name %></b> | <%=user.email %></p>
+            <ul>
+            
+              <% @users_nicejob.each do |fb| %>
+                <%= render "users/feedback_item", :comment => fb.attribute.attribute_name, :category => "nicejob" %>
+              <% end %>
+              <% @users_greatat.each do |fb| %>
+                <%= render "users/feedback_item", :comment => fb.attribute.attribute_name, :category => "greatat" %>
+              <% end %>
+              <% @users_thanks.each do |fb| %>
+                <%= render "users/feedback_item", :comment => fb.attribute.attribute_name, :category => "thanks" %>
+              <% end %>
 
-          <p><b><%= user.name %></b> | <%=user.email %></p>
-          <ul>
-          
-            <% @users_nicejob.each do |fb| %>
-              <%= render "users/feedback_item", :comment => fb.attribute.attribute_name, :category => "nicejob" %>
-            <% end %>
-            <% @users_greatat.each do |fb| %>
-              <%= render "users/feedback_item", :comment => fb.attribute.attribute_name, :category => "greatat" %>
-            <% end %>
-            <% @users_thanks.each do |fb| %>
-              <%= render "users/feedback_item", :comment => fb.attribute.attribute_name, :category => "thanks" %>
-            <% end %>
+              <%# for work on and alert, don't show the comment.  maybe show the number %>
+              <%# @users_workon.each do |fb| %>
+                <%#= render "users/feedback_item", :comment => fb.attribute.attribute_name, :category => "workon" %>
+              <%# end %>
+              <%# @users_alert.each do |fb| %>
+                <%#= render "users/feedback_item", :comment => fb.attribute.attribute_name, :category => "alert" %>
+              <%# end %>     
+            </ul>
 
-            <%# for work on and alert, don't show the comment.  maybe show the number %>
-            <%# @users_workon.each do |fb| %>
-              <%#= render "users/feedback_item", :comment => fb.attribute.attribute_name, :category => "workon" %>
-            <%# end %>
-            <%# @users_alert.each do |fb| %>
-              <%#= render "users/feedback_item", :comment => fb.attribute.attribute_name, :category => "alert" %>
-            <%# end %>     
-          </ul>
+          </div>
 
-        </div>
+          <%################## Angular playground ################# %>
+
+          <div ng-controller="ContactController">
+              <form>
+                  <input type="text" name="comment" ng-model="newcontact.comment" value="type here..."/>
+                  <input type="hidden" ng-model="newcontact.id" />
+               <input type="button" value="Enter" ng-click="saveContact()" />
+              </form>
+          <table>
+          <thead> 
+          <tr>
+              <th>comment</th>
+              <th>Action</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr ng-repeat="contact in contacts">
+              <td>{{ contact.comment }}</td>
+
+              <td>
+                  <a  href="#" ng-click="edit(contact.id)">edit</a> | 
+                  <a href="#" ng-click="delete(contact.id)">delete</a>
+              </td>
+           </tr>
+          </tbody>
+          </table>    
+          </div>
+
+   <!--        <button ng-click="buffer = buffer + newtext" ng-init="buffer=''">
+            submit
+          </button>
+          buffer: {{buffer}}
+ -->
 
 
+            <!-- <div ng-controller="AppCtrl"> it's up above-->
 
-        <div class="well well-sm" id="colleaguedDisplay">
-          <h4>Give feedback for <%= @user.name %></h4>
-          <% @attributes = Attribute.all %>  <%# this should be in controller but it's not going there%>
-          <%= render "/users/button_entry" %>
-        </div>
+     <!--          <button type="button" class="btn btn-primary" ng-click="toggleCustom()">presentation skills</button>
+              <span ng-hide="custom">presentation skills</span>
+              <span ng-hide="custom">cheese</span>
+              <span ng-show="custom">select inputs from </span> -->
+            
+          <%################## END Angular playground ################# %>
 
-        <% if @users_jobs || @users_for_this_job %>
-          <div class="well well-sm"> 
-            <% if @users_jobs %>
-              <p><b><%=current_user.company.name %></b> employees have said that: </p>
+          <div class="well well-sm" id="colleaguedDisplay">
+            <h4>Give feedback for <%= @user.name %></h4>
+            <%= render "/users/button_entry" %>
+          </div>
+
+          <% if @users_jobs || @users_for_this_job %>
+            <div class="well well-sm"> 
+              <% if @users_jobs %>
+                <p><b><%=current_user.company.name %></b> employees have said that: </p>
+                  <ul>
+                  <% @users_jobs.reverse_each do |job| %>
+                    <li><b><%=user.name%></b> would do well in a role like <b><%=job.job_holder.name %></b> has now</li>
+                  <% end %>
+                </ul>
+              <% end %>
+              <% if @users_for_this_job %>
                 <ul>
-                <% @users_jobs.reverse_each do |job| %>
-                  <li><b><%=user.name%></b> would do well in a role like <b><%=job.job_holder.name %></b> has now</li>
-                <% end %>
-              </ul>
-            <% end %>
-            <% if @users_for_this_job %>
-              <ul>
-                <% @users_for_this_job.reverse_each do |job| %>
-                  <li><b><%=job.subject.name %></b> would do well in a role like <b><%=user.name%></b> has now</li>
-                <% end %>
-              </ul>
-            <% end %>
-          </div>
-        <% else %>
-          <div class="well well-sm"> 
-            No job recommendations for <b> <%=user.name%></b> yet
-          </div>
-        <% end %>
-
-
-        <div class="well well-sm"> <%# job input %>
-          <p><b><%= user.name %></b> would do well in a role like that of:</p>
-          <%#= form_for @job, :remote => true do |f| %>
-          <%= form_for @job do |f| %>
-            <%= f.text_field :job_holder, placeholder: "Enter name of a colleague at #{current_user.company.name}" %>
-            <%= f.hidden_field :subject, :value => user.id %>
-
-            <!-- or  -->
-            <%#= f.text_field :email %>
-            <br>
-            Your input will be anonymous.  <br>
-            <%#= f.hidden_field :subject, :value => current_user.id %>
-            <%= f.submit "Submit", class: "btn btn-large btn-primary" %>
+                  <% @users_for_this_job.reverse_each do |job| %>
+                    <li><b><%=job.subject.name %></b> would do well in a role like <b><%=user.name%></b> has now</li>
+                  <% end %>
+                </ul>
+              <% end %>
+            </div>
+          <% else %>
+            <div class="well well-sm"> 
+              No job recommendations for <b> <%=user.name%></b> yet
+            </div>
           <% end %>
-        </div>
 
+
+          <div class="well well-sm"> <%# job input %>
+            <p><b><%= user.name %></b> would do well in a role like that of:</p>
+            <%#= form_for @job, :remote => true do |f| %>
+            <%= form_for @job do |f| %>
+              <%= f.text_field :job_holder, placeholder: "Enter name of a colleague at #{current_user.company.name}" %>
+              <%= f.hidden_field :subject, :value => user.id %>
+
+              <!-- or  -->
+              <%#= f.text_field :email %>
+              <br>
+              Your input will be anonymous.  <br>
+              <%#= f.hidden_field :subject, :value => current_user.id %>
+              <%= f.submit "Submit", class: "btn btn-large btn-primary" %>
+            <% end %>
+          </div>
+
+        </div>
       </div>
     </div>
   </div>
 </div>
-

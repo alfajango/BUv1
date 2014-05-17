@@ -11,6 +11,11 @@
   </li>       
   <% attribs.each do | attrib | %>
 	<li><a href="#"><%= attrib.attribute_name %></a></li>
+	<li>
+	<%#= form_for( @feedback ) do |f| %>
+	  <%#= render '/shared/error_messages', object: f.object %>
+	  <%#= f.submit attrib.attribute_name %>
+	<%# end %>
   <% end %>
 </ul>
 

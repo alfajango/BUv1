@@ -349,3 +349,8 @@ As a review, I have ruby 1.9.3, data on mongohq, set the MONGOHQ_URL.  But, ruby
 I've now implemented showing button type feedback on _homepage, myfeedback, and users/show.  I did a couple things that are lazy and should be cleaned up:
 - @users_nicejob 3 different places (home_helper, users_controller, users_helper)
 - I changed users_helper users_for_homepage method to pick 3 users with most recent fb, rather than 3 most recently created users.  But, I couldn't find an elegant way to do that, so I've got many queries, which won't scale at all
+
+So, production had a failure on fb.user that development did not fail on, it seems.  When fixing things in production, you have to restart the server every time you make a change.
+Now, I run fine in production locally, but I can't login or do anything on heroku??
+
+In form_tag: remote: true puts in some javascrit, I think

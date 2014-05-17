@@ -14,7 +14,8 @@ class UsersController < ApplicationController
   end
 
   def show
-    #puts "in users_controller show, params: #{params}"
+    puts "in users_controller show, params: #{params}"
+    @attributes = Attribute.all
   	@user = User.find(params[:id])
     #puts "@user.name: #{@user.name}"
     @users_feedback = @user.feedbacks
@@ -49,6 +50,11 @@ class UsersController < ApplicationController
 
     @job = Job.new # this calls jobs_controller create action, I believe
     @attribute = Attribute.new #??
+
+    @feedback = Feedback.new
+      # Feedback.create(from_id: current_user.id, to_id: @user.id, 
+      #             attribute_identifier: attribute_identifier);
+
   end
 
   def myfeedback
