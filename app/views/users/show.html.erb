@@ -88,11 +88,7 @@
                 <span ng-show="custom">select inputs from </span> -->
               
             <%################## END Angular playground ################# %>
-    <div ng-controller='MyController'>
-    <div ng-repeat='activity in activities'>
-        <span>{{activity.name}} seen = {{activity.seen}}</span>
-        <button ng-click='activity.seen = !activity.seen'>{{activity.seen ? 'Mark unread' : 'Mark read'}}</button>
-    </div>
+
 
           <% if @users_jobs || @users_for_this_job %>
             <div class="well well-sm"> 
@@ -142,10 +138,4 @@
 </div>
 </div>
 
-<div ng-app='MyModule' ng-controller='MyController'>
-    <div ng-repeat='activity in activities'>
-        <span>{{activity.name}} seen = {{activity.seen}}</span>
-        <button ng-click='activity.seen = !activity.seen'>{{activity.seen ? 'Mark unread' : 'Mark read'}}</button>
-    </div>
-        
-</div>
+
