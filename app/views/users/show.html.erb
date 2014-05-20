@@ -40,7 +40,7 @@
 
               <div class="well well-sm" id="colleaguedDisplay">
                 <h4>Give feedback for <%= @user.name %></h4>
-                <%= render "/users/button_entry" %>
+                <%= render "/users/button_entry", :user => user %>
               
 
 
@@ -54,25 +54,27 @@
                 </form> -->
             <table>
             <thead> 
-            <tr>
-                <th>feedback staged:</th>
+              <tr>
+                  <th>feedback staged:</th>
 
-            </tr>
-            </thead>
-            <tbody>
-            <tr ng-repeat="fb in fbs">
-                <td>{{ fb.comment }}</td>
+              </tr>
+              </thead>
+              <tbody>
+              <tr ng-repeat="fb in fbs">
+                  <td>{{ fb.comment }}</td>
 
-                <td>
-                    <a  href="#" ng-click="edit(fb.id)">edit</a> | 
-                    <a href="#" ng-click="delete(fb.id)">delete</a>
-                </td>
-             </tr>
-            </tbody>
-            </table>    
-            </div>
-            <br>
-            </div>
+                  <td>
+                      <a  href="#" ng-click="edit(fb.id)">edit</a> | 
+                      <a href="#" ng-click="delete(fb.id)">delete</a>
+                  </td>
+               </tr>
+              </tbody>
+            </table>   
+            
+
+          </div>
+          <br>
+        </div>
      <!--        <button ng-click="buffer = buffer + newtext" ng-init="buffer=''">
               submit
             </button>
@@ -80,14 +82,14 @@
    -->
 
 
-              <!-- <div ng-controller="AppCtrl"> it's up above-->
+              <!-- <div ng-controller="AppCtrl"> its up above-->
 
        <!--          <button type="button" class="btn btn-primary" ng-click="toggleCustom()">presentation skills</button>
                 <span ng-hide="custom">presentation skills</span>
                 <span ng-hide="custom">cheese</span>
                 <span ng-show="custom">select inputs from </span> -->
               
-            <%################## END Angular playground ################# %>
+            <%# ################# END Angular playground ################# %>
 
 
           <% if @users_jobs || @users_for_this_job %>

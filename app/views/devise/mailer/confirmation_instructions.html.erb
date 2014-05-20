@@ -1,5 +1,7 @@
-<p>Welcome <%= @email %>!</p>
+<p>Welcome <%= @email %>!  Thanks for signing up for Prietary, your company's new Business Intelligence solution.</p>
 
-<p>You can confirm your account email through the link below:</p>
+<p>Before you get going, you need to show that you are an employee.  To complete this confirmation, just click on the link below:</p>
 
 <p><%= link_to 'Confirm my account', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token) %></p>
+
+<p>Questions, comments, or issues?  We'd love to hear from you at <a href="mailto:contact@prietary.com">contact@prietary.com</a>.</p>

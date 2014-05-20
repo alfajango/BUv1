@@ -353,4 +353,7 @@ I've now implemented showing button type feedback on _homepage, myfeedback, and 
 So, production had a failure on fb.user that development did not fail on, it seems.  When fixing things in production, you have to restart the server every time you make a change.
 Now, I run fine in production locally, but I can't login or do anything on heroku??
 
-In form_tag: remote: true puts in some javascrit, I think
+In form_tag: remote: true puts in some javascript, I think.  Do this to submit without redirect!
+<%#= form_for @job, :remote => true do |f| %>
+
+Layout item: it would be better to put <div class="container"> on application.html.erb, rather than each page separately.  The only page I don't want it on is landing.

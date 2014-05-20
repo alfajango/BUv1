@@ -1,13 +1,13 @@
 <ul class="dropdown-menu" role="menu">
   <% attribs = Attribute.where(category: category) %>
 <!-- text box entry -->
-<!--   <li>
+  <li>
     <form>
       <input type="text" name="comment" ng-model="newfb.comment" placeholder="Enter comment here..." />
       <input type="hidden" ng-model="newfb.id" />
    	  <input type="button" value="Enter" ng-click="saveFb()" />
   	</form>
-  </li>  -->
+  </li> 
 
 <!-- buttons -->
 <!--   <li>
@@ -24,15 +24,23 @@
     <!-- {{attrib.attribute_name}} -->
   <!-- </li> -->
     <% attribs.each do | attrib | %>
-		<!-- <li><a href="#"> -->   <%#= attrib.attribute_name %> <!-- </a></li> -->
+
 		<li>
-		    <form>
-		      <input type="hidden" name="comment" ng-model="newfb.comment" />
-		      <input type="hidden" ng-model="newfb.id" />
-		   	  <input type="button" value="<%= attrib.attribute_name %>" ng-click="saveFb()" />
-		  	</form>
-		</li>
-	<% end %>
-</ul>
+		  <%# I don't have anything in a controller helping me.  It would be good to put some there %>
+		  <%#=form_for Feedback.new, :url => user_session_path do |f| %>
+		  <%=form_for (Feedback.new remote: true) do |f| %> <%# remote: true is not working - it still redirects %>
+            <%= f.hidden_field :from_id, value: current_user.id %>
+            <%= f.hidden_field :rating_given, value: 1 %>
+            <%= f.hidden_field :created, value: Time.now %>
+            <%= f.hidden_field :user, value: user %> <%# can I do this? %>
+            <%= f.hidden_field :attribute, value: attrib %> <%# can I do this? %>
+            <%=f.submit attrib.attribute_name, class: "btn btn-small btn"  %>
+          <% end %>
+		    <!-- <form> -->
+		   	  <!-- <input type="button" value= --><%#= attrib.attribute_name %><!-- "> -->
+		  	<!-- </form> -->
+		</li> 
+	<% end %> 
+  </ul>
 
 

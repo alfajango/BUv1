@@ -27,12 +27,12 @@ function FbController($scope) {
     //     }
     // ];
      
-    $scope.saveFb = function() {
+        $scope.saveFb = function() {
          
         if($scope.newfb.id == null) {
         //if this is new contact, add it in contacts array
         $scope.newfb.id = uid++;
-        $scope.newfb.comment = "for your help";
+        // $scope.newfb.comment = "for your help";
 
         $scope.fbs.push($scope.newfb);
         } else {
@@ -40,7 +40,7 @@ function FbController($scope) {
         //and update it.
         for(i in $scope.fbs) {
             if($scope.fbs[i].id == $scope.newfb.id) {
-            $scope.newfb.comment = "for your help";
+            // $scope.newfb.comment = "for your help";
             $scope.fbs[i] = $scope.newfb;
             }
         }                
@@ -95,14 +95,6 @@ function FbController($scope) {
         }
     }
 
-    .controller( 'MyController', function($scope){
-    
-    $scope.activities = [
-        { seen: true, name: 'darts' },
-        { seen: false, name: 'pool' },
-        { seen: true, name: 'cricket' }
-    ];
-});
 }
 
 
@@ -120,13 +112,3 @@ var List = function ($scope) {
   }
 }
 
-angular.module('MyModule', [])
-
-.controller( 'MyController', function($scope){
-    
-    $scope.activities = [
-        { seen: true, name: 'darts' },
-        { seen: false, name: 'pool' },
-        { seen: true, name: 'cricket' }
-    ];
-});

@@ -16,6 +16,14 @@ class FeedbacksController < ApplicationController
   	# @relationship = Relationship.new
   end
 
+  def create # this called from users/show.html.erb??
+    "puts in feedbacks_controller create action "
+    Feedback.create(params)
+    
+
+  end
+
+
   def attribute_selected
     put "in feedbacks_controller attribute_selected"
     #@attribute=Attribute.all
