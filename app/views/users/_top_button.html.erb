@@ -1,21 +1,38 @@
 <ul class="dropdown-menu" role="menu">
   <% attribs = Attribute.where(category: category) %>
-  <%# puts "attribs: #{attribs}" %>
-  <li>
-	<%= form_for(@attribute, url: '#') do |f| %>
-	  <%#= render '/shared/error_messages', object: f.object %>
-	  <%= f.text_field :attribute_name %>
-	  <br>
-	  <%= f.submit "submit", class: "btn btn-small btn-primary" %>
-	<% end %>     
-  </li>       
-  <% attribs.each do | attrib | %>
-	<li><a href="#"><%= attrib.attribute_name %></a></li>
-	<li>
-	<%#= form_for( @feedback ) do |f| %>
-	  <%#= render '/shared/error_messages', object: f.object %>
-	  <%#= f.submit attrib.attribute_name %>
-	<%# end %>
-  <% end %>
+<!-- text box entry -->
+<!--   <li>
+    <form>
+      <input type="text" name="comment" ng-model="newfb.comment" placeholder="Enter comment here..." />
+      <input type="hidden" ng-model="newfb.id" />
+   	  <input type="button" value="Enter" ng-click="saveFb()" />
+  	</form>
+  </li>  -->
+
+<!-- buttons -->
+<!--   <li>
+    <form>
+      <input type="text" name="comment" ng-model="newfb.comment" value="type here..." />
+      <input type="hidden" ng-model="newfb.id" />
+   	  <input type="button" value="for your help" ng-click="saveFb()" />
+  	</form>
+  </li>  -->
+
+
+  <li ng-repeat="attrib in jattribs">  <%# I have 2 things called attribs - fix that %>
+    <%#= puts "params[:id] = #{params[:id]}" %>
+    {{attrib.attribute_name}}
+  </li>
+    <% attribs.each do | attrib | %>
+		<!-- <li><a href="#"> -->   <%#= attrib.attribute_name %> <!-- </a></li> -->
+		<li>
+		    <form>
+		      <input type="hidden" name="comment" ng-model="newfb.comment" />
+		      <input type="hidden" ng-model="newfb.id" />
+		   	  <input type="button" value="<%= attrib.attribute_name %>" ng-click="saveFb()" />
+		  	</form>
+		</li>
+	<% end %>
 </ul>
+
 

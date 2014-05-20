@@ -1,6 +1,9 @@
 <%#### USERS/show ########### %>
-<body ng-app="ngToggle"><%# can I call this something other than body and have it still pick up the app? %>
-<div ng-controller="AppCtrl">
+<!-- <body ng-app="ngToggle"> -->
+<div ng-app="ngToggle"><%# can I call this something other than body and have it still pick up the app? %>
+<!-- <div ng-controller="AppCtrl"> -->
+  <!-- <div ng-controller="List" class="colleague_attribs">    -->
+
   <div class="wrapper body">
     <div class="container">
       <div class="row">
@@ -32,56 +35,64 @@
               <%# end %>     
             </ul>
 
-          </div>
+            </div>
+            <div ng-controller="FbController">
 
-          <%################## Angular playground ################# %>
-
-          <div ng-controller="ContactController">
-              <form>
-                  <input type="text" name="comment" ng-model="newcontact.comment" value="type here..."/>
-                  <input type="hidden" ng-model="newcontact.id" />
-               <input type="button" value="Enter" ng-click="saveContact()" />
-              </form>
-          <table>
-          <thead> 
-          <tr>
-              <th>comment</th>
-              <th>Action</th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr ng-repeat="contact in contacts">
-              <td>{{ contact.comment }}</td>
-
-              <td>
-                  <a  href="#" ng-click="edit(contact.id)">edit</a> | 
-                  <a href="#" ng-click="delete(contact.id)">delete</a>
-              </td>
-           </tr>
-          </tbody>
-          </table>    
-          </div>
-
-   <!--        <button ng-click="buffer = buffer + newtext" ng-init="buffer=''">
-            submit
-          </button>
-          buffer: {{buffer}}
- -->
+              <div class="well well-sm" id="colleaguedDisplay">
+                <h4>Give feedback for <%= @user.name %></h4>
+                <%= render "/users/button_entry" %>
+              
 
 
-            <!-- <div ng-controller="AppCtrl"> it's up above-->
+            <%################## Angular playground ################# %>
 
-     <!--          <button type="button" class="btn btn-primary" ng-click="toggleCustom()">presentation skills</button>
-              <span ng-hide="custom">presentation skills</span>
-              <span ng-hide="custom">cheese</span>
-              <span ng-show="custom">select inputs from </span> -->
-            
-          <%################## END Angular playground ################# %>
 
-          <div class="well well-sm" id="colleaguedDisplay">
-            <h4>Give feedback for <%= @user.name %></h4>
-            <%= render "/users/button_entry" %>
-          </div>
+  <!--               <form>
+                    <input type="text" name="comment" ng-model="newcontact.comment" value="type here..."/>
+                    <input type="hidden" ng-model="newcontact.id" />
+                 <input type="button" value="Enter" ng-click="saveContact()" />
+                </form> -->
+            <table>
+            <thead> 
+            <tr>
+                <th>feedback staged:</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="fb in fbs">
+                <td>{{ fb.comment }}</td>
+
+                <td>
+                    <a  href="#" ng-click="edit(fb.id)">edit</a> | 
+                    <a href="#" ng-click="delete(fb.id)">delete</a>
+                </td>
+             </tr>
+            </tbody>
+            </table>    
+            </div>
+            <br>
+            </div>
+     <!--        <button ng-click="buffer = buffer + newtext" ng-init="buffer=''">
+              submit
+            </button>
+            buffer: {{buffer}}
+   -->
+
+
+              <!-- <div ng-controller="AppCtrl"> it's up above-->
+
+       <!--          <button type="button" class="btn btn-primary" ng-click="toggleCustom()">presentation skills</button>
+                <span ng-hide="custom">presentation skills</span>
+                <span ng-hide="custom">cheese</span>
+                <span ng-show="custom">select inputs from </span> -->
+              
+            <%################## END Angular playground ################# %>
+    <div ng-controller='MyController'>
+    <div ng-repeat='activity in activities'>
+        <span>{{activity.name}} seen = {{activity.seen}}</span>
+        <button ng-click='activity.seen = !activity.seen'>{{activity.seen ? 'Mark unread' : 'Mark read'}}</button>
+    </div>
 
           <% if @users_jobs || @users_for_this_job %>
             <div class="well well-sm"> 
@@ -128,4 +139,13 @@
       </div>
     </div>
   </div>
+</div>
+</div>
+
+<div ng-app='MyModule' ng-controller='MyController'>
+    <div ng-repeat='activity in activities'>
+        <span>{{activity.name}} seen = {{activity.seen}}</span>
+        <button ng-click='activity.seen = !activity.seen'>{{activity.seen ? 'Mark unread' : 'Mark read'}}</button>
+    </div>
+        
 </div>
