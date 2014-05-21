@@ -371,3 +371,6 @@ $rails g controller Flags
 $rails g model Flag
 
 We'll need pflag and iflag also - for projects & ideas/idea replies.  But do that later
+
+$rails g controller Fbvotes
+$rails g model Fbvote

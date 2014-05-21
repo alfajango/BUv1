@@ -15,6 +15,7 @@ Prietary::Application.routes.draw do
   resources :companies
   resources :pattributes
   resources :pfeedbacks
+  resources :fbvotes
 
   # from BUv2
   #root 'users#home'  # caused an error

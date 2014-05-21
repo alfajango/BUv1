@@ -7,28 +7,31 @@
   </tr>
   <tr>
     <td>
+        <% num_fbvotes(feedback) %>
         <div style="display:inline;">
-        <%#= @idea_upvotes %>
+        <%= @feedback_upvotes %>
 
-        <%#= form_for idea.votes.build, :html => { :style => 'display:inline;' } do |f| %>
-          <%#= f.hidden_field :upvote, value: 1 %> 
-          <%#= f.hidden_field :idea_id, :value => idea.id %>
-          <%#= link_to_submit do %>
-            <i class="text-color fa fa-chevron-up fa-1x"></i> 0
-          <%# end %>
+        <%= form_for feedback.fbvotes.build, :html => { :style => 'display:inline;' }, :remote => true do |f| %>
+          <%= f.hidden_field :upvote, value: 1 %> 
+          <%= f.hidden_field :feedback_id, :value => feedback.id %>
+          <%= link_to_submit do %>
+            <i class="text-color fa fa-chevron-up fa-1x"></i> 
+          <% end %>
 
-        <%# end %>
+        <% end %>
 
         &nbsp | &nbsp
-        <%#= @idea_downvotes %>
+        <%= @feedback_downvotes %>
         <%# I wish I could show this number, but I think I can't%>
-        <%#= form_for idea.votes.build, :html => { :style => 'display:inline;' } do |f| %>
-          <%#= f.hidden_field :downvote, value: 1 %>
-          <%#= f.hidden_field :idea_id, :value => idea.id %>
-          <%#= link_to_submit do %>
+        <%= form_for feedback.fbvotes.build, :html => { :style => 'display:inline;' } do |f| %>
+          <%= f.hidden_field :downvote, value: 1 %>
+          <%= f.hidden_field :feedback_id, :value => feedback.id %>
+          <%= link_to_submit do %>
             <i class="text-color fa fa-chevron-down fa-1x"></i>
+          <% end %>
+        <% end %>    
         <% if params[:action] == "myfeedback" %><%# if we're in myfeedback page %>
-          0 | thank  |  ask  | visible (hide) 
+          | thank  |  ask  | visible (hide) 
         <% end %> 
         &nbsp | &nbsp flag     
           <%# end  %>

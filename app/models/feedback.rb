@@ -14,6 +14,7 @@ class Feedback
 
   belongs_to :user #,  class_name: "User", inverse_of: :feedbacks
   belongs_to :attribute
+  has_many :fbvotes
 
   embeds_many :thank
   embeds_many :ask

@@ -20,19 +20,19 @@
           <ul>
           
             <% @users_nicejob.each do |fb| %>
-              <%= render "users/feedback_item", :comment => fb.attribute.attribute_name, :category => "nicejob" %>
+              <%= render "users/feedback_item", :comment => fb.attribute.attribute_name, :category => "nicejob", :feedback => fb %>
             <% end %>
             <% @users_greatat.each do |fb| %>
-              <%= render "users/feedback_item", :comment => fb.attribute.attribute_name, :category => "greatat" %>
+              <%= render "users/feedback_item", :comment => fb.attribute.attribute_name, :category => "greatat", :feedback => fb %>
             <% end %>
             <% @users_thanks.each do |fb| %>
-              <%= render "users/feedback_item", :comment => fb.attribute.attribute_name, :category => "thanks" %>
+              <%= render "users/feedback_item", :comment => fb.attribute.attribute_name, :category => "thanks", :feedback => fb %>
             <% end %>
             <% @users_workon.each do |fb| %>
-              <%= render "users/feedback_item", :comment => fb.attribute.attribute_name, :category => "workon" %>
+              <%= render "users/feedback_item", :comment => fb.attribute.attribute_name, :category => "workon", :feedback => fb %>
             <% end %>
             <% @users_alert.each do |fb| %>
-              <%= render "users/feedback_item", :comment => fb.attribute.attribute_name, :category => "alert" %>
+              <%= render "users/feedback_item", :comment => fb.attribute.attribute_name, :category => "alert", :feedback => fb %>
             <% end %>     
           </ul>
 
