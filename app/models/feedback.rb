@@ -1,11 +1,12 @@
 class Feedback
   include Mongoid::Document
   field :from_id, type: String  #ObjectId?  Binary?
-  #field :to_id, type: Integer
-  #field :attribute_identifier, type: String
   field :rating_given, type: Float
   field :created, type: Time, default: -> { Time.now } 
   field :accounted_for, type: DateTime
+  field :category, type: String  # if write-in and there is no attribute
+  field :comment, type: String   # if write-in and there is no attribute
+  field :visibility, type: String # standard/null, private (good thing that no others see), or public (bad thing that all can see)
 
   # if a write-in, then populate these two and leave attribute blank
   field :category, type: String
@@ -13,6 +14,10 @@ class Feedback
 
   belongs_to :user #,  class_name: "User", inverse_of: :feedbacks
   belongs_to :attribute
+
+  embeds_many :thank
+  embeds_many :ask
+  embeds_many :flag
 
   def self.for_company(co)
     where("user.company = ?", co)

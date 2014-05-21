@@ -357,3 +357,17 @@ In form_tag: remote: true puts in some javascript, I think.  Do this to submit w
 <%#= form_for @job, :remote => true do |f| %>
 
 Layout item: it would be better to put <div class="container"> on application.html.erb, rather than each page separately.  The only page I don't want it on is landing.
+
+5/21/14
+Add a bunch of stuff to Feedback model
+- for write-in option, give category and string columns (don't fill these if there is an attribute)
+- for thank | ask | flag | make private: embeds_many thank, ask, flag.  Add visibility:string
+
+$rails g controller Asks 
+$rails g model Ask
+$rails g controller Thanks
+$rails g model Thank
+$rails g controller Flags
+$rails g model Flag
+
+We'll need pflag and iflag also - for projects & ideas/idea replies.  But do that later
