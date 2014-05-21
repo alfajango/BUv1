@@ -87,6 +87,10 @@ class UsersController < ApplicationController
         puts "PROBLEM in users_controller myfeedback"
       end
     end
+
+    @users_jobs = Job.where(subject: current_user.id)
+
+    @users_for_this_job = Job.where(job_holder: current_user.id)
   end
 
   def homepage

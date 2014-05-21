@@ -31,7 +31,7 @@ module UsersHelper
   	  btnclass = "btn btn-warning dropdown-toggle"
   	  text = "work on"
   	when "alert"
-  	  btnclass = "btn btn-dangher dropdown-toggle"
+  	  btnclass = "btn btn-danger dropdown-toggle"
   	  text = "alert"
   	end
   	#puts "btnclass: #{btnclass}"
@@ -60,7 +60,8 @@ module UsersHelper
 	allfb.each do |fb|
 
 	  if fb.user  # sometimes it's null?
-		  if (company_users.include? fb.user)# and (fb.attribute.category == ("nicejob" || "greatat" || "thanks")))
+		  if (company_users.include? fb.user)
+		  # this works, sort of: # and (fb.attribute.category == ("nicejob" || "greatat" || "thanks")))
 		  	company_fb << fb
 		  end
 	  end

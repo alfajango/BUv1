@@ -26,19 +26,16 @@
     <% attribs.each do | attrib | %>
 
 		<li>
-		  <%# I don't have anything in a controller helping me.  It would be good to put some there %>
-		  <%#=form_for Feedback.new, :url => user_session_path do |f| %>
-		  <%=form_for (Feedback.new remote: true) do |f| %> <%# remote: true is not working - it still redirects %>
+		  <%# todo: reduce hidden fields and put some in feecbacks_controller create %>
+		  <%=form_for (Feedback.new ) do |f| %> <%# no redirect is done in feedbacks_controller create method %>
             <%= f.hidden_field :from_id, value: current_user.id %>
             <%= f.hidden_field :rating_given, value: 1 %>
             <%= f.hidden_field :created, value: Time.now %>
-            <%= f.hidden_field :user, value: user %> <%# can I do this? %>
-            <%= f.hidden_field :attribute, value: attrib %> <%# can I do this? %>
+            <%= f.hidden_field :user, value: user.id %>
+            <%= f.hidden_field :attribute, value: attrib.id %> 
             <%= f.submit attrib.attribute_name, class: "btn btn-small btn"  %>
           <% end %>
-		    <!-- <form> -->
-		   	  <!-- <input type="button" value= --><%#= attrib.attribute_name %><!-- "> -->
-		  	<!-- </form> -->
+
 		</li> 
 	<% end %> 
   </ul>

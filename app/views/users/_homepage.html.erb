@@ -45,15 +45,21 @@
           <div class="well well-sm"> 
             <p><b><%= link_to(user.name, user) %></b> | <%=user.email %></p>
             <ul>
-              <% if @users_nicejob %> <% @users_nicejob.each do |fb| %>
-                <%= render "users/feedback_item", :comment => fb.attribute.attribute_name, :category => "nicejob" %>
-              <% end %> <% end %>
-              <% if @users_greatat %><% @users_greatat.each do |fb| %>
-                <%= render "users/feedback_item", :comment => fb.attribute.attribute_name, :category => "greatat" %>
-              <% end %> <% end %>
-              <% if @users_thanks %> <% @users_thanks.each do |fb| %>
-                <%= render "users/feedback_item", :comment => fb.attribute.attribute_name, :category => "thanks" %>
-              <% end %> <% end %>
+              <% if @users_nicejob %> 
+                <% @users_nicejob.each do |fb| %>
+                  <%= render "users/feedback_item", :comment => fb.attribute.attribute_name, :category => "nicejob" %>
+                <% end %>
+              <% end %>
+              <% if @users_greatat %>
+                <% @users_greatat.each do |fb| %>
+                  <%= render "users/feedback_item", :comment => fb.attribute.attribute_name, :category => "greatat" %>
+                <% end %>
+              <% end %>
+              <% if @users_thanks %>
+                <% @users_thanks.each do |fb| %>
+                  <%= render "users/feedback_item", :comment => fb.attribute.attribute_name, :category => "thanks" %>
+                <% end %>
+              <% end %>
               <%# for work on and alert, don't show the comment.  maybe show the number %>
               <%# @users_workon.each do |fb| %>
                 <%#= render "users/feedback_item", :comment => fb.attribute.attribute_name, :category => "workon" %>

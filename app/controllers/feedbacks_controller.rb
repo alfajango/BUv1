@@ -21,7 +21,7 @@ class FeedbacksController < ApplicationController
 
     #method to do something without going to another page: http://stackoverflow.com/questions/2139996/ruby-on-rails-redirect-toback
     session[:return_to] ||= request.referer
-    Feedback.create(params)
+    Feedback.create(params[:feedback])
     redirect_to session.delete(:return_to)
 
   end

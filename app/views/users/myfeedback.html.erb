@@ -37,7 +37,33 @@
           </ul>
 
         </div>   
+
+
+        <% if @users_jobs || @users_for_this_job %>
+          <div class="well well-sm"> 
+            <% if @users_jobs %>
+              <p><b><%=current_user.company.name %></b> employees have said that: </p>
+                <ul>
+                <% @users_jobs.reverse_each do |job| %>
+                  <li><b><%=user.name%></b> would do well in a role like <b><%=job.job_holder.name %></b> has now</li>
+                <% end %>
+              </ul>
+            <% end %>
+            <% if @users_for_this_job %>
+              <ul>
+                <% @users_for_this_job.reverse_each do |job| %>
+                  <li><b><%=job.subject.name %></b> would do well in a role like <b><%=user.name%></b> has now</li>
+                <% end %>
+              </ul>
+            <% end %>
+          </div>
+        <% else %>
+          <div class="well well-sm"> 
+            No job recommendations for <b> <%=user.name%></b> yet
+          </div>
+        <% end %>
+        
       </div>
-    </div>
+    </div>    
   </div>
 </div>  

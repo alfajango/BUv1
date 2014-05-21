@@ -1,9 +1,9 @@
 <% btnclass, text = set_btn_type(category) %>
 <!-- <li> -->
-  <table class="tg">
+  <table>
   <tr>
-    <th class="tg-031e" rowspan="2"><button type="button" class="<%= btnclass %>" ><%= text %> </span></button></th>
-    <th class="tg-031e"><%= comment %></th>
+    <th rowspan="2"><button type="button" class="<%= btnclass %>" ><%= text %> </span></button></th>
+    <th><%= comment %></th>
   </tr>
   <tr>
     <td class="tg-031e">
@@ -28,7 +28,7 @@
           <%#= link_to_submit do %>
             <i class="text-color fa fa-chevron-down fa-1x"></i>
         <% if params[:action] == "myfeedback" %><%# if we're in myfeedback page %>
-          0 | thanks  |  ask  | visible (hide) 
+          0 | thank  |  ask  | visible (hide) 
         <% end %> 
         &nbsp | &nbsp flag     
           <%# end  %>
