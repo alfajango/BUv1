@@ -17,7 +17,7 @@ class UsersController < ApplicationController
     puts "in users_controller show, params: #{params}"
     @attributes = Attribute.all
   	@user = User.find(params[:id])
-    #puts "@user.name: #{@user.name}"
+    puts "@user.name: #{@user.name}"
     @users_feedback = @user.feedbacks
     @users_nicejob =[]
     @users_greatat =[]

@@ -1,34 +1,45 @@
 <% btnclass, text = set_btn_type(category) %>
-<li>
-  <div class="btn-group">
-    <button type="button" class="<%= btnclass %>" ><%= text %> </span></button>
-    <%#=render "/users/top_button", :category => "nicejob" %>
-  </div><!-- /btn-group -->
-  <%= comment %>&nbsp&nbsp
+<!-- <li> -->
+  <table class="tg">
+  <tr>
+    <th class="tg-031e" rowspan="2"><button type="button" class="<%= btnclass %>" ><%= text %> </span></button></th>
+    <th class="tg-031e"><%= comment %></th>
+  </tr>
+  <tr>
+    <td class="tg-031e">
+        <div style="display:inline;">
+        <%#= @idea_upvotes %>
 
-  <div style="display:inline;">
-    <%#= @idea_upvotes %>
-    0
-    <%#= form_for idea.votes.build, :html => { :style => 'display:inline;' } do |f| %>
-      <%#= f.hidden_field :upvote, value: 1 %> 
-      <%#= f.hidden_field :idea_id, :value => idea.id %>
-      <%#= link_to_submit do %>
-        <i class="text-color fa fa-chevron-up fa-1x"></i>
-      <%# end %>
+        <%#= form_for idea.votes.build, :html => { :style => 'display:inline;' } do |f| %>
+          <%#= f.hidden_field :upvote, value: 1 %> 
+          <%#= f.hidden_field :idea_id, :value => idea.id %>
+          <%#= link_to_submit do %>
+            <i class="text-color fa fa-chevron-up fa-1x"></i> 0
+          <%# end %>
 
-    <%# end %>
+        <%# end %>
 
-    &nbsp&nbsp | &nbsp&nbsp
-    <%#= @idea_downvotes %>
-    <%# I wish I could show this number, but I think I can't%>
-    <%#= form_for idea.votes.build, :html => { :style => 'display:inline;' } do |f| %>
-      <%#= f.hidden_field :downvote, value: 1 %>
-      <%#= f.hidden_field :idea_id, :value => idea.id %>
-      <%#= link_to_submit do %>
-        <i class="text-color fa fa-chevron-down fa-1x"></i>
-      <%# end  %>
-    <%# end %>
-    &nbsp&nbsp
-  </div>
+        &nbsp | &nbsp
+        <%#= @idea_downvotes %>
+        <%# I wish I could show this number, but I think I can't%>
+        <%#= form_for idea.votes.build, :html => { :style => 'display:inline;' } do |f| %>
+          <%#= f.hidden_field :downvote, value: 1 %>
+          <%#= f.hidden_field :idea_id, :value => idea.id %>
+          <%#= link_to_submit do %>
+            <i class="text-color fa fa-chevron-down fa-1x"></i>
+        <% if params[:action] == "myfeedback" %><%# if we're in myfeedback page %>
+          0 | thanks  |  ask  | visible (hide) 
+        <% end %> 
+        &nbsp | &nbsp flag     
+          <%# end  %>
+        <%# end %>
+        
+      </div>
+    </td>
+  </tr>
+</table>
 
-</li>
+
+
+
+<!-- </li> -->

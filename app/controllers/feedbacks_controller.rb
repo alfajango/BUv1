@@ -16,10 +16,13 @@ class FeedbacksController < ApplicationController
   	# @relationship = Relationship.new
   end
 
-  def create # this called from users/show.html.erb??
-    "puts in feedbacks_controller create action "
+  def create # this called from users/show.html.erb?? when clicking on the temporary button
+    puts "in feedbacks_controller create action "
+
+    #method to do something without going to another page: http://stackoverflow.com/questions/2139996/ruby-on-rails-redirect-toback
+    session[:return_to] ||= request.referer
     Feedback.create(params)
-    
+    redirect_to session.delete(:return_to)
 
   end
 
