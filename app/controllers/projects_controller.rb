@@ -22,6 +22,27 @@ class ProjectsController < ApplicationController
 
     # following line causes error if there is no feedback
     # puts "@project_pfeedback.last.pattribute.name: #{@project_pfeedback.last.pattribute.name}"
+    @pattributes = Pattribute.all
+    @project = Project.find(params[:id])
+    #@user = User.find(params[:id])
+    puts "@project.name: #{@project.name}"
+    @projects_feedback = @project.pfeedbacks
+    @projects_positive =[]
+    @projects_needs =[]
+    @projects_negative =[]
+
+    @projects_feedback.each do |pfeedback|
+      case pfeedback.pattribute.category
+      when "positive"
+        @projects_positive << pfeedback
+      when "needs"
+        @projects_needs << pfeedback
+      when "negative"
+        @projects_negative << pfeedback
+      else
+        puts "PROBLEM in projects_controller show"
+      end
+    end
 
   end
 

@@ -59,39 +59,39 @@ class FeedbacksController < ApplicationController
     redirect_to root_url  # TODO - don't go home.  stay on the page.  use ajax?
   end
 
-  def slider_complete
-    puts "in slider_complete"
-    #puts "params[:id]: #{params[:id]}"
-    #puts "params: #{params}"
-    #puts "comScore: #{params[:comScore]}"
+  # def slider_complete
+  #   puts "in slider_complete"
+  #   #puts "params[:id]: #{params[:id]}"
+  #   #puts "params: #{params}"
+  #   #puts "comScore: #{params[:comScore]}"
 
-    @attribute=Attribute.all
-    @user = User.find(params[:id])
-    params[:comScore]
-    if params[:resultsScore].to_i > 0
-      Feedback.create(from_id: current_user.id, to_id: @user.id, 
-                       attribute_identifier: 1001, rating_given: params[:resultsScore]);
-    end
-    if params[:jkScore].to_i > 0
-      Feedback.create(from_id: current_user.id, to_id: @user.id, 
-                       attribute_identifier: 1002, rating_given: params[:jkScore]);
-    end
-    if params[:initiativeScore].to_i > 0
-      Feedback.create(from_id: current_user.id, to_id: @user.id, 
-                       attribute_identifier: 1003, rating_given: params[:initiativeScore]);
-    end
-    if params[:commScore].to_i > 0
-      Feedback.create(from_id: current_user.id, to_id: @user.id, 
-                       attribute_identifier: 1004, rating_given: params[:commScore]);
-    end
-    if params[:leadershipScore].to_i > 0
-      Feedback.create(from_id: current_user.id, to_id: @user.id, 
-                       attribute_identifier: 1005, rating_given: params[:leadershipScore]);
-    end
+  #   @attribute=Attribute.all
+  #   @user = User.find(params[:id])
+  #   params[:comScore]
+  #   if params[:resultsScore].to_i > 0
+  #     Feedback.create(from_id: current_user.id, to_id: @user.id, 
+  #                      attribute_identifier: 1001, rating_given: params[:resultsScore]);
+  #   end
+  #   if params[:jkScore].to_i > 0
+  #     Feedback.create(from_id: current_user.id, to_id: @user.id, 
+  #                      attribute_identifier: 1002, rating_given: params[:jkScore]);
+  #   end
+  #   if params[:initiativeScore].to_i > 0
+  #     Feedback.create(from_id: current_user.id, to_id: @user.id, 
+  #                      attribute_identifier: 1003, rating_given: params[:initiativeScore]);
+  #   end
+  #   if params[:commScore].to_i > 0
+  #     Feedback.create(from_id: current_user.id, to_id: @user.id, 
+  #                      attribute_identifier: 1004, rating_given: params[:commScore]);
+  #   end
+  #   if params[:leadershipScore].to_i > 0
+  #     Feedback.create(from_id: current_user.id, to_id: @user.id, 
+  #                      attribute_identifier: 1005, rating_given: params[:leadershipScore]);
+  #   end
 
-    flash[:success] = "Feedback saved.  Feedback will show up after midnight EST tonight"
-    redirect_to root_url  # TODO - don't go home.  stay on the page.  use ajax?
-  end
+  #   flash[:success] = "Feedback saved.  Feedback will show up after midnight EST tonight"
+  #   redirect_to root_url  # TODO - don't go home.  stay on the page.  use ajax?
+  # end
 
 end
 

@@ -8,10 +8,6 @@ class Feedback
   field :comment, type: String   # if write-in and there is no attribute
   field :visibility, type: String # standard/null, private (good thing that no others see), or public (bad thing that all can see)
 
-  # if a write-in, then populate these two and leave attribute blank
-  field :category, type: String
-  field :comment, type: String
-
   belongs_to :user #,  class_name: "User", inverse_of: :feedbacks
   belongs_to :attribute
   has_many :fbvotes

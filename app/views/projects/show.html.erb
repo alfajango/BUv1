@@ -8,7 +8,6 @@
         <!-- this is the main section -->
         <div class="well well-sm">
           <% project = set_project(params) %> <%##set_project is in projects_helper %> 
-
           <div>
             <p class="alignleft"><b><%= "#{project.name}  " %>
    
@@ -19,51 +18,27 @@
               <p class="alignright"> Created by <%=link_to(project.user.name, project.user) %></p>
             <% end %> 
           </div>
-          <div style="clear: both;"></div>
-          <p>Project feedback received: </p>
-          <ul>
-            <% @project_pfeedback.reverse_each do |fb| %>
-              <li>
-              <% if fb.pattribute %> <%# sometimes this doesn't exist ??? %>
-                <%= fb.pattribute.name %>
-              <% end %>
-             </li>
-            <% end %>
-          </ul>
+            <hr >
+
+          <% @projects_positive.each do |pfb| %>
+            <%= render "projects/feedback_item", :comment => pfb.pattribute.name, :category => "positive", :pfeedback => pfb  %>  <%#  :pfeedback would be more correct %>
+          <% end %>
+          <% @projects_needs.each do |pfb| %>
+            <%= render "projects/feedback_item", :comment => pfb.pattribute.name, :category => "needs", :pfeedback => pfb  %>
+          <% end %>
+          <% @projects_negative.each do |pfb| %>
+            <%= render "projects/feedback_item", :comment => pfb.pattribute.name, :category => "negative", :pfeedback => pfb  %>
+          <% end %>    
 
         </div>
-        <div class="well well-sm" id="colleaguedDisplay">
-          <h4>Give feedback for <%= @project.name %></h4>
+        <div ng-controller="FbController">
 
-          <% @pattributes = Pattribute.all %>  <%# this should be in controller but it's not going there%>
-
-          <%# from http://codequizzes.wordpress.com/2013/06/06/rails-javascript-workflow-rendering-javascript-partials/ %>
-          <%= content_tag :div, class: "pattributes_class", data: {pattributes: @pattributes} do %>
-          <% end %>
-
-
-          Write feedback: <input ng-model="query">
-          <div ng-controller="List" class="project_attribs">
-            <ul>
-              <li ng-repeat="pattrib in pattribs | filter:query ">
-                {{pattrib.name}}
-              <%# it's not JSON, but attrib.attribute_name works fine %>
-            </ul>
+          <div class="well well-sm" id="colleaguedDisplay">
+            Give feedback for <b><%= project.name %></b> anonymously
+            <hr style="border: none; "/>
+            <%= render "/projects/button_entry", :project => project %>
+            <hr style="border: none; "/>
           </div>
-
-          <%# puts seeded attributes into $scope.pattribs array: %>
-          <script>  
-            var List = function ($scope) {
-              // $('.attributes_class').data('attributes')[1].attribute_name    gives "is the best at managment"
-              // $('.pattributes_class').data('pattributes')[1].name
-
-              var arrayLength = $('.pattributes_class').data('pattributes').length;
-              $scope.pattribs = [];
-              for (var i = 0; i < arrayLength; i++) {
-                $scope.pattribs.push($('.pattributes_class').data('pattributes')[i]);
-              }
-            }
-          </script>
         </div>
       </div>
     </div>

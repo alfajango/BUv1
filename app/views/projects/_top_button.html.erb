@@ -1,0 +1,45 @@
+<%### THIS IS PROJECTS/TOP_BUTTON  ### %>
+
+<ul class="dropdown-menu" role="menu">
+  <% pattribs = Pattribute.where(category: category) %>
+<!-- text box entry -->
+  <li>
+    <form>
+      <input type="text" name="comment" ng-model="newfb.comment" placeholder="Enter comment here..." />
+      <input type="hidden" ng-model="newfb.id" />
+   	  <input type="button" value="Enter" ng-click="saveFb()" />
+  	</form>
+  </li> 
+
+<!-- buttons -->
+<!--   <li>
+    <form>
+      <input type="text" name="comment" ng-model="newfb.comment" value="type here..." />
+      <input type="hidden" ng-model="newfb.id" />
+   	  <input type="button" value="for your help" ng-click="saveFb()" />
+  	</form>
+  </li>  -->
+
+
+  <!-- <li ng-repeat="attrib in jattribs">  <%# I have 2 things called attribs - fix that %> -->
+
+    <!-- {{attrib.attribute_name}} -->
+  <!-- </li> -->
+    <% pattribs.each do | pattrib | %>
+
+		<li>
+		  <%# todo: reduce hidden fields and put some in feecbacks_controller create %>
+		  <%=form_for (Pfeedback.new ) do |f| %> <%# no redirect is done in feedbacks_controller create method %>
+            <%= f.hidden_field :from_id, value: current_user.id %>
+            <%= f.hidden_field :rating_given, value: 1 %>
+            <%= f.hidden_field :created, value: Time.now %>
+            <%= f.hidden_field :project, value: project.id %>
+            <%= f.hidden_field :pattribute, value: pattrib.id %> 
+            <%= f.submit pattrib.name, class: "btn btn-small btn-default"  %>
+          <% end %>
+
+		</li> 
+	<% end %> 
+  </ul>
+
+

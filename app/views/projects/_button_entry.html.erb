@@ -1,0 +1,18 @@
+<%#### THIS IS PROJECTS/_BUTTON_ENTRY    %>
+
+  <div class="bs-example">
+    <div class="btn-group">
+      <button type="button" class="btn btn-purple dropdown-toggle" data-toggle="dropdown" >Positive <span class="caret"></span></button>
+      <%=render "/projects/top_button", :category => "positive", :project => project %>
+    </div><!-- /btn-group -->
+    <div class="btn-group">
+      <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Needs<span class="caret"></span></button>
+      <%=render "/projects/top_button", :category => "needs", :project => project %>
+    </div><!-- /btn-group -->
+    <div class="btn-group">
+      <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">Thanks <span class="caret"></span></button>
+      <%=render "/projects/top_button", :category => "negative", :project => project %>
+    </div><!-- /btn-group -->
+  </div>
+
+
