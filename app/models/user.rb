@@ -6,6 +6,7 @@ class User
   has_many :projects
   has_many :ideas
   has_many :votes
+  has_many :fbvotes
   has_many :opinions, class_name: "Job", :inverse_of => :author
   has_many :target_users, class_name: "Job", :inverse_of => :subject
   has_many :target_jobs, class_name: "Job", :inverse_of => :job_holder

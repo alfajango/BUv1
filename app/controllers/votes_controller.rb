@@ -17,10 +17,12 @@ class VotesController < ApplicationController
       elsif params[:vote][:upvote].to_i == 1 && priorvote[:downvote].to_i == 1  
         # destroy the old vote and don't make a new one
         priorvote.destroy
+        flash[:success] = "Vote received"
         puts "vote destoyed because opposite vote entered"
       elsif params[:vote][:downvote].to_i == 1 && priorvote[:upvote].to_i ==1
         # destroy the old vote and don't make a new one
         priorvote.destroy
+        flash[:success] = "Vote received"
         puts "vote destoyed because opposite vote entered"  
       else
         puts "PROBLEM: none of the above"    

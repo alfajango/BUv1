@@ -374,3 +374,5 @@ We'll need pflag and iflag also - for projects & ideas/idea replies.  But do tha
 
 $rails g controller Fbvotes
 $rails g model Fbvote
+
+I can't figure out why I don't see any thanks in my mongodb.  Seeding seems to work, and so does the creation on myfeedback page  ???

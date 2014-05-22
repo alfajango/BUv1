@@ -88,6 +88,19 @@ class UsersController < ApplicationController
       end
     end
 
+    @ask = Ask.new  # somehow, it will know to go to AskController create action??
+
+        ## for modal ###
+   
+    # @book = @user
+    # respond_to do |format|
+    # format.html # show.html.erb
+    # format.js # show.js.erb
+    # format.json { render json: @book }
+
+
+
+
     @users_jobs = Job.where(subject: current_user.id)
 
     @users_for_this_job = Job.where(job_holder: current_user.id)

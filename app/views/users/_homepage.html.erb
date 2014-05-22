@@ -47,26 +47,19 @@
             <ul>
               <% if @users_nicejob %> 
                 <% @users_nicejob.each do |fb| %>
-                  <%= render "users/feedback_item", :comment => fb.attribute.attribute_name, :category => "nicejob" %>
+                  <%= render "users/feedback_item", :comment => fb.attribute.attribute_name, :category => "nicejob", :feedback => fb   %>
                 <% end %>
               <% end %>
               <% if @users_greatat %>
                 <% @users_greatat.each do |fb| %>
-                  <%= render "users/feedback_item", :comment => fb.attribute.attribute_name, :category => "greatat" %>
+                  <%= render "users/feedback_item", :comment => fb.attribute.attribute_name, :category => "greatat", :feedback => fb   %>
                 <% end %>
               <% end %>
               <% if @users_thanks %>
                 <% @users_thanks.each do |fb| %>
-                  <%= render "users/feedback_item", :comment => fb.attribute.attribute_name, :category => "thanks" %>
+                  <%= render "users/feedback_item", :comment => fb.attribute.attribute_name, :category => "thanks", :feedback => fb   %>
                 <% end %>
-              <% end %>
-              <%# for work on and alert, don't show the comment.  maybe show the number %>
-              <%# @users_workon.each do |fb| %>
-                <%#= render "users/feedback_item", :comment => fb.attribute.attribute_name, :category => "workon" %>
-              <%# end %>
-              <%# @users_alert.each do |fb| %>
-                <%#= render "users/feedback_item", :comment => fb.attribute.attribute_name, :category => "alert" %>
-              <%# end %>     
+              <% end %>     
             </ul>
           </div>
         <% end %>

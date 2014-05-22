@@ -17,10 +17,12 @@ class FbvotesController < ApplicationController
       elsif params[:fbvote][:upvote].to_i == 1 && priorvote[:downvote].to_i == 1  
         # destroy the old vote and don't make a new one
         priorvote.destroy
+        flash[:success] = "Vote received"
         puts "vote destoyed because opposite vote entered"
       elsif params[:fbvote][:downvote].to_i == 1 && priorvote[:upvote].to_i ==1
         # destroy the old vote and don't make a new one
         priorvote.destroy
+        flash[:success] = "Vote received"
         puts "vote destoyed because opposite vote entered"  
       else
         puts "PROBLEM: none of the above"    
@@ -29,10 +31,10 @@ class FbvotesController < ApplicationController
     else # create the new vote
       puts "going to create vote"
       @fbvote = Fbvote.new(params[:fbvote])
-      feedback.votes << @fbvote
-      current_user.votes << @fbvote
+      feedback.fbvotes << @fbvote
+      current_user.fbvotes << @fbvote
       if @fbvote.save
-        flash[:success] = "fbvote received"
+        flash[:success] = "Vote received"
         redirect_to :back  # just reload, so that we see the vote in the total
       else
         flash[:success] = "FBVOTE FAIL"

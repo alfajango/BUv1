@@ -16,9 +16,9 @@ class Feedback
   belongs_to :attribute
   has_many :fbvotes
 
-  embeds_many :thank
-  embeds_many :ask
-  embeds_many :flag
+  embeds_many :thanks
+  embeds_many :asks
+  embeds_many :flags
 
   def self.for_company(co)
     where("user.company = ?", co)

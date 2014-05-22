@@ -30,3 +30,6 @@ seedvotes()
 
 require_relative 'seedjobs'
 seedjobs()
+
+require_relative 'seedthanks'
+seedthanks()

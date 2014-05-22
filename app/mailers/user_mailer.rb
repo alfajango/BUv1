@@ -24,4 +24,8 @@ class UserMailer < ActionMailer::Base
     mail to: user.email, subject: "Idea creation confirmation"
   end
 
+  def feedback_ask(askee)
+    mail to: askee.email, subject: "Request for more information on feedback you gave"
+  end
+
 end
