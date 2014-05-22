@@ -4,7 +4,6 @@
       <%= render "users/signed_in_sidebar" %>  
       
       <div class="col-md-8">
-        <h1><%= current_user.company.name %> </h1> 
 
         <h4><%= link_to "Projects", projects_path %></h4>
         <% projects_for_homepage() %> <%# call a function in projects_helper that sets a list of project id's to show ratings graphs for on the homepage in @show_projects %>

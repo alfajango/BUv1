@@ -24,24 +24,18 @@
               <% end %>
               <% @users_thanks.each do |fb| %>
                 <%= render "users/feedback_item", :comment => fb.attribute.attribute_name, :category => "thanks", :feedback => fb  %>
-              <% end %>
-
-              <%# for work on and alert, don't show the comment.  maybe show the number %>
-              <%# @users_workon.each do |fb| %>
-                <%#= render "users/feedback_item", :comment => fb.attribute.attribute_name, :category => "workon" %>
-              <%# end %>
-              <%# @users_alert.each do |fb| %>
-                <%#= render "users/feedback_item", :comment => fb.attribute.attribute_name, :category => "alert" %>
-              <%# end %>     
+              <% end %>    
             </ul>
 
             </div>
             <div ng-controller="FbController">
 
               <div class="well well-sm" id="colleaguedDisplay">
-                <h4>Give feedback for <%= @user.name %></h4>
+                Give feedback for <b><%= @user.name %></b> anonymously
+                <hr style="border: none; "/>
                 <%= render "/users/button_entry", :user => user %>
-              
+                <hr style="border: none; "/>
+
 
 
             <%################## Angular playground ################# %>
@@ -55,7 +49,8 @@
             <table>
             <thead> 
               <tr>
-                  <th>feedback staged:</th>
+
+                  <!-- <th>feedback staged:</th> -->
 
               </tr>
               </thead>
@@ -91,10 +86,11 @@
               
             <%# ################# END Angular playground ################# %>
 
-
-          <% if @users_jobs || @users_for_this_job %>
+            <% puts "@users_jobs.size: #{@users_jobs.size}"%>
+            <% puts "@users_for_this_job.size: #{@users_for_this_job.size}"%>
+          <% if @users_jobs.size.to_i > 0 || @users_for_this_job.size.to_i >0 %>
             <div class="well well-sm"> 
-              <% if @users_jobs %>
+              <% if @users_jobs.size.to_i > 0 %>
                 <p><b><%=current_user.company.name %></b> employees have said that: </p>
                   <ul>
                   <% @users_jobs.reverse_each do |job| %>
@@ -102,7 +98,7 @@
                   <% end %>
                 </ul>
               <% end %>
-              <% if @users_for_this_job %>
+              <% if @users_for_this_job.size.to_i > 0 %>
                 <ul>
                   <% @users_for_this_job.reverse_each do |job| %>
                     <li><b><%=job.subject.name %></b> would do well in a role like <b><%=user.name%></b> has now</li>

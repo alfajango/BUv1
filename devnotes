@@ -376,3 +376,5 @@ $rails g controller Fbvotes
 $rails g model Fbvote
 
 I can't figure out why I don't see any thanks in my mongodb.  Seeding seems to work, and so does the creation on myfeedback page  ???
+
+put tooltips on button in button_entry, but the data-toggle for dropdown messes up the styling.  So, it still works, but it's not pretty.

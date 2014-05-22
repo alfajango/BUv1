@@ -34,7 +34,7 @@ class VotesController < ApplicationController
       idea.votes << @vote
       current_user.votes << @vote
       if @vote.save
-        flash[:success] = "vote received"
+        flash[:success] = "Vote received"
         redirect_to :back  # just reload, so that we see the vote in the total
       else
         flash[:success] = "FAIL"

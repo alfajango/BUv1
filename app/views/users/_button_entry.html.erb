@@ -2,28 +2,34 @@
 
   <div class="bs-example">
     <div class="btn-group">
-      <button type="button" class="btn btn-purple dropdown-toggle" data-toggle="dropdown">nice job <span class="caret"></span></button>
+      <button type="button" class="btn btn-purple dropdown-toggle" data-toggle="dropdown" title="Nice Job feedback is visible to the whole company">nice job <span class="caret"></span></button>
       <%=render "/users/top_button", :category => "nicejob", :user => user %>
     </div><!-- /btn-group -->
     <div class="btn-group">
-      <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">is great at <span class="caret"></span></button>
+      <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" title="Great At feedback is visible to the whole company">is great at <span class="caret"></span></button>
       <%=render "/users/top_button", :category => "greatat", :user => user %>
 
     </div><!-- /btn-group -->
     <div class="btn-group">
-      <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">thanks <span class="caret"></span></button>
+      <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" title="Thanks feedback is visible to the whole company">thanks <span class="caret"></span></button>
       <%=render "/users/top_button", :category => "thanks", :user => user %>
 
     </div><!-- /btn-group -->
 
     <div class="btn-group">
-      <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown">work on <span class="caret"></span></button>
+      <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" title="Work On feedback is only visible to the colleague you are giving the feedback to">work on <span class="caret"></span></button>
       <%=render "/users/top_button", :category => "workon", :user => user %>
 
     </div><!-- /btn-group -->
     <div class="btn-group">
-      <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown">alert: <span class="caret"></span></button>
+      <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" title="Alert feedback is only visible to the colleague's manager and HR">alert: <span class="caret"></span></button>
       <%=render "/users/top_button", :category => "alert", :user => user %>
 
     </div><!-- /btn-group -->
   </div>
+
+
+
+  <script>
+    $(function () { $("[data-toggle='tooltip']").tooltip(); });
+  </script>
