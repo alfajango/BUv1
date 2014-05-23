@@ -27,4 +27,28 @@ module HomeHelper
       end
     end
   end    
+
+  def set_pfbs(project)
+    @pattributes = Pattribute.all
+    @project = project   # Project.find(params[:id])
+    puts "@project.name: #{@project.name}"
+    @projects_feedback = @project.pfeedbacks
+    @projects_positive =[]
+    @projects_needs =[]
+    @projects_negative =[]
+
+    @projects_feedback.each do |pfeedback|
+      case pfeedback.pattribute.category
+      when "positive"
+        @projects_positive << pfeedback
+      when "needs"
+        @projects_needs << pfeedback
+      when "negative"
+        @projects_negative << pfeedback
+      else
+        puts "PROBLEM in HomeHelper set_pfbs"
+      end
+    end
+  end
+
 end

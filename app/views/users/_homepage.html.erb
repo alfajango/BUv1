@@ -8,26 +8,27 @@
         <h4><%= link_to "Projects", projects_path %></h4>
         <% projects_for_homepage() %> <%# call a function in projects_helper that sets a list of project id's to show ratings graphs for on the homepage in @show_projects %>
         <% @show_projects.each do |project| %>    
-
-        <div class="well well-sm">
-          <p><b><%= project.name %></b></p> 
-          <% if project.pfeedbacks.exists? %>
-            <p>Project feedback received: </p>
-            <ul>
-              <% project.pfeedbacks.reverse_each do |fb| %>
-                <li>
-                <% if fb.pattribute %> 
-                  <%= fb.pattribute.name %>
-                <% end %>
-               </li>
+          <% set_pfbs(project) %>
+          <div class="well well-sm">
+            <p><b><%= link_to(project.name, project) %></b></p>
+            <% if @projects_positive %>
+              <% @projects_positive.each do |pfb| %>
+                <%= render "projects/feedback_item", :comment => pfb.pattribute.name, :category => "positive", :pfeedback => pfb  %>  <%#  :pfeedback would be more correct %>
               <% end %>
-            </ul>
-          <% else %>
-            <p><%=link_to("Be the first to give feedback", project) %></p>
-          <% end %>
+            <% end %>
+            <% if @projects_needs %>  
+              <% @projects_needs.each do |pfb| %>
+                <%= render "projects/feedback_item", :comment => pfb.pattribute.name, :category => "needs", :pfeedback => pfb  %>
+              <% end %>
+            <% end %>
+            <% if @projects_negative %>  
+              <% @projects_negative.each do |pfb| %>
+                <%= render "projects/feedback_item", :comment => pfb.pattribute.name, :category => "negative", :pfeedback => pfb  %>
+              <% end %> 
+            <% end %>  
+          </div>
+        <% end %>
 
-        </div> 
-        <% end %>  
         <% if @show_projects.size.to_i < 1 %>
           <div class="well well-sm"> <b> No projects with ratings yet. Give input to your <%= link_to "Projects", projects_path %> </b>
           </div>
@@ -43,23 +44,21 @@
           <% set_fbs(user) %>
           <div class="well well-sm"> 
             <p><b><%= link_to(user.name, user) %></b> | <%=user.email %></p>
-            <ul>
-              <% if @users_nicejob %> 
-                <% @users_nicejob.each do |fb| %>
-                  <%= render "users/feedback_item", :comment => fb.attribute.attribute_name, :category => "nicejob", :feedback => fb   %>
-                <% end %>
+            <% if @users_nicejob %> 
+              <% @users_nicejob.each do |fb| %>
+                <%= render "users/feedback_item", :comment => fb.attribute.attribute_name, :category => "nicejob", :feedback => fb   %>
               <% end %>
-              <% if @users_greatat %>
-                <% @users_greatat.each do |fb| %>
-                  <%= render "users/feedback_item", :comment => fb.attribute.attribute_name, :category => "greatat", :feedback => fb   %>
-                <% end %>
+            <% end %>
+            <% if @users_greatat %>
+              <% @users_greatat.each do |fb| %>
+                <%= render "users/feedback_item", :comment => fb.attribute.attribute_name, :category => "greatat", :feedback => fb   %>
               <% end %>
-              <% if @users_thanks %>
-                <% @users_thanks.each do |fb| %>
-                  <%= render "users/feedback_item", :comment => fb.attribute.attribute_name, :category => "thanks", :feedback => fb   %>
-                <% end %>
-              <% end %>     
-            </ul>
+            <% end %>
+            <% if @users_thanks %>
+              <% @users_thanks.each do |fb| %>
+                <%= render "users/feedback_item", :comment => fb.attribute.attribute_name, :category => "thanks", :feedback => fb   %>
+              <% end %>
+            <% end %>     
           </div>
         <% end %>
 

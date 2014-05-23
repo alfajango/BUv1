@@ -9,9 +9,9 @@ class ProjectsController < ApplicationController
 
 
   def show
-    @project = Project.find(params[:id])
-    puts "@project.name: #{@project.name}"
-    @project_pfeedback = @project.pfeedbacks
+#    @project = Project.find(params[:id])
+#    puts "@project.name: #{@project.name}"
+#    @project_pfeedback = @project.pfeedbacks
     # @project_fb_array=[]
     # @project_pfeedback.each do |feedback_obj|
     #   if feedback_obj.pattribute
@@ -24,7 +24,6 @@ class ProjectsController < ApplicationController
     # puts "@project_pfeedback.last.pattribute.name: #{@project_pfeedback.last.pattribute.name}"
     @pattributes = Pattribute.all
     @project = Project.find(params[:id])
-    #@user = User.find(params[:id])
     puts "@project.name: #{@project.name}"
     @projects_feedback = @project.pfeedbacks
     @projects_positive =[]

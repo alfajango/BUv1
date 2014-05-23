@@ -21,7 +21,7 @@
             <hr >
 
           <% @projects_positive.each do |pfb| %>
-            <%= render "projects/feedback_item", :comment => pfb.pattribute.name, :category => "positive", :pfeedback => pfb  %>  <%#  :pfeedback would be more correct %>
+            <%= render "projects/feedback_item", :comment => pfb.pattribute.name, :category => "positive", :pfeedback => pfb  %>  
           <% end %>
           <% @projects_needs.each do |pfb| %>
             <%= render "projects/feedback_item", :comment => pfb.pattribute.name, :category => "needs", :pfeedback => pfb  %>
