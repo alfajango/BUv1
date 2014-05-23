@@ -10,8 +10,10 @@
         <%= render "users/signed_in_sidebar" %>
         <div class="col-md-8">
           <!-- this is the main section -->
+          <% user = set_user(params) %><%##User.find_by(id: params[:id]) %> 
+          <h4><%=user.name%></h4>
           <div class="well well-sm">
-            <% user = set_user(params) %><%##User.find_by(id: params[:id]) %> 
+
 
             <p><b><%= user.name %></b> | <%=user.email %></p>
             <ul>
@@ -35,56 +37,9 @@
                 <hr style="border: none; "/>
                 <%= render "/users/button_entry", :user => user %>
                 <hr style="border: none; "/>
+              </div>
+            </div>
 
-
-
-            <%################## Angular playground ################# %>
-
-
-  <!--               <form>
-                    <input type="text" name="comment" ng-model="newcontact.comment" value="type here..."/>
-                    <input type="hidden" ng-model="newcontact.id" />
-                 <input type="button" value="Enter" ng-click="saveContact()" />
-                </form> -->
-            <table>
-            <thead> 
-              <tr>
-
-                  <!-- <th>feedback staged:</th> -->
-
-              </tr>
-              </thead>
-              <tbody>
-              <tr ng-repeat="fb in fbs">
-                  <td>{{ fb.comment }}</td>
-
-                  <td>
-                      <a  href="#" ng-click="edit(fb.id)">edit</a> | 
-                      <a href="#" ng-click="delete(fb.id)">delete</a>
-                  </td>
-               </tr>
-              </tbody>
-            </table>   
-            
-
-          </div>
-          <br>
-        </div>
-     <!--        <button ng-click="buffer = buffer + newtext" ng-init="buffer=''">
-              submit
-            </button>
-            buffer: {{buffer}}
-   -->
-
-
-              <!-- <div ng-controller="AppCtrl"> its up above-->
-
-       <!--          <button type="button" class="btn btn-primary" ng-click="toggleCustom()">presentation skills</button>
-                <span ng-hide="custom">presentation skills</span>
-                <span ng-hide="custom">cheese</span>
-                <span ng-show="custom">select inputs from </span> -->
-              
-            <%# ################# END Angular playground ################# %>
 
             <% puts "@users_jobs.size: #{@users_jobs.size}"%>
             <% puts "@users_for_this_job.size: #{@users_for_this_job.size}"%>

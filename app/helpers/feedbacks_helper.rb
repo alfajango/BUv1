@@ -1,7 +1,6 @@
 module FeedbacksHelper
 
   def num_fbvotes(feedback)
-  	#puts "in num_votes, idea.body: #{idea.body}"
   	@feedback_upvotes=0
   	@feedback_downvotes=0
   	feedback.fbvotes.each do | vote | 

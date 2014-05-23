@@ -33,15 +33,14 @@ def seedpfeedbacks
 
 	pfeedback_list.each do | from_email, pattrib_obj, to_proj_obj | 
 
-	  #fb = feedback.create!(from_id: from_id, rating_given: 1) 
-	  #  runs because when I deleted all, I did feedback = Feedback.all, then feedback.delete_all
+	  #from_id = User.find_by(email: from_email).id
+	  #pfb = Pfeedback.create!(from_id: from_id, rating_given: 1, pattribute_id: pattrib_obj.id, project_id: to_proj_obj.id)  
+	  
 	  from_id = User.find_by(email: from_email).id
 	  pfb = Pfeedback.create!(from_id: from_id, rating_given: 1)  
-	  #puts "3"
 	  pfb.pattribute = pattrib_obj
-	  # puts "fb.attribute.attribute_name: #{fb.attribute.attribute_name} "
 	  to_proj_obj.pfeedbacks << pfb
-	  #puts "5"
+
 	end
 	puts "PFEEDBACKS"
 

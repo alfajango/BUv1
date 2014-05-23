@@ -4,7 +4,8 @@ Prietary::Application.routes.draw do
   end
   root :to => "home#index"
   devise_for :users, 
-             :controllers => { :registrations => "devise/my_devise/registrations" }
+             :controllers => { :registrations => "my_devise/registrations" }
+             # :controllers => { :registrations => "devise/my_devise/registrations" } #this was causing error:
   resources :users
   resources :projects
   resources :ideas

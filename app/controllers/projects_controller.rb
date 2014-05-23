@@ -26,11 +26,16 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
     puts "@project.name: #{@project.name}"
     @projects_feedback = @project.pfeedbacks
+    puts "@projects_feedback: #{@projects_feedback}"
     @projects_positive =[]
     @projects_needs =[]
     @projects_negative =[]
 
     @projects_feedback.each do |pfeedback|
+      puts "pfeedback.id: #{pfeedback.id}"
+      puts "pfeedback.pattribute.id: #{pfeedback.pattribute.id}"
+      puts "pfeedback.pattribute.category: #{pfeedback.pattribute.category}"
+      puts "pfeedback.pattribute.name: #{pfeedback.pattribute.name}"
       case pfeedback.pattribute.category
       when "positive"
         @projects_positive << pfeedback

@@ -322,7 +322,7 @@ $ mongodump -h localhost:27017 -d rails3_mongoid_devise_development -o ~/tmp/mon
 ########### Do this every time I push to heroku: ################
 check to make sure production works, locally
 $ mongodump -h localhost:27017 -d rails3_mongoid_devise_development -o ~/tmp/mongodump
-$ mongorestore -h oceanic.mongohq.com:10082 -d prietary_staging -u pgarber -p ACTUALPWD ~/tmp/mongodump/rails3_mongoid_devise_development
+$ mongorestore -h oceanic.mongohq.com:10082 -d prietary_staging -u pgarber -p ACTUALPWD ~/tmp/mongodump/rails3_mongoid_devise_development --drop
 ######################################################################
 
 by manually pasting the MONGOHQ_URL , production now works, locally
@@ -378,3 +378,8 @@ $rails g model Fbvote
 I can't figure out why I don't see any thanks in my mongodb.  Seeding seems to work, and so does the creation on myfeedback page  ???
 
 put tooltips on button in button_entry, but the data-toggle for dropdown messes up the styling.  So, it still works, but it's not pretty.
+
+5/23/14
+Still lots to do, but let's get it up on Heroku.
+Running production locally has problems: can't go to create account page.  Also, the users need confirmation now.  So, get rid of confirmable for now.
+OK, so production now seems to work as well as dev as long as confirmable is turned off.  

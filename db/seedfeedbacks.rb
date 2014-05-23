@@ -43,15 +43,10 @@ def seedfeedbacks
 
 	feedback_list.each do | from_email, attrib_obj, to_user_obj | 
 
-	  #fb = feedback.create!(from_id: from_id, rating_given: 1) 
-	  #  runs because when I deleted all, I did feedback = Feedback.all, then feedback.delete_all
 	  from_id = User.find_by(email: from_email).id
 	  fb = Feedback.create!(from_id: from_id, rating_given: 1)  
-	  #puts "3"
 	  fb.attribute = attrib_obj
-	  # puts "fb.attribute.attribute_name: #{fb.attribute.attribute_name} "
 	  to_user_obj.feedbacks << fb
-	  #puts "5"
 	end
 	puts "FEEDBACKS"
 end

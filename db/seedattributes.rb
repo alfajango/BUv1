@@ -63,10 +63,9 @@ def seedattributes
 
 	]	
 
-	puts 'ATTRIBUTES'
 	sentence_list.each do |attribute_name, category, identifier|
 	  Attribute.create!(  attribute_name: attribute_name, 
-	#                  category: category, identifier: identifier )
 	                 category: category)
 	end
+	puts 'ATTRIBUTES'
 end

@@ -6,6 +6,8 @@ require "action_controller/railtie"
 require "action_mailer/railtie"
 require "active_resource/railtie"
 require "sprockets/railtie"
+
+require 'devise'  # trying to get rid of "uninitialized constant Devise::MyDevise"
 # # require "rails/test_unit/railtie"
 
 # PG: no idea if this goes here:
