@@ -1,6 +1,6 @@
 module PfeedbacksHelper
-  def num_pfbvotes(feedback)
-  	#puts "in num_votes, idea.body: #{idea.body}"
+  def num_fbvotes(pfeedback)
+  	puts "in num_fbvotes"
   	@pfeedback_upvotes=0
   	@pfeedback_downvotes=0
   	pfeedback.fbvotes.each do | vote | 

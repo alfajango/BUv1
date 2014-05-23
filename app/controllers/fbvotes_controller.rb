@@ -1,8 +1,14 @@
 class FbvotesController < ApplicationController
 
   def create
-    feedback = Feedback.find_by(id: params[:fbvote][:feedback_id])
-    priorvote = Fbvote.where(feedback: feedback, user: current_user).first#if Vote.find_by(idea: idea, user:current_user).exists? 
+    puts "in FbvotesController create action, params[:fbvote]: #{params[:fbvote]}"
+    if params[:fbvote][:feedback_id]
+      feedback = Feedback.find_by(id: params[:fbvote][:feedback_id])
+      priorvote = Fbvote.where(feedback: feedback, user: current_user).first#if Vote.find_by(idea: idea, user:current_user).exists? 
+    elsif params[:fbvote][:pfeedback_id]
+      feedback = Pfeedback.find_by(id: params[:fbvote][:pfeedback_id])      
+      priorvote = Fbvote.where(pfeedback: feedback, user: current_user).first#if Vote.find_by(idea: idea, user:current_user).exists? 
+    end    
     #puts "priorvote: #{priorvote}"
     if priorvote #= Vote.find_by(idea: idea, user:current_user) # did this person already vote, up or down, for this idea?
       #puts "priorvote[:upvote]: #{priorvote[:upvote]}"
