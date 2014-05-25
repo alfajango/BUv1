@@ -3,7 +3,7 @@
 <table>
   <tr>
     <th rowspan="2"><button type="button" class="<%= btnclass %>" ><%= text %> </span></button></th>
-    <th><%= comment %></th>
+    <th><%= comment %><small>&nbsp&nbsp&nbsp&nbsp<%= "#{time_ago_in_words(pfeedback.created)} ago"%></small></th>
   </tr>
   <tr>
     <td>

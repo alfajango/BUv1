@@ -16,12 +16,21 @@ class FeedbacksController < ApplicationController
   	# @relationship = Relationship.new
   end
 
-  def create # this called from users/show.html.erb?? when clicking on the temporary button
+  def create # this called from users/show.html.erb
     puts "in feedbacks_controller create action "
+    puts "params: #{params}"
+
+    #from_id = User.find(from_id)
+
 
     #method to do something without going to another page: http://stackoverflow.com/questions/2139996/ruby-on-rails-redirect-toback
     session[:return_to] ||= request.referer
-    Feedback.create(params[:feedback])
+    #Feedback.create(params[:feedback])
+    attrib_obj = Attribute.find(params[:feedback][:attribute])
+    to_user_obj = User.find(params[:feedback][:user])
+    fb = Feedback.create!(from_id: params[:feedback][:from_id], rating_given: params[:feedback][:rating_given])  
+    fb.attribute = attrib_obj
+    to_user_obj.feedbacks << fb
     redirect_to session.delete(:return_to)
 
   end
@@ -40,24 +49,24 @@ class FeedbacksController < ApplicationController
   end
 
 
-  def complete
-    puts "in complete"
+  # def complete
+  #   puts "in complete"
 
-    @attribute=Attribute.all
-    @user = User.find(params[:id])
-    params[:attribute_checkbox].each do |check|
+  #   @attribute=Attribute.all
+  #   @user = User.find(params[:id])
+  #   params[:attribute_checkbox].each do |check|
 
-       attribute_identifier = check
+  #      attribute_identifier = check
 
-      #t = Feedback.find_by_id(attribute_id) # don't need this since I'm always creating new
+  #     #t = Feedback.find_by_id(attribute_id) # don't need this since I'm always creating new
 
-      Feedback.create(from_id: current_user.id, to_id: @user.id, 
-                  attribute_identifier: attribute_identifier);
+  #     Feedback.create(from_id: current_user.id, to_id: @user.id, 
+  #                 attribute_identifier: attribute_identifier);
 
-     end
-    flash[:success] = "Feedback saved.  Feedback will show up after midnight EST tonight"
-    redirect_to root_url  # TODO - don't go home.  stay on the page.  use ajax?
-  end
+  #    end
+  #   flash[:success] = "Feedback saved.  Feedback will show up after midnight EST tonight"
+  #   redirect_to root_url  # TODO - don't go home.  stay on the page.  use ajax?
+  # end
 
   # def slider_complete
   #   puts "in slider_complete"

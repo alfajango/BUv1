@@ -289,7 +289,7 @@ Use `heroku addons:docs mongohq` to view documentation.
 created mongohq account, called it prietary_staging
 
 put MONGOHQ_URL in ~/dotfiles/.bash_profile  also try putting it in dotfiles/.bashrc
-export MONGOHQ_URL="mongodb://pgarber:ofSpades@oceanic.mongohq.com:10082/prietary_staging"
+export MONGOHQ_URL="mongodb://pgarber:ACTUALPWD@oceanic.mongohq.com:10082/prietary_staging"
 can run it manually, check it with $ echo ${MONGOHQ_URL}
 on monqhq website, add a user with db.addUser('​pgarber','​ofSpades')
 $ rvm --default use 1.9.3   # in window I launch rails server from  # undo with $ rvm use system
@@ -320,9 +320,11 @@ $ mongodump -h localhost:27017 -d rails3_mongoid_devise_development -o ~/tmp/mon
  a bunch of logs again
 
 ########### Do this every time I push to heroku: ################
-check to make sure production works, locally
+check to make sure production works, locally, which also needs the two lines below.  
 $ mongodump -h localhost:27017 -d rails3_mongoid_devise_development -o ~/tmp/mongodump
 $ mongorestore -h oceanic.mongohq.com:10082 -d prietary_staging -u pgarber -p ACTUALPWD ~/tmp/mongodump/rails3_mongoid_devise_development --drop
+
+also, remember $ heroku logs -t
 ######################################################################
 
 by manually pasting the MONGOHQ_URL , production now works, locally
@@ -383,3 +385,9 @@ put tooltips on button in button_entry, but the data-toggle for dropdown messes 
 Still lots to do, but let's get it up on Heroku.
 Running production locally has problems: can't go to create account page.  Also, the users need confirmation now.  So, get rid of confirmable for now.
 OK, so production now seems to work as well as dev as long as confirmable is turned off.  
+
+I should know about
+- rake db:reseed  # might not need to delete_all on each model I'm seeding
+- rake db:purge  # remove all collections other than system.*
+
+Getting a devise error on heroku.  hmmm.

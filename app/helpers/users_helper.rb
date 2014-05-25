@@ -42,18 +42,70 @@ module UsersHelper
 
 
   def users_for_homepage()
+	# @show_users = Array.new
+	# co = current_user.company
+	# puts "co.name: #{co.name}"
+
+	# company_users = co.users
+	# count = 1
+
+	# #company_fb = []  # all good feedback for this company's employees
+	# 	# allfb = Feedback.all
+	# # user_ids = User.where(username: 'erebus').only(:_id).map(&:_id)
+	# # articles = Article.where(:user_id.in => user_ids)
+	
+
+	# # http://stackoverflow.com/questions/9991217/rails-mongoid-criteria-find-by-association
+	# user_ids = User.where(company: co).only(:_id).map(&:_id)
+	# # user_ids.each do |usrid|
+	# # 	puts "usrid: #{usrid}"
+	# # end
+
+
+	# #puts "user_ids.count: #{user_ids.count}"
+	# #company_fb = Feedback.where(:user_id.in => user_ids)  # is :user_id right??
+	# company_fb = Feedback.where(:user_id.in => user_ids)
+	
+	# # company_fb.each do |fb|
+	# # 	puts "fb.attribute.category: #{fb.attribute.category}, fb.user.email: #{fb.user.email}, fb.class: #{fb.class}"
+	# # end
+	
+	# #puts "company_fb.count: #{company_fb.count}"
+	# #puts "company_fb.first.attribute.category: #{company_fb.first.attribute.category}"
+	# company_fb.sort_by { |a| a[:created] }
+	# # puts "company_fb.size: #{company_fb.size}"
+	# # puts "company_fb.first.user.name: #{company_fb.first.user.name}"
+	# # puts "company_fb.first.rating_given: #{company_fb.first.rating_given}"
+	# company_fb.each do |fb|
+	# 	if count >3
+	# 	  return
+	# 	end
+	# 	unless @show_users.include?(fb.user)
+	# 	  unless fb.attribute.category=='workon' || fb.attribute.category=='alert'	
+	# 	    @show_users.push(fb.user)
+	# 	    # puts "fb.user.id: #{fb.user.id}"
+	# 	    # puts "fb.user.name: #{fb.user.name}"
+	# 	    # # puts "fb.user.methods: #{fb.user.methods - Class.methods}"
+	# 	    # puts "fb.user.class: #{fb.user.class}"
+	# 	    # puts "@show_users.last.class: #{@show_users.last.class}"
+	# 	    # puts "@show_users.last.name: #{@show_users.last.name}"
+	# 	    count += 1
+	# 	  end
+	# 	end
+	# 	#puts "@show_users.first.class: #{@show_users.first.class}"
+	# end
+
+	#company_fb = Feedback.where(company: co)
+
+
+####### this method works, but is like O(n) or O(n^2) ######### 
+# using this non-scalable method lets the homepage names render correctly in both colleagues & ideas
 	@show_users = Array.new
 	co = current_user.company
 	puts "co.name: #{co.name}"
 
 	company_users = co.users
-	count = 1
-
-	#This gets 3 users with most recent feedback, but:
-	#wrong way to do this:  This is tons of queries and doesn't scale at all. todo: fix it!
-	#@show_users = []
-	#@show_users << User.first
-
+	count = 1	
 	allfb = Feedback.all
 	company_fb = []  # all good feedback for this company's employees
 
@@ -77,6 +129,7 @@ module UsersHelper
 		  count += 1
 		end
 	end
+	#########################################
 
 	# #this isn't getting the most recently rated users.  just most recently created.  
 	# company_users.reverse_each do |user|   # traverse newest (last) first

@@ -17,13 +17,14 @@ module ProjectHelper
   def projects_for_homepage()  # put up to 3 project_id's in @show_project_id
 	@show_projects = Array.new
 
-	puts "project_helper projects_for_homepage current_user.name: #{current_user.name}"
-	puts "current_user.company.name: #{current_user.company.name}"
-
-	company_projects = current_user.company.projects
-
+	# this one works, but it sorts by project creation date rather than feedback date
+	# puts "project_helper projects_for_homepage current_user.name: #{current_user.name}"
+	# puts "current_user.company.name: #{current_user.company.name}"
 	count = 1  
-	company_projects.reverse_each do |proj|  # traverse starting with newest (last)
+	company_projects = current_user.company.projects
+	company_projects.sort_by { |a| a[:created] }
+
+	company_projects.each do |proj|  # .reverse_each?
 	  if count > 3
 		return
 	  end	 
@@ -34,8 +35,32 @@ module ProjectHelper
 	  end
 	end
 
-  end
+	# count = 1  
+	# project_ids = Project.where(company: current_user.company).only(:_id).map(&:_id)
+	# puts "project_ids: #{project_ids}"
+	# puts "project_ids.count: #{project_ids.count}"
+	# company_fb = Pfeedback.where(:project_id.in => project_ids)    # :project.in ->project_ids gives same result
+	# puts "company_fb.count: #{company_fb.count}"
+	# puts "current_user.company.id: #{current_user.company.id}"
 
+	# company_fb = Pfeedback.where(:"project.company_id" => current_user.company.id)
+	# puts "company_fb.count: #{company_fb.count}"
+
+
+
+	# #company_fb.sort_by { |a| a[:created] }
+	# company_fb.each do |pfb|
+	# 	puts "pfb.class: #{pfb.class} pfb.project.class: #{pfb.project.class}, pfb.project.created: #{pfb.project.created}, pfb.from_id:#{pfb.from_id}"
+	# 	puts "pfb.project.name.class: #{pfb.project.name.class}"
+	# 	if count >3
+	# 	  return
+	# 	end
+	# 	unless @show_projects.include?(pfb.project)	
+	# 	  @show_projects.push(pfb.project)
+	# 	  count += 1
+	# 	end
+	# end	
+  end
 
   def graph_project_data(target_project_id) # gathers & prepares data in @all_rating_data for kickchart graphing
 	  # this is not complete yet

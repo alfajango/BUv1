@@ -7,7 +7,7 @@
       <%# was @user.name, @user.email but that was nil %>
       <h4><p><%= current_user.name %></p></h4>
       <p><%= current_user.email %></p>
-       <%= link_to "Feedback I've received", myfeedback_path(current_user) %> <%# I didn't need to define a myfeedback_path - it just went to users/myfeedback.html.erb %>
+       <%= link_to "My Feedback", myfeedback_path(current_user) %> <%# I didn't need to define a myfeedback_path - it just went to users/myfeedback.html.erb %>
       <%# an example of going to a secure page= link_to "Settings", edit_user_path(current_user) %>
     </div>
     <div class="well well-sm">
