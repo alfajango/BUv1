@@ -37,9 +37,9 @@ def seedpfeedbacks
 	  #pfb = Pfeedback.create!(from_id: from_id, rating_given: 1, pattribute_id: pattrib_obj.id, project_id: to_proj_obj.id)  
 	  
 	  from_id = User.find_by(email: from_email).id
-	  pfb = Pfeedback.create!(from_id: from_id, rating_given: 1)  
-	  pfb.pattribute = pattrib_obj
-	  to_proj_obj.pfeedbacks << pfb
+	  pfb = Pfeedback.create!(from_id: from_id, rating_given: 1, pattribute: pattrib_obj, project: to_proj_obj)  
+	  # pfb.pattribute = pattrib_obj
+	  # to_proj_obj.pfeedbacks << pfb
 
 	end
 	puts "PFEEDBACKS"

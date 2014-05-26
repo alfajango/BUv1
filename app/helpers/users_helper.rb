@@ -100,35 +100,35 @@ module UsersHelper
 
 ####### this method works, but is like O(n) or O(n^2) ######### 
 # using this non-scalable method lets the homepage names render correctly in both colleagues & ideas
-	@show_users = Array.new
-	co = current_user.company
-	puts "co.name: #{co.name}"
+	# @show_users = Array.new
+	# co = current_user.company
+	# puts "co.name: #{co.name}"
 
-	company_users = co.users
-	count = 1	
-	allfb = Feedback.all
-	company_fb = []  # all good feedback for this company's employees
+	# company_users = co.users
+	# count = 1	
+	# allfb = Feedback.all
+	# company_fb = []  # all good feedback for this company's employees
 
-	allfb.each do |fb|
+	# allfb.each do |fb|
 
-	  if fb.user  # sometimes it's null?
-		  if (company_users.include? fb.user)
-		  # this works, sort of: # and (fb.attribute.category == ("nicejob" || "greatat" || "thanks")))
-		  	company_fb << fb
-		  end
-	  end
-	end
-	company_fb.sort_by { |a| a[:created] }
+	#   if fb.user  # sometimes it's null?
+	# 	  if (company_users.include? fb.user)
+	# 	  # this works, sort of: # and (fb.attribute.category == ("nicejob" || "greatat" || "thanks")))
+	# 	  	company_fb << fb
+	# 	  end
+	#   end
+	# end
+	# company_fb.sort_by { |a| a[:created] }
 
-	company_fb.each do |fb|
-		if count >3
-		  return
-		end
-		unless @show_users.include?(fb.user)
-		  @show_users.push(fb.user)
-		  count += 1
-		end
-	end
+	# company_fb.each do |fb|
+	# 	if count >3
+	# 	  return
+	# 	end
+	# 	unless @show_users.include?(fb.user)
+	# 	  @show_users.push(fb.user)
+	# 	  count += 1
+	# 	end
+	# end
 	#########################################
 
 	# #this isn't getting the most recently rated users.  just most recently created.  
@@ -142,6 +142,36 @@ module UsersHelper
 	#   end
 	# end
 
+	###### method based on decently working projects_helper: #######
+	## works, and it lowers the number of queries !?!?
+	# maybe just fewer queries because it happened to pull users with less feedback
+	count = 1  
+    company_fb=[]
+    company_users = current_user.company.users
+    @show_users = Array.new
+    #puts "company_projects.count: #{company_projects.count}"
+
+    company_users.each do |user|
+      user.feedbacks.each do |fb|
+        company_fb << fb
+     #   puts "pfb.pattribute.name: #{pfb.pattribute.name}, pfb.created: #{pfb.created}"
+      end
+    end
+    #puts "company_fb.count: #{company_fb.count}, company_fb.class: #{company_fb.class}"
+
+    company_fb_sorted = company_fb.sort_by { |a| a[:created] }.reverse
+    company_fb_sorted.each do |fb|
+      # puts "pfb.class: #{pfb.class} pfb.project.class: #{pfb.project.class}, pfb.project.created: #{pfb.project.created}, pfb.from_id:#{pfb.from_id}"
+      # puts "pfb.project.name: #{pfb.project.name}"
+      #puts "pfb.pattribute.name: #{pfb.pattribute.name}, pfb.created: #{pfb.created}"
+      if count >3
+        return
+      end
+      unless @show_users.include?(fb.user) 
+        @show_users.push(fb.user)
+        count += 1
+      end
+    end 
 
 
   end

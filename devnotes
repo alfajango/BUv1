@@ -390,4 +390,4 @@ I should know about
 - rake db:reseed  # might not need to delete_all on each model I'm seeding
 - rake db:purge  # remove all collections other than system.*
 
-Getting a devise error on heroku.  hmmm.
+Getting a devise error on heroku.  hmmm.  Tried ruby 1.9.3 again on heroku - no help.
