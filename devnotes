@@ -408,7 +408,7 @@ $
 Set up prietary_production on MongoHQ $18/mo
 on MongoHQ site, db.addUser('pgarber''OFPWD')
 set MONGOHQ_URL on local & heroku to prietary_production
-export MONGOHQ_URL="mongodb://pgarber:ACTUALPWD@candidate.20.mongolayer.com:10149,candidate.21.mongolayer.com:10149/prietary_production"
+export MONGOHQ_URL="mongodb://pgarber:ACTUALPWD@candidate.20.mongolayer.com:10149,candidate.21.mongolayer.com:10149/prietary_production"  make sure that's in the window where running rails s -e production !!
 mongorestore the db succesfully
 $ mongo candidate.20.mongolayer.com:10149/prietary_production -u pgarber -p ACTUALPWD
 > db.auth("pgarber","ofSpades")
@@ -416,3 +416,7 @@ $ mongo candidate.20.mongolayer.com:10149/prietary_production -u pgarber -p ACTU
 > db.users.find()  # all succesful
 local, production mode works fine
 $ heroku run telnet candidate.20.mongolayer.com 10149  # works OK
+
+$heroku run printenv   # shows that MONGOHQ_URL isn't set correctly!!!
+$ heroku run echo ${MONGOHQ_URL}   # is just echoing what I have set locally, it seems!
+$heroku config:set MONGOHQ_URL="mongodb://pgarber:ofSpades@candidate.20.mongolayer.com:10149,candidate.21.mongolayer.com:10149/prietary_production"
