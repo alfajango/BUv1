@@ -5,7 +5,7 @@ class IdeasController < ApplicationController
 
   	#@ideas = current_user.company.ideas.all
   	first_idea = Idea.first
-  	puts "current_user.company.ideas.first.thread.nil?: #{current_user.company.ideas.first.thread.nil?}" 	
+  	#puts "current_user.company.ideas.first.thread.nil?: #{current_user.company.ideas.first.thread.nil?}" 	
   	#puts "current_user.company.ideas.where(:thread!=nil).count: #{current_user.company.ideas.where(:thread!=nil).count}"
   	@root_ideas = current_user.company.ideas.where(thread: nil)
   	#if @companies.where(domain: domain).exists?
