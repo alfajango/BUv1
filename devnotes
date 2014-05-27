@@ -291,21 +291,13 @@ created mongohq account, called it prietary_staging
 put MONGOHQ_URL in ~/dotfiles/.bash_profile  also try putting it in dotfiles/.bashrc
 export MONGOHQ_URL="mongodb://pgarber:ACTUALPWD@oceanic.mongohq.com:10082/prietary_staging"
 can run it manually, check it with $ echo ${MONGOHQ_URL}
-on monqhq website, add a user with db.addUser('​pgarber','​ofSpades')
+on monqhq website, add a user with db.addUser('​pgarber','​OFPWD')
 $ rvm --default use 1.9.3   # in window I launch rails server from  # undo with $ rvm use system
 # change Gemfile to ruby 1.9.3
 $ bundle install
 $ rvm use 1.9.3
 
 get my db on MONGOHQ: 
-WRONG:
-host: Philips-MacBook-Air.local
-server port: 27021 (I guess)
-databas name: rails3_mongoid_devise_development
-db user:  ?
-db password: ?
-
-RIGHT:
 host: oceanic.mongohq.com  
 server port: 10082    # 27021
 database_name: prietary_staging
@@ -323,6 +315,10 @@ $ mongodump -h localhost:27017 -d rails3_mongoid_devise_development -o ~/tmp/mon
 check to make sure production works, locally, which also needs the two lines below.  
 $ mongodump -h localhost:27017 -d rails3_mongoid_devise_development -o ~/tmp/mongodump
 $ mongorestore -h oceanic.mongohq.com:10082 -d prietary_staging -u pgarber -p ACTUALPWD ~/tmp/mongodump/rails3_mongoid_devise_development --drop
+
+for production:
+$ mongorestore -h candidate.20.mongolayer.com:10149 -d prietary_production -u pgarber -p ACTUALPWD ~/tmp/mongodump/rails3_mongoid_devise_development --drop
+
 
 also, remember $ heroku logs -t
 ######################################################################
@@ -391,3 +387,32 @@ I should know about
 - rake db:purge  # remove all collections other than system.*
 
 Getting a devise error on heroku.  hmmm.  Tried ruby 1.9.3 again on heroku - no help.
+$ mongo  # gives mongo console.  says MongoDB shell version: 2.4.7
+What's my mongoid version, though?
+to get mogno console: $ mongo oceanic.mongohq.com:10082/prietary_staging -u <user> -p <password>
+then do things like
+> db.users.find()
+ cant' do "mongo" command from heroku run
+
+$ telnet oceanic.mongohq.com 10082   # Escape character is '^]'. means success
+exit
+$ mongo oceanic.mongohq.com:10082/prietary_staging
+> > db.auth("pgarber","OFPWD")
+1  # means success
+Now, can I do the same from heroku?
+$ heroku run telnet oceanic.mongohq.com 10082
+ Escape character is '^]'. means success
+> exit
+$
+
+Set up prietary_production on MongoHQ $18/mo
+on MongoHQ site, db.addUser('pgarber''OFPWD')
+set MONGOHQ_URL on local & heroku to prietary_production
+export MONGOHQ_URL="mongodb://pgarber:ACTUALPWD@candidate.20.mongolayer.com:10149,candidate.21.mongolayer.com:10149/prietary_production"
+mongorestore the db succesfully
+$ mongo candidate.20.mongolayer.com:10149/prietary_production -u pgarber -p ACTUALPWD
+> db.auth("pgarber","ofSpades")
+> db.isMaster()
+> db.users.find()  # all succesful
+local, production mode works fine
+$ heroku run telnet candidate.20.mongolayer.com 10149  # works OK
