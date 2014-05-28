@@ -56,6 +56,7 @@ class ProjectsController < ApplicationController
   # end
 
   def new
+    puts "in project new"
   	@project = Project.new
   end
 
@@ -63,7 +64,7 @@ class ProjectsController < ApplicationController
     # do I need the next 2 lines?
   	# companies = Company.all
   	# domain_id = CompanyEmployee.find_by(user_id: (current_user.id))  # would now be company_id
-    #puts "in projects_controller create"
+    puts "in projects_controller create"
     #@project = Project.new(project_params)
     @project = Project.new(project_params) # I should just make this params[:project] and get rid of project_params, right?
     current_user.projects << @project

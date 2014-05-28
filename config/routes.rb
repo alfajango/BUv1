@@ -4,7 +4,8 @@ Prietary::Application.routes.draw do
   end
   root :to => "home#index"
   devise_for :users, 
-             :controllers => { :registrations => "my_devise/registrations" }
+             :controllers => { :registrations => "my_devise/registrations"} #, 
+                              # :invitations => 'users/invitations' }  # this is only for custom controller
              # :controllers => { :registrations => "devise/my_devise/registrations" } #this was causing error:
   resources :users
   resources :projects
@@ -20,6 +21,7 @@ Prietary::Application.routes.draw do
   resources :thanks
   resources :asks
   resources :flags
+  #resources :invitations
 
   # from BUv2
   #root 'users#home'  # caused an error
@@ -32,12 +34,14 @@ Prietary::Application.routes.draw do
   match '/leaderboard', to: 'static_pages#leaderboard', via: 'get'  
   match '/give_feedback', to: 'feedbacks#give_feedback', via: 'get'
   match 'feedbacks/complete/:id', to: 'feedbacks#complete', via: 'post' 
-  match 'feedbacks/slider_complete/:id', to: 'feedbacks#slider_complete', via: 'post' 
-  match 'pfeedbacks/pslider_complete/:id', to: 'pfeedbacks#pslider_complete', via: 'post' 
+  # match 'feedbacks/slider_complete/:id', to: 'feedbacks#slider_complete', via: 'post' 
+  # match 'pfeedbacks/pslider_complete/:id', to: 'pfeedbacks#pslider_complete', via: 'post'
+
+  match 'create_colleague', to: 'users#create_colleague' 
 
   match '/myfeedback', to: 'users#myfeedback',  via: 'get'
   match '/newproject', to: 'projects#new',      via: 'get'  # I think this is wrong
-  match '/newproject', to: 'projects#new',      via: 'post'  # improve this
+  #match '/newproject', to: 'projects#new',      via: 'post'  # improve this
   match '/projects', to: 'projects#index',      via: 'get'  # I think if resources :projects is working, I shouldn't need this
 
   # this takes me to a page, but I need to flash a message and add the project

@@ -1,5 +1,21 @@
 module UsersHelper
 
+	# to get devise_invitable working ###
+	# http://stackoverflow.com/questions/4081744/devise-form-within-a-different-controller
+  def resource_name
+    :user
+  end
+
+  def resource
+    @resource ||= User.new
+  end
+
+  def devise_mapping
+    @devise_mapping ||= Devise.mappings[:user]
+  end
+
+
+
   # Returns the Gravatar (http://gravatar.com/) for the given user.
   def gravatar_for(user, options = {size: 50 })
     gravatar_id = Digest::MD5::hexdigest(user.email.downcase)

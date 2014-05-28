@@ -433,7 +433,7 @@ rake db:mongoid:create_indexes
        exist    app/views/devise/mailer
       create    app/views/devise/mailer/invitation_instructions.html.erb
       invoke  form_for
-      create    app/views/devise/invitations
+      create    app/views/devise/invitations 
       create    app/views/devise/invitations/edit.html.erb
       create    app/views/devise/invitations/new.html.erb
 [philgarber@Philips-MacBook-Air:~/code/BUv1]$rails generate devise_invitable:views users
@@ -444,3 +444,19 @@ rake db:mongoid:create_indexes
       create    app/views/users/invitations
       create    app/views/users/invitations/edit.html.erb
       create    app/views/users/invitations/new.html.erb
+$rails g devise_invitable:install
+      insert  config/initializers/devise.rb
+      create  config/locales/devise_invitable.en.yml
+
+not sure I need:
+[philgarber@Philips-MacBook-Air:~/code/BUv1]$rails generate devise_invitable:views users/invitations
+      invoke  DeviseInvitable::Generators::MailerViewsGenerator
+      create    app/views/users/invitations/mailer
+      create    app/views/users/invitations/mailer/invitation_instructions.html.erb
+      invoke  form_for
+      create    app/views/users/invitations/invitations
+      create    app/views/users/invitations/invitations/edit.html.erb
+      create    app/views/users/invitations/invitations/new.html.erb      
+
+maybe I should have done rails g devise:views users instead of just rails g devise:views 
+See invitable section in devise.rb for settings, including "force a record to be valid.."

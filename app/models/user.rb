@@ -1,6 +1,7 @@
 class User
   include Mongoid::Document
   include Mongoid::Timestamps
+  # include DeviseInvitable::Inviter ## per https://bountify.co/get-skeleton-of-working-devise_invitable-example
   belongs_to :company  #, class_name: "Company", inverse_of: :user 
   has_many :feedbacks #,  class_name: "Feedback", inverse_of: :user #( feedback this person has received )
   has_many :projects
@@ -21,7 +22,7 @@ class User
   # :lockable, :timeoutable and :omniauthable
 
 
-  devise :database_authenticatable, :registerable, #  :confirmable,
+  devise :invitable, :database_authenticatable, :registerable, #  :confirmable,
          :recoverable, :rememberable, :trackable, :validatable, 
          :invitable
 

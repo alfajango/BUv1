@@ -97,13 +97,19 @@ class UsersController < ApplicationController
     # format.html # show.html.erb
     # format.js # show.js.erb
     # format.json { render json: @book }
-
-
-
-
     @users_jobs = Job.where(subject: current_user.id)
 
     @users_for_this_job = Job.where(job_holder: current_user.id)
+  end
+
+  def create_colleague
+    puts "in create action in users_controller"
+    @user = User.new   # ???
+    render "/users/invitations/new"
+  end
+
+  def invitations
+    puts "in invitations action in users_controller"
   end
 
   def homepage
@@ -113,10 +119,10 @@ class UsersController < ApplicationController
   end
 
 
-  def coworker_chart
-    # @user = User.paginate(page: params[:page])
-    @user = User.all
-  end
+  # def coworker_chart
+  #   # @user = User.paginate(page: params[:page])
+  #   @user = User.all
+  # end
 
   def new
   	@user = User.new
