@@ -33,12 +33,24 @@ def seedfeedbacks
 		["tcarawell@example.com", Attribute.find_by(attribute_name: "deserves a promotion"), User.find_by(name: "Phil Garber") ],
 		["tcarawell@example.com", Attribute.find_by(attribute_name: "closing the deal"), User.find_by(name: "Beth Hillman") ],
 
-		["milton@in-itech.com", Attribute.find_by(attribute_name: "difficult to work for"), User.find_by(name: "Bill Lumbergh") ],
+		["milton@in-itech.com", Attribute.find_by(attribute_name: "confidence"), User.find_by(name: "Bill Lumbergh") ],
+		["milton@in-itech.com", Attribute.find_by(attribute_name: "poor management"), User.find_by(name: "Bill Lumbergh") ],
+		["milton@in-itech.com", Attribute.find_by(attribute_name: "building rapport"), User.find_by(name: "Bill Lumbergh") ],
 		["milton@in-itech.com", Attribute.find_by(attribute_name: "wrong fit for the company"), User.find_by(name: "Peter Gibbons") ],
+		["milton@in-itech.com", Attribute.find_by(attribute_name: "accuracy"), User.find_by(name: "Peter Gibbons") ],
+		["milton@in-itech.com", Attribute.find_by(attribute_name: "work ethic"), User.find_by(name: "Peter Gibbons") ],
+		["milton@in-itech.com", Attribute.find_by(attribute_name: "staying on task"), User.find_by(name: "Peter Gibbons") ],
+		["milton@in-itech.com", Attribute.find_by(attribute_name: "deserves a promotion"), User.find_by(name: "Peter Gibbons") ],
 		["milton@in-itech.com", Attribute.find_by(attribute_name: "getting things done"), User.find_by(name: "Samir Nagheenanajar") ],
-		["milton@in-itech.com", Attribute.find_by(attribute_name: "getting the sale"), User.find_by(name: "Michael Bolton") ],
-		["milton@in-itech.com", Attribute.find_by(attribute_name: "working independently"), User.find_by(name: "Bill Lumbergh") ],
-		["pgibbons@in-itech.com", Attribute.find_by(attribute_name: "confidence"), User.find_by(name: "Milton Waddams") ]		
+		["milton@in-itech.com", Attribute.find_by(attribute_name: "helping the team"), User.find_by(name: "Samir Nagheenanajar") ],
+		["milton@in-itech.com", Attribute.find_by(attribute_name: "attitude"), User.find_by(name: "Samir Nagheenanajar") ],
+		["milton@in-itech.com", Attribute.find_by(attribute_name: "working independently"), User.find_by(name: "Samir Nagheenanajar") ],
+		["milton@in-itech.com", Attribute.find_by(attribute_name: "confidence"), User.find_by(name: "Michael Bolton") ],
+		["milton@in-itech.com", Attribute.find_by(attribute_name: "high quality work"), User.find_by(name: "Michael Bolton") ],
+		["milton@in-itech.com", Attribute.find_by(attribute_name: "deserves a promotion"), User.find_by(name: "Michael Bolton") ],
+		["pgibbons@in-itech.com", Attribute.find_by(attribute_name: "working independently"), User.find_by(name: "Milton Waddams") ],
+		["pgibbons@in-itech.com", Attribute.find_by(attribute_name: "high quality work"), User.find_by(name: "Milton Waddams") ],
+		["pgibbons@in-itech.com", Attribute.find_by(attribute_name: "meeting the deadline"), User.find_by(name: "Milton Waddams") ]				
 	    ]
 
 	feedback_list.each do | from_email, attrib_obj, to_user_obj | 

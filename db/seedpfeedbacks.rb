@@ -26,9 +26,18 @@ def seedpfeedbacks
 		["tcarawell@example.com", Pattribute.find_by(name: "needs to be rescoped"), Project.find_by(name: "Refresh website") ],
 		["tcarawell@example.com", Pattribute.find_by(name: "needs to show market need"), Project.find_by(name: "Refresh website") ],
 
-		["milton@in-itech.com", Pattribute.find_by(name: "needs to be rescoped"), Project.find_by(name: "Think: Is this good for the company?") ],
-		["milton@in-itech.com", Pattribute.find_by(name: "needs a different team"), Project.find_by(name: "Office Supply cost reduction") ],
-		["milton@in-itech.com", Pattribute.find_by(name: "needs to show market need"), Project.find_by(name: "New printer") ]
+		["milton@in-itech.com", Pattribute.find_by(name: "is critical for our customers"), Project.find_by(name: "Think: Is this good for the company?") ],
+		["milton@in-itech.com", Pattribute.find_by(name: "needs to be de-priorized"), Project.find_by(name: "Think: Is this good for the company?") ],
+		["milton@in-itech.com", Pattribute.find_by(name: "needs more time"), Project.find_by(name: "Think: Is this good for the company?") ],
+		["milton@in-itech.com", Pattribute.find_by(name: "needs to pivot"), Project.find_by(name: "Office Supply cost reduction") ],
+		["milton@in-itech.com", Pattribute.find_by(name: "is important for the company"), Project.find_by(name: "Office Supply cost reduction") ],
+		["milton@in-itech.com", Pattribute.find_by(name: "is going well"), Project.find_by(name: "Office Supply cost reduction") ],
+		["milton@in-itech.com", Pattribute.find_by(name: "needs to pivot"), Project.find_by(name: "Office Supply cost reduction") ],
+		["milton@in-itech.com", Pattribute.find_by(name: "needs to be cancelled"), Project.find_by(name: "Office Supply cost reduction") ],
+		["milton@in-itech.com", Pattribute.find_by(name: "is critical for the company"), Project.find_by(name: "New printer") ],
+		["milton@in-itech.com", Pattribute.find_by(name: "is doing poorly"), Project.find_by(name: "New printer") ],
+		["milton@in-itech.com", Pattribute.find_by(name: "needs more funding"), Project.find_by(name: "New printer") ],
+		["milton@in-itech.com", Pattribute.find_by(name: "progress is too slow"), Project.find_by(name: "New printer") ]
 	    ]
 
 	pfeedback_list.each do | from_email, pattrib_obj, to_proj_obj | 
