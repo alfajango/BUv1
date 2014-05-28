@@ -423,3 +423,24 @@ $heroku config:set MONGOHQ_URL="mongodb://pgarber:ofSpades@candidate.20.mongolay
 
 5/28/14: try adding "Create Colleague" again.  This time, use gem devise_invitable
 branch to invitable
+
+What does this mean???:
+Remember to create indexes within the MongoDB database after deploying your changes.
+rake db:mongoid:create_indexes
+
+[philgarber@Philips-MacBook-Air:~/code/BUv1]$rails generate devise_invitable:views
+      invoke  DeviseInvitable::Generators::MailerViewsGenerator
+       exist    app/views/devise/mailer
+      create    app/views/devise/mailer/invitation_instructions.html.erb
+      invoke  form_for
+      create    app/views/devise/invitations
+      create    app/views/devise/invitations/edit.html.erb
+      create    app/views/devise/invitations/new.html.erb
+[philgarber@Philips-MacBook-Air:~/code/BUv1]$rails generate devise_invitable:views users
+      invoke  DeviseInvitable::Generators::MailerViewsGenerator
+      create    app/views/users/mailer
+      create    app/views/users/mailer/invitation_instructions.html.erb
+      invoke  form_for
+      create    app/views/users/invitations
+      create    app/views/users/invitations/edit.html.erb
+      create    app/views/users/invitations/new.html.erb

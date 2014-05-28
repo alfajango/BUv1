@@ -22,7 +22,8 @@ class User
 
 
   devise :database_authenticatable, :registerable, #  :confirmable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable, :validatable, 
+         :invitable
 
   ## Database authenticatable
   field :email,              :type => String, :default => ""
@@ -63,4 +64,14 @@ class User
   field :name, :type => String
   validates_presence_of :name
   attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :created_at, :updated_at
+
+  ## Invitable (devise_invitable gem)
+  field :invitation_token, type: String
+  field :invitation_created_at, type: Time
+  field :invitation_sent_at, type: Time
+  field :invitation_accepted_at, type: Time
+  field :invitation_limit, type: Integer
+
+  index( {invitation_token: 1}, {:background => true} )
+  index( {invitation_by_id: 1}, {:background => true} )
 end
