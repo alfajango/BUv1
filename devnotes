@@ -77,7 +77,7 @@ change again...
 the view for signin is not in my files, so: $ rails generate devise:views
 now, the RegistrationsController whose create method gets called when I create new user is also not in the files.   
 
-After trying to get create colleagues going (I got as far as rendering the page and it seems to work, yet no new user is created.  Then I added a self_create to the model and nothing works anymore).  I stashed this:
+After trying to get create colleagues going (I got as far as rendering the page and it seems to work, yet no new user is created (I bet devise is blocking it).  Then I added a self_create to the model and nothing works anymore).  I stashed this:
 $ git stash
 Saved working directory and index state WIP on build1: 13dd6e7 create projects works
 HEAD is now at 13dd6e7 create projects works
@@ -420,3 +420,6 @@ $ heroku run telnet candidate.20.mongolayer.com 10149  # works OK
 $heroku run printenv   # shows that MONGOHQ_URL isn't set correctly!!!
 $ heroku run echo ${MONGOHQ_URL}   # is just echoing what I have set locally, it seems!
 $heroku config:set MONGOHQ_URL="mongodb://pgarber:ofSpades@candidate.20.mongolayer.com:10149,candidate.21.mongolayer.com:10149/prietary_production"
+
+5/28/14: try adding "Create Colleague" again.  This time, use gem devise_invitable
+branch to invitable
