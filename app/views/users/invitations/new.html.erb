@@ -14,7 +14,7 @@
 			<%= f.text_field :name, :autofocus => true %></p>
 			<p><b><%= "Email: (must be @#{current_user.company.domain})" %></b>
 			<%= f.email_field :email, placeholder: "...@#{current_user.company.domain}" %></p>
-			<%# following line doesn't do what I need it to %>
+			<%# following line doesn't do what I need it to TODO: Improve this: %>
 			<%= f.hidden_field :company_id, :value => current_user.company.id %>
 			  <!-- <p><%#= f.label field %><br /> -->
 			  <!-- <%#= f.text_field field %></p> --> 
