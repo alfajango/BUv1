@@ -10,7 +10,7 @@ class UsersController < ApplicationController
   def index
     # #@users = User.paginate(page: params[:page])
     #@users = current_user.company.users.paginate(page: params[:page])  
-    @users = current_user.company.users.all  # paginate not in mongoid
+    @users = current_user.company.users #.all  # paginate not in mongoid
   end
 
   def show

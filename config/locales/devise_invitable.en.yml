@@ -1,7 +1,7 @@
 en:
   devise:
     invitations:
-      send_instructions: 'An invitation email has been sent to %{email}.'
+      send_instructions: 'Your colleague is now set up in Prietary and can receive feedback.  An invitation email has been sent to %{email} so that your colleague can sign up and view feedback.'
       invitation_token_invalid: 'The invitation token provided is not valid!'
       updated: 'Your password was set successfully. You are now signed in.'
       no_invitations_remaining: "No invitations remaining"

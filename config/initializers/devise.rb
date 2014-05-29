@@ -117,7 +117,7 @@ Devise.setup do |config|
 
   # Flag that force a record to be valid before being actually invited
   # Default: false
-  # config.validate_on_invite = true
+  config.validate_on_invite = true  # PG try on
 
   # ==> Configuration for :confirmable
   # A period that the user is allowed to access the website even without
@@ -167,10 +167,10 @@ Devise.setup do |config|
   # ==> Configuration for :timeoutable
   # The time you want to timeout the user session without activity. After this
   # time the user will be asked for credentials again. Default is 30 minutes.
-  # config.timeout_in = 30.minutes
+  config.timeout_in = 6.hours
 
   # If true, expires auth token on session timeout.
-  # config.expire_auth_token_on_timeout = false
+  # config.expire_auth_token_on_timeout = false  # PG do I need this on to actually expire?
 
   # ==> Configuration for :lockable
   # Defines which strategy will be used to lock an account.
@@ -193,7 +193,7 @@ Devise.setup do |config|
   config.maximum_attempts = 20  # PG enable 4/25/14
 
   # Time interval to unlock the account if :time is enabled as unlock_strategy.
-  config.unlock_in = 1.hour # PG enable 4/25/14
+  config.unlock_in = 1.hour # PG enable 4/25/14  make it shorter?
 
   # ==> Configuration for :recoverable
   #
