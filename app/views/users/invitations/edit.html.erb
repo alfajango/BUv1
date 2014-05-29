@@ -1,14 +1,26 @@
-<h2><%= t 'devise.invitations.edit.header' %></h2>
+<%# /views/users/invitations/edit.html.erb %>
+<div class="wrapper body">
+  <div class="container">
+    <div class="row"> 
+      <div class="col-sm-3"></div> <%# is this the right way to center the 6 column? %>
+      <div class="col-sm-6">
+		<h2><%= t "Set a password to join Prietary and see what your colleagues are thinking" %></h2>
+		<!-- <h2><%#= t 'devise.invitations.edit.header' %></h2> -->
 
-<%= form_for resource, :as => resource_name, :url => invitation_path(resource_name), :html => { :method => :put } do |f| %>
-  <%= devise_error_messages! %>
-  <%= f.hidden_field :invitation_token %>
+		<%= form_for resource, :as => resource_name, :url => invitation_path(resource_name), :html => { :method => :put } do |f| %>
+		  <%= devise_error_messages! %>
+		  <%= f.hidden_field :invitation_token %>
 
-  <p><%= f.label :password %><br />
-  <%= f.password_field :password %></p>
+		  <p><%= f.label :password %><br />
+		  <%= f.password_field :password %></p>
 
-  <p><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %></p>
+		  <p><%= f.label :password_confirmation %><br />
+		  <%= f.password_field :password_confirmation %></p>
+		  <p><%= f.submit ("Set password and go to Prietary") %></p>
+		  <!-- <p><%#= f.submit t("devise.invitations.edit.submit_button") %></p> -->
+		<% end %>
+	  </div>
+	</div>
+  </div>
+</div>
 
-  <p><%= f.submit t("devise.invitations.edit.submit_button") %></p>
-<% end %>

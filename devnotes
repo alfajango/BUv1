@@ -471,3 +471,4 @@ But, needed to disable pwd existence check
 Relevant files:
 invitations_controller.rb - where I put custom create stuff.
 views/users/invitations/new.html.erb 
+views/devise/invitations/edit.html.erb:
