@@ -50,11 +50,8 @@ module UsersHelper
   	  btnclass = "btn btn-danger dropdown-toggle"
   	  text = "alert"
   	end
-  	#puts "btnclass: #{btnclass}"
-  	#puts "text: #{text}"
   	return btnclass, text
   end
-
 
 
   def users_for_homepage()

@@ -1,0 +1,12 @@
+<%# this gets category and feedback and renders a button with a number of feedbacks received in this category %>
+<% btnclass, text = set_btn_type(category) %>
+<%= puts "fb.count: #{fb.count}" %>
+<% fb.each do |fb_item| %>
+<%= puts "fb_item.attribute.attribute_name: #{fb_item.attribute.attribute_name}" %>
+<% end %>
+<table>
+  <tr>
+    <th rowspan="2"><button type="button" class="<%= btnclass %>" ><%= text %> </span></button></th>
+    <th>&nbsp<%= fb.count %> </th>
+  </tr>
+</table>
