@@ -13,29 +13,22 @@
     <div class="well well-sm">
       
       <!-- <p><%#= link_to "New colleague", create_colleague_path %> <%#createuser_path(current_user) %></p> -->
-      Set up a colleague:
+      Anonymously add a new colleague:
 
       <%= form_for @newuser, :as => :user, :url => invitation_path(:user), :html => {:method => :post} do |f| %>
         <%= devise_error_messages! %>
         <p><%= f.label "Name:" %> 
         <%= f.text_field :name %></p>
-        <p><b><%= "Email: (must be @#{current_user.company.domain})" %></b>
+        <p><b><%= f.label "Email:" %></b>
         <%= f.email_field :email, placeholder: "...@#{current_user.company.domain}" %></p>
         <%# following line doesn't do what I need it to TODO: Improve this: %>
         <%= f.hidden_field :company_id, :value => current_user.company.id %>
-        <p><%= f.submit "Setup your colleague in Prietary" %>
+        <p><%= f.submit "Add colleague in Prietary", class: "btn btn-primary" %>
       <% end %>
       
-
     </div>
     <div class="well well-sm">
           <%= link_to "New project / strategy / effort", newproject_path %>
-
-      <%#= link_to "Company Leaderboard", '/leaderboard' %> 
     </div>
-    <!-- <div class="well well-sm"> -->
-      <%#= link_to "Promote my profile", '#'%>
-    <!-- </div> -->
-
 </div>
 

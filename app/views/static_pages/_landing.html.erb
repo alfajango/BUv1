@@ -31,10 +31,14 @@
             <h1 class="text-center animated fadeInDown">Prietary brings transparency to your company</h1>
             <h3 class="text-center animated fadeInDown">Sign up with your work email </h3>
             <div class="text-center actions animated fadeInDown delay2">
-              <%= link_to "Sign up", new_user_registration_path, class: "btn btn-color" %>    
+              <%= link_to "Sign up", new_user_registration_path, class: "btn btn-success", :html => { :style => "display:inline-block; "} %> <%# was btn btn-color %>
+              <%=form_for User.new, :url => user_session_path, :html => { :style => "display:inline-block; "} do |f| %>
+                <%= f.hidden_field :email, value: "pgibbons@in-itech.com" %>
+                <%= f.hidden_field :password, value: "password" %>
+                <%=f.submit "Try Without Sign Up", class: "btn btn-info" %>
+              <% end %>            
             </div>
             <%= link_to(image_tag("/img/Prietary_screen.png", :alt => "..."), new_user_registration_path) %>
-
           </div>
         </div>
       </div>
