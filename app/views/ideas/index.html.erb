@@ -13,7 +13,7 @@
 
           <br>
           <% if @root_ideas.size.to_i < 1 %>
-            <div class="well well-sm"> <b> No ideas created for your company yet.  Create one below! </b></div>
+            <div class="well well-sm"> <b> No ideas created for your company yet.  Create one here! </b></div>
           <% end %> 
 
         <%= form_for(@idea) do |f| %>
@@ -23,7 +23,7 @@
           <br>
           Your name will be shown as the creator of the idea.  Up and down votes are anonymous.<br>
           <br>
-          <%= f.submit "Create the idea", class: "btn btn-primary btn-large" %>
+          <%= f.submit "Create the idea", class: "btn btn-primary btn-large float-left" %>
         <% end %>
 
       </div>
