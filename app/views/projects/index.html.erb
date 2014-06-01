@@ -11,13 +11,15 @@
         <%# company_id = CompanyEmployee.find_by(user_id: (current_user.id)).company_id %>
         <h1><%= company.name %> Projects</h1> 
         <%# or current_user.company.name %>
-
-        <%#= will_paginate %> 
-
+        <div class="apple_pagination">
+          <%= will_paginate %> 
+        </div>  
         <ul class="projects"> <%# tells it to use the .projects in custom.css.scss%>
-        	<%= render @projects %><%# renders _project.html.erb and passes the project%>
+        	<%=  render  @projects %><%# renders _project.html.erb and passes the project%>
         </ul>
-        <%#= will_paginate %> 
+        <div class="apple_pagination">
+          <%= will_paginate %> <%# this puts the pagination links %>
+        </div>
         <br>
         <% if @projects.size.to_i < 1 %>
           <div class="well well-sm"> <b> No projects created for your company yet. </b></div>

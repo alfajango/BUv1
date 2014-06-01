@@ -8,4 +8,8 @@ class ApplicationController < ActionController::Base
   	@newuser = User.new
 
   end
+
+  # pagination global - this is what works  Make sure I put <%= will paginate %> everywhere that I do
+  #  .paginate(page: params[:page])   in the controller
+  WillPaginate.per_page = 25
 end

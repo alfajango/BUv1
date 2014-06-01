@@ -12,4 +12,6 @@ class Project
   # has_many :project_ratings
 
   # todo: set permissions here?
+  #self.per_page = 3  # for pagination - can't get this to work at all.  use application_controller universal setting
+
 end

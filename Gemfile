@@ -14,6 +14,7 @@ gem 'devise_invitable'  #, '~> 1.3.4'
 gem 'figaro'
 gem 'mongoid'
 gem 'bootstrap-sass'
+gem "will_paginate_mongoid"
 
 group :development do
   gem 'better_errors'

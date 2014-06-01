@@ -479,3 +479,11 @@ send emails from ...@prietary.com rather than bumptup@gmail.com
 
 #####################################################
 Fix full width submit buttons: http://www.whatibroke.com/?p=64
+
+Use will_paginate_mongoid gem for pagination.  Needs:
+- .paginate(page: params[:page])  # in the appropriate controller action
+-  WillPaginate.per_page = 25 in application_contoller 
+ (should also be able to put   self.per_page = 10 in the model file, but I haven't gotten that working yet).
+ - or you can use paginate(page: params[:page], per_page: 5 ) in the controller
+ - <%= will_paginate%> in view wherever you want the pagination links
+ - I put apple_pagination in phil.css.scss

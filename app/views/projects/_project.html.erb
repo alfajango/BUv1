@@ -2,7 +2,7 @@
   <div>
     <p class="alignleft"><%= link_to project.name, project %>
       <% if current_user===(project.user) %> 
-        <i><%= link_to "edit ", edit_project_path(project) %></i>
+        <i> | <%= link_to "edit ", edit_project_path(project) %></i>
       <% end %></p> 
     <% if project.user %>
       <p class="alignright"> Created by <%=link_to(project.user.name, project.user) %></p>

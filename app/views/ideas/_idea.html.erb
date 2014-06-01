@@ -4,7 +4,7 @@
   <p><%= link_to(idea.user.name, idea.user) %>&nbsp&nbsp&nbsp&nbsp<%= "#{time_ago_in_words(idea.created)} ago"%>
   <p><b><%= link_to( idea.body, idea) %></b>
     <% if current_user===(idea.user) %> 
-      <i><%= link_to "edit ", edit_idea_path(idea) %></i>
+      <i> | <%= link_to "edit ", edit_idea_path(idea) %></i>
     <% end %></p> 
     <% num_votes(idea) %><%# set @idea_upvotes and @idea_downvotes %>
     <p>
