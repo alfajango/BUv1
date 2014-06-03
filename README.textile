@@ -4,7 +4,82 @@ Prietary is the tool for employees who care about their company to make the comp
 
 Built by and property of Phil Garber.  
 
-Built with Rails 3.2 backend and views, Mongoid, Devise, AngualrJS components, Bootstrap, and Mist layout theme
+Built with Rails 3.2 backend and views, Mongoid, Devise, AngualrJS components, Bootstrap, and Mist layout theme.  
 
 www.prietary.com
 @prietary
+
+
+Prietary Web Application
+==========
+
+Prietary is a web application written in Ruby on Rails
+
+Seeding the DB
+----------
+
+To seed the database run the below:
+
+- rake db:seed
+
+in development, mongoid must be running: $ mongod 
+in production, the app accesses the Mongo db on MongoHQ.
+
+
+Developer Environment Setup
+----------
+
+A developer environment allows you to run the Prietary application in a Virtual Machine. 
+The environment consists of:
+ 
+  - CentOS 6.4
+  - Ruby 1.9.3
+  - Rails 3.2.13
+  - MongoDB Server 2.4.5
+
+Further, the developer environment is configured to use NFS to share this git checkout directory with your host machine and the guest virtual machine.  Changes made in your IDE to the host git checkout will be reflected automatically in the guest virtual machine.
+
+
+Prerequisites
+----------
+
+ * Install VirtualBox 
+  * https://www.virtualbox.org/wiki/Downloads 
+ * Install Vagrant 
+  * http://downloads.vagrantup.com/tags/v1.2.6 
+
+ Worth reading: 
+  * http://docs.vagrantup.com/v2/getting-started/index.html
+
+
+Steps to bring up the Virtual Machine (VM)
+-----------
+
+ 1. Ensure that VirtualBox is running 
+ 2. Clone the Prietary source code (https://github.com/pgarber/BUv1)
+ 3. vagrant up
+  * Allow ~15 minutes or so for software to be installed.
+ 4. Visit http://172.31.2.50:3000 from your host machine
+  * Note: “rails s” is running in a ‘screen’ session in the VM
+   
+
+SSH into the Virtual Machine
+-----------
+ 1. ssh vagrant@172.31.2.50
+   * Username: 'vagrant'
+   * Password: 'vagrant'
+ 2. To access the running 'rails s' console from screen
+   * "sudo screen -r rails" 
+
+
+Halt/Shutdown the VM
+-----------
+
+ A running VM consumes resources on your machine.  When you are finished with the VM you have 2 choices.   
+ * Suspend and it can quickly be brought back up with $ vagrant up
+  * 'vagrant suspend'
+ * Halt it, allowing it to be resumed later
+  * 'vagrant halt'
+ * Destroy it and it’s deleted
+  * 'vagrant destroy'
+

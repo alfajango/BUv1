@@ -487,3 +487,109 @@ Use will_paginate_mongoid gem for pagination.  Needs:
  - or you can use paginate(page: params[:page], per_page: 5 ) in the controller
  - <%= will_paginate%> in view wherever you want the pagination links
  - I put apple_pagination in phil.css.scss
+
+################################################################################
+ ##### See if I can run from Vagrant so that a designer can work on layout #########
+ in branch 'vagrant'
+ /temp]$vagrant init hashicorp/precise32
+ /temp]$vagrant up
+Bringing machine 'default' up with 'virtualbox' provider...
+There are errors in the configuration of this machine. Please fix
+the following errors and try again:
+
+vm:
+* The box 'hashicorp/precise32' could not be found.
+$vagrant box add precise32 http://files.vagrantup.com/precise32.box # huge download
+no change
+http://zeroturnaround.com/rebellabs/pragmatic-devops-bootstrapping-vagrant/
+in code/temp/my-env $ vagrant init precise32 http://files.vangrantup.com/precise32.box
+A `Vagrantfile` has been placed in this directory. You are now
+ready to `vagrant up` your first virtual environment! Please read
+the comments in the Vagrantfile as well as documentation on
+`vagrantup.com` for more information on using Vagrant.
+[philgarber@Philips-MacBook-Air:~/code/temp/my-env]$ls
+Vagrantfile
+[philgarber@Philips-MacBook-Air:~/code/temp/my-env]$vagrant up
+Bringing machine 'default' up with 'virtualbox' provider...
+[default] Importing base box 'precise32'...
+[default] Matching MAC address for NAT networking...
+[default] Setting the name of the VM...
+[default] Clearing any previously set forwarded ports...
+[default] Creating shared folders metadata...
+[default] Clearing any previously set network interfaces...
+[default] Preparing network interfaces based on configuration...
+[default] Forwarding ports...
+[default] -- 22 => 2222 (adapter 1)
+[default] Booting VM...
+[default] Waiting for VM to boot. This can take a few minutes.
+[default] VM booted and ready for use!
+[default] Mounting shared folders...
+[default] -- /vagrant  
+######## seems to have worked
+
+$vagrant ssh
+Welcome to Ubuntu 12.04 LTS (GNU/Linux 3.2.0-23-generic-pae i686)
+
+ * Documentation:  https://help.ubuntu.com/
+Welcome to your Vagrant-built virtual machine.
+Last login: Fri Sep 14 06:22:31 2012 from 10.0.2.2
+vagrant@precise32:~$ 
+
+$ vagrant destroy
+$ vagrant up # precise32 only takes a minute
+$ vagrant ssh
+$ exit
+$ vagrant destroy
+
+I've put a modified version of SBS's Vagrantfile into BUv1 folder
+$ vagrant up
+copy SBS's devel-env folder to BUv1 and change 'SBS' to 'Prietary'
+so now, vagrant up mostly works, but can't see a site.
+$ ssh vagrant@172.31.2.50 fails, complaining about RSA key in /Users/philgarber/.ssh/known_hosts:13
+$ VAGRANT_LOG=debug vagrant up
+
+ - Upgrade to VirtualBox 4.3.12
+ - Upgrade to Vagrant 1.6.2
+
+ same issues
+
+ deleted this from /Users/philgarber/.ssh/known_hosts:13
+ 172.31.2.50 ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAvXkGYDD6HzYBbs+Hm4gC9hmUf6LmCmvJbcDaJiOHmOk+7KZXBLueuNQnWgvEwLd8sy5SelMfy4o/1XOoYoZDVtHYRfCUh1XoLJUDz/j0wmk00xwE7y4fD10cklt+JCKbxW/os3wMw88oHxUtTTE5xh1nINu/Fa4lwFZKrLKJzRxnU/o4ltLCryB4mfRLMgCGgCkccR+PrtZgUJyUos2lVD+OC6Klz9EFbiFJb2JPubNntNyLVwGFgahh17XycGN2vEtBWh84UOGyJAd7rJdtwWVvnux37DdamEkhi+fVIMeHxvwG3fl6nQXl4k7he+jsdYH3tBDFLlSf3dqQzHTslQ==
+/code/BUv1]$ssh vagrant@172.31.2.50
+[vagrant@prietary ~]$ sudo su -  
+[root@prietary ~]#    # now ls shows my app!
+But, I've got ruby 1.9.3 and rails 3.2.13, whereas Preitary Gemfile calls for Ruby 2.0.0 and Rails 3.2.14.  So, update 'setup_prietary.sh' and ./devel-env/el6/setup_prietary.sh
+takes a long time
+Don't run Bundler as root. Bundler can ask for sudo if it is needed, and
+installing your bundle as root will break this application for all non-root
+users on this machine.
+Could not locate Gemfile
+# but I can't get to /vagrant without being super user.  hmmm.
+
+[root@prietary vagrant]# ruby -v
+ruby 1.9.3p547
+[root@prietary vagrant]# rails -v
+Could not find proper version of railties (3.2.14) in any of the sources
+as superuser: [root@prietary vagrant]# bundle install
+
+
+Run `bundle install` to install missing gems.
+ had to remove factory girl gem - then bundle install can finish
+[root@prietary vagrant]# rails s
+/usr/local/rvm/gems/ruby-2.0.0-p481@rails3-mongoid-devise/gems/execjs-2.0.0/lib/execjs/runtimes.rb:51:in `autodetect': Could not find a JavaScript runtime.
+
+# gem install execjs - no help
+add to Gemfile and it works:
+gem 'execjs'
+gem 'therubyracer', :platforms => :ruby
+
+can see landing at http://172.31.2.50:3000/
+$ssh vagrant@172.31.2.5
+cd /vagrant   # now, I can get there without being superuser.
+rake db:seed   # success.  The app works!!!
+Lingering problems: Had to do a couple things in the terminal, including going to superuser to get it to work.  That's OK.  When I have some time, I can shut it down, and bring another VM up and see what else needs to be done.
+
+################ end Vagrant work ################################################
+
+
+

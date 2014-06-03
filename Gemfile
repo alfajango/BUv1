@@ -16,6 +16,10 @@ gem 'mongoid'
 gem 'bootstrap-sass'
 gem "will_paginate_mongoid"
 
+# for javascript runtime on Vagrant VM:
+gem 'execjs'
+gem 'therubyracer', :platforms => :ruby
+
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_19, :mri_20, :rbx]
@@ -23,8 +27,8 @@ group :development do
   gem 'rails_layout'
 end
 group :development, :test do
-  gem 'factory_girl_rails'
-  gem 'rspec-rails'
+  #gem 'factory_girl_rails'  # gave an issue during Vagrant bundle install
+  #gem 'rspec-rails'
 end
 group :test do
   gem 'capybara'
