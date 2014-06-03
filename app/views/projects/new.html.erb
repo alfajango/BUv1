@@ -4,24 +4,29 @@
       <%= render "users/signed_in_sidebar" %>  
       <div class="col-sm-8">
 <!--       <div class="wrapper body">
-  <div class="container"> -->
+  <div class="container"> -->          
         <% provide(:title, 'Create new company project/strategy/effort') %>
-        <h1>Enter a Project, Strategy, or Effort underway at <%=current_user.company.name%></h1>
-        <h4>Giving feedback on company projects and strategies helps company management make decisions with knowledge of what you and your colleagues think. </h4>
+        <div class="well well-sm">
 
-        <div class="row">
-          <div class="span4 offset3">
-            <%= form_for(@project) do |f| %>
-            <%= render '/shared/error_messages', object: f.object %>
-              <h4>Create a new project.  Enter project name:</h4>
-              <%= f.text_field :name %>
-              <br>
-              Your name will be shown as the creator of the project.  All feedback given will be anonymous.<br>
-              <%= f.hidden_field :company_id, :value => current_user.company.id %>
-              <br>
+          <h4><b>Enter a Project, Strategy, or Effort underway at <%=current_user.company.name%></b></h4>
+          Giving feedback on company projects and strategies helps company management make decisions with knowledge of what you and your colleagues think. 
+
+        <!--   <div class="row">
+            <div class="span4 offset3"> -->
+          <%= form_for(@project) do |f| %>
+          <%= render '/shared/error_messages', object: f.object %>
+            <h4>Enter project name:</h4>
+            <%= f.text_field :name %>
+            <br>
+            
+            <%= f.hidden_field :company_id, :value => current_user.company.id %>
+            <div style="float:left;">
               <%= f.submit "Create the project", class: "btn btn-large btn-primary" %>
-            <% end %>
-          </div>
+            </div>
+          <% end %>
+          <br><br>Your name will be shown as the creator of the project.  All feedback given will be anonymous.<br>
+            <!-- </div>
+          </div> -->
         </div>
       </div>
     </div>

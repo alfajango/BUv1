@@ -589,7 +589,10 @@ cd /vagrant   # now, I can get there without being superuser.
 rake db:seed   # success.  The app works!!!
 Lingering problems: Had to do a couple things in the terminal, including going to superuser to get it to work.  That's OK.  When I have some time, I can shut it down, and bring another VM up and see what else needs to be done.
 
+# exit   # (out of sudo su -)
+rvm use 2.0.0 --default
+rails s   # now it works not in sudo also!!!
 ################ end Vagrant work ################################################
 
-
+..
 

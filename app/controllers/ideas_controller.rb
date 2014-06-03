@@ -8,6 +8,7 @@ class IdeasController < ApplicationController
   	#puts "current_user.company.ideas.first.thread.nil?: #{current_user.company.ideas.first.thread.nil?}" 	
   	#puts "current_user.company.ideas.where(:thread!=nil).count: #{current_user.company.ideas.where(:thread!=nil).count}"
   	@root_ideas = current_user.company.ideas.where(thread: nil)
+    #@root_ideas = root_ideas.first
   	#if @companies.where(domain: domain).exists?
   	@idea = Idea.new # need for creating new on index page ??
   end

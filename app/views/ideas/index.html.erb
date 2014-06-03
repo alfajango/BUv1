@@ -12,7 +12,8 @@
           	<%= render @root_ideas %><%# renders _idea.html.erb and passes the idea%>
 
           <br>
-          <% if @root_ideas.size.to_i < 1 %>
+          <%# if @root_ideas.size.to_i < 1 %><%# this errors when there is 1 idea %>
+          <% unless @root_ideas %>
             <div class="well well-sm"> <b> No ideas created for your company yet.  Create one here! </b></div>
           <% end %> 
 

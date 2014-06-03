@@ -33,43 +33,38 @@
       </div>
 
 
-      <%# make this appear when Reply is clicked %>
-        
-        <div id="replyBox" style="display:none;" class="answer_list">
-        <!-- <div id="replyBox"<%= idea.id %> style="display:none;" class="answer_list"> -->
-        <!-- <div id="replyBox"<%= idea.id %>  class="answer_list"> -->
+
+        <a id="mylink<%=idea.id%>" href="#">Reply</a>  
+        <!-- <input type="button" name="answer" value="Reply" onclick="ShowDiv()" /> -->
+        <%# make this appear when Reply is clicked %>
+        <div id="reply_box<%=idea.id%>" style="display:none;" class="answer_list">
           <%= form_for(@idea) do |f| %>  <%# @idea is the new one being created. idea is the parent that's being shown%>
             <%#= render 'shared/error_messages', object: f.object %>
             <%= f.text_field :body, placeholder: "Type a response..." %>
             <%= f.hidden_field :thread_id, :value => idea.id %>
             <br>
-            <%= f.submit "Submit", class: "btn btn-primary" %>
-
+            <div style="float:left;">
+              <%= f.submit "Submit", class: "btn btn-primary" %>
+            </div>  
           <% end %>
+          <br><br>
         </div>
-
-        <!-- <a id="ShowDiv" href"#">Reply</a> -->
-
-        <a id="mylink" href="#">Reply</a>  
-        <!-- <input type="button" name="answer" value="Reply" onclick="ShowDiv()" /> -->
         
         <script type="text/javascript">
-          window.onload = function() {
-            var a = document.getElementById("mylink");
+          window.onload = (function() {
+            var a = document.getElementById("mylink<%=idea.id%>");
             a.onclick = function() {
-              document.getElementById("replyBox").style.display = "block";
+              document.getElementById("reply_box<%=idea.id%>").style.display = "block";
               return false;
             }
-          }
+          })(); // the ( before function and )(); keeps multiple instances from interfering
         </script>
 
-<!-- demo of clicking and live updating the number      <div ng-controller="VoteCtrl">
+  <%#<!-- demo of clicking and live updating the number      <div ng-controller="VoteCtrl">
         <div class="vote" ng-repeat="vote in votes">
           <a href="#" ng-click="like(vote)">{{vote.title}}</a> {{vote.like}}
         </div>
-      </div> -->
-
-    </p>
+      </div> --> %>
 </div>
 
 
