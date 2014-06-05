@@ -592,6 +592,28 @@ Lingering problems: Had to do a couple things in the terminal, including going t
 # exit   # (out of sudo su -)
 rvm use 2.0.0 --default
 rails s   # now it works not in sudo also!!!
+
+Start from scratch:
+in BUv1 folder: $ vagrant up  # takes a long time
+$ vagrant ssh
+[vagrant@prietary ~]$ cd /vagrant
+[vagrant@prietary vagrant]$ ls  # this has the app in it
+[vagrant@prietary vagrant]$ ruby -v  # 2.0.0p481
+[vagrant@prietary vagrant]$ rails s  # command not found!
+[vagrant@prietary vagrant]$ sudo su -
+[root@prietary ~]# cd /vagrant
+[root@prietary vagrant]# bundle install
+[root@prietary vagrant]# rails -v
+Rails 3.2.14
+[root@prietary vagrant]# rake db:seed
+[root@prietary vagrant]# rails s
+renders at 172.31.2.50:3000
+
+when done, vagrant suspend
+
+$gem install rails -v 3.2.14  # takes a long time  - does nothing.  still have rails -v = 4.0.0
+$ bundle install
+
 ################ end Vagrant work ################################################
 
 ..
