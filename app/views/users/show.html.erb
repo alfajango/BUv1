@@ -31,22 +31,54 @@
               <%= render "users/one_button", :fb => @users_alert, :category => "alert" %>
             </ul>
 
-
-
-
-
-
-            
-
             </div>
             <div ng-controller="FbController">
 
               <div class="well well-sm" id="colleaguedDisplay">
                 Give feedback for <b><%= @user.name %></b> anonymously
                 <hr style="border: none; "/>
-                <%= render "/users/button_entry", :user => user %>
+                <%= render "/users/button_entry", :user => user %>  <%# ALL INPUT BUTTONS %>
                 <hr style="border: none; "/>
+
+
+
+
+                <script type="text/javascript">
+                    function GetSelected (selectTag) {
+                        var selIndexes = "";
+
+                        for (var i = 0; i < selectTag.options.length; i++) {
+                            var optionTag = selectTag.options[i];
+                            if (optionTag.selected) {
+                                if (selIndexes.length > 0)
+                                    selIndexes += "<br>";
+                                selIndexes += optionTag.value;
+                            }
+                        }
+
+                        var info = document.getElementById ("queue");
+                        if (selIndexes.length > 0) {
+                            info.innerHTML = selIndexes;
+                        }
+                        else {
+                            info.innerHTML = "There is no selected option";
+                        }
+                    }
+                </script>
+
+                Nice job:
+                <br />
+
+                <br /><b>Feedback queue:</b><br />
+
+                <span id="queue" ></span>
+            <!-- </body> -->
+
+
+
+
               </div>
+
             </div>
 
 
@@ -89,7 +121,9 @@
               <br>
               Your input will be anonymous.  <br>
               <%#= f.hidden_field :subject, :value => current_user.id %>
-              <%= f.submit "Submit", class: "btn btn-large btn-primary" %>
+              <div style="float:left;">
+                <%= f.submit "Submit", class: "btn btn-large btn-primary" %>
+              </div><br \><br \>
             <% end %>
           </div>
 
