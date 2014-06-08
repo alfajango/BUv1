@@ -617,4 +617,5 @@ $ bundle install
 ################ end Vagrant work ################################################
 
 ..
-
+Railscasts 258: Chosen / jquery token inputs / Select2
+First, get Chosen working.  Then Select2.  Good: the item shows up, with a delete button and a submit button which seems to interact with db.  Bad: it shows up in the box rather than below.  No edit capability, I want to create multiple feedback records based on multiple attributes selected.  Not one feedback with multiple attributes.

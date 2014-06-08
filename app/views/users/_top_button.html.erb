@@ -16,14 +16,13 @@
   </li> 
 
 
+  <select multiple="multiple" onchange="GetSelected (this);" size=<%=attribs.count %> >
+    <% attribs.each do |attrib| %>
+      <option value="<%=attrib.attribute_name%>"><%=attrib.attribute_name%></option>
+    <% end %>
+  </select>
 
-    <select multiple="multiple" onchange="GetSelected (this);">
-      <% attribs.each do |attrib| %>
-        <option value="<%=attrib.attribute_name%>"><%=attrib.attribute_name%></option>
-        <!-- <option value="Peach">Peach</option>
-        <option value="Pear">Pear</option> -->
-      <% end %>
-    </select>
+  <%#= collection_select(:feedback, :attribute_id, attribs.all, :attribute_name, :attribute_name) %>
 
 
   </ul>

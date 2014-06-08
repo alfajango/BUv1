@@ -41,8 +41,6 @@
                 <hr style="border: none; "/>
 
 
-
-
                 <script type="text/javascript">
                     function GetSelected (selectTag) {
                         var selIndexes = "";
@@ -63,15 +61,30 @@
                         else {
                             info.innerHTML = "There is no selected option";
                         }
+
+                        //jquery from http://stackoverflow.com/questions/4959770/how-to-pass-a-javascript-variable-into-a-erb-code-in-a-js-view
+                        $(document).ready(function(){
+                          $("#selected_attribs").val(selIndexes);
+                        });
                     }
                 </script>
+
 
                 Nice job:
                 <br />
 
                 <br /><b>Feedback queue:</b><br />
 
-                <span id="queue" ></span>
+                <span id="queue" ></span> <%# js puts selected items here %>
+                <%#= selected_attribs %>
+
+                <%= form_for(@feedback) do |f| %>
+                  <%= render '/shared/error_messages', object: f.object %>
+                  <%#= f.text_field :body %>
+                  <%#= f.text_field :attribute =>Attribute.find_by(attribute_name: "selected_attribs") %>
+                  <%= f.submit "Submit", class: "btn btn-large btn-primary", style:"float:left;" %>
+                <% end %>                
+
             <!-- </body> -->
 
 
