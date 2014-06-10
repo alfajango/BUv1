@@ -83,7 +83,7 @@
                   <%= render '/shared/error_messages', object: f.object %>
                   <%#= f.text_field :body %>
                   <%#= f.text_field :attribute =>Attribute.find_by(attribute_name: "selected_attribs") %>
-                  <%#= f.hidden_field :attribute, value: @att%>
+                  <%= f.hidden_field :attribute, value: @att%>
                   <%= f.submit "Submit", class: "btn btn-large btn-primary", style:"float:left;" %>
                 <% end %>                
 

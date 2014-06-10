@@ -20,11 +20,13 @@
     <% attribs.each do |attrib| %>
       <option value="<%=attrib.attribute_name%>"><%=attrib.attribute_name%></option>
     <% end %>
-  </select>
+  </select> 
 
-  <%#= collection_select(:feedback, :attribute_id, attribs.all, :attribute_name, :attribute_name) %>
+  <%#= collection_select( :feedback, :attribute_id, attribs.all, :attribute_name, :attribute_name,   {}, { multiple: "multiple", onchange: "GetSelected (this);", size: attribs.count } ) %>
+  <%# controller: "feedbacks", action: "load"  %>
+  <%#= collection_select( :feedback, :attribute_id, attribs.all, :attribute_name, :attribute_name,   {}, { size: attribs.count } ) %>
 
 
-  </ul>
+</ul>
 
 

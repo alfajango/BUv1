@@ -15,10 +15,24 @@ class FeedbacksController < ApplicationController
     @feedback = Feedback.new
   	# @relationship = Relationship.new
   end
+  def load
+    #not used right now
+    puts "in FeedbacksController load action"
+    @feedback = Feedback.new
+    @attrib_array = []
+  end
+
 
   def create # this called from users/show.html.erb
     puts "in feedbacks_controller create action "
     puts "params: #{params}"
+
+    ##### Changes for new submit process 6/9/14 ###################
+    #selected_attribs = page['']
+    #@feedback = feedback.new
+    #@att = Attribute.find_by(attribute_name: "the presentation") 
+    #puts "@att: #{@att}"
+    ############ / changes for new submit process 6/9/14 ############
 
     #from_id = User.find(from_id)
 
