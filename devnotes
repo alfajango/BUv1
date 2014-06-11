@@ -649,27 +649,5 @@ saga-5775.herokussl.com  *.prietary.com, prietary.com  2015-06-10 23:59 UTC  Fal
 It seems like Trusted False is a problem.  And I didn't do anything with bundle.pem - not sure what to do with it.  But, www.prietary.com doesn't give any ssl warning
 ###############################################################
 
-About us
-What we believe: At Prietary, our mission is to enable companies to become more succesful using the resources they already have.  We believe there is a wealth of strategic knowledge in the minds of employees at all levels of the organization that goes untapped because of limited communication methods.  Prietary strives to be that missing communication channel - one that can 
-- allow anonymous feedback without negative side effects
-- that enables efficient dissemination of information
-- that enables companies to ensure that the right person is in the right role
-- that shines a light on employees working effectively without their due recognition.
-
-Follow us on Twitter, Like us on Facebook
-Prietary is founded by Phil Garber, LinkedIn, Twitter
-
-
-contact us
-Prietary treasures customer feedback and we read everything we receive.  Please drop us a line and let us know how we're doing and what we can do to deliver the tool that you need.
-
-We're in Durham, North Carolina
-contact@prietary.com
-
-Remove privacy policy & T&C's
-
-How Prietary works
-Prietary is designed to ensure that feedback is anonymous and remains anonymous.  For example, if Milton leaves feedback for Bill about a need to improve communication, Bill can see that he received that piece of feedback, but no one will know who provided the comment.  There are no emails to Milton that indicate what feedback he provided.  Even when Milton is logged in to Prietary, there is not a list of feedback given.  So, even if someone obtains access to Milton's Prietary account, the feedback he provided is still safe.  
-
-Prietary is designed this way to ensure that the feedback given by colleagues is genuine and honest, rather than tainted by the thought of not rocking the boat ///change
+I've got a problem with my staging and production db's on mongohq.  updating the MONGOHQ_URL to production breaks everything.
 

@@ -17,13 +17,13 @@
 
       <%= form_for @newuser, :as => :user, :url => invitation_path(:user), :html => {:method => :post} do |f| %>
         <%= devise_error_messages! %>
-        <p><%= f.label "Name:" %> 
-        <%= f.text_field :name %></p>
-        <p><b><%= f.label "Email:" %></b>
-        <%= f.email_field :email, placeholder: "...@#{current_user.company.domain}" %></p>
+        <%= f.label "Name:" %> 
+        <%= f.text_field :name %>
+        <b><%= f.label "Email:" %></b>
+        <%= f.email_field :email, placeholder: " ...@#{current_user.company.domain}" %>
         <%# following line doesn't do what I need it to TODO: Improve this: %>
         <%= f.hidden_field :company_id, :value => current_user.company.id %>
-        <p><%= f.submit "Add colleague in Prietary", class: "btn btn-primary" %>
+        <%= f.submit "Add colleague in Prietary", class: "btn btn-primary" %>
       <% end %>
       <a  data-toggle="modal" data-target="#myModal">How does Add Colleague work?</a>
       <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="newColleagueExplanation" aria-hidden="true">

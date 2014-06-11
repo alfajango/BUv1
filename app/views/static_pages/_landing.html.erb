@@ -5,13 +5,14 @@
         <div class="row">
           <div class="col-sm-12">
             <h1 class="text-center animated fadeInDown">Prietary is early-warning radar for your company</h1>
-            <h3 class="text-center animated fadeInDown">Sign up with your work email </h3>
+            <h3 class="text-center animated fadeInDown"><p>Sign up with your work email</p>
+            <p> Or try it without signup</p> </h3>
             <div class="text-center actions animated fadeInDown delay2">
               <%= link_to "Sign up", new_user_registration_path, class: "btn btn-success", :html => { :style => "display:inline-block; "} %> <%# was btn btn-color %>
               <%=form_for User.new, :url => user_session_path, :html => { :style => "display:inline-block; "} do |f| %>
                 <%= f.hidden_field :email, value: "pgibbons@in-itech.com" %>
                 <%= f.hidden_field :password, value: "password" %>
-                <%=f.submit "Try Without Sign Up", class: "btn btn-info" %>
+                <%=f.submit "Try", class: "btn btn-info" %>
               <% end %>            
             </div>
             <%= link_to(image_tag("/img/Prietary_screen.png", :alt => "..."), new_user_registration_path) %>
@@ -73,7 +74,7 @@
           <li><b>Projects</b>: what are your company's major intitiatives?  Just enter them in and use Prietary's rating system to let management know what is going well and what needs a change.</li>
           <li><b>Ideas</b>: Everyone has ideas on how to increase revenues or make the company more efficient.  State your idea and feedback from your colleagues will push the best ideas to the top.</li></ul>
         </p>
-        <p class="text-center-xs"><a href="#" class="btn btn-lg btn-default">Find out more</a></p>
+        <p class="text-center-xs"><a href="howitworks.html" class="btn btn-lg btn-default">Find out more</a></p>
       </div>
     </div>
     <!-- // Desctiption -->
@@ -92,7 +93,7 @@
         <ul><li>your name was "Peter Gibbons"</li>
         <li>you work at the company "In-itech"</li> 
         <li>your work email is "pgibbons@in-itech.com"</li></ul>
-        <p>  Go ahead and give your colleagues some feedback, create new projects and ideas.  All data entered into the sandbox will be removed often.  </p>
+        <p>  Go ahead and give your colleagues some feedback, create new projects and ideas.  All data entered into the sandbox will be removed occasionally.  </p>
       </div>
     </div>
   </div>

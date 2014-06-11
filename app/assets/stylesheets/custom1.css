@@ -1058,9 +1058,10 @@ a.carousel-arrow-next {
 	margin-bottom: 100px;
 	padding-top: 50px;
 	padding-bottom: 200px;
-	background: url(../img/glass_stairs.jpg) no-repeat center center;
+	/*background: url(../img/glass_stairs.jpg) no-repeat center center;*/
+	background: url(../img/landing_background.png) no-repeat center center;
 	background-size: cover;
-	color: #000;  /*  PG: landing page big text color  */
+	color: #FFF;  /*  PG: landing page big text color  */
 	border-bottom: 1px solid #eee;
 	overflow: hidden;
 }

@@ -1,0 +1,653 @@
+source /Users/philgarber/.rvm/scripts/rvm
+
+
+Building 8rate from a rails 3.1, mongoid, devise, bootstrap barebones app
+
+Start with code/8ratev1_pre_theme
+
+compare to John's sample_user_auth:
+
+In 8ratev1_pre_theme, add a bunch of html from divshot to application.html.erb
+
+I'm calling it BumptUp now.  I have spider blocker on.  
+
+BU logo is http://i.imgur.com/0Pua12E.png
+
+my git is pretty messed up in this project.  I dont think I had github going on 8ratev1_pre_theme.  then I branched to BUv1.  
+
+So, SWITCH TO BUv1 repo and BUv1 folder on my local drive (code/BUv1).  Branch is main
+
+3/19/14 - come back to this one after a couple months to get Devise and Mongo
+
+To start this project, 
+1 tab: BUv1 $ rails s
+2nd tab: BUv1 $ mongod
+go to localhost:3000
+
+It looks like I can create create a user, but there are no pages other than the landing page
+
+What I need to do:
+- put in one view at a time, keep everything working
+- put in models projects first?
+
+
+$ rails generate controller Attributes  # didn't do no-test-framework
+$ rails generate model Attribute attribute_name:string category:string identifier:integer
+# assuming I don't need to rake db:migrate
+
+$ rails g controller Feedbacks
+    conflict  app/controllers/feedbacks_controller.rb
+Overwrite /Users/philgarber/code/BUv1/app/controllers/feedbacks_controller.rb? (enter "h" for help) [Ynaqdh] n
+$ rails g model Feedback from_id:integer to_id:integer attribute_identifier rating_given:float accounted_for:datetime 
+
+to view my db, open MongoHub.  go to the right table on the left, then hit Query.  Then Run in the window that pops up
+http://stackoverflow.com/questions/7000605/how-to-implement-has-many-through-relationships-with-mongoid-and-mongodb
+
+$ rails g controller Companies
+$ rails g model Company domain:string name:string
+$ rails g controller Projects
+    conflict  app/controllers/projects_controller.rb
+Overwrite /Users/philgarber/code/BUv1/app/controllers/projects_controller.rb? (enter "h" for help) [Ynaqdh] n
+$ rails g model Project name:string company_id:integer
+$ rails g controller ProjectFeedbacks  # forgot to add columns
+$ rails g controller ProjectRatings
+$ rails g model ProjectRating project_id:integer project_attribute_identifier:integer current_rating:float num_fb_received:float 
+$ rails g controller ProjectAttributes
+$ rails g model ProjectAttribute name:string
+
+change a bunch of things to belongs_to or has_many in the models files
+
+change again...
+
+
+  # user.company = co   # this line isn't getting it done #####################
+  co.users << user  # THIS WORKS AND PREVIOUS LINE DOESNT!!!
+  A user belongs to a company, so I guess you have to assign as co.users << user
+
+  cant get ProjectFeedback to work.  Try generating again, slight different name:
+  $ rails g controller Pfeedbacks
+  $ rails g model Pfeedback attrib:string from_id:string rating_given:float accounted_for:datetime  # needed to be DateTime?  this gave accounted_for:time
+
+  it works with pfeedback, but not project_feedback model.  No idea why.  Oh well, move on
+
+  TODO: assign ( & create if needed) companies when users sign up
+
+  framework_and_overrides.css - importing bootstrap here was killing my Mist navbar styling, and some other styling
+
+the view for signin is not in my files, so: $ rails generate devise:views
+now, the RegistrationsController whose create method gets called when I create new user is also not in the files.   
+
+After trying to get create colleagues going (I got as far as rendering the page and it seems to work, yet no new user is created (I bet devise is blocking it).  Then I added a self_create to the model and nothing works anymore).  I stashed this:
+$ git stash
+Saved working directory and index state WIP on build1: 13dd6e7 create projects works
+HEAD is now at 13dd6e7 create projects works
+
+
+Skip to entering sentences:
+- to get Angular working, in application.html.erb, put <html ng-app> and <script> for the angular CDN
+
+$ rails generate model Pattribute name:string category:string identifier:integer category:string
+$ rails generate controller Pattributes
+
+4/23/14  It seems like I've got no .gitignore  
+There is .git/info/exclude, but nothing's listed.  add application.example.yml.  Anything else?  
+
+
+Merge back to master, got merge conflicts.  To solve it, do this (in addition to manually fixing any actual conflicts)
+$ git mergetool  // can do this to pop up a window & see differences
+$ git checkout --ours log/development.log   // --theirs is the other way
+$ git add log/development.log
+$ git commit -m "trying to solve master vs build1 merge issues"
+$ git merge build1
+Already up-to-date.
+
+MAIL #######################
+  first, I have to get application.yml and other things out of my git.  Put a .gitignore in project root folder.
+  $ git rm --cached config/application.example.yml  // not sure I need --cached
+  then, git add, git commit, git push
+  $ rails g mailer user_mailer project_creation
+        create  app/mailers/user_mailer.rb
+        invoke  erb
+        create    app/views/user_mailer
+        create    app/views/user_mailer/project_creation.text.erb
+        invoke  rspec
+        create    spec/mailers/user_mailer_spec.rb
+        create    spec/fixtures/user_mailer/project_creation
+
+    also make views/user_mailer/project_creation.html.erb
+    each email needs a method in user_mailer.rb
+    call the method in projects_controller create action with UserMailer.project_creation(@user, @project).deliver
+
+Trying to get Google Apps going so I can use phil@prietary.com email
+$ heroku domains:add www.prietary.com
+Adding www.prietary.com to polar-badlands-2176... done
+$ heroku domains:add prietary.com
+Adding prietary.com to polar-badlands-2176... done
+
+Follow instuctions on Heroku site for using your own url.  I can't figure out how to create a CNAME record in 1and1 (never use this site again).  So, I created a DNSimple account and moved the nameservers to dnsimple's.
+
+Actually, now that I have DNSimple, I should be able to verify my domain just by creating the CNAME record, rather than pointing a heroku app there and putting in the meta tag. 
+So, I got prietary verified @ Google Apps by adding a TXT record in DNsimple.  Have phil@prietary.com and contact@prietary.com
+ToDo: put a decent site on Heroku, and, using instructions on heroku, set Prietary.com to point there.  Screw it - just go live.  Maybe say its in Alpha  
+
+########## List of emails I want to send #######
+1) sign up - before signing in, user must click on link in email. So, before this is done, redirect to "need to verify include resend link and suggestion to check spam folder" page rather than homepage
+2) account verified email (what you can do, how to create colleagues)
+3) forgot password (link on login page and sign up page)
+4) create project (done)
+5) you receive feedback (once per day, max)
+6) you receive a response to a feedback (1x/day max)
+7) One of your projects receives feedback (1x/day max with link to stop getting notified)
+8) 
+
+
+Working on getting alerts working again.  
+In application.html.erb, need all of this:
+        <% flash.each do |key, value| %>
+          <%= content_tag(:div, value, class: "alert alert-#{key}") %>
+        <% end %>
+        <%= render 'layouts/messages' %>
+
+messages are in config/locales/devise.en.yml
+I am rendering two messages, the first of which is behind the navbar.  I can''t figure out how to get just one to show up, yet have it not covered up.  messes up the spacing as is.  
+
+For date, add this to all my models:
+field :created, type: DateTime, default: -> { Time.now }
+
+########### IDEAS ##################
+
+class Idea < ActiveRecord::Base
+  field :body, type: Text
+  field :created, type: DateTime, default: -> { Time.now }
+  belongs_to :user
+  belongs_to :company
+  belongs_to :thread, :class_name => 'Idea'  # Reference to parent message
+  has_many :replies,  :class_name => 'Idea', :foreign_key => 'thread_id' (?)
+
+  # ? # named_scope :in_reply_to, lambda { |idea| :conditions => {:thread => idea}, :order => 'created_at' }
+  has_many :votes
+end
+
+class User < ActiveRecord::Base
+  has_many :ideas
+  has_many :votes
+end
+
+class Company
+  has_many :ideas
+end
+
+class Vote < ActiveRecord::Base
+  field :value, type: Integer
+  field :created, type: DateTime, default: -> { Time.now }
+  belongs_to :idea
+  belongs_to :user
+
+If you need to capture the message threads, any Message that's a reply can store a reference to the initial message starting the Conversation (aka Thread). For example:
+I need more advanced than this since it's a message board, not just a text message stream':
+
+first_msg   = Idea.new(user => current_user, :body => 'Hello!')
+sally_reply = first_msg.replies.build(:to_user => bob, :from_user => sally, :body => 'hi back')
+bob_reply   = first_msg.replies.build(:to_user => sally, :from_user => bob, :body => 'later')
+
+$ rails g controller Ideas
+$ rails g model Idea body:text created:datetime # becomes time
+$ rails g controller Votes
+$ rails g model Vote value:integer created:datetime  # becomes time
+
+Working on ideas
+in development.rb, set   config.action_mailer.perform_deliveries = false #for now
+This wasn't stopping emails from sending. so I did that in production.rb also ??
+
+working in branch 'may'
+
+got the form on the same line by doing <%= form_for idea.votes.build, :html => { :style => 'display:inline;' } do |f| %>
+to not redirect, do "return false;" in the javascript !!
+
+
+################# JOBS #################################
+$ rails g controller Jobs
+$ rails g model Job created:datetime
+
+Ideas: if you specify a wrong thread during a idea creation, it won't show up on idea page.
+##################################################
+
+Working on alerts layout spacing again.
+custom1.css, in wrapper:  padding-top: 0px; was 91px, which caused extra space below the alert.  
+Fixed it!  probably not the right way, but it looks OK in my browser  
+  - bootstrap.css .alert-top -> comment out
+  - custom1.css (Mist) add back in body -> padding:top 76px
+
+ERROR MESSAGES - they're automatic with .errors.full_messages
+2.0.0p247 :004 > idea=Idea.new(body:"hi")
+ => #<Idea _id: 536c2e9e946cf14bac000002, body: "hi", created: 2014-05-09 01:25:50 UTC, user_id: nil, company_id: nil, thread_id: nil> 
+2.0.0p247 :005 > idea.save
+ => false 
+2.0.0p247 :006 > idea.errors.full_messages
+ => ["Body is too short (minimum is 4 characters)"] 
+
+ config/locales/devise.en.yml also has tons of devise error messages
+ I had to create views/shared folder and put _error_messages.html.erb in it.  then this works:
+             <%= render '/shared/error_messages', object: f.object %>
+
+I was getting red alerts when I should have been getting red.  Put a semi-working kludge in _messages.html.erb
+
+########### Layout tweaks ############
+put less space between lines: line-height in custom.css.scss:
+p {
+  font-size: 1.1em;
+  line-height: 1.0em; /* was 1.7em */
+}
+
+colors: right at the top of custom1.css (Mist): background: #E3E3E3;
+
+####### HEROKU ############################  http://young-harbor-4713.herokuapp.com/
+heroku is not connected: $ git remote -v
+origin  https://github.com/pgarber/BUv1.git (fetch)
+origin  https://github.com/pgarber/BUv1.git (push)
+$ heroku git:remote -a polar-badlands-2176
+Git remote heroku added
+Philips-MacBook-Air:BUv1 philgarber$ git remote -v
+heroku  git@heroku.com:polar-badlands-2176.git (fetch)
+heroku  git@heroku.com:polar-badlands-2176.git (push)
+origin  https://github.com/pgarber/BUv1.git (fetch)
+origin  https://github.com/pgarber/BUv1.git (push)
+r$ git push heroku master
+Fetching repository, done.
+To git@heroku.com:polar-badlands-2176.git
+ ! [rejected]        master -> master (fetch first)
+error: failed to push some refs to 'git@heroku.com:polar-badlands-2176.git'
+hint: Updates were rejected because the remote contains work that you do
+hint: not have locally. This is usually caused by another repository pushing
+hint: to the same ref. You may want to first integrate the remote changes
+hint: (e.g., 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+  ## so, I can't go to polar-badlands because I already pushed there from another repo.
+$ heroku create
+Creating young-harbor-4713... done, stack is cedar
+http://young-harbor-4713.herokuapp.com/ | git@heroku.com:young-harbor-4713.git
+ # now, change my heroku to that app with 
+$ git remote rm heroku
+$ git remote add heroku git@heroku.com:young-harbor-4713.git
+$ git push -u heroku master  # a bunch or work
+Get application error in the browser.  For one thing, I didn't set it up for Mongo / Mongoid
+$ heroku run rails console - sort of checks my app first.
+Got rid of all project_feedbacks files.  Now, when I deploy, I get a landing page with some styling, but not Mist styling.  
+$ rake assets:precompile   # and recommit, send to heroku.  Now, landing page is correctly styled.  
+$ heroku run rake db:seed # failed.  Try adding a couple things, including production section in mongoid.yml
+I should verify my production mode on local machine.  Also, I can try running development mode on heroku with a setting change
+$ heroku run console
+$ Rails.env
+$ rails s -e production  # doesn't run here.  Get this to run, first
+in mongoid.yml, use what I have for development as production also.  Now, the site works locally in production :-)
+on heroku, heroku run rake db:seed still fails though.
+
+$rake secret  # and put the result in config/initializers/secret_token.rb
+$ heroku addons:add mongohq
+Adding mongohq on young-harbor-4713... done, v13 (free)
+Use `heroku addons:docs mongohq` to view documentation.
+created mongohq account, called it prietary_staging
+
+put MONGOHQ_URL in ~/dotfiles/.bash_profile  also try putting it in dotfiles/.bashrc
+export MONGOHQ_URL="mongodb://pgarber:ACTUALPWD@oceanic.mongohq.com:10082/prietary_staging"
+can run it manually, check it with $ echo ${MONGOHQ_URL}
+on monqhq website, add a user with db.addUser('​pgarber','​OFPWD')
+$ rvm --default use 1.9.3   # in window I launch rails server from  # undo with $ rvm use system
+# change Gemfile to ruby 1.9.3
+$ bundle install
+$ rvm use 1.9.3
+
+get my db on MONGOHQ: 
+host: oceanic.mongohq.com  
+server port: 10082    # 27021
+database_name: prietary_staging
+db user:  pgarber ??
+db password: 0f5a24333b2bfb6f496922db6149367e which is of..
+
+#dump my local db to a file:
+$ mongodump -h localhost:27017 -d rails3_mongoid_devise_development -o ~/tmp/mongodump
+ a whole bunch of logs
+
+# put it on mongohq: $ mongorestore -h oceanic.mongohq.com:10082 -d prietary_staging -u pgarber -p ACTUALPWD ~/tmp/mongodump/rails3_mongoid_devise_development 
+ a bunch of logs again
+
+########### Do this every time I push to heroku: ################
+check to make sure production works, locally, which also needs the two lines below.  
+$ mongodump -h localhost:27017 -d rails3_mongoid_devise_development -o ~/tmp/mongodump
+$ mongorestore -h oceanic.mongohq.com:10082 -d prietary_staging -u pgarber -p ACTUALPWD ~/tmp/mongodump/rails3_mongoid_devise_development --drop
+
+for production:
+$ mongorestore -h candidate.20.mongolayer.com:10149 -d prietary_production -u pgarber -p ACTUALPWD ~/tmp/mongodump/rails3_mongoid_devise_development --drop
+
+
+also, remember $ heroku logs -t
+######################################################################
+
+by manually pasting the MONGOHQ_URL , production now works, locally
+still won't run on heroku, though
+
+############# Talk to John: ############# 
+fix .dotfile / dotfiles link
+vagrant!
+see SBS's setup_sbs.sh
+############# ############# ############# 
+
+$ unlink mySymLink
+$ ln -s /path/to/file /path/to/symlink
+$ ln -s dotfiles/.bash_profile .bash_profile   # -f -s is force
+.bash_profile is the main one.  everything else can be called from that.  I think I accidentally deleted my .bashrc.  It was never getting called anyway
+OK,  my .bash stuff finally loads
+
+Back to getting it going on heroku:
+$ heroku config:add MONGOHQ_URL="mongodb://pgarber:ACTUALPWD@oceanic.mongohq.com:10082/prietary_staging"
+now, Heroku works!!
+As a review, I have ruby 1.9.3, data on mongohq, set the MONGOHQ_URL.  But, ruby 2.0.0 works fine on heroku also.
+
+5/16/14
+I've now implemented showing button type feedback on _homepage, myfeedback, and users/show.  I did a couple things that are lazy and should be cleaned up:
+- @users_nicejob 3 different places (home_helper, users_controller, users_helper)
+- I changed users_helper users_for_homepage method to pick 3 users with most recent fb, rather than 3 most recently created users.  But, I couldn't find an elegant way to do that, so I've got many queries, which won't scale at all
+
+So, production had a failure on fb.user that development did not fail on, it seems.  When fixing things in production, you have to restart the server every time you make a change.
+Now, I run fine in production locally, but I can't login or do anything on heroku??
+
+In form_tag: remote: true puts in some javascript, I think.  Do this to submit without redirect!
+<%#= form_for @job, :remote => true do |f| %>
+
+Layout item: it would be better to put <div class="container"> on application.html.erb, rather than each page separately.  The only page I don't want it on is landing.
+
+5/21/14
+Add a bunch of stuff to Feedback model
+- for write-in option, give category and string columns (don't fill these if there is an attribute)
+- for thank | ask | flag | make private: embeds_many thank, ask, flag.  Add visibility:string
+
+$rails g controller Asks 
+$rails g model Ask
+$rails g controller Thanks
+$rails g model Thank
+$rails g controller Flags
+$rails g model Flag
+
+We'll need pflag and iflag also - for projects & ideas/idea replies.  But do that later
+
+$rails g controller Fbvotes
+$rails g model Fbvote
+
+I can't figure out why I don't see any thanks in my mongodb.  Seeding seems to work, and so does the creation on myfeedback page  ???
+
+put tooltips on button in button_entry, but the data-toggle for dropdown messes up the styling.  So, it still works, but it's not pretty.
+
+5/23/14
+Still lots to do, but let's get it up on Heroku.
+Running production locally has problems: can't go to create account page.  Also, the users need confirmation now.  So, get rid of confirmable for now.
+OK, so production now seems to work as well as dev as long as confirmable is turned off.  
+
+I should know about
+- rake db:reseed  # might not need to delete_all on each model I'm seeding
+- rake db:purge  # remove all collections other than system.*
+
+Getting a devise error on heroku.  hmmm.  Tried ruby 1.9.3 again on heroku - no help.
+$ mongo  # gives mongo console.  says MongoDB shell version: 2.4.7
+What's my mongoid version, though?
+to get mogno console: $ mongo oceanic.mongohq.com:10082/prietary_staging -u <user> -p <password>
+then do things like
+> db.users.find()
+ cant' do "mongo" command from heroku run
+
+$ telnet oceanic.mongohq.com 10082   # Escape character is '^]'. means success
+exit
+$ mongo oceanic.mongohq.com:10082/prietary_staging
+> > db.auth("pgarber","OFPWD")
+1  # means success
+Now, can I do the same from heroku?
+$ heroku run telnet oceanic.mongohq.com 10082
+ Escape character is '^]'. means success
+> exit
+$
+
+Set up prietary_production on MongoHQ $18/mo
+on MongoHQ site, db.addUser('pgarber''OFPWD')
+set MONGOHQ_URL on local & heroku to prietary_production
+export MONGOHQ_URL="mongodb://pgarber:ACTUALPWD@candidate.20.mongolayer.com:10149,candidate.21.mongolayer.com:10149/prietary_production"  make sure that's in the window where running rails s -e production !!
+mongorestore the db succesfully
+$ mongo candidate.20.mongolayer.com:10149/prietary_production -u pgarber -p ACTUALPWD
+> db.auth("pgarber","ACTUALPWD")
+> db.isMaster()
+> db.users.find()  # all succesful
+local, production mode works fine
+$ heroku run telnet candidate.20.mongolayer.com 10149  # works OK
+
+$heroku run printenv   # shows that MONGOHQ_URL isn't set correctly!!!
+$ heroku run echo ${MONGOHQ_URL}   # is just echoing what I have set locally, it seems!
+$heroku config:set MONGOHQ_URL="mongodb://pgarber:ACTUALPWD@candidate.20.mongolayer.com:10149,candidate.21.mongolayer.com:10149/prietary_production"
+
+5/28/14: try adding "Create Colleague" again.  This time, use gem devise_invitable
+branch to invitable
+
+What does this mean???:
+Remember to create indexes within the MongoDB database after deploying your changes.
+rake db:mongoid:create_indexes
+
+[philgarber@Philips-MacBook-Air:~/code/BUv1]$rails generate devise_invitable:views
+      invoke  DeviseInvitable::Generators::MailerViewsGenerator
+       exist    app/views/devise/mailer
+      create    app/views/devise/mailer/invitation_instructions.html.erb
+      invoke  form_for
+      create    app/views/devise/invitations 
+      create    app/views/devise/invitations/edit.html.erb
+      create    app/views/devise/invitations/new.html.erb
+[philgarber@Philips-MacBook-Air:~/code/BUv1]$rails generate devise_invitable:views users
+      invoke  DeviseInvitable::Generators::MailerViewsGenerator
+      create    app/views/users/mailer
+      create    app/views/users/mailer/invitation_instructions.html.erb
+      invoke  form_for
+      create    app/views/users/invitations
+      create    app/views/users/invitations/edit.html.erb
+      create    app/views/users/invitations/new.html.erb
+$rails g devise_invitable:install
+      insert  config/initializers/devise.rb
+      create  config/locales/devise_invitable.en.yml
+
+not sure I need:
+[philgarber@Philips-MacBook-Air:~/code/BUv1]$rails generate devise_invitable:views users/invitations
+      invoke  DeviseInvitable::Generators::MailerViewsGenerator
+      create    app/views/users/invitations/mailer
+      create    app/views/users/invitations/mailer/invitation_instructions.html.erb
+      invoke  form_for
+      create    app/views/users/invitations/invitations
+      create    app/views/users/invitations/invitations/edit.html.erb
+      create    app/views/users/invitations/invitations/new.html.erb      
+
+maybe I should have done rails g devise:views users instead of just rails g devise:views 
+See invitable section in devise.rb for settings, including "force a record to be valid.."
+
+Set up the custom create new user in users/invitations/new.html.erb.  It is sending emails.  I need to 
+
+Random todo: put :autofocus => true  on all my form_for's
+
+customize the InvitationsController create action to assign a company and .save!  
+But, needed to disable pwd existence check
+
+Relevant files:
+invitations_controller.rb - where I put custom create stuff.
+views/users/invitations/new.html.erb 
+views/users/invitations/edit.html.erb:
+
+TODO #####################################################
+put requirement for pwd back on
+send emails from ...@prietary.com rather than bumptup@gmail.com
+
+#####################################################
+Fix full width submit buttons: http://www.whatibroke.com/?p=64
+
+Use will_paginate_mongoid gem for pagination.  Needs:
+- .paginate(page: params[:page])  # in the appropriate controller action
+-  WillPaginate.per_page = 25 in application_contoller 
+ (should also be able to put   self.per_page = 10 in the model file, but I haven't gotten that working yet).
+ - or you can use paginate(page: params[:page], per_page: 5 ) in the controller
+ - <%= will_paginate%> in view wherever you want the pagination links
+ - I put apple_pagination in phil.css.scss
+
+################################################################################
+ ##### See if I can run from Vagrant so that a designer can work on layout #########
+ in branch 'vagrant'
+ /temp]$vagrant init hashicorp/precise32
+ /temp]$vagrant up
+Bringing machine 'default' up with 'virtualbox' provider...
+There are errors in the configuration of this machine. Please fix
+the following errors and try again:
+
+vm:
+* The box 'hashicorp/precise32' could not be found.
+$vagrant box add precise32 http://files.vagrantup.com/precise32.box # huge download
+no change
+http://zeroturnaround.com/rebellabs/pragmatic-devops-bootstrapping-vagrant/
+in code/temp/my-env $ vagrant init precise32 http://files.vangrantup.com/precise32.box
+A `Vagrantfile` has been placed in this directory. You are now
+ready to `vagrant up` your first virtual environment! Please read
+the comments in the Vagrantfile as well as documentation on
+`vagrantup.com` for more information on using Vagrant.
+[philgarber@Philips-MacBook-Air:~/code/temp/my-env]$ls
+Vagrantfile
+[philgarber@Philips-MacBook-Air:~/code/temp/my-env]$vagrant up
+Bringing machine 'default' up with 'virtualbox' provider...
+[default] Importing base box 'precise32'...
+[default] Matching MAC address for NAT networking...
+[default] Setting the name of the VM...
+[default] Clearing any previously set forwarded ports...
+[default] Creating shared folders metadata...
+[default] Clearing any previously set network interfaces...
+[default] Preparing network interfaces based on configuration...
+[default] Forwarding ports...
+[default] -- 22 => 2222 (adapter 1)
+[default] Booting VM...
+[default] Waiting for VM to boot. This can take a few minutes.
+[default] VM booted and ready for use!
+[default] Mounting shared folders...
+[default] -- /vagrant  
+######## seems to have worked
+
+$vagrant ssh
+Welcome to Ubuntu 12.04 LTS (GNU/Linux 3.2.0-23-generic-pae i686)
+
+ * Documentation:  https://help.ubuntu.com/
+Welcome to your Vagrant-built virtual machine.
+Last login: Fri Sep 14 06:22:31 2012 from 10.0.2.2
+vagrant@precise32:~$ 
+
+$ vagrant destroy
+$ vagrant up # precise32 only takes a minute
+$ vagrant ssh
+$ exit
+$ vagrant destroy
+
+I've put a modified version of SBS's Vagrantfile into BUv1 folder
+$ vagrant up
+copy SBS's devel-env folder to BUv1 and change 'SBS' to 'Prietary'
+so now, vagrant up mostly works, but can't see a site.
+$ ssh vagrant@172.31.2.50 fails, complaining about RSA key in /Users/philgarber/.ssh/known_hosts:13
+$ VAGRANT_LOG=debug vagrant up
+
+ - Upgrade to VirtualBox 4.3.12
+ - Upgrade to Vagrant 1.6.2
+
+ same issues
+
+ deleted this from /Users/philgarber/.ssh/known_hosts:13
+ 172.31.2.50 ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAvXkGYDD6HzYBbs+Hm4gC9hmUf6LmCmvJbcDaJiOHmOk+7KZXBLueuNQnWgvEwLd8sy5SelMfy4o/1XOoYoZDVtHYRfCUh1XoLJUDz/j0wmk00xwE7y4fD10cklt+JCKbxW/os3wMw88oHxUtTTE5xh1nINu/Fa4lwFZKrLKJzRxnU/o4ltLCryB4mfRLMgCGgCkccR+PrtZgUJyUos2lVD+OC6Klz9EFbiFJb2JPubNntNyLVwGFgahh17XycGN2vEtBWh84UOGyJAd7rJdtwWVvnux37DdamEkhi+fVIMeHxvwG3fl6nQXl4k7he+jsdYH3tBDFLlSf3dqQzHTslQ==
+/code/BUv1]$ssh vagrant@172.31.2.50
+[vagrant@prietary ~]$ sudo su -  
+[root@prietary ~]#    # now ls shows my app!
+But, I've got ruby 1.9.3 and rails 3.2.13, whereas Preitary Gemfile calls for Ruby 2.0.0 and Rails 3.2.14.  So, update 'setup_prietary.sh' and ./devel-env/el6/setup_prietary.sh
+takes a long time
+Don't run Bundler as root. Bundler can ask for sudo if it is needed, and
+installing your bundle as root will break this application for all non-root
+users on this machine.
+Could not locate Gemfile
+# but I can't get to /vagrant without being super user.  hmmm.
+
+[root@prietary vagrant]# ruby -v
+ruby 1.9.3p547
+[root@prietary vagrant]# rails -v
+Could not find proper version of railties (3.2.14) in any of the sources
+as superuser: [root@prietary vagrant]# bundle install
+
+
+Run `bundle install` to install missing gems.
+ had to remove factory girl gem - then bundle install can finish
+[root@prietary vagrant]# rails s
+/usr/local/rvm/gems/ruby-2.0.0-p481@rails3-mongoid-devise/gems/execjs-2.0.0/lib/execjs/runtimes.rb:51:in `autodetect': Could not find a JavaScript runtime.
+
+# gem install execjs - no help
+add to Gemfile and it works:
+gem 'execjs'
+gem 'therubyracer', :platforms => :ruby
+
+can see landing at http://172.31.2.50:3000/
+$ssh vagrant@172.31.2.5
+cd /vagrant   # now, I can get there without being superuser.
+rake db:seed   # success.  The app works!!!
+Lingering problems: Had to do a couple things in the terminal, including going to superuser to get it to work.  That's OK.  When I have some time, I can shut it down, and bring another VM up and see what else needs to be done.
+
+# exit   # (out of sudo su -)
+rvm use 2.0.0 --default
+rails s   # now it works not in sudo also!!!
+
+Start from scratch:
+in BUv1 folder: $ vagrant up  # takes a long time
+$ vagrant ssh
+[vagrant@prietary ~]$ cd /vagrant
+[vagrant@prietary vagrant]$ ls  # this has the app in it
+[vagrant@prietary vagrant]$ ruby -v  # 2.0.0p481
+[vagrant@prietary vagrant]$ rails s  # command not found!
+[vagrant@prietary vagrant]$ sudo su -
+[root@prietary ~]# cd /vagrant
+[root@prietary vagrant]# bundle install
+[root@prietary vagrant]# rails -v
+Rails 3.2.14
+[root@prietary vagrant]# rake db:seed
+[root@prietary vagrant]# rails s
+renders at 172.31.2.50:3000
+
+when done, vagrant suspend
+
+$gem install rails -v 3.2.14  # takes a long time  - does nothing.  still have rails -v = 4.0.0
+$ bundle install
+
+################ end Vagrant work ################################################
+
+..
+######### go live at prietary.com ###############
+in DNSimple, add CNAME record
+Name: www
+Alias for young-harbor-4713.herokuapp.com  - now, www.prietary.com gives a warning page that hacker might be doing something, then it gives me an old page that says BumptUp
+
+Now, instead of cname, try an Alias:
+name [blank (prietary.com)]
+alias for young-harbor-4713.herokuapp.com
+
+Get wildcard SSL cert from dnsimple (glad I have dnsimple!) 
+create server.key, server.crt, bundle.pem  - don't use mac's text editor!! only SumblimeText!
+$ heroku certs:add server.crt server.key --bypass
+Adding SSL Endpoint to young-harbor-4713... done
+young-harbor-4713 now served by saga-5775.herokussl.com
+Certificate details:
+Common Name(s): *.prietary.com
+                prietary.com
+
+Expires At:     2015-06-10 23:59 UTC
+Issuer:         /OU=Domain Control Validated/OU=EssentialSSL Wildcard/CN=*.prietary.com
+Starts At:      2014-06-10 00:00 UTC
+Subject:        /OU=Domain Control Validated/OU=EssentialSSL Wildcard/CN=*.prietary.com
+SSL certificate is self signed.
+
+$heroku certs
+Endpoint                 Common Name(s)                Expires               Trusted
+-----------------------  ----------------------------  --------------------  -------
+saga-5775.herokussl.com  *.prietary.com, prietary.com  2015-06-10 23:59 UTC  False
+
+It seems like Trusted False is a problem.  And I didn't do anything with bundle.pem - not sure what to do with it.  But, www.prietary.com doesn't give any ssl warning
+###############################################################
+
+
+
