@@ -411,7 +411,7 @@ set MONGOHQ_URL on local & heroku to prietary_production
 export MONGOHQ_URL="mongodb://pgarber:ACTUALPWD@candidate.20.mongolayer.com:10149,candidate.21.mongolayer.com:10149/prietary_production"  make sure that's in the window where running rails s -e production !!
 mongorestore the db succesfully
 $ mongo candidate.20.mongolayer.com:10149/prietary_production -u pgarber -p ACTUALPWD
-> db.auth("pgarber","ofSpades")
+> db.auth("pgarber","ACTUALPWD")
 > db.isMaster()
 > db.users.find()  # all succesful
 local, production mode works fine
@@ -419,7 +419,7 @@ $ heroku run telnet candidate.20.mongolayer.com 10149  # works OK
 
 $heroku run printenv   # shows that MONGOHQ_URL isn't set correctly!!!
 $ heroku run echo ${MONGOHQ_URL}   # is just echoing what I have set locally, it seems!
-$heroku config:set MONGOHQ_URL="mongodb://pgarber:ofSpades@candidate.20.mongolayer.com:10149,candidate.21.mongolayer.com:10149/prietary_production"
+$heroku config:set MONGOHQ_URL="mongodb://pgarber:ACTUALPWD@candidate.20.mongolayer.com:10149,candidate.21.mongolayer.com:10149/prietary_production"
 
 5/28/14: try adding "Create Colleague" again.  This time, use gem devise_invitable
 branch to invitable
@@ -617,4 +617,59 @@ $ bundle install
 ################ end Vagrant work ################################################
 
 ..
+######### go live at prietary.com ###############
+in DNSimple, add CNAME record
+Name: www
+Alias for young-harbor-4713.herokuapp.com  - now, www.prietary.com gives a warning page that hacker might be doing something, then it gives me an old page that says BumptUp
+
+Now, instead of cname, try an Alias:
+name [blank (prietary.com)]
+alias for young-harbor-4713.herokuapp.com
+
+Get wildcard SSL cert from dnsimple (glad I have dnsimple!) 
+create server.key, server.crt, bundle.pem  - don't use mac's text editor!! only SumblimeText!
+$ heroku certs:add server.crt server.key --bypass
+Adding SSL Endpoint to young-harbor-4713... done
+young-harbor-4713 now served by saga-5775.herokussl.com
+Certificate details:
+Common Name(s): *.prietary.com
+                prietary.com
+
+Expires At:     2015-06-10 23:59 UTC
+Issuer:         /OU=Domain Control Validated/OU=EssentialSSL Wildcard/CN=*.prietary.com
+Starts At:      2014-06-10 00:00 UTC
+Subject:        /OU=Domain Control Validated/OU=EssentialSSL Wildcard/CN=*.prietary.com
+SSL certificate is self signed.
+
+$heroku certs
+Endpoint                 Common Name(s)                Expires               Trusted
+-----------------------  ----------------------------  --------------------  -------
+saga-5775.herokussl.com  *.prietary.com, prietary.com  2015-06-10 23:59 UTC  False
+
+It seems like Trusted False is a problem.  And I didn't do anything with bundle.pem - not sure what to do with it.  But, www.prietary.com doesn't give any ssl warning
+###############################################################
+
+About us
+What we believe: At Prietary, our mission is to enable companies to become more succesful using the resources they already have.  We believe there is a wealth of strategic knowledge in the minds of employees at all levels of the organization that goes untapped because of limited communication methods.  Prietary strives to be that missing communication channel - one that can 
+- allow anonymous feedback without negative side effects
+- that enables efficient dissemination of information
+- that enables companies to ensure that the right person is in the right role
+- that shines a light on employees working effectively without their due recognition.
+
+Follow us on Twitter, Like us on Facebook
+Prietary is founded by Phil Garber, LinkedIn, Twitter
+
+
+contact us
+Prietary treasures customer feedback and we read everything we receive.  Please drop us a line and let us know how we're doing and what we can do to deliver the tool that you need.
+
+We're in Durham, North Carolina
+contact@prietary.com
+
+Remove privacy policy & T&C's
+
+How Prietary works
+Prietary is designed to ensure that feedback is anonymous and remains anonymous.  For example, if Milton leaves feedback for Bill about a need to improve communication, Bill can see that he received that piece of feedback, but no one will know who provided the comment.  There are no emails to Milton that indicate what feedback he provided.  Even when Milton is logged in to Prietary, there is not a list of feedback given.  So, even if someone obtains access to Milton's Prietary account, the feedback he provided is still safe.  
+
+Prietary is designed this way to ensure that the feedback given by colleagues is genuine and honest, rather than tainted by the thought of not rocking the boat ///change
 

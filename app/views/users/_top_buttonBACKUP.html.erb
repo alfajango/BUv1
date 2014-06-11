@@ -1,0 +1,43 @@
+<ul class="dropdown-menu" role="menu">
+  <% attribs = Attribute.where(category: category) %>
+<!-- text box entry -->
+  <li>
+    <form>
+      <input type="text" name="comment" ng-model="newfb.comment" placeholder="Enter comment here..." />
+      <input type="hidden" ng-model="newfb.id" />
+   	  <input type="button" value="Enter" ng-click="saveFb()" />
+  	</form>
+  </li> 
+
+<!-- buttons -->
+<!--   <li>
+    <form>
+      <input type="text" name="comment" ng-model="newfb.comment" value="type here..." />
+      <input type="hidden" ng-model="newfb.id" />
+   	  <input type="button" value="for your help" ng-click="saveFb()" />
+  	</form>
+  </li>  -->
+
+
+  <!-- <li ng-repeat="attrib in jattribs">  <%# I have 2 things called attribs - fix that %> -->
+
+    <!-- {{attrib.attribute_name}} -->
+  <!-- </li> -->
+    <% attribs.each do | attrib | %>
+
+		<li>
+		  <%# todo: reduce hidden fields and put some in feecbacks_controller create %>
+		  <%=form_for (Feedback.new ) do |f| %> <%# no redirect is done in feedbacks_controller create method %>
+        <%= f.hidden_field :from_id, value: current_user.id %>
+        <%= f.hidden_field :rating_given, value: 1 %>
+        <%= f.hidden_field :created, value: Time.now %>
+        <%= f.hidden_field :user, value: user.id %>
+        <%= f.hidden_field :attribute, value: attrib.id %> 
+        <%= f.submit attrib.attribute_name, class: "btn btn-small btn-default"  %>
+      <% end %>
+
+		</li> 
+	<% end %> 
+  </ul>
+
+
