@@ -30,6 +30,7 @@ Prietary::Application.routes.draw do
   match '/signout', to: 'sessions#destroy',     via: 'delete'
   match '/help',    to: 'static_pages#help',    via: 'get'
   match '/about',   to: 'static_pages#about',   via: 'get'
+  match '/howitworks',   to: 'static_pages#howitworks',   via: 'get'
   match '/contact', to: 'static_pages#contact', via: 'get'
   match '/leaderboard', to: 'static_pages#leaderboard', via: 'get'  
   match '/give_feedback', to: 'feedbacks#give_feedback', via: 'get'
