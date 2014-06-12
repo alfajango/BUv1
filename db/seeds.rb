@@ -7,11 +7,11 @@ seedusers()  # also delete_all companies & projects in here
 require_relative 'seedattributes'
 seedattributes()
 
-require_relative 'seedfeedbacks'
-seedfeedbacks()
-
 require_relative 'seedcompanies'
 seedcompanies()
+
+require_relative 'seedfeedbacks'
+seedfeedbacks()
 
 require_relative 'seedprojects'
 seedprojects()
@@ -31,5 +31,5 @@ seedvotes()
 require_relative 'seedjobs'
 seedjobs()
 
-require_relative 'seedthanks'
+require_relative 'seedthanks'   # needs work!
 seedthanks()

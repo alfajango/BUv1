@@ -1,8 +1,5 @@
 def seedpattributes
 	#--------------- Pattributes ------------------------------
-	# def make_attributes
-	pattrib = Pattribute.all
-	pattrib.delete_all
 
 	# name, category, identifier
 
@@ -40,7 +37,9 @@ def seedpattributes
 		["needs additional team", "needs"]
 	]
 
-
+	pattrib = Pattribute.all
+	pattrib.delete_all
+	
 	pattribute_list.each do | name, category |
 	  Pattribute.create!(  name: name, category: category )
 	end

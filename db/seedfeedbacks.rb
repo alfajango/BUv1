@@ -1,8 +1,24 @@
 def seedfeedbacks
 	#--------------- Feedbacks ------------------------------
-	# def make_feedbacks
+	
+    initech_id = Company.find_by(name:"In-itech").id
+	exampleco_id = Company.find_by(name:"Example").id
+
 	feedback = Feedback.all
-	feedback.delete_all
+	feedback.each do |fb|
+		if fb.user
+			if fb.user.company
+  				if (fb.user.company.id==initech_id or fb.user.company.id==exampleco_id)
+	 			  puts "deleting a fb for #{fb.user.name}"
+				  fb.delete
+				end
+			end
+		else
+		    puts "fb had no user, deleting it"
+		    fb.delete	
+		end
+	end		
+	### feedback.delete_all   # don't do this - it will get rid of real users' feedback!
 
 
 

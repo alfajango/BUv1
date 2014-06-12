@@ -4,6 +4,22 @@ def seedprojects
 	# delete all up top.
 	#proj = Project.all
 	#proj.delete_all
+	# this will cause rake db:seed to fail if there's a project in the db without a company
+	initech_id = Company.find_by(name:"In-itech").id
+	exampleco_id = Company.find_by(name:"Example").id
+	projects = Project.all
+	projects.each do |proj|
+		if proj.company
+  			if (proj.company.id==initech_id or proj.company.id==exampleco_id)
+	 			puts "deleted #{proj.name}"
+				proj.delete
+			end
+		else
+			puts "proj had no company, delete it"
+			proj.delete	
+		end
+	end
+
 	proj = Project.create!(name: "Acquire competitors")
 	company = Company.find_by(name: "Example") 
 	company.projects << proj

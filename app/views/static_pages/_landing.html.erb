@@ -11,7 +11,7 @@
               <%= link_to "Sign up", new_user_registration_path, class: "btn btn-success", :html => { :style => "display:inline-block; "} %> <%# was btn btn-color %>
               <%=form_for User.new, :url => user_session_path, :html => { :style => "display:inline-block; "} do |f| %>
                 <%= f.hidden_field :email, value: "pgibbons@in-itech.com" %>
-                <%= f.hidden_field :password, value: "password" %>
+                <%= f.hidden_field :password, value: "pass8word" %>
                 <%=f.submit "Try", class: "btn btn-info" %>
               <% end %>            
             </div>
@@ -86,7 +86,7 @@
         <h2 class="oswald text-center">Say you're Peter Gibbons and work at In-itech.<br>Give Prietary a try, right here:</h2>
         <%=form_for User.new, :url => user_session_path do |f| %>
           <%= f.hidden_field :email, value: "pgibbons@in-itech.com"%>
-          <%= f.hidden_field :password, value: "password"%>
+          <%= f.hidden_field :password, value: "pass8word"%>
           <%=f.submit "Prietary Sandbox", class: "btn btn-large btn-primary" %>
         <% end %>
         <p>When you go into the sandbox, you can interact with Prietary as if:</p> 

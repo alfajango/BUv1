@@ -1,7 +1,6 @@
 	#--------------- Attributes ------------------------------
 def seedattributes
-	attrib = Attribute.all
-	attrib.delete_all
+
 
 	# attributge_name, category, identifier
 	sentence_list = [
@@ -62,7 +61,11 @@ def seedattributes
 		[ "difficult to work for", "alert"]
 
 	]	
+	# to add additional attributes without wiping out these, and user generated, add a 2nd sentence_list
 
+	attrib = Attribute.all
+	# to re-seed, uncomment these the following several lines.  All existing attributes will be wiped out
+	attrib.delete_all
 	sentence_list.each do |attribute_name, category, identifier|
 	  Attribute.create!(  attribute_name: attribute_name, 
 	                 category: category)

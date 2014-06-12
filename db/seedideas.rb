@@ -1,9 +1,23 @@
 def seedideas
 
 	#--------------- Ideas ------------------------------
+    initech_id = Company.find_by(name:"In-itech").id
+	exampleco_id = Company.find_by(name:"Example").id
 
 	ideas = Idea.all
-	ideas.delete_all
+	ideas.each do |idea|
+		if idea.company
+			if (idea.company.id==initech_id or idea.company.id==exampleco_id)
+ 			  puts "deleting idea #{idea.name}"
+			  idea.delete
+			end
+		else 
+			puts "idea had no company, deleting it"
+			idea.delete
+		end
+	end	
+	#### ideas = Idea.all
+	#### ideas.delete_all
 
 	idea = Idea.create!(body: "Sell non-core assets such as real estate", created: Time.now)
 	co = Company.find_by(name: "Example")

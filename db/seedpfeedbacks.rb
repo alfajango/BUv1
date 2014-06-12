@@ -1,8 +1,24 @@
 def seedpfeedbacks
 	#--------------- Pfeedbacks ------------------------------
-	pfb = Pfeedback.all
-	#puts "pfb.size: #{pfb.size}"
-	pfb.delete_all
+    initech_id = Company.find_by(name:"In-itech").id
+	exampleco_id = Company.find_by(name:"Example").id
+
+	pfeedback = Pfeedback.all
+	pfeedback.each do |pfb|
+		if pfb.project
+			if pfb.project.company
+  				if (pfb.project.company.id==initech_id or pfb.project.company.id==exampleco_id)
+	 			  puts "deleting a pfb for #{pfb.project.name}"
+				  pfb.delete
+				end
+			end
+		else
+			puts "pfb had no project, deleting it"
+			pfb.delete	
+		end
+	end	
+	# ###pfb = Pfeedback.all
+	# ###pfb.delete_all
 
 	pfeedback_list = [ # from_email, pattribute object, to_project object
 		["tcarawell@example.com", Pattribute.find_by(name: "is important for the company"), Project.find_by(name: "Acquire competitors") ],

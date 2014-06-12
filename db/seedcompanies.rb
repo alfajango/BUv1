@@ -3,9 +3,21 @@ def seedcompanies
 	# # shouldn't need this since companies should be set up when user created.  But, they're not being createed  
 
 	# companies = Company.all
-	# companies.delete_all
+	#### companies.delete_all
+
+	companies = Company.all
+	companies.each do |co|
+		if co.name
+			if (co.name=="In-itech" or co.name=="Example" or co.name=="Prietary")
+				puts "deleting #{co.name}"
+				co.delete
+			end
+		end
+	end
+
+	### companies.delete_all	
 	Company.create!(domain: "example.com", name: "Example" )
-	Company.create!(domain: "acme.com", name: "Acme" )
+	#Company.create!(domain: "acme.com", name: "Acme" )
 	Company.create!(domain: "prietary.com", name: "Prietary" )
 	Company.create!(domain: "in-itech.com", name: "In-itech" )
 	#puts "Company.first.name: #{Company.first.name}"

@@ -1,7 +1,23 @@
 def seedjobs
 	#--------------- Jobs ------------------------------
 	jobs = Job.all
-	jobs.delete_all
+	####jobs.delete_all
+    initech_id = Company.find_by(name:"In-itech").id
+	exampleco_id = Company.find_by(name:"Example").id
+
+	jobs.each do |job|
+		if job.author
+			if job.author.company
+				if (job.author.company.id==initech_id or job.author.company.id==exampleco_id)
+	 			  puts "deleting job from #{job.author.name}"
+				  job.delete
+				end
+			end
+		else #job had no author, delete it
+			puts "job had no author, deleting it"
+			job.delete
+		end
+	end		
 
 	author= User.find_by(name: "Beth Hillman")
 	subject=User.find_by(name: "Trevor Carawell")
