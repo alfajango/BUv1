@@ -33,43 +33,33 @@ A developer environment allows you to run the Prietary application in a Virtual 
 The environment consists of:
  
   - CentOS 6.4
-  - Ruby 2.0.0
+  - Ruby 1.9.3
   - Rails 3.2.14
   - MongoDB Server 2.4.5
 
 Further, the developer environment is configured to use NFS to share this git checkout directory with your host machine and the guest virtual machine.  Changes made in your IDE to the host git checkout will be reflected automatically in the guest virtual machine.
 
 
-Prerequisites
-----------
-
- * Install VirtualBox 
-  * https://www.virtualbox.org/wiki/Downloads 
- * Install Vagrant 
-  * http://downloads.vagrantup.com/tags/v1.2.6 
-
- Worth reading: 
-  * http://docs.vagrantup.com/v2/getting-started/index.html
-
-
-Steps to bring up the Virtual Machine (VM)
+Steps to bring up the Virtual Machine (VM) and start Rails
 -----------
+1) Download Vagrant from www.vagrantup.com ( I have version 1.6.2 but newest should be fine)
+2) download VirtualBox from Oracle: https://www.virtualbox.org/wiki/Downloads (I have version 4.3.12 but newest should be fine)
+3) clone the repo to your local machine: https://github.com/pgarber/BUv1
 
- 1. Ensure that VirtualBox is running 
- 2. Clone the Prietary source code (https://github.com/pgarber/BUv1)
- 3. vagrant up
-  * Allow ~15 minutes or so for software to be installed.
- 4. Visit http://172.31.2.50:3000 from your host machine
-  * Note: “rails s” is running in a ‘screen’ session in the VM
-   
+4) go to BUv1 folder (contains lots of folders & files: app/, config/, devel-env/, Vagrantfile, etc. do 
+5) $ vagrant up
+   it installs for 20 or 30 minutes
+6) $ vagrant ssh
+7) [vagrant@prietary ~]$ cd /vagrant     # /vagrant is the folder that is shared between your local machine and the VirtualBox
+8) [vagrant@prietary vagrant]$ ls     # verify that app/, config/, devel-env/, etc is there.  
+9) [vagrant@prietary vagrant]$ sudo su -   # have to run as superuser
+10) [root@prietary ~]# cd /vagrant
+11) [root@prietary vagrant]# bundle install     # installs ruby gems for 10 minutes or so
+12) [root@prietary vagrant]# rails -v     # get Rails 3.2.14 - shows that rails is installed
+13) [root@prietary vagrant]# rake db:seed    
+14) [root@prietary vagrant]# rails server   # this starts the Ruby on Rails server
 
-SSH into the Virtual Machine
------------
- 1. ssh vagrant@172.31.2.50
-   * Username: 'vagrant'
-   * Password: 'vagrant'
- 2. To access the running 'rails s' console from screen
-   * "sudo screen -r rails" 
+go to browser on same machine.  Application should render at http://172.31.2.50:3000
 
 
 Halt/Shutdown the VM

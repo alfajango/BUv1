@@ -37,9 +37,8 @@ def seedprojects
 	user.projects << proj
 
 	#Acme & Prietary projects don't have creators yet
-	proj = Project.create!(name: "Refresh website")
-	company = Company.find_by(name: "Acme")
-	company.projects << proj  # Acme will also refresh their website
+#	proj = Project.create!(name: "Refresh website")
+
 	proj = Project.create!(name: "acquire ExxonMobil")
 	company.projects << proj
 

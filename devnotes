@@ -611,6 +611,7 @@ renders at 172.31.2.50:3000
 
 when done, vagrant suspend
 
+go local again: 
 $gem install rails -v 3.2.14  # takes a long time  - does nothing.  still have rails -v = 4.0.0
 $ bundle install
 
