@@ -65,11 +65,11 @@ go to browser on same machine.  Application should render at http://172.31.2.50:
 Halt/Shutdown the VM
 -----------
 
- A running VM consumes resources on your machine.  When you are finished with the VM you have 2 choices.   
- * Suspend and it can quickly be brought back up with $ vagrant up
-  * 'vagrant suspend'
- * Halt it, allowing it to be resumed later
-  * 'vagrant halt'
- * Destroy it and it’s deleted
-  * 'vagrant destroy'
+ A running VM consumes resources on your machine.  When you are finished with the VM you have 3 choices.   
+ $ 'vagrant suspend' * Suspend and it can quickly be brought back up with $ vagrant up
+
+ $ 'vagrant halt' * Halt it, allowing it to be resumed later
+  
+ $ 'vagrant destroy' * Destroy it and it’s deleted
+  
 

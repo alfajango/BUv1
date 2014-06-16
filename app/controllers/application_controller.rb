@@ -8,6 +8,11 @@ class ApplicationController < ActionController::Base
   	@newuser = User.new
 
   end
+ 
+ ## add per SO to get 404 error?
+  def not_found
+    raise ActionController::RoutingError.new('Not Found')
+  end  
 
   # pagination global - this is what works  Make sure I put <%= will paginate %> everywhere that I do
   #  .paginate(page: params[:page])   in the controller
