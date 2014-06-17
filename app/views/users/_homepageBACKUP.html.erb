@@ -1,0 +1,80 @@
+<div class="wrapper body"> <!-- or body-inverse -->
+  <div class="container">
+    <div class="row">
+      <%= render "users/signed_in_sidebar" %>  
+      
+      <div class="col-md-8">
+
+        <h4><%= link_to "Projects", projects_path %></h4>
+        <% projects_for_homepage() %> <%# call a function in projects_helper that sets a list of project id's to show ratings graphs for on the homepage in @show_projects %>
+        <% @show_projects.each do |project| %>    
+          <% set_pfbs(project) %>
+          <div class="well well-sm">
+            <p><b><%= link_to(project.name, project) %></b></p>
+            <% if @projects_positive %>
+              <% @projects_positive.each do |pfb| %>
+                <%= render "projects/feedback_item", :comment => pfb.pattribute.name, :category => "positive", :pfeedback => pfb  %>  <%#  :pfeedback would be more correct %>
+              <% end %>
+            <% end %>
+            <% if @projects_needs %>  
+              <% @projects_needs.each do |pfb| %>
+                <%= render "projects/feedback_item", :comment => pfb.pattribute.name, :category => "needs", :pfeedback => pfb  %>
+              <% end %>
+            <% end %>
+            <% if @projects_negative %>  
+              <% @projects_negative.each do |pfb| %>
+                <%= render "projects/feedback_item", :comment => pfb.pattribute.name, :category => "negative", :pfeedback => pfb  %>
+              <% end %> 
+            <% end %>  
+          </div>
+        <% end %>
+
+        <% if @show_projects.size.to_i < 1 %>
+          <div class="well well-sm"> <b> No projects with ratings yet. Give input to your <%= link_to "Projects", projects_path %> </b>
+          </div>
+        <% else %> <%# there were some projects shown %>  
+          <div class="alignright"><%= link_to "more projects", projects_path %></div>
+          <br>
+        <% end %>        
+
+        <h4><%= link_to "Colleagues", users_path %></h4>
+        <% users_for_homepage() %> <%# call a function in users_helper that sets a list of users to show ratings for on the homepage in @show_users %>    
+        <%#= @show_users.inspect %> 
+        <% @show_users.each do |user| %> 
+          <% set_fbs(user) %>
+          <div class="well well-sm"> 
+            <p><b><%= link_to(user.name, user) %></b> | <%=user.email %></p>
+            <% if @users_nicejob %> 
+              <% @users_nicejob.each do |fb| %>
+                <%= render "users/feedback_item", :comment => fb.attribute.attribute_name, :category => "nicejob", :feedback => fb   %>
+              <% end %>
+            <% end %>
+            <% if @users_greatat %>
+              <% @users_greatat.each do |fb| %>
+                <%= render "users/feedback_item", :comment => fb.attribute.attribute_name, :category => "greatat", :feedback => fb   %>
+              <% end %>
+            <% end %>
+            <% if @users_thanks %>
+              <% @users_thanks.each do |fb| %>
+                <%= render "users/feedback_item", :comment => fb.attribute.attribute_name, :category => "thanks", :feedback => fb   %>
+              <% end %>
+            <% end %>     
+          </div>
+        <% end %>
+
+
+
+        <% if @show_users.size.to_i < 1 %>
+          <div class="well well-sm"> <b> No colleagues with feedback yet. Give input to your <%= link_to "Colleagues", users_path %> </b>
+          </div>
+        <% else %> <%# there were some projects shown %>  
+          <div class="alignright"><%= link_to "more colleagues", users_path %></div>
+          <br>
+        <% end %> 
+        <%= render "home/front_page_ideas" %>
+      </div>
+    </div>
+    <hr>
+
+  </div>
+</div> 

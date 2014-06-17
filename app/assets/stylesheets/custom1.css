@@ -12,7 +12,7 @@ body {
 	font-family: Arial, Helvetica, sans-serif;
 	margin: 0;
 	padding: 0;
-	padding-top: 76px;  /* this is not in the original Mist, but I need it to compensate for something else */
+	/*padding-top: 76px;*/  /* this is not in the original Mist, but I need it to compensate for something else */
 	background: #E3E3E3; /* #F5F5F5; */   /* gray background */
 }
 .bodybkgndwhite {  /*keep landing page background white */
