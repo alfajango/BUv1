@@ -191,9 +191,9 @@ body {
   margin-top: 15.5px;
   margin-bottom: 15.5px;
 }
-.navbar-brand {
+/*.navbar-brand {    PG remove when adding Anish's layout
   padding: 22.5px 15px;
-}
+}*/
 .navbar-btn {
   margin-top: 15.5px;
   margin-bottom: 15.5px;

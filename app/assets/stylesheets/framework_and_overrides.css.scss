@@ -8,9 +8,9 @@ img {
   margin: 0 auto;
   }
 // override for the 'Home' navigation link
-//.navbar-brand {
-//  font-size: inherit;
-//  }
+/*.navbar-brand {
+  font-size: inherit;
+  }*/
 
 // THESE ARE EXAMPLES YOU CAN MODIFY
 // create your own classes
@@ -40,7 +40,8 @@ main {
   width: 100%;
   margin-top: 51px; // accommodate the navbar
   }
-section {
+/*section {
   @extend .row;
   margin-top: 20px;
   }
+*/
