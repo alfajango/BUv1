@@ -1,18 +1,12 @@
 <%# THIS IS PROJECTS/_FEEDBACK_ITEM  %>
-
 <% btnclass, text = set_project_btn_type(category) %>
-<div class="dashboard_content_inner content_color_change_2">
-  <div class="content_inner_color_2">
-  </div>
-  <div class="<%= btnclass %>">                              
-    <%= text %>    <%# positive, needs, or negative %>                         
-  </div>
-  <div class="content_comment">
-    <span style="float: left; min-width: 100%;"><%= comment %></span>
-    <div class="color_duration_2">
-      <%= "#{time_ago_in_words(pfeedback.created)}"%>
-    </div>
-    <div class="comment_flag">
+<table>
+  <tr>
+    <th rowspan="2"><button type="button" class="<%= btnclass %>" ><%= text %> </span></button></th>
+    <th><%= comment %><small>&nbsp&nbsp&nbsp&nbsp<%= "#{time_ago_in_words(pfeedback.created)} ago"%></small></th>
+  </tr>
+  <tr>
+    <td>
       <% proj_num_fbvotes(pfeedback) %>
       <div style="display:inline;">
         <%= @pfeedback_upvotes %>
@@ -38,9 +32,11 @@
           <% end %>
         <% end %>    
 
-         <!-- |  flag  -->    
+         |  flag     
       </div>
-    </div>
-  </div>
-</div>
+    </td>
+  </tr>
+</table>
+<!-- <hr style="border: none; "/> -->
+<!-- <hr> -->
 
