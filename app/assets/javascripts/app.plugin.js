@@ -2,22 +2,23 @@
 
   $(function(){
  	
+ 	// PG comment out to get dropdowns working again
 	// sparkline
-	var sr, sparkline = function($re){
-		$(".sparkline").each(function(){
-			var $data = $(this).data();
-			if($re && !$data.resize) return;
-			($data.type == 'pie') && $data.sliceColors && ($data.sliceColors = eval($data.sliceColors));
-			($data.type == 'bar') && $data.stackedBarColor && ($data.stackedBarColor = eval($data.stackedBarColor));
-			$data.valueSpots = {'0:': $data.spotColor};
-			$(this).sparkline('html', $data);
-		});
-	};
-	$(window).resize(function(e) {
-		clearTimeout(sr);
-		sr = setTimeout(function(){sparkline(true)}, 500);
-	});
-	sparkline(false);
+	// var sr, sparkline = function($re){
+	// 	$(".sparkline").each(function(){
+	// 		var $data = $(this).data();
+	// 		if($re && !$data.resize) return;
+	// 		($data.type == 'pie') && $data.sliceColors && ($data.sliceColors = eval($data.sliceColors));
+	// 		($data.type == 'bar') && $data.stackedBarColor && ($data.stackedBarColor = eval($data.stackedBarColor));
+	// 		$data.valueSpots = {'0:': $data.spotColor};
+	// 		$(this).sparkline('html', $data);
+	// 	});
+	// };
+	// $(window).resize(function(e) {
+	// 	clearTimeout(sr);
+	// 	sr = setTimeout(function(){sparkline(true)}, 500);
+	// });
+	// sparkline(false);
 
 
 	// easypie

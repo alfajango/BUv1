@@ -1,9 +1,11 @@
+
 <aside class="bg-black aside-md hidden-print" id="nav">
   <section class="vbox">
     <section class="w-f scrollable">
       <div class="slim-scroll" data-height="auto" data-disable-fade-out="true" data-distance="0" data-size="10px" data-color="#333333">
         <div class="clearfix wrapper dk nav-user hidden-xs">
-          <div class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <span class="thumb avatar pull-left m-r"> <img src="img/a0.jpg"> <i class="on md b-black"></i> </span> <span class="hidden-nav-xs clear"> <span class="block m-t-xs"> <strong class="font-bold text-lt">Peter Gibbons</strong> <b class="caret"></b> </span> <span class="text-muted text-xs block">Director</span> <span class="text-lt block">pgibbons@in-itech.com</span></span> </a>
+          <p></p>
+          <div class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <span class="thumb avatar pull-left m-r"> <img src="img/a0.jpg"> <i class="on md b-black"></i> </span> <span class="hidden-nav-xs clear"> <span class="block m-t-xs"> <strong class="font-bold text-lt"><%= current_user.name %></strong> <b class="caret"></b> </span> <span class="text-muted text-xs block"><!-- Engineer --></span> <span class="text-lt block"><%= current_user.email %></span></span> </a>
             <ul class="dropdown-menu animated fadeInRight m-t-xs">
               <span class="arrow top hidden-nav-xs"></span>
               <li> <a href="#">Settings</a> </li>
@@ -26,7 +28,7 @@
               </div>
           </div>
           <ul class="nav nav-main" data-ride="collapse">
-            <li class="active"> <a href="#" class="auto"> <i class="i i-statistics icon"> </i> <span class="font-bold">Home</span> </a> </li>
+            <li class="active"> <a href="#" class="auto"> <i class="i i-statistics icon"> </i> <span class="font-bold">Dashboard</span> </a> </li>
             <li > <a href="#" class="auto"> <span class="pull-right text-muted"> <i class="i i-circle-sm-o text"></i> <i class="i i-circle-sm text-active"></i> </span> <b class="badge bg-danger pull-right">4</b> <i class="i i-stack icon"> </i> <span class="font-bold">Collegues</span> </a>
               
             </li>
@@ -39,26 +41,24 @@
             
           </ul>
           <div class="line dk hidden-nav-xs"></div>
-          <div class="text-muted text-xs hidden-nav-xs padder m-t-sm m-b-sm">Colleague</div>
+          <div class="text-muted text-xs hidden-nav-xs padder m-t-sm m-b-sm">Colleagues</div>
           <ul class="nav">
-            <li> <a href="#"> <i class="i i-circle-sm text-info-dk"></i> <span>Bill Lumbergh</span> </a> </li>
-            <li> <a href="#"> <i class="i i-circle-sm text-success-dk"></i> <span>Samir Nagheenanjar</span> </a> </li>
-            <li> <a href="#"> <i class="i i-circle-sm text-danger-dk"></i> <span>Michael Bolton </span> </a> </li>
-            <li> <a href="#"> <i class="i i-circle-sm text-info-dk"></i> <span>Milton Waddams</span> </a> </li>
+          <% @show_users.each do |usr| %>
+            <li> <%= link_to raw("<i class='i i-circle-sm text-info-dk'></i> #{usr.name}"), usr %> </li>
+          <% end %>  
           </ul>
-          <div class="text-muted text-xs hidden-nav-xs padder m-t-sm m-b-sm">Project</div>
+          <div class="text-muted text-xs hidden-nav-xs padder m-t-sm m-b-sm">Projects</div>
           <ul class="nav">
-            <li> <a href="#"> <i class="i i-circle-sm text-info-dk"></i> <span>Office Supply cost redu...</span> </a> </li>
-            <li> <a href="#"> <i class="i i-circle-sm text-success-dk"></i> <span>Think: Is this good for...</span> </a> </li>
-            <li> <a href="#"> <i class="i i-circle-sm text-danger-dk"></i> <span>Make our customers happy </span> </a> </li>
-            <li> <a href="#"> <i class="i i-circle-sm text-info-dk"></i> <span>Keep employees motivated ...</span> </a> </li>
+          <% @show_projects.each do |proj| %>
+            <li> <%= link_to raw("<i class='i i-circle-sm text-info-dk'></i> #{proj.name}"), proj %> </li>
+          <% end %>
           </ul>
           
           <div class="text-muted text-xs hidden-nav-xs padder m-t-sm m-b-sm">Ideas</div>
           <ul class="nav">
-            <li> <a href="#"> <i class="i i-circle-sm text-info-dk"></i> <span>Bring in consultants</span> </a> </li>
-            <li> <a href="#"> <i class="i i-circle-sm text-success-dk"></i> <span>More clarity in the ...</span> </a> </li>
-            <li> <a href="#"> <i class="i i-circle-sm text-info-dk"></i> <span>The previous TPS Report ...</span> </a> </li>
+          <% @show_ideas.each do |idea| %>
+            <li> <%= link_to raw("<i class='i i-circle-sm text-info-dk'></i> #{idea.body}"), idea %> </li>
+          <% end %>
           </ul>
         </nav>
         <!-- / nav -->

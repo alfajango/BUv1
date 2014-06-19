@@ -12,6 +12,9 @@
 <!--[if lt IE 9]> <script src="js/ie/html5shiv.js"></script> <script src="js/ie/respond.min.js"></script> <script src="js/ie/excanvas.js"></script> <![endif]-->
 <!-- </head>
 <body class=""> -->
+<% users_for_homepage() %>
+<% projects_for_homepage() %>
+<% ideas_for_homepage() %>
 <section class="vbox">
   <%# header was here %>
   <section>
@@ -42,7 +45,7 @@
                               <p><%= link_to "Colleagues", users_path %></p>                         
                         </div>                     
                       </div>
-                      <% users_for_homepage() %> <%# call a function in users_helper that sets a list of users to show ratings for on the homepage in @show_users %>    
+                      <%# users_for_homepage() %> <%# PUT ABOVE SIDEBAR CALL - call a function in users_helper that sets a list of users to show ratings for on the homepage in @show_users %>    
                       <%#= @show_users.inspect %> 
                       <% @show_users.each do |user| %> 
                         <% set_fbs(user) %>
@@ -82,7 +85,7 @@
                   </div>
                 </div>                    
 
-                <% projects_for_homepage() %> <%# call a function in projects_helper that sets a list of project id's to show ratings graphs for on the homepage in @show_projects %>
+                <%# projects_for_homepage() %> <%# PUT ABOVE SIDEBAR CALL -call a function in projects_helper that sets a list of project id's to show ratings graphs for on the homepage in @show_projects %>
                 <% @show_projects.each do |project| %>    
                   <% set_pfbs(project) %>
                   <div class="dashboard_content "> <%# start of one project box %>
