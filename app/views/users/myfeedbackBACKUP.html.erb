@@ -1,0 +1,69 @@
+<%#= javascript_include_tag "//www.google.com/jsapi", "chartkick" %> <%# need this on any page that has a chart %>
+
+
+<%# provide(:title, @user.name) # why did this not get @user.  When this code was in show.html.erb, it had @user ? %> 
+<%# maybe OK that I put current_user every palce that @user was - to start, we only want to show this for current_user.  Down the road, once your boss has access, that will change %>
+<% provide(:title, current_user.name) %>
+
+<div class="wrapper body">
+  <div class="container">
+    <div class="row">
+    <!-- this is the sidebar.  Remember to put the co. strategy ratings back in.  -->
+      <%= render "users/signed_in_sidebar" %>        
+      <div class="col-md-8">
+        <%# detailed_feedback() %> <%# function in users_helper that sets all current_user's feedback to @myfb %>        
+        <div class="well well-sm">
+
+          <% user = current_user %><%##User.find_by(id: params[:id]) %> 
+
+          <p><b><%= user.name %></b> | <%=user.email %></p>
+          <ul>
+          
+            <% @users_nicejob.each do |fb| %>
+              <%= render "users/feedback_item", :comment => fb.attribute.attribute_name, :category => "nicejob", :feedback => fb %>
+            <% end %>
+            <% @users_greatat.each do |fb| %>
+              <%= render "users/feedback_item", :comment => fb.attribute.attribute_name, :category => "greatat", :feedback => fb %>
+            <% end %>
+            <% @users_thanks.each do |fb| %>
+              <%= render "users/feedback_item", :comment => fb.attribute.attribute_name, :category => "thanks", :feedback => fb %>
+            <% end %>
+            <% @users_workon.each do |fb| %>
+              <%= render "users/feedback_item", :comment => fb.attribute.attribute_name, :category => "workon", :feedback => fb %>
+            <% end %>
+            <% @users_alert.each do |fb| %>
+              <%= render "users/feedback_item", :comment => fb.attribute.attribute_name, :category => "alert", :feedback => fb %>
+            <% end %>     
+          </ul>
+
+        </div>   
+
+
+        <% if @users_jobs || @users_for_this_job %>
+          <div class="well well-sm"> 
+            <% if @users_jobs %>
+              <p><b><%=current_user.company.name %></b> employees have said that: </p>
+                <ul>
+                <% @users_jobs.reverse_each do |job| %>
+                  <li><b><%=user.name%></b> would do well in a role like <b><%=job.job_holder.name %></b> has now</li>
+                <% end %>
+              </ul>
+            <% end %>
+            <% if @users_for_this_job %>
+              <ul>
+                <% @users_for_this_job.reverse_each do |job| %>
+                  <li><b><%=job.subject.name %></b> would do well in a role like <b><%=user.name%></b> has now</li>
+                <% end %>
+              </ul>
+            <% end %>
+          </div>
+        <% else %>
+          <div class="well well-sm"> 
+            No job recommendations for <b> <%=user.name%></b> yet
+          </div>
+        <% end %>
+        
+      </div>
+    </div>    
+  </div>
+</div>  
