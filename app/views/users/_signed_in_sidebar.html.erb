@@ -30,15 +30,16 @@
               </div>
           </div>
           <ul class="nav nav-main" data-ride="collapse">
-            <li class="active"> <a href="#" class="auto"> <i class="i i-statistics icon"> </i> <span class="font-bold">Dashboard</span> </a> </li>
-            <li > <a href="#" class="auto"> <span class="pull-right text-muted"> <i class="i i-circle-sm-o text"></i> <i class="i i-circle-sm text-active"></i> </span> <b class="badge bg-danger pull-right">4</b> <i class="i i-stack icon"> </i> <span class="font-bold">Collegues</span> </a>
-              
+            <li class="active"> <%= link_to raw("<i class='i i-statistics icon'></i> <b>Dashboard</b>"), root_path %> 
             </li>
-            <li > <a href="#" class="auto"> <span class="pull-right text-muted"> <i class="i i-circle-sm-o text"></i> <i class="i i-circle-sm text-active"></i> </span> <i class="i i-lab icon"> </i> <span class="font-bold">Projects</span> </a>
-              
+
+            <li > <%= link_to raw("<i class='i i-stack icon'></i> <b>Colleagues</b> <b class='badge bg-danger pull-right'>4</b>"), users_path %>  
             </li>
-            <li > <a href="#" class="auto"> <span class="pull-right text-muted"> <i class="i i-circle-sm-o text"></i> <i class="i i-circle-sm text-active"></i> </span> <i class="i i-docs icon"> </i> <span class="font-bold">Ideas</span> </a>
-              
+
+            <li > <%= link_to raw("<i class='i i-lab icon'></i> <b>Projects</b> <span class='pull-right text-muted'> <i class='i i-circle-sm-o text'></i> </span>"), projects_path %> 
+            
+            </li>
+            <li > <%= link_to raw("<i class='i i-docs icon'></i> <b>Ideas</b> <span class='pull-right text-muted'> <i class='i i-circle-sm-o text'></i> </span>"), ideas_path %>              
             </li>
             
           </ul>

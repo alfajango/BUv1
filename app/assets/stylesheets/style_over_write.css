@@ -263,6 +263,20 @@
     float: left;
 }
 
+.color_feedback_5 /*PG add since it was missing*/
+
+{
+    width: 80px;
+    font-size: 12px;
+    text-align: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background: none repeat scroll 0 0 #F7AB28;
+    color: #ffffff;
+    margin-left: 12px;
+    margin-top: 12px;
+    float: left;
+}
 .color_duration_1
 
 {

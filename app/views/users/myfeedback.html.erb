@@ -30,30 +30,39 @@
                         <h1 class="count">Feedback received for <b><%= current_user.name %></b></h1> 
                       </div>                     
                     </div>
-                    <% @show_users.each do |user| %> 
-                      <% set_fbs(user) %>
-                      <div class="dashboard_content">
-                        <div class="dashboard_content_header symbol_bck_1 ">
-                          <p><b><%= link_to(user.name, user) %></b> | <%=user.email %></p>
-                        </div>
-
-                        <% if @users_nicejob %> 
-                          <% @users_nicejob.each do |fb| %>
-                            <%= render "users/feedback_item", :comment => fb.attribute.attribute_name, :category => "nicejob", :feedback => fb   %>
-                          <% end %>
-                        <% end %>
-                        <% if @users_greatat %>
-                          <% @users_greatat.each do |fb| %>
-                            <%= render "users/feedback_item", :comment => fb.attribute.attribute_name, :category => "greatat", :feedback => fb   %>
-                          <% end %>
-                        <% end %>
-                        <% if @users_thanks %>
-                          <% @users_thanks.each do |fb| %>
-                            <%= render "users/feedback_item", :comment => fb.attribute.attribute_name, :category => "thanks", :feedback => fb   %>
-                          <% end %>
-                        <% end %>     
+                    <% user = current_user %> 
+                    <% set_fbs(user) %>
+                    <div class="dashboard_content">
+                      <div class="dashboard_content_header symbol_bck_1 ">
+                        <p><b><%= link_to(user.name, user) %></b> | <%=user.email %></p>
                       </div>
-                    <% end %>                                          
+
+                      <% if @users_nicejob %> 
+                        <% @users_nicejob.each do |fb| %>
+                          <%= render "users/feedback_item", :comment => fb.attribute.attribute_name, :category => "nicejob", :feedback => fb   %>
+                        <% end %>
+                      <% end %>
+                      <% if @users_greatat %>
+                        <% @users_greatat.each do |fb| %>
+                          <%= render "users/feedback_item", :comment => fb.attribute.attribute_name, :category => "greatat", :feedback => fb   %>
+                        <% end %>
+                      <% end %>
+                      <% if @users_thanks %>
+                        <% @users_thanks.each do |fb| %>
+                          <%= render "users/feedback_item", :comment => fb.attribute.attribute_name, :category => "thanks", :feedback => fb   %>
+                        <% end %>
+                      <% end %>  
+                      <% if @users_workon %>
+                        <% @users_workon.each do |fb| %>
+                          <%= render "users/feedback_item", :comment => fb.attribute.attribute_name, :category => "workon", :feedback => fb %>
+                        <% end %>
+                      <% end %>
+                      <% if @users_alert %>
+                        <% @users_alert.each do |fb| %>
+                          <%= render "users/feedback_item", :comment => fb.attribute.attribute_name, :category => "alert", :feedback => fb %>
+                        <% end %>    
+                      <% end %>      
+                    </div>                                         
                   </div>
 
                 </div><%# end div class=row %>
