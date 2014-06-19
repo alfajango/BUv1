@@ -30,196 +30,46 @@
                   
                 </section>
                 <div class="row">
-                  
+            <%# ######## COLLEAGUES ################### %>      
                   <div class="col-md-4 col-sm-6">
-                    
                       <div class="dash_header_menu">
-                        
-                        
-                        
                           <div class="symbol_dashborad symbol_bck_1 sumbol_ico_1">
-                            
                             <div class="sumbol_ico_1_arrow">
-                            
-                            </div>
-                                                                                  
+                            </div>                      
                           </div>                   
-                          
-                        
-                        
                         <div class="symbol_txt">
-                          
                               <h1 class="count"><%=current_user.company.users.count %></h1>
-                              <p>Colleagues</p>                         
-                          
+                              <p><%= link_to "Colleagues", users_path %></p>                         
                         </div>                     
-                                               
                       </div>
-                      
-                      <div class="dashboard_content">
-                        
+                      <% users_for_homepage() %> <%# call a function in users_helper that sets a list of users to show ratings for on the homepage in @show_users %>    
+                      <%#= @show_users.inspect %> 
+                      <% @show_users.each do |user| %> 
+                        <% set_fbs(user) %>
+                        <div class="dashboard_content">
                           <div class="dashboard_content_header symbol_bck_1 ">
-                               Milton Waddams
+                            <p><b><%= link_to(user.name, user) %></b> | <%=user.email %></p>
                           </div>
-                          
-                          <div class="dashboard_content_inner content_color_change_1">
-                            
-                            <div class="content_inner_color_1">
-                              
-                            </div>
-                            
-                            <div class="color_feedback_1">                              
-                              Nice Job                              
-                            </div>
-                            
-                            <div class="content_comment">
-                              
-                              <span style="float: left; min-width: 100%;">meeting the deadline</span>
-                              
-                              
-                              
-                              <div class="color_duration_1">
-                                6 days
-                              </div>
-                              <div class="comment_flag">
-                                
-                              </div>
-                              
-                            </div>
-                            
-                            
-                          </div>
-                          
-                          
-                          
-                          
-                          <div class="dashboard_content_inner content_color_change_1">
-                            
-                            <div class="content_inner_color_1">
-                              
-                            </div>
-                            
-                            <div class="color_feedback_2">                              
-                              Thanks                              
-                            </div>
-                            
-                            <div class="content_comment">
-                              
-                              <span style="float: left; min-width: 100%;">working independently</span>
-                              
-                              
-                              
-                              <div class="color_duration_1">
-                                6 days
-                              </div>
-                              
-                              <div class="comment_flag">
-                                
-                              </div>
-                              
-                            </div>
-                            
-                            
-                          </div>
-                          
-                          
-                          
-                          
-                          <div class="dashboard_content_inner content_color_change_1">
-                            
-                            <div class="content_inner_color_1">
-                              
-                            </div>
-                            
-                            <div class="color_feedback_3">                              
-                             Is great at                             
-                            </div>
-                            
-                            <div class="content_comment">
-                              
-                              <span style="float: left; min-width: 100%;">high quality work </span>
-                              
-                                                           
-                              <div class="color_duration_2">
-                                3 days
-                              </div>
-                              <div class="comment_flag">
-                                
-                              </div>
-                              
-                            </div>
-                            
-                            
-                          </div>
-                          
-                          
-                          
-                          <div class="dashboard_content_inner content_color_change_1">
-                            
-                            <div class="content_inner_color_1">
-                              
-                            </div>
-                            
-                            <div class="color_feedback_1">                              
-                              Nice Job                              
-                            </div>
-                            
-                            <div class="content_comment">
-                              
-                              <span style="float: left; min-width: 100%;">deserves a promotion </span>
-                              
-                                                           
-                              <div class="color_duration_2">
-                                3 days
-                              </div>
-                              
-                              <div class="comment_flag">
-                                
-                              </div>
-                              
-                            </div>
-                            
-                            
-                          </div>
-                          
-                          
-                          
-                          <div class="dashboard_content_inner content_color_change_1">
-                            
-                            <div class="content_inner_color_1">
-                              
-                            </div>
-                            
-                            <div class="color_feedback_2">                              
-                              Thanks                             
-                            </div>
-                            
-                            <div class="content_comment">
-                              
-                              <span style="float: left; min-width: 100%;">helping the team</span>
-                              
-                              <div class="color_duration_1">
-                                6 days
-                              </div>
-                              <div class="comment_flag">
-                                
-                              </div>
-                              
-                              
-                            </div>
-                            
-                            
-                          </div>
-                          
-                          
-                          
-                          
-                          
-                          
-                        
-                      </div>
-                    
+
+                          <% if @users_nicejob %> 
+                            <% @users_nicejob.each do |fb| %>
+                              <%= render "users/feedback_item", :comment => fb.attribute.attribute_name, :category => "nicejob", :feedback => fb   %>
+                            <% end %>
+                          <% end %>
+                          <% if @users_greatat %>
+                            <% @users_greatat.each do |fb| %>
+                              <%= render "users/feedback_item", :comment => fb.attribute.attribute_name, :category => "greatat", :feedback => fb   %>
+                            <% end %>
+                          <% end %>
+                          <% if @users_thanks %>
+                            <% @users_thanks.each do |fb| %>
+                              <%= render "users/feedback_item", :comment => fb.attribute.attribute_name, :category => "thanks", :feedback => fb   %>
+                            <% end %>
+                          <% end %>     
+                        </div>
+                      <% end %>                                          
                   </div>
+            <%# ######## PROJECTS ################### %>      
             <div class="col-md-4 col-sm-6"> <%# box that says # of projects %>
                 <div class="dash_header_menu">
                    <div class="symbol_dashborad symbol_bck_2 sumbol_ico_2">
@@ -228,7 +78,7 @@
                   </div>
                   <div class="symbol_txt">
                         <h1 class="count"><%=current_user.company.projects.count %></h1>
-                        <p>Projects</p>                         
+                        <p><%= link_to "Projects", projects_path %></p>                         
                   </div>
                 </div>                    
 
@@ -256,126 +106,34 @@
                       <% end %> 
                     <% end %>  
 
-                    <!-- </div> -->
+
                   </div> <%# end of one project box %>
                       
                 <% end %>
+            </div>
+            <%# ######## IDEAS ################### %>      
+            <div class="col-md-4 col-sm-6">              
+                <div class="dash_header_menu">
+                  <div class="symbol_dashborad symbol_bck_3 sumbol_ico_3">
+                    <div class="sumbol_ico_3_arrow">
+                    </div>                    
                   </div>
-                  
-                  <div class="col-md-4 col-sm-6">
-                    
-                      <div class="dash_header_menu">
-                        
-                         <div class="symbol_dashborad symbol_bck_3 sumbol_ico_3">
-                          
-                          <div class="sumbol_ico_3_arrow">
-                            
-                          </div>
-                          
-                        </div>
-                        
-                        <div class="symbol_txt">
-                          
-                              <h1 class="count"><%=current_user.company.ideas.count %></h1>
-                              <p>Ideas</p>                         
-                          
-                        </div>
-                        
-                        
-                        
-                      </div>
-                      
-                      <div class="dashboard_content">
-                        
-                          <div class="dashboard_content_header symbol_bck_3 ">
-                              More clarity in the payroll process
-                          </div>
-                          
-                          <div class="dashboard_content_inner_ideas ">
-                            
-                            <div class="dashboard_content_idea_left">
-                              
-                            </div>
-                            
-                              <span style="float: left; min-width: 80%; margin: 2%; margin-bottom: 0px; ">
-                                <div class="color_colleague_1">
-                                  Bill Lumbergh
-                                </div>
-                                at 1.55PM 3th June 2014
-                              </span>
-                              
-                              <span style="float: left; min-width: 80%; margin: 2%; margin-bottom: 0px;">
-                                i din't get the memo
-                              </span>                                                      
-                            
-                          </div>
-                          
-                          <div class="dashboard_content_inner_ideas ">
-                            
-                              <div class="dashboard_content_idea_left">
-                              
-                              </div>
-                            
-                              <span style="float: left; min-width: 80%; margin: 2%; margin-bottom: 0px; ">
-                                <div class="color_colleague_2">
-                                  Bill Lumbergh
-                                </div>
-                                at 1.55PM 3th June 2014
-                              </span>
-                              
-                              <span style="float: left; min-width: 80%; margin: 2%; margin-bottom: 0px;">
-                                i din't get the memo
-                              </span>                                                      
-                            
-                          </div>
-                          
-                          <div class="dashboard_content_inner_ideas ">
-                            
-                              <div class="dashboard_content_idea_left" style="height: 62px;">
-                              
-                              </div>
-                            
-                              <span style="float: left; min-width: 80%; margin: 2%; margin-bottom: 0px; ">
-                                <div class="color_colleague_1">
-                                  Bill Lumbergh
-                                </div>
-                                at 1.55PM 3th June 2014
-                              </span>
-                              
-                              <span style="float: left; min-width: 80%; margin: 2%; margin-bottom: 0px;">
-                                i din't get the memo
-                              </span>                                                      
-                            
-                          </div>
-                          
-                              <span style="float: left; min-width: 47%; margin-left: 3%;">Created by samir</span>
-                              
-                              <div class="comment_flag" style="margin-right: 3%;">
-                                
-                              </div>
-                              <div class="color_duration_1">
-                                6 days
-                              </div>
-                              
-                          <div class="dashboard_content_header content_color_change_1 ">
-                            
-                            <input type="text" class="idea_reply" placeholder="Reply" />
-                            
-                            <div class="color_button_1">
-                                Send
-                            </div>
-                              
-                          </div>   
-                          
-                          
-                          
-                        
-                      </div>
-                      
-                      
-                    
+                  <div class="symbol_txt">
+                    <h1 class="count"><%=current_user.company.ideas.count %></h1>
+                    <p><%= link_to "Ideas", ideas_path %></p>                         
                   </div>
+                </div>
+
+                
+                 <%= render "home/front_page_ideas" %> 
+
                   
+                </div>
+                
+                
+              
+            </div>
+            
                 
                 
               </section>
