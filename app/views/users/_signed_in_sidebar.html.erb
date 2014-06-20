@@ -10,12 +10,12 @@
           <div class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <span class="thumb avatar pull-left m-r"> <img src="img/a0.jpg"> <i class="on md b-black"></i> </span> <span class="hidden-nav-xs clear"> <span class="block m-t-xs"> <strong class="font-bold text-lt"><%= current_user.name %></strong> <b class="caret"></b> </span> <span class="text-muted text-xs block"><!-- Engineer --></span> <span class="text-lt block"><%= current_user.email %></span></span> </a>
             <ul class="dropdown-menu animated fadeInRight m-t-xs">
               <span class="arrow top hidden-nav-xs"></span>
-              <li> <a href="#">Settings</a> </li>
-              <li> <a href="#">Profile</a> </li>
+              <li> <%= link_to("Settings", edit_user_registration_path) %> </li>
+              <li> <%= link_to "My Feedback", myfeedback_path(current_user) %> </li>
               <li> <a href="#"> <span class="badge bg-danger pull-right">3</span> Notifications </a> </li>
               <li> <a href="#">Help</a> </li>
               <li class="divider"></li>
-              <li> <a href="#" data-toggle="#" >Logout</a> </li>
+              <li> <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>  </li>
             </ul>
           </div>
         </div>

@@ -656,3 +656,5 @@ I've got a problem with my staging and production db's on mongohq.  updating the
 Go to git branch 'spefdesign'
 It's not finding some fonts and some images - put fonts and images folders in public/ 
 
+homepage (dashboard) working pretty well.  Now time for Colleague page.
+the users/index and users/show combine on to one page.  NO!  make it look like it's one page, but have it actually re-render when a new colleague (or the first colleague) is clicked on.

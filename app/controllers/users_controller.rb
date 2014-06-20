@@ -15,6 +15,11 @@ class UsersController < ApplicationController
 
   def show
     puts "in users_controller show, params: #{params}"
+
+    # add this line from index action for spefdesign compatability
+    @users = current_user.company.users.paginate(page: params[:page], per_page: 25 )  
+
+
     @attributes = Attribute.all
   	@user = User.find(params[:id])
     puts "@user.name: #{@user.name}"

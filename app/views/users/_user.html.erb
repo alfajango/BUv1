@@ -1,7 +1,18 @@
-<li>
-  <%#= gravatar_for user, size: 25 %>
-  <%= link_to user.name, user %>
-  <%# if current_user.admin? && !current_user?(user) %>
-  	  <%#= link_to "delete", user, method: :delete, data: { confirm: "you sure?" } %>
-  <%# end %>
-</li>
+<!-- <li>
+  <%##= gravatar_for user, size: 25 %>
+  <%#= link_to user.name, user %>
+  <%## if current_user.admin? && !current_user?(user) %>
+  	  <%##= link_to "delete", user, method: :delete, data: { confirm: "you sure?" } %>
+  <%## end %>
+</li> -->
+
+<%= link_to user do %>
+	<div class="name_container">
+	  <div class="name_ico">
+	  </div>
+	  <div class="name_txt_container">
+	    <span style="width: 100%; float: left; font-size: 15px;" ><%= user.name %></span>
+	    <span style="width: 100%; float: left; font-style: italic; font-size: 12px;" ><%= user.email %></span>
+	  </div>
+	</div>
+<% end %>
