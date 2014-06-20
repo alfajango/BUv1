@@ -88,119 +88,72 @@
                   
 
                   <div class="college_sub_detailed_cntnr">
+                   
+
+
+
+                    <%# this is where I'm writing now: %>
                     <% if @users_jobs.size.to_i > 0 || @users_for_this_job.size.to_i >0 %>
-                      <div class="well well-sm"> 
-                        <% if @users_jobs.size.to_i > 0 %>
-                          <span style="width: 94%; float: left; font-size: 15px; margin-left: 3%; margin-bottom: 10px;" ><%=current_user.company.name %> employees have said that</span>
-                            <ul>
-                            <% @users_jobs.reverse_each do |job| %>
-                              <li><div class="dashboard_content_inner_ideas " style="height: 50px;">
-                                  
-                              <div class="dashboard_content_idea_left" style="height: 50px;">
-                                    
-                              </div>
-                                  
-                              <span style="float: left; width: 88%; margin: 2%; margin-bottom: 0px; font-size: 13px;  height: 20px; overflow: hidden;">
-                                <div class="color_colleague_2"><%=user.name%></div>
-                                     <span style="float: left;">would do well in a role like</span> 
-                                <div class="color_colleague_3"><%=job.job_holder.name %></div>
-                                    <span style="float: left;">has now</span> 
-                              </span>
-                            <% end %>
-                          </ul>
+                      <span style="width: 94%; float: left; font-size: 15px; margin-left: 3%; margin-bottom: 10px;" >In-tech employees have said that</span>
+                      <% if @users_jobs.size.to_i > 0 %>
+                        <ul>
+                        <% @users_jobs.reverse_each do |job| %>
+                          <li>
+                            <div class="dashboard_content_inner_ideas " style="height: 50px;">
+                                <div class="dashboard_content_idea_left" style="height: 50px;">
+                                </div>
+                                <span style="float: left; width: 88%; margin: 2%; margin-bottom: 0px; font-size: 13px;  height: 20px; overflow: hidden;">
+                                  <div class="color_colleague_2">
+                                      <%=user.name%>
+                                  </div>
+                                       <span style="float: left;">would do well in a role like</span> 
+                                  <div class="color_colleague_3">
+                                      <%=job.job_holder.name %>
+                                  </div>
+                                      <span style="float: left;">has now</span> 
+                                </span>
+                            </div>
+                          </li>
                         <% end %>
-                        <% if @users_for_this_job.size.to_i > 0 %>
-                          <ul>
-                            <% @users_for_this_job.reverse_each do |job| %>
-                              <li><b><%=job.subject.name %></div>
-                                     <span style="float: left;">would do well in a role like</span> 
-                                <div class="color_colleague_3"><%=user.name%></div>
-                                    <span style="float: left;">has now</span> 
-                              </span></li>
-                            <% end %>
-                          </ul>
+                        </ul>    
+                      <% end %>  
+                      <% if @users_for_this_job.size.to_i > 0 %>
+                        <ul>
+                        <% @users_for_this_job.reverse_each do |job| %>
+                          <li>
+                            <div class="dashboard_content_inner_ideas " style="height: 50px;">
+                                <div class="dashboard_content_idea_left" style="height: 50px;">
+                                </div>
+                                <span style="float: left; width: 88%; margin: 2%; margin-bottom: 0px; font-size: 13px;  height: 20px; overflow: hidden;">
+                                  <div class="color_colleague_2">
+                                    <%=job.subject.name %>                                
+                                  </div>
+                                       <span style="float: left;">would do well in a role like</span> 
+                                  <div class="color_colleague_3">
+                                      <%=user.name%>
+                                  </div>
+                                      <span style="float: left;">has now</span> 
+                                </span>
+                            </div>
+                          </li>
                         <% end %>
-                      </div>
-                    <% else %>
-                      <div class="well well-sm"> 
-                        No job recommendations for <b> <%=user.name%></b> yet
-                      </div>
+                        </ul>    
+                      <% end %>      
                     <% end %>
-                    
-                    <span style="width: 94%; float: left; font-size: 15px; margin-left: 3%; margin-bottom: 10px;" >In-tech employees have said that</span>
-                    
-                          <div class="dashboard_content_inner_ideas " style="height: 50px;">
-                                  
-                              <div class="dashboard_content_idea_left" style="height: 50px;">
-                                    
-                              </div>
-                                  
-                              <span style="float: left; width: 88%; margin: 2%; margin-bottom: 0px; font-size: 13px;  height: 20px; overflow: hidden;">
-                                <div class="color_colleague_2">
-                                    Milton Waddams
-                                </div>
-                                     <span style="float: left;">would do well in a role like</span> 
-                                <div class="color_colleague_3">
-                                    Bill Lumbergh
-                                </div>
-                                    <span style="float: left;">has now</span> 
-                              </span>
-                                    
-                                                                         
-                                  
-                          </div>
-                          
-                          
-                          <div class="dashboard_content_inner_ideas " style="height: 50px;">
-                                  
-                              <div class="dashboard_content_idea_left" style="height: 50px;">
-                                    
-                              </div>
-                                  
-                              <span style="float: left; width: 88%; margin: 2%; margin-bottom: 0px; font-size: 13px;  height: 20px; overflow: hidden;">
-                                <div class="color_colleague_2">
-                                    Milton Waddams
-                                </div>
-                                     <span style="float: left;">would do well in a role like</span> 
-                                <div class="color_colleague_3">
-                                    Bill Lumbergh
-                                </div>
-                                    <span style="float: left;">has now</span> 
-                              </span>
-                                    
-                                                                         
-                                  
-                          </div>
-                          
-                          
-                          <div class="dashboard_content_inner_ideas " style="height: 50px;">
-                                  
-                              <div class="dashboard_content_idea_left" style="height: 50px;">
-                                    
-                              </div>
-                                  
-                              <span style="float: left; width: 88%; margin: 2%; margin-bottom: 0px; font-size: 13px; height: 20px; overflow: hidden;">
-                                <div class="color_colleague_2">
-                                    Milton Waddams
-                                </div>
-                                     <span style="float: left;">would do well in a role like</span> 
-                                <div class="color_colleague_3">
-                                    Bill Lumbergh
-                                </div>
-                                    <span style="float: left;">has now</span> 
-                              </span>
-                                    
-                                                                         
-                                  
-                          </div>
-                          
-                        </div>
-                
-                    </div>   
-                  
-                  </div>
-                  
-                  <div class="dashboard_content_header content_color_change_1 " style="border-bottom: 1px solid #d2d3d6">
+
+                    <span style="width: 94%; float: left; font-size: 15px; margin-left: 3%; margin-bottom: 10px;" >
+                   <p><b><%= user.name %></b> would do well in a role like that of:</p>
+                  <%= form_for @job do |f| %>
+                    <%= f.text_field :job_holder, placeholder: "Enter name of a colleague at #{current_user.company.name}" %>
+                    <%= f.hidden_field :subject, :value => user.id %>
+                    <br>
+                    Your input will be anonymous.  <br>
+                    <%= f.submit "Submit", class: "color_button_1" %>
+                  <% end %>
+                  </span>
+
+
+   <!--         BETTER STYLING:       <div class="dashboard_content_header content_color_change_1 " style="border-bottom: 1px solid #d2d3d6">
                                   
                     <input type="text" class="colleague_txt" placeholder="Enter Employees" />
                                   
@@ -208,16 +161,18 @@
                         Submit
                     </div>
                                     
-                  </div> 
+                  </div>  -->
           
         </div>
         
+        </div>
+        </div>
+
         
-        
 
 
 
-       <%# I think I can get rid of this: %> <a href="#" class="hide nav-off-screen-block" data-toggle="class:nav-off-screen" data-target="#nav"></a> </section> 
+        </section> 
     </section>
   </section>
 </section>
@@ -228,38 +183,9 @@
 
 
 
-
-
-
-
-
-
-            <% puts "@users_jobs.size: #{@users_jobs.size}"%>
-            <% puts "@users_for_this_job.size: #{@users_for_this_job.size}"%>
-
-
-
-          <div class="well well-sm"> <%# job input %>
-            <p><b><%= user.name %></b> would do well in a role like that of:</p>
-            <%#= form_for @job, :remote => true do |f| %>
-            <%= form_for @job do |f| %>
-              <%= f.text_field :job_holder, placeholder: "Enter name of a colleague at #{current_user.company.name}" %>
-              <%= f.hidden_field :subject, :value => user.id %>
-
-              <!-- or  -->
-              <%#= f.text_field :email %>
-              <br>
-              Your input will be anonymous.  <br>
-              <%#= f.hidden_field :subject, :value => current_user.id %>
-              <%= f.submit "Submit", class: "btn btn-large btn-primary" %>
-            <% end %>
-          </div>
-
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-</div>
-
-
+</section>
+</section>
+</section>
+</section>
+</section>
+</section>
