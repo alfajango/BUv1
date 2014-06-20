@@ -15,9 +15,10 @@
 			      <section id="content">
 			        <div class="colleagues_home_name background_color_change_3">
 			          <div class="dashboard_content_header background_color_change_1">
-			             <span class="dashboard_header_txt">Colleague</span>
-			             <span class="dashboard_header_add_btn"></span>
-			          </div>
+                        <span class="dashboard_header_txt">Colleague</span>
+                        <a data-toggle="modal" data-target="#newColleagueModal"><span class="dashboard_header_add_btn"></span></a>
+                        <%= render "new_colleague_modal" %>
+                      </div>
 			          <div class="scrollable name_whole_container">
 			            <div class="slim-scroll" data-height="auto" data-disable-fade-out="true" data-distance="0" data-size="10px" data-color="#333333">
 						<!-- <div class="apple_pagination">

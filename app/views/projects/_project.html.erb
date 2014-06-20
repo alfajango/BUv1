@@ -1,12 +1,20 @@
-<li>
-  <div>
-    <p class="alignleft"><%= link_to project.name, project %>
+
+
+<%= link_to project do %>
+  <div class="name_container">
+    <div class="name_ico">
+    </div> 
+    <!-- <i class="text-color fa fa-road fa-3x"></i> -->
+    <div class="name_txt_container ">
+      <span style="width: 100%; float: left; font-size: 15px;" ><%= project.name %></span>
       <% if current_user===(project.user) %> 
         <i> | <%= link_to "edit ", edit_project_path(project) %></i>
       <% end %></p> 
-    <% if project.user %>
-      <p class="alignright"> Created by <%=link_to(project.user.name, project.user) %></p>
-    <% end %> 
+      <% if project.user %>
+        <span style="width: 100%; float: left; font-style: italic; font-size: 12px;" >
+          Created by <%=link_to(project.user.name, project.user) %>
+        </span>
+      <% end %>
+    </div>
   </div>
-  <div style="clear: both;"></div>
-</li>
+<% end %>

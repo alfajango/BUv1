@@ -1,0 +1,47 @@
+<%# this is PROJECT/show.html.erb %>
+
+<div class="wrapper body">
+  <div class="container">
+    <div class="row">
+      <%= render "users/signed_in_sidebar" %>
+      <div class="col-md-8">
+        <!-- this is the main section -->
+        <div class="well well-sm">
+          <% project = set_project(params) %> <%##set_project is in projects_helper %> 
+          <div>
+            <p class="alignleft"><b><%= "#{project.name}  " %>
+   
+            <% if current_user===(project.user) %> 
+              <i><%= link_to "edit ", edit_project_path(project) %></i>
+            <% end %></b></p> 
+            <% if project.user %>
+              <p class="alignright"> Created by <%=link_to(project.user.name, project.user) %></p>
+            <% end %> 
+          </div>
+            <hr >
+
+          <% @projects_positive.each do |pfb| %>
+            <%= render "projects/feedback_item", :comment => pfb.pattribute.name, :category => "positive", :pfeedback => pfb  %>  
+          <% end %>
+          <% @projects_needs.each do |pfb| %>
+            <%= render "projects/feedback_item", :comment => pfb.pattribute.name, :category => "needs", :pfeedback => pfb  %>
+          <% end %>
+          <% @projects_negative.each do |pfb| %>
+            <%= render "projects/feedback_item", :comment => pfb.pattribute.name, :category => "negative", :pfeedback => pfb  %>
+          <% end %>    
+
+        </div>
+        <div ng-controller="FbController">
+
+          <div class="well well-sm" id="colleaguedDisplay">
+            Give feedback for <b><%= project.name %></b> anonymously
+            <hr style="border: none; "/>
+            <%= render "/projects/button_entry", :project => project %>
+            <hr style="border: none; "/>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

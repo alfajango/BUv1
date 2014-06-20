@@ -22,6 +22,10 @@ class ProjectsController < ApplicationController
 
     # following line causes error if there is no feedback
     # puts "@project_pfeedback.last.pattribute.name: #{@project_pfeedback.last.pattribute.name}"
+
+    # add this line from index action to make spefdesign render - the show view has an index also
+    @projects = current_user.company.projects.paginate(page: params[:page], per_page: 10 )  
+
     @pattributes = Pattribute.all
     @project = Project.find(params[:id])
     puts "@project.name: #{@project.name}"
