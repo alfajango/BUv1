@@ -1,28 +1,93 @@
-z<%# this is ideas/show.html.erb   This is where I show a single idea and all of its contents%>
+<%# this is ideas/show.html.erb   This is where I show a single idea and all of its contents%>
 
-<div class="wrapper body">
-  <div class="container">
-    <div class="row">
+<title>Prietary Ideas</title>
+<meta name="description" content="app, web app, responsive, admin dashboard, admin, flat, flat ui, ui kit, off screen nav" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+<section class="vbox">
+  <section>
+    <section class="hbox stretch">
       <%= render "users/signed_in_sidebar" %>
-      <div class="col-md-8">
+      <section id="content">
+        <section class="hbox stretch">
+          <section>
+            <section class="vbox">
+              <section class="scrollable padder">
+                <section class="row m-b-md">
+                  <section id="content">
+                    <div class="colleagues_home_name background_color_change_3"> <%# colleage list column %>
+                      <div class="dashboard_content_header background_color_change_1">
+                        <span class="dashboard_header_txt">Ideas</span>
+                        <a data-toggle="modal" data-target="#newIdeaModal"><span class="dashboard_header_add_btn"></span></a>
+                        <%= render "new_idea_modal" %>
+                         
+                      </div>
+                      <div class="scrollable name_whole_container">
+                        <div class="slim-scroll" data-height="auto" data-disable-fade-out="true" data-distance="0" data-size="10px" data-color="#333333">
+                          <%#= will_paginate %>
+                          <%= render @root_ideas %><%# renders _idea.html.erb - this works but I just want to list them in the left column %>
+                          <%#= render partial: "product", collection: @products, layout: "special_layout" %>
+                          <%#= render collection: @root_ideas, partial: "root_ideas" %>
+                          <%#= render :partial => 'root_ideas', :idea => @root_ideas %>
+                          <%# @root_ideas.each do |ri| %>
+                            <%#= render root_ideas, idea: ri %>
+                          <%# end %>
+                          <%#= render @root_ideas, layout: 'root_ideas' %>
+                        </div>
+                      </div>
+                      <div class="dashboard_content_header content_color_change_1 " style="border-bottom: 1px solid #d2d3d6">
+                        <input type="text" class="colleague_txt" placeholder="Search" />        
+                          <div class="color_button_2">
+                            Search
+                          </div>            
+                      </div>  
+                    </div>        
+              
 
-        <% idea = set_idea(params) %> <%##set_idea is in ideas_helper %> 
-        <%= render idea %><%# renders _idea.  this is the root idea.  no indent %>
-        <% @comments = idea.replies %>
+                    <%# right column %>
+                    <% idea = set_idea(params) %>
+                    <div class="colleagues_name_selected background_color_change_3">
+                      <div class="dashboard_content_header background_color_change_2">
+                        <span class="dashboard_header_txt"><%#= render idea %><%= idea.body %></span>
+                      </div>
+                      <!-- <div class="colleague_detail_head">
+                        <div class="name_ico_small">
+                        </div>
+                        <div class="name_txt_container">
+                          <span style="width: 100%; float: left; font-size: 15px;" > -->
+                          <%= render idea %><%#= "#{idea.body}" %> 
+                          <!-- </span>    
+                        </div>
+                      </div> -->
+                      <div class="scrollable" style="float: left; height: 900px;"> <%# height: 467px; %>
+                        <div class="slim-scroll" data-height="auto" data-disable-fade-out="true" data-distance="0" data-size="10px" data-color="#333333">
+                          
+                          <% @comments = idea.replies %>
 
-        <ul>
-          <% @comments.each do |comment| %>
-            <%= render comment %>  <%# magically knows to go to _idea %>
-            <% subcomments = comment.replies %>
-            <% unless subcomments.nil? %>
-              <% subcomments.each do |subcomment| %>
-                <%= render subcomment %>
-              <% end %>
-            <% end %>
-          <% end %>
-        </ul>       
-      </div>
-    </div>
-  </div>
-</div>
+                          <ul>
+                            <% @comments.each do |comment| %>
+                              <%= render comment %>  <%# magically knows to go to _idea %>
+                              <% subcomments = comment.replies %>
+                              <% unless subcomments.nil? %>
+                                <% subcomments.each do |subcomment| %>
+                                  <%= render subcomment %>
+                                <% end %>
+                              <% end %>
+                            <% end %>
+                          </ul> 
+
+                        </div>
+                      </div>
+                    </div>
+                  </section> 
+                </section>
+              </section>
+            </section>
+          </section>
+        </section>
+      </section>
+    </section>
+  </section>
+</section>
+
+
 

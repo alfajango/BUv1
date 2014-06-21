@@ -20,6 +20,12 @@ class IdeasController < ApplicationController
     #puts "@idea.body: #{@idea.body}"
     #@comments = @idea.replies
     @idea = Idea.new
+
+    # add this from index action because show lists all the root ideas also
+    @root_ideas = current_user.company.ideas.where(thread: nil)
+
+    #?:
+    @ideas = current_user.company.ideas.where(thread: nil)
   end 
 
 

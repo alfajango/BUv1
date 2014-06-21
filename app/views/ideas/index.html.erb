@@ -1,33 +1,56 @@
 <%# ideas/index.html.erb  #################### %> 
-<div class="wrapper body">
-  <div class="container">
-    <div class="row">
-      <%= render "users/signed_in_sidebar" %>  
-      <div class="col-sm-8">
-        <% provide(:title, 'All Ideas') %>
-        <% company = current_user.company %>
 
-        <h1><%= company.name %> Ideas</h1> 
+<title>Prietary Ideas</title>
+<meta name="description" content="app, web app, responsive, admin dashboard, admin, flat, flat ui, ui kit, off screen nav" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+<section class="vbox">
+  <section>
+    <section class="hbox stretch">
+      <%= render "users/signed_in_sidebar" %>
+      <section id="content">
+        <section class="hbox stretch">
+          <section>
+            <section class="vbox">
+              <section class="scrollable padder">
+                <section class="row m-b-md">
+                  <section id="content">
+                    <div class="colleagues_home_name background_color_change_3"> <%# colleage list column %>
+                      <div class="dashboard_content_header background_color_change_1">
+                        <span class="dashboard_header_txt">Ideas</span>
+                        <a data-toggle="modal" data-target="#newIdeaModal"><span class="dashboard_header_add_btn"></span></a>
+                        <%= render "new_idea_modal" %>
+                         
+                      </div>
+                      <div class="scrollable name_whole_container">
+                        <div class="slim-scroll" data-height="auto" data-disable-fade-out="true" data-distance="0" data-size="10px" data-color="#333333">
+                          <%#= will_paginate %>
+                          <%= render @root_ideas %><%# renders _idea.html.erb - this works but I just want to list them in the left column %>
+                          <%#= render partial: "product", collection: @products, layout: "special_layout" %>
+                          <%#= render collection: @root_ideas, partial: "root_ideas" %>
+                          <%#= render :partial => 'root_ideas', :idea => @root_ideas %>
+                          <%# @root_ideas.each do |ri| %>
+                            <%#= render root_ideas, idea: ri %>
+                          <%# end %>
+                          <%#= render @root_ideas, layout: 'root_ideas' %>
+                        </div>
+                      </div>
+                      <div class="dashboard_content_header content_color_change_1 " style="border-bottom: 1px solid #d2d3d6">
+                        <input type="text" class="colleague_txt" placeholder="Search" />        
+                          <div class="color_button_2">
+                            Search
+                          </div>            
+                      </div>  
+                    </div>        
+                  </section> 
+                </section>
+              </section>
+            </section>
+          </section>
+        </section>
+      </section>
+    </section>
+  </section>
+</section>
 
-          	<%= render @root_ideas %><%# renders _idea.html.erb and passes the idea%>
 
-          <br>
-          <%# if @root_ideas.size.to_i < 1 %><%# this errors when there is 1 idea %>
-          <% unless @root_ideas %>
-            <div class="well well-sm"> <b> No ideas created for your company yet.  Create one here! </b></div>
-          <% end %> 
 
-        <%= form_for(@idea) do |f| %>
-          <%#= render 'shared/error_messages', object: f.object %>
-          <h4>Create a new idea:</h4>
-          <%= f.text_field :body, placeholder: "Type idea here, e.g. 'Take Initrode's key customers'" %>
-          <br>
-          Your name will be shown as the creator of the idea.  Up and down votes are anonymous.<br>
-          <br>
-          <%= f.submit "Create the idea", class: "btn btn-primary btn-large float-left" %>
-        <% end %>
-
-      </div>
-    </div>
-  </div>
-</div>

@@ -66,6 +66,7 @@
                       </div>
                       <div class="symbol_txt">
                         <h1 class="count"><%=current_user.company.projects.count %></h1> 
+                        <p><%= link_to "Projects", projects_path %></p> 
                       </div>
                     </div>                    
                     <% @show_projects.each do |project| %>    

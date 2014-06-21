@@ -17,7 +17,7 @@
                     <div class="colleagues_home_name background_color_change_3"> <%# colleage list column %>
                       <div class="dashboard_content_header background_color_change_1">
                         <span class="dashboard_header_txt">Project</span>
-                        <a data-toggle="modal" data-target="#newColleagueModal"><span class="dashboard_header_add_btn"></span></a>
+                        <a data-toggle="modal" data-target="#newProjectModal"><span class="dashboard_header_add_btn"></span></a>
                         <%= render "new_project_modal" %>
                          
                       </div>
@@ -28,7 +28,7 @@
                           </div>
                           <ul class="users"> <%# tells it to use the .users in custom.css.scss%> -->
                           <%= will_paginate %>
-                          <%= render @projects %><%# renders _user.html.erb and passes the user%>
+                          <%= render @projects %><%# renders _project.html.erb and passes the project%>
                           <%= will_paginate %>
                     <!--      </ul>
                               <div class="apple_pagination">
