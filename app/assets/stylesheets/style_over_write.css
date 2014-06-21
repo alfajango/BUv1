@@ -152,7 +152,7 @@
     width: 94%;
     float: left;
     margin-left: 3%;
-    height: 52px;    
+    /*height: 52px;    */
     border: 0px solid red;
     font-size: 12px;
     margin-bottom: 5px;
@@ -163,7 +163,7 @@
     width: 94%;
     float: left;
     margin-left: 3%;
-    height: 62px;    
+    /*height: 62px;    */
     border: 0px solid red;
     font-size: 12px;
     margin-bottom: 15px;

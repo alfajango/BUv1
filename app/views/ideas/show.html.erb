@@ -24,14 +24,17 @@
                       <div class="scrollable name_whole_container">
                         <div class="slim-scroll" data-height="auto" data-disable-fade-out="true" data-distance="0" data-size="10px" data-color="#333333">
                           <%#= will_paginate %>
-                          <%= render @root_ideas %><%# renders _idea.html.erb - this works but I just want to list them in the left column %>
+                          <%#= render @root_ideas %><%# renders _idea.html.erb - this works but I just want to list them in the left column %>
                           <%#= render partial: "product", collection: @products, layout: "special_layout" %>
                           <%#= render collection: @root_ideas, partial: "root_ideas" %>
                           <%#= render :partial => 'root_ideas', :idea => @root_ideas %>
-                          <%# @root_ideas.each do |ri| %>
-                            <%#= render root_ideas, idea: ri %>
-                          <%# end %>
+                          
+                          <% @root_ideas.each do |ri| %>
+                            <%= render "idea_body", idea: ri %>
+                          <% end %>
+                          
                           <%#= render @root_ideas, layout: 'root_ideas' %>
+                          <%#= render 'idea_body', idea: @root_ideas %>
                         </div>
                       </div>
                       <div class="dashboard_content_header content_color_change_1 " style="border-bottom: 1px solid #d2d3d6">

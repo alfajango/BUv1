@@ -7,9 +7,7 @@
     <div class="content_inner_color_2" style="margin-right: 9px;">
     </div>
     <p><%= link_to(idea.user.name, idea.user) %></p>
-      <% if current_user===(idea.user) %> 
-        <i> | <%= link_to "edit ", edit_idea_path(idea) %></i>
-      <% end %></p> 
+      
       <% num_votes(idea) %><%# set @idea_upvotes and @idea_downvotes %>
       <!-- <p> -->
         <div style="display:inline;">
@@ -36,9 +34,10 @@
           &nbsp&nbsp
         </div>
 
-
-
-          <a id="mylink<%=idea.id%>" href="#">Reply</a>  
+          <a id="mylink<%=idea.id%>" href="#">Reply</a> 
+          <% if current_user===(idea.user) %> 
+            &nbsp | &nbsp <i><%= link_to "edit you Idea text ", edit_idea_path(idea) %></i>
+          <% end %> 
           <div class="color_duration_2">
             <%= "#{time_ago_in_words(idea.created)}"%>
           </div>
