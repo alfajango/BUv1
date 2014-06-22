@@ -668,3 +668,7 @@ $git add app/views/layouts/_header.html.erb
 $git add tmp/pids/server.pid
 $ git commit -m ".."
 ########################################################################
+
+so, in master branch with spef design.
+Some problem with dropdowns not opening.  Seems to be intermittent.  Try commenting out app.v1.js
+also look in app.plugin.js

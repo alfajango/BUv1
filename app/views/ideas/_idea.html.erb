@@ -36,7 +36,7 @@
 
           <a id="mylink<%=idea.id%>" href="#">Reply</a> 
           <% if current_user===(idea.user) %> 
-            &nbsp | &nbsp <i><%= link_to "edit you Idea text ", edit_idea_path(idea) %></i>
+            &nbsp | &nbsp <i><%= link_to "edit your Idea text ", edit_idea_path(idea) %></i>
           <% end %> 
           <div class="color_duration_2">
             <%= "#{time_ago_in_words(idea.created)}"%>

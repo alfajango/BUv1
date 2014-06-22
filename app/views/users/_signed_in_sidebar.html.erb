@@ -11,7 +11,7 @@
             <ul class="dropdown-menu animated fadeInRight m-t-xs">
               <span class="arrow top hidden-nav-xs"></span>
               <li> <%= link_to("Settings", edit_user_registration_path) %> </li>
-              <li> <%= link_to "My Feedback", myfeedback_path(current_user) %> </li>
+              <li> <%= link_to(current_user.name + " | Settings", edit_user_registration_path) %></li>
               <li> <a href="#"> <span class="badge bg-danger pull-right">3</span> Notifications </a> </li>
               <li> <a href="#">Help</a> </li>
               <li class="divider"></li>
@@ -41,7 +41,12 @@
             </li>
             <li > <%= link_to raw("<i class='i i-docs icon'></i> <b>Ideas</b> <span class='pull-right text-muted'> <i class='i i-circle-sm-o text'></i> </span>"), ideas_path %>              
             </li>
-            
+            <li> <%#= link_to ('Account Settings', edit_user_registration_path) %> 
+            <%= link_to("Account Settings", edit_user_registration_path) %>
+            </li>
+            <li > 
+              <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
+            </li>
           </ul>
           <div class="line dk hidden-nav-xs"></div>
           <div class="text-muted text-xs hidden-nav-xs padder m-t-sm m-b-sm">Colleagues</div>
