@@ -1,0 +1,21 @@
+
+<div class="wrapper body">
+	<div class="container">
+	  <div class="row">
+	    <%= render "users/signed_in_sidebar" %>  
+	    <div class="col-md-8">
+		    <% provide(:title, 'Your colleagues') %>
+			<h1><%= current_user.company.name%> Colleagues</h1>
+	        <div class="apple_pagination">
+			  <%= will_paginate %> 
+			</div>
+			<ul class="users"> <%# tells it to use the .users in custom.css.scss%>
+			  <%= render @users %><%# renders _user.html.erb and passes the user%>
+			</ul>
+	        <div class="apple_pagination">
+			  <%= will_paginate %> 
+			</div>  
+		</div>
+	  </div>
+	</div>
+</div>

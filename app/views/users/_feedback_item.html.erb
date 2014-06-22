@@ -1,13 +1,20 @@
+<%# THIS IS USERS/_FEEDBACK_ITEM  %>
+
 <% btnclass, text = set_btn_type(category) %>
-<table>
-  <tr>
-    <th rowspan="2"><button type="button" class="<%= btnclass %>" ><%= text %> </span></button></th>
-    <th><%= comment %> <small>&nbsp&nbsp&nbsp&nbsp<%= "#{time_ago_in_words(feedback.created)} ago"%></small></th>
-  </tr>
-  <tr>
-    <td>
-        <% num_fbvotes(feedback) %>
-        <div style="display:inline;">
+<div class="dashboard_content_inner content_color_change_1">
+  <div class="content_inner_color_1">
+  </div>
+  <div class="<%= btnclass %>">                              
+    <%= text %>                              
+  </div>
+  <div class="content_comment">
+    <span style="float: left; min-width: 100%;"><%= comment %></span>
+    <div class="color_duration_1">
+      <%= "#{time_ago_in_words(feedback.created)}"%>
+    </div>
+
+      <% num_fbvotes(feedback) %>
+      <div style="display:inline;">
         <%= @feedback_upvotes %>
 
         <%#= form_for feedback.fbvotes.build, :html => { :style => 'display:inline;' }, :remote => true do |f| %><%# remote true prevents it from page reloading, so vote doesn't show %>
@@ -84,9 +91,10 @@
         <% end %> 
          |  flag     
       </div>
-    </td>
-  </tr>
-</table>
+    </div>
+  </div>
+
+
 <!-- <hr style="border: none; "/> -->
 <!-- <hr> -->
 

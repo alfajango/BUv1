@@ -1,0 +1,27 @@
+
+
+<div class="modal fade" id="newIdeaModal" tabindex="-1" role="dialog" aria-labelledby="newColleagueLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="newColleagueLabel">Add a new idea to improve your company's performance</h4>
+      </div>
+      <div class="modal-body">
+        <%= form_for(@idea) do |f| %>
+          <%#= render 'shared/error_messages', object: f.object %>
+          <h4>Give a new idea:</h4>
+          <%= f.text_field :body %>
+          <br>
+          Your name will be attached to all ideas and replies in Comments so that you can get credit for your Ideas<br>
+          <%= f.hidden_field :company_id, :value => current_user.company.id %><br>
+          <%= f.submit "Submit Idea", class: "btn btn-large btn-primary" %>
+        <% end %>
+      </div>  
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>  
+</div> 

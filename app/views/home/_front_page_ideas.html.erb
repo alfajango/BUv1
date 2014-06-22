@@ -1,7 +1,7 @@
-<h4><%= link_to "Ideas", ideas_path %></h4>
-<% ideas_for_homepage() %> <%# call a function in ideas_helper that sets a list of ideas on the homepage in @show_ideas %>        
+<h4><%#= link_to "Ideas", ideas_path %></h4>
+<%# ideas_for_homepage() %> <%# PUT ON HOMEPAGE BEFORE SIDEBAR CALL - call a function in ideas_helper that sets a list of ideas on the homepage in @show_ideas %>        
 <% @idea = Idea.new %>
-<%= render @show_ideas %> 
+<%= render @show_ideas %> <%# renders _idea.html.erb %>
 <% if @show_ideas.size.to_i < 1 %>
   <div class="well well-sm"> <b> No ideas yet.  Let <%=current_user.company.name%> know your great <%=link_to("idea", ideas_path) %> </b>
   </div>

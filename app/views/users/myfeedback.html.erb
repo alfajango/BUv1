@@ -1,69 +1,78 @@
-<%#= javascript_include_tag "//www.google.com/jsapi", "chartkick" %> <%# need this on any page that has a chart %>
-
-
-<%# provide(:title, @user.name) # why did this not get @user.  When this code was in show.html.erb, it had @user ? %> 
-<%# maybe OK that I put current_user every palce that @user was - to start, we only want to show this for current_user.  Down the road, once your boss has access, that will change %>
 <% provide(:title, current_user.name) %>
+<meta name="description" content="app, web app, responsive, admin dashboard, admin, flat, flat ui, ui kit, off screen nav" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+<!--[if lt IE 9]> <script src="js/ie/html5shiv.js"></script> <script src="js/ie/respond.min.js"></script> <script src="js/ie/excanvas.js"></script> <![endif]-->
+<section class="vbox">
+  <%# header was here %>
+  <section>
+    <section class="hbox stretch">
+      <!-- .aside was here-->
+      <%= render "users/signed_in_sidebar" %>
+      <section id="content">
+        <section class="hbox stretch">
+          <section>
+            <section class="vbox">
+              <section class="scrollable padder">
+                <section class="row m-b-md">
+                  <div class="col-sm-6">
+                    <h3 class="m-b-xs text-black"></h3>
+                  </div>
+                </section>
+                <div class="row">
+                <%# ######## COLLEAGUES ################### %>      
+                  <div class="col-md-12 col-sm-12">
+                    <div class="dash_header_menu">
+                      <div class="symbol_dashborad symbol_bck_1 sumbol_ico_1">
+                        <div class="sumbol_ico_1_arrow">
+                        </div>                      
+                      </div>                   
+                      <div class="symbol_txt">
+                        <h1 class="count">Feedback received for <b><%= current_user.name %></b></h1> 
+                      </div>                     
+                    </div>
+                    <% user = current_user %> 
+                    <% set_fbs(user) %>
+                    <div class="dashboard_content">
+                      <div class="dashboard_content_header symbol_bck_1 ">
+                        <p><b><%= link_to(user.name, user) %></b> | <%=user.email %></p>
+                      </div>
 
-<div class="wrapper body">
-  <div class="container">
-    <div class="row">
-    <!-- this is the sidebar.  Remember to put the co. strategy ratings back in.  -->
-      <%= render "users/signed_in_sidebar" %>        
-      <div class="col-md-8">
-        <%# detailed_feedback() %> <%# function in users_helper that sets all current_user's feedback to @myfb %>        
-        <div class="well well-sm">
+                      <% if @users_nicejob %> 
+                        <% @users_nicejob.each do |fb| %>
+                          <%= render "users/feedback_item", :comment => fb.attribute.attribute_name, :category => "nicejob", :feedback => fb   %>
+                        <% end %>
+                      <% end %>
+                      <% if @users_greatat %>
+                        <% @users_greatat.each do |fb| %>
+                          <%= render "users/feedback_item", :comment => fb.attribute.attribute_name, :category => "greatat", :feedback => fb   %>
+                        <% end %>
+                      <% end %>
+                      <% if @users_thanks %>
+                        <% @users_thanks.each do |fb| %>
+                          <%= render "users/feedback_item", :comment => fb.attribute.attribute_name, :category => "thanks", :feedback => fb   %>
+                        <% end %>
+                      <% end %>  
+                      <% if @users_workon %>
+                        <% @users_workon.each do |fb| %>
+                          <%= render "users/feedback_item", :comment => fb.attribute.attribute_name, :category => "workon", :feedback => fb %>
+                        <% end %>
+                      <% end %>
+                      <% if @users_alert %>
+                        <% @users_alert.each do |fb| %>
+                          <%= render "users/feedback_item", :comment => fb.attribute.attribute_name, :category => "alert", :feedback => fb %>
+                        <% end %>    
+                      <% end %>      
+                    </div>                                         
+                  </div>
 
-          <% user = current_user %><%##User.find_by(id: params[:id]) %> 
-
-          <p><b><%= user.name %></b> | <%=user.email %></p>
-          <ul>
-          
-            <% @users_nicejob.each do |fb| %>
-              <%= render "users/feedback_item", :comment => fb.attribute.attribute_name, :category => "nicejob", :feedback => fb %>
-            <% end %>
-            <% @users_greatat.each do |fb| %>
-              <%= render "users/feedback_item", :comment => fb.attribute.attribute_name, :category => "greatat", :feedback => fb %>
-            <% end %>
-            <% @users_thanks.each do |fb| %>
-              <%= render "users/feedback_item", :comment => fb.attribute.attribute_name, :category => "thanks", :feedback => fb %>
-            <% end %>
-            <% @users_workon.each do |fb| %>
-              <%= render "users/feedback_item", :comment => fb.attribute.attribute_name, :category => "workon", :feedback => fb %>
-            <% end %>
-            <% @users_alert.each do |fb| %>
-              <%= render "users/feedback_item", :comment => fb.attribute.attribute_name, :category => "alert", :feedback => fb %>
-            <% end %>     
-          </ul>
-
-        </div>   
+                </div><%# end div class=row %>
+              </section>
+            </section>
+          </section>
+        </section>
+        <a href="#" class="hide nav-off-screen-block" data-toggle="class:nav-off-screen" data-target="#nav"></a> </section>
+    </section>
+  </section>
+</section>
 
 
-        <% if @users_jobs || @users_for_this_job %>
-          <div class="well well-sm"> 
-            <% if @users_jobs %>
-              <p><b><%=current_user.company.name %></b> employees have said that: </p>
-                <ul>
-                <% @users_jobs.reverse_each do |job| %>
-                  <li><b><%=user.name%></b> would do well in a role like <b><%=job.job_holder.name %></b> has now</li>
-                <% end %>
-              </ul>
-            <% end %>
-            <% if @users_for_this_job %>
-              <ul>
-                <% @users_for_this_job.reverse_each do |job| %>
-                  <li><b><%=job.subject.name %></b> would do well in a role like <b><%=user.name%></b> has now</li>
-                <% end %>
-              </ul>
-            <% end %>
-          </div>
-        <% else %>
-          <div class="well well-sm"> 
-            No job recommendations for <b> <%=user.name%></b> yet
-          </div>
-        <% end %>
-        
-      </div>
-    </div>    
-  </div>
-</div>  

@@ -1,47 +1,93 @@
 <%# this is PROJECT/show.html.erb %>
 
-<div class="wrapper body">
-  <div class="container">
-    <div class="row">
+<title>Prietary Projects</title>
+<meta name="description" content="app, web app, responsive, admin dashboard, admin, flat, flat ui, ui kit, off screen nav" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+<section class="vbox">
+  <section>
+    <section class="hbox stretch">
       <%= render "users/signed_in_sidebar" %>
-      <div class="col-md-8">
-        <!-- this is the main section -->
-        <div class="well well-sm">
-          <% project = set_project(params) %> <%##set_project is in projects_helper %> 
-          <div>
-            <p class="alignleft"><b><%= "#{project.name}  " %>
-   
-            <% if current_user===(project.user) %> 
-              <i><%= link_to "edit ", edit_project_path(project) %></i>
-            <% end %></b></p> 
-            <% if project.user %>
-              <p class="alignright"> Created by <%=link_to(project.user.name, project.user) %></p>
-            <% end %> 
-          </div>
-            <hr >
+      <section id="content">
+        <section class="hbox stretch">
+          <section>
+            <section class="vbox">
+              <section class="scrollable padder">
+                <section class="row m-b-md">
+                  <section id="content">
+                    <div class="colleagues_home_name background_color_change_3"> <%# colleage list column %>
+                      <div class="dashboard_content_header background_color_change_1">
+                        <span class="dashboard_header_txt">Project</span>
+                        <a data-toggle="modal" data-target="#newProjectModal"><span class="dashboard_header_add_btn"></span></a>
+                        <%= render "new_project_modal" %>
+                         
+                      </div>
+                      <div class="scrollable name_whole_container">
+                        <div class="slim-scroll" data-height="auto" data-disable-fade-out="true" data-distance="0" data-size="10px" data-color="#333333">
+                          <!-- <div class="apple_pagination">
+                            <%#= will_paginate %> 
+                          </div>
+                          <ul class="users"> <%# tells it to use the .users in custom.css.scss%> -->
+                          <%= will_paginate %>
+                          <%= render @projects %><%# renders _project.html.erb and passes the project%>
+                          <%= will_paginate %>
+                    <!--      </ul>
+                              <div class="apple_pagination">
+                            <%#= will_paginate %> 
+                          </div>  --> 
+                        </div>
+                      </div>
+                      <div class="dashboard_content_header content_color_change_1 " style="border-bottom: 1px solid #d2d3d6">
+                        <input type="text" class="colleague_txt" placeholder="Search" />        
+                          <div class="color_button_2">
+                            Search
+                          </div>            
+                      </div>  
+                    </div>        
+              
 
-          <% @projects_positive.each do |pfb| %>
-            <%= render "projects/feedback_item", :comment => pfb.pattribute.name, :category => "positive", :pfeedback => pfb  %>  
-          <% end %>
-          <% @projects_needs.each do |pfb| %>
-            <%= render "projects/feedback_item", :comment => pfb.pattribute.name, :category => "needs", :pfeedback => pfb  %>
-          <% end %>
-          <% @projects_negative.each do |pfb| %>
-            <%= render "projects/feedback_item", :comment => pfb.pattribute.name, :category => "negative", :pfeedback => pfb  %>
-          <% end %>    
-
-        </div>
-        <div ng-controller="FbController">
-
-          <div class="well well-sm" id="colleaguedDisplay">
-            Give feedback for <b><%= project.name %></b> anonymously
-            <hr style="border: none; "/>
-            <%= render "/projects/button_entry", :project => project %>
-            <hr style="border: none; "/>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
+                    <%# right column %>
+                    <% project = set_project(params) %>
+                    <div class="colleagues_name_selected background_color_change_3">
+                      <div class="dashboard_content_header background_color_change_2">
+                        <span class="dashboard_header_txt"><%= project.name %></span>
+                      </div>
+                      <div class="colleague_detail_head">
+                        <div class="name_ico_small">
+                        </div>
+                        <div class="name_txt_container">
+                          <span style="width: 100%; float: left; font-size: 15px;" ><%= "#{project.name}" %> </span>    
+                        </div>
+                      </div>
+                      <div class="scrollable" style="float: left; height: 900px;"> <%# height: 467px; %>
+                        <div class="slim-scroll" data-height="auto" data-disable-fade-out="true" data-distance="0" data-size="10px" data-color="#333333">
+                          <%# if @projects_positive %> 
+                            <% @projects_positive.each do |pfb| %>
+                              <%= render "projects/feedback_item", :comment => pfb.pattribute.name, :category => "positive", :pfeedback => pfb  %>  
+                            <% end %>
+                          <%# end %>
+                          <% @projects_needs.each do |pfb| %>
+                            <%= render "projects/feedback_item", :comment => pfb.pattribute.name, :category => "needs", :pfeedback => pfb  %>
+                          <% end %>
+                          <% @projects_negative.each do |pfb| %>
+                            <%= render "projects/feedback_item", :comment => pfb.pattribute.name, :category => "negative", :pfeedback => pfb  %>
+                          <% end %>     
+                        </div>
+                        <div class="college_sub_detailed_cntnr">
+                          <span style="width: 94%; float: left; font-size: 15px; margin-left: 3%; margin-bottom: 10px;" >Give feedback for <%= project.name %> anonymously</span>
+                            <div class="well well-sm" id="colleaguedDisplay">
+                              <%= render "/projects/button_entry", :project => project %>
+                            </div>
+                        </div>
+                        
+                      </div>
+                    </div>
+                  </section> 
+                </section>
+              </section>
+            </section>
+          </section>
+        </section>
+      </section>
+    </section>
+  </section>
+</section>

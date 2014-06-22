@@ -1,103 +1,165 @@
 <%#### USERS/show ########### %>
-<!-- <body ng-app="ngToggle"> -->
-<div ng-app="ngToggle"><%# can I call this something other than body and have it still pick up the app? %>
-<!-- <div ng-controller="AppCtrl"> -->
-  <!-- <div ng-controller="List" class="colleague_attribs">    -->
 
-  <div class="wrapper body">
-    <div class="container">
-      <div class="row">
-        <%= render "users/signed_in_sidebar" %>
-        <div class="col-md-8">
-          <!-- this is the main section -->
-          <% user = set_user(params) %><%##User.find_by(id: params[:id]) %> 
-          <h4><%=user.name%></h4>
-          <div class="well well-sm">
+<title>Prietary Colleagues</title>
+<meta name="description" content="app, web app, responsive, admin dashboard, admin, flat, flat ui, ui kit, off screen nav" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+<section class="vbox">
+  <section>
+    <section class="hbox stretch">
+      <%= render "users/signed_in_sidebar" %>
+      <section id="content">
+        <section class="hbox stretch">
+          <section>
+            <section class="vbox">
+              <section class="scrollable padder">
+                <section class="row m-b-md">
+                  <section id="content">
+                    <div class="colleagues_home_name background_color_change_3"> <%# colleage list column %>
+                      <div class="dashboard_content_header background_color_change_1">
+                        <span class="dashboard_header_txt">Colleague</span>
+                        <a data-toggle="modal" data-target="#newColleagueModal"><span class="dashboard_header_add_btn"></span></a>
+                        <%= render "new_colleague_modal" %>
+                         
+                      </div>
+                      <div class="scrollable name_whole_container">
+                        <div class="slim-scroll" data-height="auto" data-disable-fade-out="true" data-distance="0" data-size="10px" data-color="#333333">
+                          <!-- <div class="apple_pagination">
+                            <%#= will_paginate %> 
+                          </div>
+                          <ul class="users"> <%# tells it to use the .users in custom.css.scss%> -->
+                          <%= will_paginate %>
+                          <%= render @users %><%# renders _user.html.erb and passes the user%>
+                          <%= will_paginate %>
+                    <!--      </ul>
+                              <div class="apple_pagination">
+                            <%#= will_paginate %> 
+                          </div>  --> 
+                        </div>
+                      </div>
+                      <div class="dashboard_content_header content_color_change_1 " style="border-bottom: 1px solid #d2d3d6">
+                        <input type="text" class="colleague_txt" placeholder="Search" />        
+                          <div class="color_button_2">
+                            Search
+                          </div>            
+                      </div>  
+                    </div>        
+              
 
+                    <%# right column %>
+                    <% user = set_user(params) %>
+                    <div class="colleagues_name_selected background_color_change_3">
+                      <div class="dashboard_content_header background_color_change_2">
+                        <span class="dashboard_header_txt"><%= user.name %></span>
+                      </div>
+                      <div class="colleague_detail_head">
+                        <div class="name_ico_small">
+                        </div>
+                        <div class="name_txt_container">
+                          <span style="width: 100%; float: left; font-size: 15px;" ><%= "#{user.name} | #{user.email}" %> </span>    
+                        </div>
+                      </div>
+                      <div class="scrollable" style="float: left; "> <%# height: 467px; %>
+                        <div class="slim-scroll" data-height="auto" data-disable-fade-out="true" data-distance="0" data-size="10px" data-color="#333333">
+                          <% if @users_nicejob %> 
+                            <% @users_nicejob.each do |fb| %>
+                              <%= render "users/feedback_item", :comment => fb.attribute.attribute_name, :category => "nicejob", :feedback => fb   %>
+                            <% end %>
+                          <% end %>
+                          <% if @users_greatat %>
+                            <% @users_greatat.each do |fb| %>
+                              <%= render "users/feedback_item", :comment => fb.attribute.attribute_name, :category => "greatat", :feedback => fb   %>
+                            <% end %>
+                          <% end %>
+                          <% if @users_thanks %>
+                            <% @users_thanks.each do |fb| %>
+                              <%= render "users/feedback_item", :comment => fb.attribute.attribute_name, :category => "thanks", :feedback => fb   %>
+                            <% end %>
+                          <% end %>    
+                          <%= render "users/one_button", :fb => @users_workon, :category => "workon" %>
+                          <%= render "users/one_button", :fb => @users_alert, :category => "alert" %>
+                        </div>
+                        <div class="college_sub_detailed_cntnr">
+                          <span style="width: 94%; float: left; font-size: 15px; margin-left: 3%; margin-bottom: 10px;" >Give feedback for <%= user.name %> anonymously</span>
+                            <div class="well well-sm" id="colleaguedDisplay">
+                              <%= render "/users/button_entry", :user => user %>
+                            </div>
+                        </div>
+                        <div class="college_sub_detailed_cntnr">
+                          <% if @users_jobs.size.to_i > 0 || @users_for_this_job.size.to_i >0 %>
+                            <span style="width: 94%; float: left; font-size: 15px; margin-left: 3%; margin-bottom: 10px;" >In-tech employees have said that</span>
+                            <% if @users_jobs.size.to_i > 0 %>
+                              <ul>
+                              <% @users_jobs.reverse_each do |job| %>
+                                <li>
+                                  <div class="dashboard_content_inner_ideas " style="height: 50px;">
+                                      <div class="dashboard_content_idea_left" style="height: 50px;">
+                                      </div>
+                                      <span style="float: left; width: 88%; margin: 2%; margin-bottom: 0px; font-size: 13px;  height: 20px; overflow: hidden;">
+                                        <div class="color_colleague_2">
+                                            <%=user.name%>
+                                        </div>
+                                             <span style="float: left;">would do well in a role like</span> 
+                                        <div class="color_colleague_3">
+                                            <%=job.job_holder.name %>
+                                        </div>
+                                            <span style="float: left;">has now</span> 
+                                      </span>
+                                  </div>
+                                </li>
+                              <% end %>
+                              </ul>    
+                            <% end %>  
+                            <% if @users_for_this_job.size.to_i > 0 %>
+                              <ul>
+                              <% @users_for_this_job.reverse_each do |job| %>
+                                <li>
+                                  <div class="dashboard_content_inner_ideas " style="height: 50px;">
+                                      <div class="dashboard_content_idea_left" style="height: 50px;">
+                                      </div>
+                                      <span style="float: left; width: 88%; margin: 2%; margin-bottom: 0px; font-size: 13px;  height: 20px; overflow: hidden;">
+                                        <div class="color_colleague_3">
+                                          <%=job.subject.name %>                                
+                                        </div>
+                                             <span style="float: left;">would do well in a role like</span> 
+                                        <div class="color_colleague_2">
+                                            <%=user.name%>
+                                        </div>
+                                            <span style="float: left;">has now</span> 
+                                      </span>
+                                  </div>
+                                </li>
+                              <% end %>
+                              </ul>    
+                            <% end %>      
+                          <% end %>
 
-            <p><b><%= user.name %></b> | <%=user.email %></p>
-            <ul>
-            
-              <% @users_nicejob.each do |fb| %>
-                <%= render "users/feedback_item", :comment => fb.attribute.attribute_name, :category => "nicejob", :feedback => fb  %>
-              <% end %>
-              <% @users_greatat.each do |fb| %>
-                <%= render "users/feedback_item", :comment => fb.attribute.attribute_name, :category => "greatat", :feedback => fb  %>
-              <% end %>
-              <% @users_thanks.each do |fb| %>
-                <%= render "users/feedback_item", :comment => fb.attribute.attribute_name, :category => "thanks", :feedback => fb  %>
-              <% end %>   
-              <%= render "users/one_button", :fb => @users_workon, :category => "workon" %>
-              <%= render "users/one_button", :fb => @users_alert, :category => "alert" %>
-            </ul>
+                          <span style="width: 94%; float: left; font-size: 15px; margin-left: 3%; margin-bottom: 10px;" >
+                            <p><b><%= user.name %></b> would do well in a role like that of:</p>
+                            <%= form_for @job do |f| %>
+                              <%= f.text_field :job_holder, placeholder: "Enter name of a colleague at #{current_user.company.name}" %>
+                              <%= f.hidden_field :subject, :value => user.id %>
+                              <br>
+                              Your input will be anonymous.  <br>
+                              <%= f.submit "Submit", class: "color_button_1" %>
+                            <% end %>
+                          </span>
 
-
-
-
-
-
-            
-
-            </div>
-            <div ng-controller="FbController">
-
-              <div class="well well-sm" id="colleaguedDisplay">
-                Give feedback for <b><%= @user.name %></b> anonymously
-                <hr style="border: none; "/>
-                <%= render "/users/button_entry", :user => user %>
-                <hr style="border: none; "/>
-              </div>
-            </div>
-
-
-            <% puts "@users_jobs.size: #{@users_jobs.size}"%>
-            <% puts "@users_for_this_job.size: #{@users_for_this_job.size}"%>
-          <% if @users_jobs.size.to_i > 0 || @users_for_this_job.size.to_i >0 %>
-            <div class="well well-sm"> 
-              <% if @users_jobs.size.to_i > 0 %>
-                <p><b><%=current_user.company.name %></b> employees have said that: </p>
-                  <ul>
-                  <% @users_jobs.reverse_each do |job| %>
-                    <li><b><%=user.name%></b> would do well in a role like <b><%=job.job_holder.name %></b> has now</li>
-                  <% end %>
-                </ul>
-              <% end %>
-              <% if @users_for_this_job.size.to_i > 0 %>
-                <ul>
-                  <% @users_for_this_job.reverse_each do |job| %>
-                    <li><b><%=job.subject.name %></b> would do well in a role like <b><%=user.name%></b> has now</li>
-                  <% end %>
-                </ul>
-              <% end %>
-            </div>
-          <% else %>
-            <div class="well well-sm"> 
-              No job recommendations for <b> <%=user.name%></b> yet
-            </div>
-          <% end %>
-
-
-          <div class="well well-sm"> <%# job input %>
-            <p><b><%= user.name %></b> would do well in a role like that of:</p>
-            <%#= form_for @job, :remote => true do |f| %>
-            <%= form_for @job do |f| %>
-              <%= f.text_field :job_holder, placeholder: "Enter name of a colleague at #{current_user.company.name}" %>
-              <%= f.hidden_field :subject, :value => user.id %>
-
-              <!-- or  -->
-              <%#= f.text_field :email %>
-              <br>
-              Your input will be anonymous.  <br>
-              <%#= f.hidden_field :subject, :value => current_user.id %>
-              <%= f.submit "Submit", class: "btn btn-large btn-primary" %>
-            <% end %>
-          </div>
-
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-</div>
-
-
+         <!--         BETTER STYLINGfor would do well in role input box:       <div class="dashboard_content_header content_color_change_1 " style="border-bottom: 1px solid #d2d3d6">
+                          <input type="text" class="colleague_txt" placeholder="Enter Employees" />
+                          <div class="color_button_1">
+                              Submit
+                          </div>
+                        </div>  -->
+                        </div>
+                      </div>
+                    </div>
+                  </section> 
+                </section>
+              </section>
+            </section>
+          </section>
+        </section>
+      </section>
+    </section>
+  </section>
+</section>

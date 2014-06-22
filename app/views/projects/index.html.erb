@@ -1,44 +1,57 @@
 <%# PROJECTS/index.html.erb  #################### %>
-
    
-<div class="wrapper body">
-  <div class="container">
-    <div class="row">
-      <%= render "users/signed_in_sidebar" %>  
-      <div class="col-sm-8">
-        <% provide(:title, 'All projects') %>
-        <% company = current_user.company %>
-        <%# company_id = CompanyEmployee.find_by(user_id: (current_user.id)).company_id %>
-        <h1><%= company.name %> Projects</h1> 
-        <%# or current_user.company.name %>
-        <div class="apple_pagination">
-          <%= will_paginate %> 
-        </div>  
-        <ul class="projects"> <%# tells it to use the .projects in custom.css.scss%>
-        	<%=  render  @projects %><%# renders _project.html.erb and passes the project%>
-        </ul>
-        <div class="apple_pagination">
-          <%= will_paginate %> <%# this puts the pagination links %>
-        </div>
-        <br>
-        <% if @projects.size.to_i < 1 %>
-          <div class="well well-sm"> <b> No projects created for your company yet. </b></div>
-        <% end %> 
+<title>Prietary Projects</title>
+<meta name="description" content="app, web app, responsive, admin dashboard, admin, flat, flat ui, ui kit, off screen nav" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+<section class="vbox">
+  <section>
+    <section class="hbox stretch">
+      <%= render "users/signed_in_sidebar" %>
+      <section id="content">
+        <section class="hbox stretch">
+          <section>
+            <section class="vbox">
+              <section class="scrollable padder">
+                <section class="row m-b-md">
+                  <section id="content">
+                    <div class="colleagues_home_name background_color_change_3"> <%# colleague list column %>
+                      <div class="dashboard_content_header background_color_change_1">
+                        <span class="dashboard_header_txt">Project</span>
+                        <a data-toggle="modal" data-target="#newProjectModal"><span class="dashboard_header_add_btn"></span></a>
+                        <%= render "new_project_modal" %>
+                      </div>
+                      <div class="scrollable name_whole_container">
+                        <div class="slim-scroll" data-height="auto" data-disable-fade-out="true" data-distance="0" data-size="10px" data-color="#333333">
+          
+                          <!-- <div class="apple_pagination">
+                            <%#= will_paginate %> 
+                          </div>
+                          <ul class="users"> <%# tells it to use the .users in custom.css.scss%> -->
+                          <%= will_paginate %>
+                          <%= render @projects %><%# renders _project.html.erb and passes the project%>
+                          <%= will_paginate %>
+                    <!--      </ul>
+                              <div class="apple_pagination">
+                            <%#= will_paginate %> 
+                          </div>  --> 
+                        </div>
+                      </div>
+                      <div class="dashboard_content_header content_color_change_1 " style="border-bottom: 1px solid #d2d3d6">
+                        <input type="text" class="colleague_txt" placeholder="Search" />        
+                          <div class="color_button_2">
+                            Search
+                          </div>            
+                      </div>  
+                    </div>        
+              
+                  </section> 
+                </section>
+              </section>
+            </section>
+          </section>
+        </section>
+      </section>
+    </section>
+  </section>
+</section>
 
-<!--         <div class="row">
-          <div class="span"> -->
-            <%= form_for(@project) do |f| %>
-              <%#= render 'shared/error_messages', object: f.object %>
-              <h4>Create a new project.  Enter project name:</h4>
-              <%= f.text_field :name %>
-              <br>
-              Your name will be shown as the creator of the project.  All feedback given will be anonymous.<br>
-              <%= f.hidden_field :company_id, :value => current_user.company.id %><br>
-              <%= f.submit "Create the project", class: "btn btn-large btn-primary" %>
-            <% end %>
-<!--           </div>
-        </div> -->
-      </div>
-    </div>
-  </div>
-</div>

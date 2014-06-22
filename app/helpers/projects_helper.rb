@@ -88,14 +88,18 @@ module ProjectsHelper
   def set_project_btn_type(category)
   	case category
   	when "positive"
-  	  btnclass = "btn btn-success dropdown-toggle"
+  	  #btnclass = "btn btn-success dropdown-toggle"
+      btnclass = "color_feedback_2"
   	  text = "Positive"
   	when "needs"
-  	  btnclass = "btn btn-primary dropdown-toggle"
+  	  # btnclass = "btn btn-primary dropdown-toggle"
+      btnclass = "color_feedback_3"      
   	  text = "Needs"
   	when "negative"
-  	  btnclass = "btn btn-danger dropdown-toggle"
+  	  # btnclass = "btn btn-danger dropdown-toggle"
+      btnclass = "color_feedback_4"      
   	  text = "Negative"
+
   	end
   	#puts "btnclass: #{btnclass}"
   	#puts "text: #{text}"

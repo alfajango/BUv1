@@ -1,21 +1,52 @@
+<title>Prietary Colleagues</title>
+<meta name="description" content="app, web app, responsive, admin dashboard, admin, flat, flat ui, ui kit, off screen nav" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+<section class="vbox">
+  <section>
+    <section class="hbox stretch">
+      <%= render "users/signed_in_sidebar" %>
+      <section id="content">
+        <section class="hbox stretch">
+          <section>
+            <section class="vbox">
+              <section class="scrollable padder">
+                <section class="row m-b-md">
 
-<div class="wrapper body">
-	<div class="container">
-	  <div class="row">
-	    <%= render "users/signed_in_sidebar" %>  
-	    <div class="col-md-8">
-		    <% provide(:title, 'Your colleagues') %>
-			<h1><%= current_user.company.name%> Colleagues</h1>
-	        <div class="apple_pagination">
-			  <%= will_paginate %> 
-			</div>
-			<ul class="users"> <%# tells it to use the .users in custom.css.scss%>
-			  <%= render @users %><%# renders _user.html.erb and passes the user%>
-			</ul>
-	        <div class="apple_pagination">
-			  <%= will_paginate %> 
-			</div>  
-		</div>
-	  </div>
-	</div>
-</div>
+			      <section id="content">
+			        <div class="colleagues_home_name background_color_change_3">
+			          <div class="dashboard_content_header background_color_change_1">
+                        <span class="dashboard_header_txt">Colleague</span>
+                        <a data-toggle="modal" data-target="#newColleagueModal"><span class="dashboard_header_add_btn"></span></a>
+                        <%= render "new_colleague_modal" %>
+                      </div>
+			          <div class="scrollable name_whole_container">
+			            <div class="slim-scroll" data-height="auto" data-disable-fade-out="true" data-distance="0" data-size="10px" data-color="#333333">
+						<!-- <div class="apple_pagination">
+						  <%#= will_paginate %> 
+						</div>
+						<ul class="users"> <%# tells it to use the .users in custom.css.scss%> -->
+						<%= will_paginate %>
+						<%= render @users %><%# renders _user.html.erb and passes the user%>
+						<%= will_paginate %>
+			<!-- 			</ul>
+				        <div class="apple_pagination">
+						  <%#= will_paginate %> 
+						</div>  --> 
+			          </div>
+			        </div>
+			          <div class="dashboard_content_header content_color_change_1 " style="border-bottom: 1px solid #d2d3d6">
+			            <input type="text" class="colleague_txt" placeholder="Search" />        
+			              <div class="color_button_2">
+			                  Search
+			              </div>            
+			          </div>  
+			        </div>        
+        
+              </section>
+            </section>
+          </section>
+        </section>
+        <a href="#" class="hide nav-off-screen-block" data-toggle="class:nav-off-screen" data-target="#nav"></a> </section>
+    </section>
+  </section>
+</section>

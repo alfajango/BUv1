@@ -1,55 +1,73 @@
-
-<div class="col-md-4">
-    <div class="well well-sm">
-      <h4><%=current_user.company.name%>'s Business Intelligence Network</h4>
-    </div>
-    <div class="well well-sm">
-      <%# was @user.name, @user.email but that was nil %>
-      <h4><p><%= current_user.name %></p></h4>
-      <p><%= current_user.email %></p>
-       <%= link_to "My Feedback", myfeedback_path(current_user) %> <%# I didn't need to define a myfeedback_path - it just went to users/myfeedback.html.erb %>
-      <%# an example of going to a secure page= link_to "Settings", edit_user_path(current_user) %>
-    </div>
-    <div class="well well-sm">
-      
-      <!-- <p><%#= link_to "New colleague", create_colleague_path %> <%#createuser_path(current_user) %></p> -->
-      Anonymously add a new colleague:
-
-      <%= form_for @newuser, :as => :user, :url => invitation_path(:user), :html => {:method => :post} do |f| %>
-        <%= devise_error_messages! %>
-        <%= f.label "Name:" %> 
-        <%= f.text_field :name %>
-        <b><%= f.label "Email:" %></b>
-        <%= f.email_field :email, placeholder: " ...@#{current_user.company.domain}" %>
-        <%# following line doesn't do what I need it to TODO: Improve this: %>
-        <%= f.hidden_field :company_id, :value => current_user.company.id %>
-        <%= f.submit "Add colleague in Prietary", class: "btn btn-primary" %>
-      <% end %>
-      <a  data-toggle="modal" data-target="#myModal">How does Add Colleague work?</a>
-      <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="newColleagueExplanation" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-
-              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-              <h4 class="modal-title" id="newColleagueExplanation">How does Add Colleague work?</h4>
-            </div>
-            <div class="modal-body">
-              <p>As soon as you enter the name and email address for your colleage and click the "Add colleague in Prietary" button, your colleague's account is active and they can receive feedback</p>
-              <p>Your colleague will receive an email that says a colleague has invited them to joing Prietary, along with a link that lets them set up a password for signing in to Prietary.  That's it! </p>
-              <p>Every time you add a colleague, you increase the number of people in your company who can read the feedback that has been provided.  Creating colleagues also increases your anonymity by increasing the pool of people whom a given piece of feedback could have come from</p>
-              <p>Your colleagues do not know who added them in the system and there is no difference in accounts that were self-created, and those that were set up by a colleague</p>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            </div>
+<% users_for_homepage() %>
+<% projects_for_homepage() %>
+<% ideas_for_homepage() %>
+<aside class="bg-black aside-md hidden-print" id="nav">
+  <section class="vbox">
+    <section class="w-f scrollable">
+      <div class="slim-scroll" data-height="auto" data-disable-fade-out="true" data-distance="0" data-size="10px" data-color="#333333">
+        <div class="clearfix wrapper dk nav-user hidden-xs">
+          <p></p>
+          <div class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <span class="thumb avatar pull-left m-r"> <img src="/img/a0.jpg"> <i class="on md b-black"></i> </span> <span class="hidden-nav-xs clear"> <span class="block m-t-xs"> <strong class="font-bold text-lt"><%= current_user.name %></strong> <b class="caret"></b> </span> <span class="text-muted text-xs block"><!-- Engineer --></span> <span class="text-lt block"><%= current_user.email %></span></span> </a>
+            <ul class="dropdown-menu animated fadeInRight m-t-xs">
+              <span class="arrow top hidden-nav-xs"></span>
+              <li> <%= link_to("Settings", edit_user_registration_path) %> </li>
+              <li> <%= link_to "My Feedback", myfeedback_path(current_user) %> </li>
+              <li> <a href="#"> <span class="badge bg-danger pull-right">3</span> Notifications </a> </li>
+              <li> <a href="#">Help</a> </li>
+              <li class="divider"></li>
+              <li> <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>  </li>
+            </ul>
           </div>
         </div>
-      </div>
-      
-    </div>
-    <div class="well well-sm">
-          <%= link_to "New project / strategy / effort", newproject_path %>
-    </div>
-</div>
+        <!-- nav -->
+        <nav class="nav-primary hidden-xs">
+          <div class="text-muted text-sm hidden-nav-xs padder m-t-sm m-b-sm"><%= link_to "My Feedback", myfeedback_path(current_user) %>
+              <div class="fd_cntr">
+                <span class="fd_back_clr"></span>
+                <span class="fd_back_clr"></span>
+                <span class="fd_back__no_clr"></span>
+                <span class="fd_back__no_clr"></span>
+              </div>
+          </div>
+          <ul class="nav nav-main" data-ride="collapse">
+            <li class="active"> <%= link_to raw("<i class='i i-statistics icon'></i> <b>Dashboard</b>"), root_path %> 
+            </li>
 
+            <li > <%= link_to raw("<i class='i i-stack icon'></i> <b>Colleagues</b> <b class='badge bg-danger pull-right'>4</b>"), users_path %>  
+            </li>
+
+            <li > <%= link_to raw("<i class='i i-lab icon'></i> <b>Projects</b> <span class='pull-right text-muted'> <i class='i i-circle-sm-o text'></i> </span>"), projects_path %> 
+            
+            </li>
+            <li > <%= link_to raw("<i class='i i-docs icon'></i> <b>Ideas</b> <span class='pull-right text-muted'> <i class='i i-circle-sm-o text'></i> </span>"), ideas_path %>              
+            </li>
+            
+          </ul>
+          <div class="line dk hidden-nav-xs"></div>
+          <div class="text-muted text-xs hidden-nav-xs padder m-t-sm m-b-sm">Colleagues</div>
+          <ul class="nav">
+          <% @show_users.each do |usr| %>
+            <li> <%= link_to raw("<i class='i i-circle-sm text-info-dk'></i> #{usr.name}"), usr %> </li>
+          <% end %>  
+          </ul>
+          <div class="text-muted text-xs hidden-nav-xs padder m-t-sm m-b-sm">Projects</div>
+          <ul class="nav">
+          <% @show_projects.each do |proj| %>
+            <li> <%= link_to raw("<i class='i i-circle-sm text-info-dk'></i> #{proj.name}"), proj %> </li>
+          <% end %>
+          </ul>
+          
+          <div class="text-muted text-xs hidden-nav-xs padder m-t-sm m-b-sm">Ideas</div>
+          <ul class="nav">
+          <% @show_ideas.each do |idea| %>
+            <li> <%= link_to raw("<i class='i i-circle-sm text-info-dk'></i> #{idea.body}"), idea %> </li>
+          <% end %>
+          </ul>
+        </nav>
+        <!-- / nav -->
+      </div>
+    </section>
+    <footer class="footer hidden-xs no-padder text-center-nav-xs"><a href="#nav" data-toggle="class:nav-xs" class="btn btn-icon icon-muted btn-inactive m-l-xs m-r-xs"> <i class="i i-circleleft text"></i> <i class="i i-circleright text-active"></i> </a> </footer>
+  </section>
+</aside>
+<!-- /.aside -->

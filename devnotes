@@ -650,5 +650,11 @@ saga-5775.herokussl.com  *.prietary.com, prietary.com  2015-06-10 23:59 UTC  Fal
 It seems like Trusted False is a problem.  And I didn't do anything with bundle.pem - not sure what to do with it.  But, www.prietary.com doesn't give any ssl warning
 ###############################################################
 
-I've got a problem with my staging and production db's on mongohq.  updating the MONGOHQ_URL to production breaks everything.
+I've got a problem with my staging and production db's on mongohq.  updating the MONGOHQ_URL to production breaks everything.  SOLUTION: just had the wrong MONGOHQ_URL
 
+
+Go to git branch 'spefdesign'
+It's not finding some fonts and some images - put fonts and images folders in public/ 
+
+homepage (dashboard) working pretty well.  Now time for Colleague page.
+the users/index and users/show combine on to one page.  NO!  make it look like it's one page, but have it actually re-render when a new colleague (or the first colleague) is clicked on.

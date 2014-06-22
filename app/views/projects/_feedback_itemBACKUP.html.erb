@@ -1,0 +1,42 @@
+<%# THIS IS PROJECTS/_FEEDBACK_ITEM  %>
+<% btnclass, text = set_project_btn_type(category) %>
+<table>
+  <tr>
+    <th rowspan="2"><button type="button" class="<%= btnclass %>" ><%= text %> </span></button></th>
+    <th><%= comment %><small>&nbsp&nbsp&nbsp&nbsp<%= "#{time_ago_in_words(pfeedback.created)} ago"%></small></th>
+  </tr>
+  <tr>
+    <td>
+      <% proj_num_fbvotes(pfeedback) %>
+      <div style="display:inline;">
+        <%= @pfeedback_upvotes %>
+
+        <%#= form_for feedback.fbvotes.build, :html => { :style => 'display:inline;' }, :remote => true do |f| %><%# remote true prevents it from page reloading, so vote doesn't show %>
+        <%= form_for pfeedback.fbvotes.build, :html => { :style => 'display:inline;' } do |f| %>
+          <%= f.hidden_field :upvote, value: 1 %> 
+          <%= f.hidden_field :pfeedback_id, :value => pfeedback.id %> <%# don't understand why I need feedback_id, rather than feedback.  I guess because you can't pass the object, only strings. %>
+          <%= link_to_submit do %>
+            <i class="text-color fa fa-chevron-up fa-1x"></i> 
+          <% end %>
+
+        <% end %>
+
+        &nbsp | &nbsp
+        <%= @pfeedback_downvotes %>
+        <%# I wish I could show this number, but I think I can't%>
+        <%= form_for pfeedback.fbvotes.build, :html => { :style => 'display:inline;' } do |f| %>
+          <%= f.hidden_field :downvote, value: 1 %>
+          <%= f.hidden_field :pfeedback_id, :value => pfeedback.id %>
+          <%= link_to_submit do %>
+            <i class="text-color fa fa-chevron-down fa-1x"></i>
+          <% end %>
+        <% end %>    
+
+         |  flag     
+      </div>
+    </td>
+  </tr>
+</table>
+<!-- <hr style="border: none; "/> -->
+<!-- <hr> -->
+

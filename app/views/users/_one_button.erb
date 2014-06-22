@@ -1,14 +1,15 @@
 <%# this gets category and feedback and renders a button with a number of feedbacks received in this category %>
 <% if fb.count > 0 %>
 	<% btnclass, text = set_btn_type(category) %>
-	<%= puts "fb.count: #{fb.count}" %>
-	<% fb.each do |fb_item| %>
-	<%= puts "fb_item.attribute.attribute_name: #{fb_item.attribute.attribute_name}" %>
-	<% end %>
-	<table>
-	  <tr>
-	    <th rowspan="2"><button type="button" class="<%= btnclass %>" ><%= text %> </span></button></th>
-	    <th>&nbsp<%= fb.count %> </th>
-	  </tr>
-	</table>
+	<div class="dashboard_content_inner content_color_change_1">
+	  <div class="content_inner_color_1">
+	  </div>
+	  <div class="<%= btnclass %>">                              
+	    <%= text %>                              
+	  </div>
+	  <div class="content_comment">
+    	<span style="float: left; min-width: 100%;"><%= fb.count %> received</span>
+	  	
+	  </div>
+	</div>  
 <% end %>

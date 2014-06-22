@@ -1,80 +1,119 @@
-<div class="wrapper body"> <!-- or body-inverse -->
-  <div class="container">
-    <div class="row">
-      <%= render "users/signed_in_sidebar" %>  
-      
-      <div class="col-md-8">
+<title>Prietary Dashboard</title>
+<meta name="description" content="app, web app, responsive, admin dashboard, admin, flat, flat ui, ui kit, off screen nav" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+<!--[if lt IE 9]> <script src="js/ie/html5shiv.js"></script> <script src="js/ie/respond.min.js"></script> <script src="js/ie/excanvas.js"></script> <![endif]-->
+<section class="vbox">
+  <%# header was here %>
+  <section>
+    <section class="hbox stretch">
+      <!-- .aside was here-->
+      <%= render "users/signed_in_sidebar" %>
+      <section id="content">
+        <section class="hbox stretch">
+          <section>
+            <section class="vbox">
+              <section class="scrollable padder">
+                <section class="row m-b-md">
+                  <div class="col-sm-6">
+                    <h3 class="m-b-xs text-black">In-itech's Business Intelligence Network</h3>
+                    <small>Welcome back, <%=current_user.name%>, <i class="fa fa-map-marker fa-lg text-primary"></i> United States</small> 
+                  </div>
+                </section>
+                <div class="row">
+                <%# ######## COLLEAGUES ################### %>      
+                  <div class="col-md-4 col-sm-6">
+                    <div class="dash_header_menu">
+                      <div class="symbol_dashborad symbol_bck_1 sumbol_ico_1">
+                        <div class="sumbol_ico_1_arrow">
+                        </div>                      
+                      </div>                   
+                      <div class="symbol_txt">
+                        <h1 class="count"><%=current_user.company.users.count %></h1>
+                        <p><%= link_to "Colleagues", users_path %></p>                         
+                      </div>                     
+                    </div>
+                    <% @show_users.each do |user| %> 
+                      <% set_fbs(user) %>
+                      <div class="dashboard_content">
+                        <div class="dashboard_content_header symbol_bck_1 ">
+                          <p><b><%= link_to(user.name, user) %></b> | <%=user.email %></p>
+                        </div>
 
-        <h4><%= link_to "Projects", projects_path %></h4>
-        <% projects_for_homepage() %> <%# call a function in projects_helper that sets a list of project id's to show ratings graphs for on the homepage in @show_projects %>
-        <% @show_projects.each do |project| %>    
-          <% set_pfbs(project) %>
-          <div class="well well-sm">
-            <p><b><%= link_to(project.name, project) %></b></p>
-            <% if @projects_positive %>
-              <% @projects_positive.each do |pfb| %>
-                <%= render "projects/feedback_item", :comment => pfb.pattribute.name, :category => "positive", :pfeedback => pfb  %>  <%#  :pfeedback would be more correct %>
-              <% end %>
-            <% end %>
-            <% if @projects_needs %>  
-              <% @projects_needs.each do |pfb| %>
-                <%= render "projects/feedback_item", :comment => pfb.pattribute.name, :category => "needs", :pfeedback => pfb  %>
-              <% end %>
-            <% end %>
-            <% if @projects_negative %>  
-              <% @projects_negative.each do |pfb| %>
-                <%= render "projects/feedback_item", :comment => pfb.pattribute.name, :category => "negative", :pfeedback => pfb  %>
-              <% end %> 
-            <% end %>  
-          </div>
-        <% end %>
+                        <% if @users_nicejob %> 
+                          <% @users_nicejob.each do |fb| %>
+                            <%= render "users/feedback_item", :comment => fb.attribute.attribute_name, :category => "nicejob", :feedback => fb   %>
+                          <% end %>
+                        <% end %>
+                        <% if @users_greatat %>
+                          <% @users_greatat.each do |fb| %>
+                            <%= render "users/feedback_item", :comment => fb.attribute.attribute_name, :category => "greatat", :feedback => fb   %>
+                          <% end %>
+                        <% end %>
+                        <% if @users_thanks %>
+                          <% @users_thanks.each do |fb| %>
+                            <%= render "users/feedback_item", :comment => fb.attribute.attribute_name, :category => "thanks", :feedback => fb   %>
+                          <% end %>
+                        <% end %>     
+                      </div>
+                    <% end %>                                          
+                  </div>
+                  <%# ######## PROJECTS ################### %>      
+                  <div class="col-md-4 col-sm-6"> <%# box that says # of projects %>
+                    <div class="dash_header_menu">
+                      <div class="symbol_dashborad symbol_bck_2 sumbol_ico_2">
+                        <div class="sumbol_ico_2_arrow">
+                        </div>
+                      </div>
+                      <div class="symbol_txt">
+                        <h1 class="count"><%=current_user.company.projects.count %></h1> 
+                        <p><%= link_to "Projects", projects_path %></p> 
+                      </div>
+                    </div>                    
+                    <% @show_projects.each do |project| %>    
+                      <% set_pfbs(project) %>
+                      <div class="dashboard_content "> <%# start of one project box %>
+                        <div class="dashboard_content_header symbol_bck_2">
+                          <b><%= link_to(project.name, project) %></b>
+                        </div>        
 
-        <% if @show_projects.size.to_i < 1 %>
-          <div class="well well-sm"> <b> No projects with ratings yet. Give input to your <%= link_to "Projects", projects_path %> </b>
-          </div>
-        <% else %> <%# there were some projects shown %>  
-          <div class="alignright"><%= link_to "more projects", projects_path %></div>
-          <br>
-        <% end %>        
-
-        <h4><%= link_to "Colleagues", users_path %></h4>
-        <% users_for_homepage() %> <%# call a function in users_helper that sets a list of users to show ratings for on the homepage in @show_users %>    
-        <%#= @show_users.inspect %> 
-        <% @show_users.each do |user| %> 
-          <% set_fbs(user) %>
-          <div class="well well-sm"> 
-            <p><b><%= link_to(user.name, user) %></b> | <%=user.email %></p>
-            <% if @users_nicejob %> 
-              <% @users_nicejob.each do |fb| %>
-                <%= render "users/feedback_item", :comment => fb.attribute.attribute_name, :category => "nicejob", :feedback => fb   %>
-              <% end %>
-            <% end %>
-            <% if @users_greatat %>
-              <% @users_greatat.each do |fb| %>
-                <%= render "users/feedback_item", :comment => fb.attribute.attribute_name, :category => "greatat", :feedback => fb   %>
-              <% end %>
-            <% end %>
-            <% if @users_thanks %>
-              <% @users_thanks.each do |fb| %>
-                <%= render "users/feedback_item", :comment => fb.attribute.attribute_name, :category => "thanks", :feedback => fb   %>
-              <% end %>
-            <% end %>     
-          </div>
-        <% end %>
-
-
-
-        <% if @show_users.size.to_i < 1 %>
-          <div class="well well-sm"> <b> No colleagues with feedback yet. Give input to your <%= link_to "Colleagues", users_path %> </b>
-          </div>
-        <% else %> <%# there were some projects shown %>  
-          <div class="alignright"><%= link_to "more colleagues", users_path %></div>
-          <br>
-        <% end %> 
-        <%= render "home/front_page_ideas" %>
-      </div>
-    </div>
-    <hr>
-
-  </div>
-</div> 
+                        <% if @projects_positive %>
+                          <% @projects_positive.each do |pfb| %>
+                            <%= render "projects/feedback_item", :comment => pfb.pattribute.name, :category => "positive", :pfeedback => pfb  %>  <%#  :pfeedback would be more correct %>
+                          <% end %>
+                        <% end %>
+                        <% if @projects_needs %>  
+                          <% @projects_needs.each do |pfb| %>
+                            <%= render "projects/feedback_item", :comment => pfb.pattribute.name, :category => "needs", :pfeedback => pfb  %>
+                          <% end %>
+                        <% end %>
+                        <% if @projects_negative %>  
+                          <% @projects_negative.each do |pfb| %>
+                            <%= render "projects/feedback_item", :comment => pfb.pattribute.name, :category => "negative", :pfeedback => pfb  %>
+                          <% end %> 
+                        <% end %>  
+                      </div> <%# end of one project box %>
+                    <% end %>
+                  </div>
+                  <%# ######## IDEAS ################### %>      
+                  <div class="col-md-4 col-sm-6">              
+                    <div class="dash_header_menu">
+                      <div class="symbol_dashborad symbol_bck_3 sumbol_ico_3">
+                        <div class="sumbol_ico_3_arrow">
+                        </div>                    
+                      </div>
+                      <div class="symbol_txt">
+                        <h1 class="count"><%=current_user.company.ideas.count %></h1>
+                        <p><%= link_to "Ideas", ideas_path %></p>                         
+                      </div>
+                    </div>
+                    <%= render "home/front_page_ideas" %> 
+                  </div>
+                </div><%# end div class=row %>
+              </section>
+            </section>
+          </section>
+        </section>
+        <a href="#" class="hide nav-off-screen-block" data-toggle="class:nav-off-screen" data-target="#nav"></a> </section>
+    </section>
+  </section>
+</section>
