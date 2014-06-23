@@ -35,6 +35,7 @@ class ProjectsController < ApplicationController
     @projects_needs =[]
     @projects_negative =[]
 
+    # PERF/CLEANUP: use group_by statement here.
     @projects_feedback.each do |pfeedback|
       puts "pfeedback.id: #{pfeedback.id}"
       puts "pfeedback.pattribute.id: #{pfeedback.pattribute.id}"

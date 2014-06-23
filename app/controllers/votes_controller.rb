@@ -1,9 +1,12 @@
 class VotesController < ApplicationController
 
   def create
+    # SEC: Scope idea to current_user's company
     idea = Idea.find_by(id: params[:vote][:idea_id])
     priorvote = Vote.where(idea: idea, user: current_user).first#if Vote.find_by(idea: idea, user:current_user).exists? 
     #puts "priorvote: #{priorvote}"
+    # CLEANUP: Do we want to require two steps to change from upvote to downvote or vice versa, as is currently done here?
+    #   Could possibly use helper such as Vote.find_or_initialize_by_user_id_and_idea_id(current_user.id, idea.id)
     if priorvote #= Vote.find_by(idea: idea, user:current_user) # did this person already vote, up or down, for this idea?
       #puts "priorvote[:upvote]: #{priorvote[:upvote]}"
       #puts "priorvote[:upvote].class: #{priorvote[:upvote].class}"

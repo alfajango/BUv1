@@ -2,6 +2,7 @@
 # if I get rid of it all, /users fails, so just get rid of create action
 
 class UsersController < ApplicationController
+  # SEC: Uncomment necessary authorization filters
   # before_action :signed_in_user, only: [:index, :edit, :update, :destroy, :following, :followers]
   # before_action :correct_user,   only: [:edit, :update]
   # # before_action :admin_user,     only: [:destroy, :admin_user]
@@ -21,6 +22,7 @@ class UsersController < ApplicationController
 
 
     @attributes = Attribute.all
+    # SEC: Scope users to those allowed or from current company
   	@user = User.find(params[:id])
     puts "@user.name: #{@user.name}"
     @users_feedback = @user.feedbacks
@@ -30,6 +32,9 @@ class UsersController < ApplicationController
     @users_workon =[]
     @users_alert =[]
 
+    # PERF/CLEANUP: Use group_by method here
+    #   e.g. @users_feedback = @user.feedbacks.group_by { |fb| fb.attribute.category }
+    #   then use with @users_feedback["nicejob"], etc.
     @users_feedback.each do |feedback|
       case feedback.attribute.category
       when "nicejob"
@@ -49,8 +54,10 @@ class UsersController < ApplicationController
     #@users_nicejob = @users_feedback.find_by(attribute.category == "nicejob")
 
     # for job creation:
+    # SEC: Scope jobs subject (i.e. target user) id by users allowed or by company
     @users_jobs = Job.where(subject: params[:id])
 
+    # SEC: Scope jobs holder (i.e. target jobs) id by users allowed or by company
     @users_for_this_job = Job.where(job_holder: params[:id])
 
     @job = Job.new # this calls jobs_controller create action, I believe
@@ -76,6 +83,7 @@ class UsersController < ApplicationController
     @users_workon =[]
     @users_alert =[]
 
+    # PERF/CLEANUP: Use group_by method here
     @users_feedback.each do |feedback|
       case feedback.attribute.category
       when "nicejob"
@@ -118,6 +126,7 @@ class UsersController < ApplicationController
   end
 
   def homepage
+    # SEC: Scope user by users allowed or in current_user company
     @user = User.find(params[:id])
     # should it be User.all ?
     render homepage
@@ -135,11 +144,14 @@ class UsersController < ApplicationController
 
 
   def edit
+    # SEC: Scope user by users allowed or in current_user company
     @user = User.find(params[:id])
   end
 
   def update
+    # SEC: Scope user by users allowed or in current_user company
     @user = User.find(params[:id])
+    # SEC: See security note for user_params below
     if @user.update_attributes(user_params)
       flash[:success] = "Profile updated"
       redirect_to @user
@@ -149,6 +161,7 @@ class UsersController < ApplicationController
   end
 
   def destroy
+    # SEC: Scope user by users allowed or in current_user company
     User.find(params[:id]).destroy
     flash[:success] = "User delted."
     redirect_to users_url
@@ -164,6 +177,7 @@ private
 
   	def user_params
       # add admin per Exercise 9.6.1
+      # SEC: Don't permit :admin attribute via mass assignment
   		params.require(:user).permit(:name, :email, :password, :password_confirmation, :admin)
   	end
 
@@ -178,6 +192,7 @@ private
     # end
 
     def correct_user
+      # SEC: Scope or limit user by id as necessary
       @user = User.find(params[:id])
       redirect_to(root_url) unless current_user?(@user)
     end

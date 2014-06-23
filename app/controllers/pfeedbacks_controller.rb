@@ -2,6 +2,7 @@ class PfeedbacksController < ApplicationController
 	puts "in pfeedbacks_controller"
   def create  # where is this called from?
     puts "in pfeedbacks_controller create"
+    # CLEANUP: Does pfeedback_params exist?
     @pfb = Pfeedback.new(pfeedback_params)   
     puts "pfeedback_params: #{pfeedback_params}"
     #@companies = Company.all
@@ -18,6 +19,8 @@ class PfeedbacksController < ApplicationController
 
     #method to do something without going to another page: http://stackoverflow.com/questions/2139996/ruby-on-rails-redirect-toback
     session[:return_to] ||= request.referer
+    # SEC: Need some way of sanitizing association attributes here, so that user cannot set
+    #   e.g. from_id, project_ad, etc. via mass-assignment.
     Pfeedback.create(params[:pfeedback])
     redirect_to session.delete(:return_to)
 
@@ -30,7 +33,9 @@ class PfeedbacksController < ApplicationController
     puts "params: #{params}"
     pattrib_obj = params[:pattribute] # ??
     #to_user = params[:user] # fix  ????
+    # SEC: Scope to_project to those allowed or those of current_user.company
     to_project = Project.find(params[:id])
+    # CLEANUP: Does from_id exist here?
     pfb = Pfeedback.create!(from_id: from_id, rating_given: 1)  
     pfb.attribute = pattrib_obj
     to_project.pfeedbacks << pfb
@@ -41,9 +46,12 @@ class PfeedbacksController < ApplicationController
     puts "in pfeedbacks_controller complete"
 
     @pattribute=Pattribute.all
+    # SEC: Scope possible users to those allowed or from company
     @user = User.find(params[:id])
     params[:attribute_checkbox].each do |check|
 
+      # CLEANUP: Do we need attribute_identifier here?
+      #   Can just set {attribute_identifier: check} below.
        attribute_identifier = check
 
       #t = Feedback.find_by_id(attribute_id) # don't need this since I'm always creating new

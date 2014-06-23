@@ -3,13 +3,17 @@ class FbvotesController < ApplicationController
   def create
     puts "in FbvotesController create action, params[:fbvote]: #{params[:fbvote]}"
     if params[:fbvote][:feedback_id]
+      # SEC: Scope feedback to those allowed or of current_user's company
       feedback = Feedback.find_by(id: params[:fbvote][:feedback_id])
       priorvote = Fbvote.where(feedback: feedback, user: current_user).first#if Vote.find_by(idea: idea, user:current_user).exists? 
     elsif params[:fbvote][:pfeedback_id]
+      # SEC: Scope feedback to those allowed or of current_user's company
       feedback = Pfeedback.find_by(id: params[:fbvote][:pfeedback_id])      
       priorvote = Fbvote.where(pfeedback: feedback, user: current_user).first#if Vote.find_by(idea: idea, user:current_user).exists? 
     end    
     #puts "priorvote: #{priorvote}"
+    # CLEANUP: Do we want to require two steps to change from upvote to downvote or vice versa, as is currently done here?
+    #   Could possibly use helper such as Fbvote.find_or_initialize_by_user_id_and_feedback_id(current_user.id, feedback.id)
     if priorvote #= Vote.find_by(idea: idea, user:current_user) # did this person already vote, up or down, for this idea?
       #puts "priorvote[:upvote]: #{priorvote[:upvote]}"
       #puts "priorvote[:upvote].class: #{priorvote[:upvote].class}"

@@ -27,7 +27,9 @@ class FeedbacksController < ApplicationController
     session[:return_to] ||= request.referer
     #Feedback.create(params[:feedback])
     attrib_obj = Attribute.find(params[:feedback][:attribute])
+    # SEC: Scope to_user_obj to allowed users or those in current_user.company
     to_user_obj = User.find(params[:feedback][:user])
+    # SEC: Does from_id need to be sanitized to allowed ids? Could be dangerous.
     fb = Feedback.create!(from_id: params[:feedback][:from_id], rating_given: params[:feedback][:rating_given])  
     fb.attribute = attrib_obj
     to_user_obj.feedbacks << fb
@@ -42,7 +44,9 @@ class FeedbacksController < ApplicationController
     puts "params: #{params}"
     attrib_obj = params[:attribute] # ??
     to_user = params[:user] # fix
+    # SEC: Scope users to those allowed or those in current_user.company
     to_user = User.find(params[:id])
+    # CLEANUP: Does from_id exist here?
     fb = Feedback.create!(from_id: from_id, rating_given: 1)  
     fb.attribute = attrib_obj
     to_user.feedbacks << fb

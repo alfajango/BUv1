@@ -4,6 +4,7 @@ class ThanksController < ApplicationController
     #method to do something without going to another page: http://stackoverflow.com/questions/2139996/ruby-on-rails-redirect-toback
     puts "params[:thank]: #{params[:thank]}"
     session[:return_to] ||= request.referer
+    # SEC: Scope ids to those allowed or by company
     fb_id = params[:thank][:feedback_id]  # these lines should be overkill, but do explicitly until it's working
     parent = Feedback.find(fb_id)
     Thank.create!(feedback: parent, created: Time.now)

@@ -6,6 +6,7 @@ class AsksController < ApplicationController
   	puts "params[:ask]: #{params[:ask]}"
     fb_id = params[:ask][:feedback_id]  
     puts "first fb_id: #{fb_id}"
+    # SEC: Scope Feedback to those allowed or of current_user's company
   	fb = Feedback.find(fb_id)
   	@ask = Ask.create!(feedback: fb,
   					created: Time.now,
@@ -15,6 +16,7 @@ class AsksController < ApplicationController
   					provide this information, click here." )
 
 
+    # SEC: Scope user to those allowed or of current_user's company
   	askee = User.find(fb.from_id)
   	puts "askee.name: #{askee.name}"
     @user = current_user # to pass to UserMailer

@@ -4,6 +4,7 @@ class JobsController < ApplicationController
     author = current_user
 
     if params[:job][:job_holder]
+      # SEC: Scope job_holder user by those allowed or in current_user.company
       job_holder = User.find_by(name: params[:job][:job_holder])
     # elsif params[:email]
     #   puts "in if, params[:email]: #{params[:email]}"
@@ -13,6 +14,7 @@ class JobsController < ApplicationController
     end
 
     #@job = Job.new(params[:job]) # correct?
+    # SEC: Scope subject user to those allowed or in current_user.company
     @job = Job.new(author: author, subject: params[:job][:subject], job_holder: job_holder, created: Time.now)
     
     if @job.save

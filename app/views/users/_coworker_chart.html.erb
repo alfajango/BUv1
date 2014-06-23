@@ -1,5 +1,7 @@
 <%# test whether @users is accessible %>
+<%# SEC/PERF: Scope @users to those allowed or in current_user.company. Also, set this in the controller action, not in view. %>
 <% @users = User.all %>
+<%# SEC/PERF: Scope @ratings to those allowed or in current_user.company. Also, set this in the controller action, not in view. %>
 <% @ratings = Rating.all %>
 
 <%#= @users.first.name %>
